@@ -20,11 +20,12 @@ Backup of *.doc*
 # Visio autosave temporary files
 *.~vsd*
 
+TreasureIsland.sav
 ### Example user template template
 ### Example user template
 
 # IntelliJ project files
-.idea
+.idea/
 *.iml
 out
 gen
