@@ -1,6 +1,8 @@
-package com.treasureisland.world;
+package com.treasureisland;
 
 import static org.junit.Assert.*;
+
+import com.treasureisland.world.RumDistillery;
 
 public class RumDistilleryTest {
 
