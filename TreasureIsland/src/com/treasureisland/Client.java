@@ -1,11 +1,8 @@
 package com.treasureisland;
 
-
 import com.treasureisland.items.Items;
 import com.treasureisland.items.Vendor;
 import com.treasureisland.player.Player;
-
-import javax.swing.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
