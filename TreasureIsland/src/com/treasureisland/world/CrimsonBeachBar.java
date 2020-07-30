@@ -16,7 +16,7 @@ public class CrimsonBeachBar implements Location{
     }
 
     @Override
-    public void talkToNPC(){
+    public void talkToNPC() {
         game.storylineProgression("TI.txt", getLocationName(), "JStart", "JEnd");
         //TODO another clue added 9999 in RumDistillery.java. hash out which clue added.
         player.playerClues.add("999");
@@ -24,7 +24,7 @@ public class CrimsonBeachBar implements Location{
 
     @Override
     public void lookAroundLocation(){
-        game.storylineProgression("TI.txt", getLocationName(), "CStart", "CEnd");
+        game.storylineProgression("TI.txt", getLocationName(), "CBStart", "CBEnd");
     }
 
     @Override

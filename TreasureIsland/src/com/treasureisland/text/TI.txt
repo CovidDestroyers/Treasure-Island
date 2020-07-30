@@ -107,7 +107,7 @@ Rum Island
 	DREnd
 
     4) Crimson Beach bar
-    CBStart
+  CBStart
 		a) Ask bartender for the Darkest Storm cocktail.
 			-- It was early evening when I reached the bar.
 			-- I went straight to the bar and ordered "Darkest Storm cocktail"
@@ -125,8 +125,9 @@ Rum Island
 			-- I decided to have one more drink and started chatting with Sam Jr.
 			-- He a middle aged gentleman, who is a regular patron at the bar .
 			-- Talking with him was interesting but it revealed . . .
-				-- nothing.
+      -- nothing.
 	SJEnd
+
 	PTStart
 		d) Search near the pair of palm trees.
 			-- There were lot of trees around the bar.
@@ -134,7 +135,7 @@ Rum Island
 			-- I examined all three and found . . .
 			-- the bushes near those trees weren't only thick and bushy but also hiding . . .
 			-- Poisonous spiders!
-				health -10
+      -- Health -10
 	PTEnd
 
 Port Royal
@@ -319,18 +320,18 @@ Isla DM
 			-- Someone pushed me from the right and took off running.
 			-- Lost health
 	CQStop
-	PTStart
+
+	PTEStart
 		d) Dig up the grave of legendary pirate Tumtum.
 		    --
-
-	PTStop
+	PTEStop
 
 	3) Dusk till Dawn Saloon
 	SAMSStart
 		a) Speak with drunk Sam Sr.
 			-- Talking with Sam Sr. didn't reveal much.
 			-- He was just talking about his son being a very good man and he is really proud of him.
-				-- Got nothing.
+      -- Got nothing.
 	SAMSStop
 	WCStart
 		b) Check the wine cellar.

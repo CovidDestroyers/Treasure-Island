@@ -11,10 +11,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
-  private String playerName;
-  private int playerCoins;
-  private int playerHealth = 50;
-
+  private static final Player player = new Player();
+  private final Vendor vendorItems = Vendor.getInstance();
   public ArrayList<String> playerClues = new ArrayList<>();
   public String[] clues = {
     "Go " + Color.ANSI_YELLOW.getValue() + "South" + Color.ANSI_RESET.getValue(),
@@ -22,15 +20,14 @@ public class Player {
     "Go " + Color.ANSI_GREEN.getValue() + "West" + Color.ANSI_RESET.getValue(),
     "Go " + Color.ANSI_BLUE.getValue() + "East" + Color.ANSI_RESET.getValue()
   };
-
   public Location location;
-  private SaveLoadGame saveLoadGame;
   public boolean haveIslandItem = false;
   Scanner scanner = new Scanner(System.in);
   String input;
-
-  private static final Player player = new Player();
-  private final Vendor vendorItems = Vendor.getInstance();
+  private String playerName;
+  private int playerCoins;
+  private int playerHealth = 50;
+  private SaveLoadGame saveLoadGame;
 
   private Player() {}
 
@@ -50,16 +47,16 @@ public class Player {
     return playerCoins;
   }
 
+  public void setPlayerCoins(int playerCoins) {
+    this.playerCoins = playerCoins;
+  }
+
   public Integer getPlayerHealth() {
     return playerHealth;
   }
 
   public void setPlayerHealth(Integer playerHealth) {
     this.playerHealth = playerHealth;
-  }
-
-  public void setPlayerCoins(int playerCoins) {
-    this.playerCoins = playerCoins;
   }
 
   // Helper methods below
@@ -269,7 +266,7 @@ public class Player {
       while (!player.haveIslandItem) {
         System.out.println(
             "Where would you like to go. N/S/E/W/SaveGame"); // Quit => SOUT("THANKS FOR PLAYING) =>
-                                                             // System.exit(0)
+        // System.exit(0)
         String input = scanner.nextLine();
         if ("savegame".equalsIgnoreCase(input)) {
           SaveLoadGame.saveGame();
