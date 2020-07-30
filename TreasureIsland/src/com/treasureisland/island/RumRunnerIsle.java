@@ -1,47 +1,29 @@
 package com.treasureisland.island;
 
-import com.treasureisland.world.*;
+import com.treasureisland.world.AbandonedDistillery;
+import com.treasureisland.world.CrimsonBeachBar;
+import com.treasureisland.world.Location;
+import com.treasureisland.world.RumDistillery;
+import com.treasureisland.world.SugarCaneField;
 
-public class RumRunnerIsle implements IslandSelector{
-    Location location;
-//    DirectionEnum direction;
+public class RumRunnerIsle implements IslandSelector {
+  Location location;
 
-    @Override
-    public Location islandLocationSelector(IslandSelector rumRunnerIsle, DirectionEnum direction) {
-        location = null;
-        if(direction.equals(DirectionEnum.N)){
-            location = new RumDistillery();
-        }
-        if(direction.equals(DirectionEnum.S)){
-            location = new CrimsonBeachBar();
-        }
-        if(direction.equals(DirectionEnum.E)){
-            location = new AbandonedDistillery();
-        }
-        if(direction.equals(DirectionEnum.W)){
-            location = new SugarCaneField();
-        }
-        return location;
+  @Override
+  public Location islandLocationSelector(IslandSelector rumRunnerIsle, DirectionEnum direction) {
+    location = null;
+    if (direction.equals(DirectionEnum.N)) {
+      location = new RumDistillery();
     }
-
-//    public Location getLocation() {
-//        location = null;
-//        if(location.equals(DirectionEnum.N)){
-//            location = new RumDistillery();
-//        }
-//        if(location.equals(DirectionEnum.S)){
-//            location = new CrimsonBeachBar();
-//        }
-//        if(location.equals(DirectionEnum.E)){
-//            location = new AbandonedDistillery();
-//        }
-//        if(location.equals(DirectionEnum.W)){
-//            location = new SugarCaneField();
-//        }
-//
-//        return location;
-//
-//    }
-
-
+    if (direction.equals(DirectionEnum.S)) {
+      location = new CrimsonBeachBar();
+    }
+    if (direction.equals(DirectionEnum.E)) {
+      location = new AbandonedDistillery();
+    }
+    if (direction.equals(DirectionEnum.W)) {
+      location = new SugarCaneField();
+    }
+    return location;
+  }
 }
