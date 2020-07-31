@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class TreasureIslandGameplay implements java.io.Serializable {
+  private static final TreasureIslandGameplay scan = new TreasureIslandGameplay();
   private final Player player = Player.getInstance();
   private final ShipBattleSequence shipBattleSequence = ShipBattleSequence.getInstance();
-  private IslandSelector island;
   private final Scanner scanner = new Scanner(System.in);
   String input;
-  private static final TreasureIslandGameplay scan = new TreasureIslandGameplay();
+  private IslandSelector island;
   private SaveLoadGame saveLoadGame;
 
   private TreasureIslandGameplay() {}
