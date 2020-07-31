@@ -6,17 +6,15 @@ import java.util.List;
 
 public class Vendor implements java.io.Serializable{
 
-    private static final Vendor item = new Vendor();
-
-  private final List<Items> vendorItems =
+  private final List<Item> vendorItems =
       new ArrayList<>(
           Arrays.asList(
-              new Items("Banana", 5, 40),
-              new Items("Apple", 3, 35),
-              new Items("Rum", 0, 55),
-              new Items("Salted meat", 10, 50),
-              new Items("Sea biscuits", 2, 35),
-              new Items("Ale", 1, 30)));
+              new Item("Banana", 5, 40),
+              new Item("Apple", 3, 35),
+              new Item("Rum", 0, 55),
+              new Item("Salted meat", 10, 50),
+              new Item("Sea biscuits", 2, 35),
+              new Item("Ale", 1, 30)));
 
   /*
    * =============================================
@@ -29,16 +27,22 @@ public class Vendor implements java.io.Serializable{
   //  return vendor;
   // }
 
+  /*
+   * =============================================
+   * =========== Business Methods ================
+   * =============================================
+   */
+
   public void getAll() {
-    for (Items item : vendorItems) {
+    for (Item item : vendorItems) {
       System.out.println(item.toString());
     }
   }
 
 
-  public Items findByName(String name) {
-    Items result = null;
-    for (Items item : vendorItems) {
+  public Item findByName(String name) {
+    Item result = null;
+    for (Item item : vendorItems) {
       if (item.getItemName().equals(name)) {
         result = item;
         break;
@@ -47,7 +51,7 @@ public class Vendor implements java.io.Serializable{
     return result;
   }
 
-  public List<Items> getVendorItems() {
+  public List<Item> getVendorItems() {
     return vendorItems;
   }
 }

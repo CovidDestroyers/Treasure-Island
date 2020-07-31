@@ -11,7 +11,8 @@ public class SaveLoadGame  implements java.io.Serializable {
 
     public static void saveGame(){
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("TreasureIsland.ser");
+            FileOutputStream fileOutputStream = new FileOutputStream("TreasureIsland.ser"
+              + "");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(treasureIslandGameplay);
             objectOutputStream.flush();

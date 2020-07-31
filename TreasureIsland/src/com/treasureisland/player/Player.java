@@ -3,22 +3,21 @@ package com.treasureisland.player;
 import com.treasureisland.IsleFactory;
 import com.treasureisland.SaveLoadGame;
 import com.treasureisland.TreasureIslandGameplay;
-import com.treasureisland.items.Items;
+import com.treasureisland.items.Item;
 import com.treasureisland.items.Vendor;
 import com.treasureisland.world.Location;
-
-import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Player  implements java.io.Serializable{
+public class Player implements Serializable {
   private static Player player;
   private final Vendor vendor = new Vendor();
-  private final List<Items> vendorItems = vendor.getVendorItems();
+  private final List<Item> vendorItems = vendor.getVendorItems();
 
   public ArrayList<String> playerClues = new ArrayList<>();
   public String[] clues = {
@@ -57,7 +56,6 @@ public class Player  implements java.io.Serializable{
    * =============================================
    */
 
-  // Helper methods below
   public void iterateThroughPlayerClues() {
 
     switch (player.location.getLocationName()) {
@@ -135,6 +133,11 @@ public class Player  implements java.io.Serializable{
     }
   }
 
+  /**
+   * Adds or substracts coins from the Player's coins
+   *
+   * @param coins -> Integer
+   */
   public void coinManager(Integer coins) {
     if (coins.equals(0)) {
       System.out.println("Nothing was found CM");
@@ -151,11 +154,18 @@ public class Player  implements java.io.Serializable{
     }
   }
 
+  /**
+   * Player visits the Vendor
+   *  - All Items from the Vendor are returned -> vendor.getAll()
+   *
+   */
   public void playerVisitsVendor() {
-    System.out.println("\nWelcome to my shop! Please browse my collection \n");
+    System.out.println("\nWelcome to my shop! Please browse my collection.\n");
     vendor.getAll();
+
     System.out.println("\nWould you like to buy anything? y/n");
     input = scanner.nextLine();
+
     if ("y".equalsIgnoreCase(input)) {
       player.playerPurchase();
     }
@@ -166,7 +176,7 @@ public class Player  implements java.io.Serializable{
 
   public void playerPurchase() {
     System.out.println("\nWhat would you like to buy?");
-    input = scanner.nextLine();
+    input = scanner.nextLine().trim().toLowerCase();
     switch (input.toLowerCase()) {
       case "Banana":
       case "b":
@@ -299,21 +309,14 @@ public class Player  implements java.io.Serializable{
     String input = "";
     playerInfoConsoleOutput();
 
-    while (!input.equalsIgnoreCase("e")) {
+    System.out.println(
+        "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Clues(c)/ Exit(e)");
+
       input = scanner.nextLine().trim();
 
       playerHealthCheck();
       System.out.println("\n\n\n");
 
-      if ("w".equalsIgnoreCase(direction)) {
-
-        System.out.println(
-            "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Vendor(v)/ Clues(c)/ Exit(e)");
-
-      } else {
-        System.out.println(
-            "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Clues(c)/ Exit(e)");
-      }
 
       switch (input.toLowerCase()) {
         case "talk":
@@ -351,7 +354,6 @@ public class Player  implements java.io.Serializable{
           playerInteractionOptions(input);
           break;
       }
-    }
   }
 
   public void playerDeathArt() {
