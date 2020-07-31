@@ -1,6 +1,6 @@
 package com.treasureisland.items;
 
-public class Items {
+public class Items implements java.io.Serializable{
     public String itemName;
     public Integer healthValue;
     public Integer cost;

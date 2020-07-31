@@ -5,7 +5,7 @@ import com.treasureisland.player.Player;
 import java.sql.PseudoColumnUsage;
 import java.util.Random;
 
-public class PlayerShip {
+public class PlayerShip implements java.io.Serializable{
     public Player player = Player.getInstance();
     public final String playerShipName = "The Black Pearl";
     public   Integer playerShipHealth = 100;

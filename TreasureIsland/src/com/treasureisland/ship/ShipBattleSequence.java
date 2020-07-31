@@ -5,11 +5,11 @@ import com.treasureisland.player.Player;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ShipBattleSequence {
+public class ShipBattleSequence  implements java.io.Serializable{
     public EnemyShip enemyShip = EnemyShip.getInstance();
     public PlayerShip playerShip = PlayerShip.getInstance();
 
-    public final Scanner scanner = new Scanner(System.in);
+    public transient Scanner scanner = new Scanner(System.in);
     public String input;
     private static final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
 

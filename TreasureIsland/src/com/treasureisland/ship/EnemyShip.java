@@ -5,7 +5,7 @@ import com.treasureisland.player.Player;
 import java.sql.PseudoColumnUsage;
 import java.util.Random;
 
-public class EnemyShip {
+public class EnemyShip implements java.io.Serializable {
     public Player player = Player.getInstance();
     public final String enemyShipName = " An Unidentified Ship";
     public   Integer enemyShipHealth = 100;

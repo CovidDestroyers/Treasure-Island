@@ -2,7 +2,7 @@ package com.treasureisland.items;
 
 import java.util.*;
 
-public class Vendor {
+public class Vendor implements java.io.Serializable{
 
     private static final Vendor item = new Vendor();
 
