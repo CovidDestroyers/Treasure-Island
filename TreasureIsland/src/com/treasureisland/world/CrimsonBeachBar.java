@@ -32,7 +32,7 @@ public class CrimsonBeachBar implements Location, Serializable {
     @Override
     public void investigateArea(){
         game.storylineProgression("TI.txt", getLocationName(), "PTStart", "PTEnd");
-
+        player.setPlayerHealth(player.getPlayerHealth() - 10);
     }
 
     @Override

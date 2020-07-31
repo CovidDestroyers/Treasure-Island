@@ -27,25 +27,22 @@ public class SugarCaneField implements Location, Serializable {
         if(input.equalsIgnoreCase("9999")){
             System.out.println("DING DING DING \n You have unlocked your first treasure piece. \n awarded the cane shard");
             player.haveIslandItem = true;
-
         }
         else {
             System.out.println("Go away");
         }
-
     }
 
     @Override
     public void lookAroundLocation(){
         game.storylineProgression("TI.txt", getLocationName(), "WWStart", "WWEnd");
         player.playerCoinGenerator();
-
-
     }
 
     @Override
     public void investigateArea(){
         game.storylineProgression("TI.txt", getLocationName(), "SStart", "SEnd");
+        player.setPlayerHealth(player.getPlayerHealth() - 5);
         //TODO decide what we want to do for the key. Will we need an object ArrayList to hold items?
         player.playerClues.add("some placeholder for the key");
 
@@ -55,7 +52,6 @@ public class SugarCaneField implements Location, Serializable {
     public void vendor() {
         player.playerVisitsVendor();
     }
-
 
     /*
     public void vendor(){
