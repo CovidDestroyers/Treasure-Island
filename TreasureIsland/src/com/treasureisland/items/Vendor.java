@@ -4,13 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Vendor implements java.io.Serializable{
+public class Vendor implements java.io.Serializable {
 
-    private static final Vendor item = new Vendor();
-
-    public Vendor(){
-
-    }
+  private static final Vendor item = new Vendor();
 
   private final List<Items> vendorItems =
       new ArrayList<>(
@@ -38,7 +34,6 @@ public class Vendor implements java.io.Serializable{
       System.out.println(item.toString());
     }
   }
-
 
   public Items findByName(String name) {
     Items result = null;

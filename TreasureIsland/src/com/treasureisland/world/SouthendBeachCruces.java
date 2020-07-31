@@ -5,7 +5,7 @@ import com.treasureisland.player.Player;
 
 import java.util.Scanner;
 
-public class SouthendBeachCruces implements Location{
+public class SouthendBeachCruces implements Location {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 
@@ -26,8 +26,6 @@ public class SouthendBeachCruces implements Location{
             player.haveIslandItem = true;
             game.storylineProgression("TI.txt", getLocationName(), "FStart", "FStop");
         }
-
-
     }
 
     @Override

@@ -11,7 +11,7 @@ public class PawPawBeach implements Location{
 
     @Override
     public String getLocationName() {
-        return "Pawpaw Beach ";
+        return "Pawpaw Beach";
     }
 
     @Override

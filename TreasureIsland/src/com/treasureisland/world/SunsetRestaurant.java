@@ -15,7 +15,6 @@ public class SunsetRestaurant implements Location{
     public void talkToNPC() {
         System.out.println("Talking to a npc sunset restaurant");
         game.storylineProgression("TI.txt", getLocationName(), "RNDStart", "RNDStop");
-
     }
 
     @Override
