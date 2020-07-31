@@ -3,9 +3,10 @@ package com.treasureisland.world;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class SouthendBeachCruces implements Location{
+public class SouthendBeachCruces implements Location, Serializable {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

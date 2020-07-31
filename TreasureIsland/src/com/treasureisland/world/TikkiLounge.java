@@ -3,9 +3,10 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class TikkiLounge implements Location{
+public class TikkiLounge implements Location, Serializable {
 
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();

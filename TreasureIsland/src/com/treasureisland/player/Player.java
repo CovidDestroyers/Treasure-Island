@@ -6,6 +6,8 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.items.Items;
 import com.treasureisland.items.Vendor;
 import com.treasureisland.world.Location;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +33,7 @@ public class Player  implements java.io.Serializable{
   String input;
   transient Scanner scanner = new Scanner(System.in);
   private String playerName;
-  private Integer playerCoins;
+  private Integer playerCoins = 0;
   private Integer playerHealth = 50;
   private SaveLoadGame saveLoadGame;
   /*

@@ -88,7 +88,7 @@ public class IsleFactory {
                     location = new ChurchCruces();
                     break;
                 case "s":
-                    location = new DoubleCrossTavernCruces();
+                    location = new SouthendBeachCruces();
                     break;
 
                 case "e":
@@ -96,7 +96,7 @@ public class IsleFactory {
                     break;
 
                 case "w":
-                    location = new SouthendBeachCruces();
+                    location = new DoubleCrossTavernCruces();
                     break;
 
                 default:

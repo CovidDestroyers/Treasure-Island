@@ -196,32 +196,34 @@ public class TreasureIslandGameplay implements java.io.Serializable {
     }
 
     public void customGameplayOptions() throws InterruptedException {
-        System.out.println("Would you like to Load existing game, play the full game, or play on a sample island? L/F/S");
+        File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
+        if (gameState.exists()) {
+          System.out.println("Would you like to Load existing game<L>, play the full game<F>, or play on a sample island<S>?");
+        } else {
+          System.out.println("Would you like to play the full game<F>, or play on a sample island<S>?");
+        }
+
         input = scanner.nextLine();
         if ("l".equalsIgnoreCase(input)) {
-            treasureIslandGameplay = SaveLoadGame.loadGame();
-            System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
-          //System.out.println("Location: " + treasureIslandGameplay.player.location.getLocationName());
+          treasureIslandGameplay = SaveLoadGame.loadGame();
+          System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
+          System.out.println("Location: " + treasureIslandGameplay.player.location.getLocationName());
           System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
           System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
-            rumRunnerIsle();
-        }
-        else if ("f".equalsIgnoreCase(input)) {
-            File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
-            if (gameState.exists()) {
-              gameState.delete();
-            }
-            chosePlayerName();
-        }
-        else if ("s".equalsIgnoreCase(input)) {
-            File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
-            if (gameState.exists()) {
-              gameState.delete();
-            }
-            player.setPlayerName("Test Player");
-            testIslandSelector();
+          rumRunnerIsle();
+        } else if ("f".equalsIgnoreCase(input)) {
+          if (gameState.exists()) {
+            gameState.delete();
+          }
+          chosePlayerName();
+        } else if ("s".equalsIgnoreCase(input)) {
+          if (gameState.exists()) {
+            gameState.delete();
+          }
+          player.setPlayerName("Test Player");
+          testIslandSelector();
         } else {
-            customGameplayOptions();
+          customGameplayOptions();
         }
     }
 

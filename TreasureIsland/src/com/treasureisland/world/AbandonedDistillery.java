@@ -2,9 +2,10 @@ package com.treasureisland.world;
 
 import com.treasureisland.TreasureIslandGameplay;
 
+import java.io.Serializable;
 
 
-public class AbandonedDistillery implements Location{
+public class AbandonedDistillery implements Location, Serializable {
     private final TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
 
 

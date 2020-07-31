@@ -4,8 +4,10 @@ import com.treasureisland.TreasureIslandGameplay;
 
 import com.treasureisland.player.Player;
 
+import java.io.Serializable;
 
-public class CrimsonBeachBar implements Location{
+
+public class CrimsonBeachBar implements Location, Serializable {
 
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private Player player = Player.getInstance();

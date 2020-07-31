@@ -8,10 +8,6 @@ public class Vendor implements java.io.Serializable{
 
     private static final Vendor item = new Vendor();
 
-    public Vendor(){
-
-    }
-
   private final List<Items> vendorItems =
       new ArrayList<>(
           Arrays.asList(
