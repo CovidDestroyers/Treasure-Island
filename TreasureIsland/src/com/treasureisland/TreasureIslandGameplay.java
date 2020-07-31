@@ -13,11 +13,9 @@ import java.util.Scanner;
 public class TreasureIslandGameplay implements java.io.Serializable {
     private final Player player = Player.getInstance();
     private final ShipBattleSequence shipBattleSequence = ShipBattleSequence.getInstance();
-    private IslandSelector island;
     transient Scanner scanner = new Scanner(System.in);
     String input;
     private static TreasureIslandGameplay treasureIslandGameplay = new TreasureIslandGameplay();
-    private SaveLoadGame saveLoadGame;
 
 
     private TreasureIslandGameplay() {
@@ -210,6 +208,7 @@ public class TreasureIslandGameplay implements java.io.Serializable {
           System.out.println("Location: " + treasureIslandGameplay.player.location.getLocationName());
           System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
           System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
+
           rumRunnerIsle();
         } else if ("f".equalsIgnoreCase(input)) {
           if (gameState.exists()) {

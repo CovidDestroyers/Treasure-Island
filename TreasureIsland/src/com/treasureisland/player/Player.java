@@ -154,11 +154,7 @@ public class Player implements Serializable {
     }
   }
 
-  /**
-   * Player visits the Vendor
-   *  - All Items from the Vendor are returned -> vendor.getAll()
-   *
-   */
+  /** Player visits the Vendor - All Items from the Vendor are returned -> vendor.getAll() */
   public void playerVisitsVendor() {
     System.out.println("\nWelcome to my shop! Please browse my collection.\n");
     vendor.getAll();
@@ -237,7 +233,6 @@ public class Player implements Serializable {
   }
 
   public void itemManager(Integer coins) {
-
     if (getPlayerCoins() - coins < 0) {
       System.out.println("You can not afford this item");
     } else {
@@ -252,35 +247,35 @@ public class Player implements Serializable {
     Random rand = new Random();
     int upperBoundofCoins = 51;
     int coins = rand.nextInt(upperBoundofCoins);
-
-    if (coins < 0) {
+    if (coins <= 0) {
       System.out.println("Nothing was found ");
       return;
     }
-
     coinManager(coins);
   }
 
-  // TODO figure out why this is throwing NPE. Do not get NPE on any other class that imports
+  // DONE: figure out why this is throwing NPE. Do not get NPE on any other class that imports
   // TODO TreasureIslandGameScanner other than this one.
   public void playerHealthCheck() {
-    if (getPlayerHealth() < 0) {
+    if (player.getPlayerHealth() <= 0) {
       playerDeathArt();
       playerDeathOptions();
     }
   }
 
   public void playerDeathOptions() {
-    System.out.println("Would you like to play again? Y/N");
+    System.out.println("Would you like to play again?? Yes<Y> or No<N>");
     input = scanner.nextLine();
 
-    // TODO NO IMPLEMENTATION YET FOR INVALID INPUT HANDLING
+    // DONE: NO IMPLEMENTATION YET FOR INVALID INPUT HANDLING
     if ("y".equalsIgnoreCase(input)) {
       TreasureIslandGameplay.getInstance().chosePlayerName();
-    }
-    if ("n".equalsIgnoreCase(input)) {
+    } else if ("n".equalsIgnoreCase(input)) {
       System.out.println("Thank you for playing");
       System.exit(0);
+    } else {
+      System.out.println("Invalid Input, Try Again!!");
+      playerDeathOptions();
     }
   }
 
@@ -290,14 +285,15 @@ public class Player implements Serializable {
         System.out.println(
             "Where would you like to go. N/S/E/W/SaveGame"); // Quit => SOUT("THANKS FOR PLAYING) =>
         // System.exit(0)
-        String input = scanner.nextLine();
-        if ("savegame".equalsIgnoreCase(input)) {
+        String direction = scanner.nextLine();
+        if ("savegame".equalsIgnoreCase(direction)) {
           SaveLoadGame.saveGame();
           System.exit(0);
         }
-        player.location = IsleFactory.islandLocationFactory(input, islandDestination);
+        player.location = IsleFactory.islandLocationFactory(direction, islandDestination);
         System.out.println("You are now at the " + player.location.getLocationName());
-        playerInteractionOptions(input);
+        playerInfoConsoleOutput();
+        playerInteractionOptions(direction);
       }
 
     } catch (IOException | InterruptedException e) {
@@ -309,51 +305,61 @@ public class Player implements Serializable {
     String input = "";
     playerInfoConsoleOutput();
 
-    System.out.println(
-        "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Clues(c)/ Exit(e)");
+    playerHealthCheck();
 
-      input = scanner.nextLine().trim();
+    if ("w".equalsIgnoreCase(direction)) {
+      System.out.println(
+          "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Vendor(v)/ Clues(c)/ Exit(e)");
 
-      playerHealthCheck();
-      System.out.println("\n\n\n");
+    } else {
+      System.out.println(
+          "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Clues(c)/ Exit(e)");
+    }
 
+    input = scanner.nextLine().trim();
+    System.out.println("\n\n\n");
 
-      switch (input.toLowerCase()) {
-        case "talk":
-        case "t":
-          playerInfoConsoleOutput();
-          location.talkToNPC();
-          break;
-        case "look":
-        case "l":
-          playerInfoConsoleOutput();
-          location.lookAroundLocation();
-          break;
-        case "investigate":
-        case "i":
-          playerInfoConsoleOutput();
-          location.investigateArea();
-          break;
-        case "clues":
-        case "c":
-          playerInfoConsoleOutput();
-          iterateThroughPlayerClues();
-          break;
-        case "vemdpr":
-        case "v":
-          playerInfoConsoleOutput();
-          location.vendor();
-          break;
-          // TODO try if statement to catch w direction for vendor.
-          // if player.direction is w then add vendor option as well (v)
-        case "exit":
-        case "e":
-          break;
-        default:
-          System.out.println("Invalid input, please try again.");
-          playerInteractionOptions(input);
-          break;
-      }
+    switch (input.toLowerCase()) {
+      case "talk":
+      case "t":
+        playerInfoConsoleOutput();
+        location.talkToNPC();
+        playerInteractionOptions(direction);
+        break;
+      case "look":
+      case "l":
+        playerInfoConsoleOutput();
+        location.lookAroundLocation();
+        playerInteractionOptions(direction);
+        break;
+      case "investigate":
+      case "i":
+        playerInfoConsoleOutput();
+        location.investigateArea();
+        playerInteractionOptions(direction);
+        break;
+      case "clues":
+      case "c":
+        playerInfoConsoleOutput();
+        iterateThroughPlayerClues();
+        playerInteractionOptions(direction);
+        break;
+      case "vendor":
+      case "v":
+        playerInfoConsoleOutput();
+        location.vendor();
+        playerInteractionOptions(direction);
+        break;
+        // TODO try if statement to catch w direction for vendor.
+        // if player.direction is w then add vendor option as well (v)
+      case "exit":
+      case "e":
+        break;
+      default:
+        System.out.println("Invalid input, please try again.");
+        playerInteractionOptions(input);
+        break;
+    }
   }
 
   public void playerDeathArt() {
