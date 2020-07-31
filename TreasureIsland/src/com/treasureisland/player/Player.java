@@ -3,17 +3,20 @@ package com.treasureisland.player;
 import com.treasureisland.IsleFactory;
 import com.treasureisland.SaveLoadGame;
 import com.treasureisland.TreasureIslandGameplay;
+import com.treasureisland.items.Items;
 import com.treasureisland.items.Vendor;
 import com.treasureisland.world.Location;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Player  implements java.io.Serializable{
-  private String playerName;
-  private int playerCoins;
-  private int playerHealth = 50;
+  private static Player player;
+  private final Vendor vendor = new Vendor();
+  private final List<Items> vendorItems = vendor.getVendorItems();
 
   public ArrayList<String> playerClues = new ArrayList<>();
   public String[] clues = {
@@ -24,113 +27,109 @@ public class Player  implements java.io.Serializable{
   };
 
   public Location location;
-  private SaveLoadGame saveLoadGame;
-  public boolean haveIslandItem = false;
-  transient Scanner scanner = new Scanner(System.in);
+  public Boolean haveIslandItem = false;
   String input;
-
-  private static final Player player = new Player();
-  private final Vendor vendorItems = Vendor.getInstance();
-
+  transient Scanner scanner = new Scanner(System.in);
+  private String playerName;
+  private Integer playerCoins;
+  private Integer playerHealth = 50;
+  private SaveLoadGame saveLoadGame;
+  /*
+   * =============================================
+   * ============= Constructors ==================
+   * =============================================
+   */
   private Player() {}
 
   public static Player getInstance() {
+    if (player == null) {
+      player = new Player();
+    }
+
     return player;
   }
 
-  public String getPlayerName() {
-    return playerName;
-  }
-
-  public void setPlayerName(String playerName) {
-    this.playerName = playerName;
-  }
-
-  public Integer getPlayerCoins() {
-    return playerCoins;
-  }
-
-  public Integer getPlayerHealth() {
-    return playerHealth;
-  }
-
-  public void setPlayerHealth(Integer playerHealth) {
-    this.playerHealth = playerHealth;
-  }
-
-  public void setPlayerCoins(int playerCoins) {
-    this.playerCoins = playerCoins;
-  }
+  /*
+   * =============================================
+   * =========== Business Methods ================
+   * =============================================
+   */
 
   // Helper methods below
   public void iterateThroughPlayerClues() {
 
-    if (player.location.getLocationName().equals("Rum Distillery")) {
+    switch (player.location.getLocationName()) {
+      case "Rum Distillery":
+        System.out.println(
+            "\napply wha' ye got"
+                + Color.ANSI_YELLOW.getValue()
+                + "\nClue#1 "
+                + Color.ANSI_RESET.getValue()
+                + clues[0]
+                + "\n"
+                + Color.ANSI_BLUE.getValue()
+                + "Clue#2 "
+                + Color.ANSI_RESET.getValue()
+                + clues[3]);
+        System.out.println(
+            Color.ANSI_GREEN.getValue()
+                + "Clue#3"
+                + Color.ANSI_RESET.getValue()
+                + " = "
+                + Color.ANSI_YELLOW.getValue()
+                + "Clue#1"
+                + Color.ANSI_RESET.getValue()
+                + " + "
+                + Color.ANSI_BLUE.getValue()
+                + "Clue#2"
+                + Color.ANSI_RESET.getValue()
+                + " .... "
+                + "\n"
+                + "\nwill reveal th' island t' kick off...");
 
-      System.out.println(
-          "\napply wha' ye got"
-              + Color.ANSI_YELLOW.getValue()
-              + "\nClue#1 "
-              + Color.ANSI_RESET.getValue()
-              + clues[0]
-              + "\n"
-              + Color.ANSI_BLUE.getValue()
-              + "Clue#2 "
-              + Color.ANSI_RESET.getValue()
-              + clues[3]);
-      System.out.println(
-          Color.ANSI_GREEN.getValue()
-              + "Clue#3"
-              + Color.ANSI_RESET.getValue()
-              + " = "
-              + Color.ANSI_YELLOW.getValue()
-              + "Clue#1"
-              + Color.ANSI_RESET.getValue()
-              + " + "
-              + Color.ANSI_BLUE.getValue()
-              + "Clue#2"
-              + Color.ANSI_RESET.getValue()
-              + " .... "
-              + "\n"
-              + "\nwill reveal th' island t' kick off...");
+        break;
+      case "Crimson Beach Bar":
+        System.out.println(
+            Color.ANSI_YELLOW.getValue()
+                + "Clue#1"
+                + Color.ANSI_RESET.getValue()
+                + " How's th' cabin number Jojo said t' look aft?");
 
-    } else if (player.location.getLocationName().equals("Crimson Beach Bar")) {
-      System.out.println(
-          Color.ANSI_YELLOW.getValue()
-              + "Clue#1"
-              + Color.ANSI_RESET.getValue()
-              + " How's th' cabin number Jojo said t' look aft?");
+        break;
+      case "Abandoned distillery":
+        System.out.println(
+            Color.ANSI_BLUE.getValue()
+                + "Clue#2"
+                + Color.ANSI_RESET.getValue()
+                + " How many Antique coins are thar?");
 
-    } else if (player.location.getLocationName().equals("Abandoned distillery")) {
-      System.out.println(
-          Color.ANSI_BLUE.getValue()
-              + "Clue#2"
-              + Color.ANSI_RESET.getValue()
-              + " How many Antique coins are thar?");
-
-    } else if (player.location.getLocationName().equals("Sugar cane field")) {
-      System.out.println(
-          Color.ANSI_RED.getValue()
-              + "\nSecret Code: "
-              + Color.ANSI_GREEN.getValue()
-              + "Clue#3"
-              + Color.ANSI_RESET.getValue()
-              + " - lastOneDigitOff"
-              + Color.ANSI_RESET.getValue());
-    } else if (player.location.getLocationName().equals("Tikki Lounge")) {
-      System.out.println(
-          Color.ANSI_RED.getValue()
-              + "\nSecret Code: "
-              + Color.ANSI_GREEN.getValue()
-              + "What is the name of old and abandoned legendary ship you found in Ship Graveyard?"
-              + Color.ANSI_RESET.getValue());
-    } else if (player.location.getLocationName().equals("Southend Beach")) {
-      System.out.println(
-          Color.ANSI_RED.getValue()
-              + "\nSecret Code: "
-              + Color.ANSI_GREEN.getValue()
-              + "To get the lockpin you must surrender the item you stole in \"Church\""
-              + Color.ANSI_RESET.getValue());
+        break;
+      case "Sugar cane field":
+        System.out.println(
+            Color.ANSI_RED.getValue()
+                + "\nSecret Code: "
+                + Color.ANSI_GREEN.getValue()
+                + "Clue#3"
+                + Color.ANSI_RESET.getValue()
+                + " - lastOneDigitOff"
+                + Color.ANSI_RESET.getValue());
+        break;
+      case "Tikki Lounge":
+        System.out.println(
+            Color.ANSI_RED.getValue()
+                + "\nSecret Code: "
+                + Color.ANSI_GREEN.getValue()
+                + "What is the name of old and abandoned legendary ship you found in Ship Graveyard?"
+                + Color.ANSI_RESET.getValue());
+        break;
+      case "Southend Beach":
+        System.out.println(
+            Color.ANSI_RED.getValue()
+                + "\nSecret Code: "
+                + Color.ANSI_GREEN.getValue()
+                + "To get the lockpin you must surrender the item you stole in \"Church\""
+                + Color.ANSI_RESET.getValue());
+        break;
     }
   }
 
@@ -152,7 +151,7 @@ public class Player  implements java.io.Serializable{
 
   public void playerVisitsVendor() {
     System.out.println("\nWelcome to my shop! Please browse my collection \n");
-    vendorItems.getAll();
+    vendor.getAll();
     System.out.println("\nWould you like to buy anything? y/n");
     input = scanner.nextLine();
     if ("y".equalsIgnoreCase(input)) {
@@ -171,44 +170,53 @@ public class Player  implements java.io.Serializable{
       case "b":
         System.out.println("You bought a banana");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendorItems.findByName("Banana").healthValue);
-        player.itemManager(vendorItems.findByName("Banana").cost);
+            player.getPlayerHealth() + vendor.findByName("Banana").getHealthValue());
+        player.itemManager(vendor.findByName("Banana").getCost());
         break;
+
       case "Apple":
       case "ap":
         System.out.println("bought apple");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendorItems.findByName("Apple").healthValue);
-        player.itemManager(vendorItems.findByName("Apple").cost);
+            player.getPlayerHealth() + vendor.findByName("Apple").getHealthValue());
+
+        player.itemManager(vendor.findByName("Apple").getCost());
         break;
+
       case "Rum":
       case "r":
         System.out.println("bought rum");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendorItems.findByName("Rum").healthValue);
-        player.itemManager(vendorItems.findByName("Rum").cost);
+            player.getPlayerHealth() + vendor.findByName("Rum").getHealthValue());
+        player.itemManager(vendor.findByName("Rum").getCost());
         break;
+
       case "Salted meat":
       case "sm":
         System.out.println("bought salted meat");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendorItems.findByName("Salted meat").healthValue);
-        player.itemManager(vendorItems.findByName("Salted meat").cost);
+            player.getPlayerHealth() + vendor.findByName("Salted meat").getHealthValue());
+
+        player.itemManager(vendor.findByName("Salted meat").getCost());
         break;
+
       case "Sea biscuits":
       case "sb":
         System.out.println("bought sea biscuts");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendorItems.findByName("Sea biscuits").healthValue);
-        player.itemManager(vendorItems.findByName("Sea biscuits").cost);
+            player.getPlayerHealth() + vendor.findByName("Sea biscuits").getHealthValue());
+
+        player.itemManager(vendor.findByName("Sea biscuits").getCost());
         break;
+
       case "Ale":
       case "al":
         System.out.println("Bought ale");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendorItems.findByName("Ale").healthValue);
-        player.itemManager(vendorItems.findByName("Ale").cost);
+            player.getPlayerHealth() + vendor.findByName("Ale").getHealthValue());
+        player.itemManager(vendor.findByName("Ale").getCost());
         break;
+
       default:
         System.out.println("Invalid input");
         playerPurchase();
@@ -243,10 +251,9 @@ public class Player  implements java.io.Serializable{
 
   // TODO figure out why this is throwing NPE. Do not get NPE on any other class that imports
   // TODO TreasureIslandGameScanner other than this one.
-  // NOT IMPLEMENTED UNTIL NPE IS SOLVED
   public void playerHealthCheck() {
-    if (player.getPlayerHealth() < 0) {
-      player.playerDeathArt();
+    if (getPlayerHealth() < 0) {
+      playerDeathArt();
       playerDeathOptions();
     }
   }
@@ -254,6 +261,7 @@ public class Player  implements java.io.Serializable{
   public void playerDeathOptions() {
     System.out.println("Would you like to play again? Y/N");
     input = scanner.nextLine();
+
     // TODO NO IMPLEMENTATION YET FOR INVALID INPUT HANDLING
     if ("y".equalsIgnoreCase(input)) {
       TreasureIslandGameplay.getInstance().chosePlayerName();
@@ -269,7 +277,7 @@ public class Player  implements java.io.Serializable{
       while (!player.haveIslandItem) {
         System.out.println(
             "Where would you like to go. N/S/E/W/SaveGame"); // Quit => SOUT("THANKS FOR PLAYING) =>
-                                                             // System.exit(0)
+        // System.exit(0)
         String input = scanner.nextLine();
         if ("savegame".equalsIgnoreCase(input)) {
           SaveLoadGame.saveGame();
@@ -285,22 +293,25 @@ public class Player  implements java.io.Serializable{
     }
   }
 
-  // TODO great example for input.isValid implementation. current !input.equals(z) logically makes
-  // no sense.
   public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
     String input = "";
     playerInfoConsoleOutput();
+
     while (!input.equalsIgnoreCase("e")) {
+      input = scanner.nextLine().trim();
+
       playerHealthCheck();
       System.out.println("\n\n\n");
+
       if ("w".equalsIgnoreCase(direction)) {
+
         System.out.println(
             "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Vendor(v)/ Clues(c)/ Exit(e)");
+
       } else {
         System.out.println(
             "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Clues(c)/ Exit(e)");
       }
-      input = scanner.nextLine();
 
       switch (input.toLowerCase()) {
         case "talk":
@@ -400,5 +411,70 @@ public class Player  implements java.io.Serializable{
             + "                                                           "
             + "\n"
             + "___________________________________________________________");
+  }
+
+  /*
+   * =============================================
+   * =========== Accessor Methods ================
+   * =============================================
+   */
+
+  // SET METHODS
+
+  // GET METHODS
+  public Integer getPlayerHealth() {
+    return this.playerHealth;
+  }
+
+  public void setPlayerHealth(Integer playerHealth) {
+    this.playerHealth = playerHealth;
+  }
+
+  public Integer getPlayerCoins() {
+    return this.playerCoins;
+  }
+
+  public void setPlayerCoins(int playerCoins) {
+    this.playerCoins = playerCoins;
+  }
+
+  public String getPlayerName() {
+    return this.playerName;
+  }
+
+  public void setPlayerName(String playerName) {
+    this.playerName = playerName;
+  }
+
+  @Override
+  public String toString() {
+    return "Player{"
+        + "player="
+        + player
+        + ", vendorItems="
+        + vendorItems
+        + ", playerClues="
+        + playerClues
+        + ", clues="
+        + Arrays.toString(clues)
+        + ", location="
+        + location
+        + ", haveIslandItem="
+        + haveIslandItem
+        + ", scanner="
+        + scanner
+        + ", input='"
+        + input
+        + '\''
+        + ", playerName='"
+        + playerName
+        + '\''
+        + ", playerCoins="
+        + playerCoins
+        + ", playerHealth="
+        + playerHealth
+        + ", saveLoadGame="
+        + saveLoadGame
+        + '}';
   }
 }
