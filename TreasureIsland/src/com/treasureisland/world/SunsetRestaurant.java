@@ -17,7 +17,6 @@ public class SunsetRestaurant implements Location, Serializable {
     public void talkToNPC() {
         System.out.println("Talking to a npc sunset restaurant");
         game.storylineProgression("TI.txt", getLocationName(), "RNDStart", "RNDStop");
-
     }
 
     @Override

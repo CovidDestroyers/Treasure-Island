@@ -8,29 +8,12 @@ public class IsleFactory {
 
 
 
-    private IsleFactory(){
+    private IsleFactory() {
 
     }
+
     private static final TreasureIslandGameplay playerGoesTo = TreasureIslandGameplay.getInstance();
 
-//    public static Location islandSelectorFactory(IslandSelector island, String direction){
-//        Location location = null;
-//        switch(direction.toLowerCase()){
-//            case "n":
-//                location = island.islandLocationSelector(DirectionEnum.N);
-//                break;
-//            case "s":
-//                location = island.islandLocationSelector(DirectionEnum.S);
-//                break;
-//            case "e":
-//                location = island.islandLocationSelector(DirectionEnum.E);
-//                break;
-//            case "w":
-//                location = island.islandLocationSelector(DirectionEnum.W);
-//        }
-//        return location;
-//    }
-//
     public static Location islandLocationFactory(String direction, String islandFactorySelection) throws InterruptedException {
         Location location = null;
         if("rumrunnerisle".equalsIgnoreCase(islandFactorySelection)) {
@@ -58,6 +41,7 @@ public class IsleFactory {
                     break;
             }
         }
+
         if("portRoyal".equalsIgnoreCase(islandFactorySelection)) {
             switch (direction.toLowerCase()) {
                 case "n":
@@ -105,6 +89,7 @@ public class IsleFactory {
                     break;
             }
         }
+
         if("islademuerta".equalsIgnoreCase(islandFactorySelection)){
             switch(direction.toLowerCase()){
                 case "n":
