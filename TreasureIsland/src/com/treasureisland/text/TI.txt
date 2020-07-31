@@ -300,11 +300,11 @@ Isla DM
 			-- This Island keeps getting better and better.
 			-- The grave I was looking to find was pretty easy to find.
 			-- The dug the grave and found . . .
-			--Nothing!
+			-- Nothing!
 			-- In my frustration I pushed against the tombstone and it moved a little!
 			-- I pushed it a little more and it pushed out a small wooden box at the bottom of the tombstone.
 			-- I found . . .
-				-- coins
+      -- coins
 	BTStop
 	STStart
 		b) By the grave with the smallest tombstone.

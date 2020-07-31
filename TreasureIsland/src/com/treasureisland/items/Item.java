@@ -33,6 +33,43 @@ public class Item implements Serializable {
     setCost(cost);
   }
 
+  public Item(String itemName, Integer healthValue, Integer cost, String currentWorld) {
+    this(itemName, healthValue, cost);
+    setCurrentWorld(currentWorld);
+  }
+
+  public Item(
+      String itemName,
+      Integer healthValue,
+      Integer cost,
+      String currentWorld,
+      Boolean isAnotherItemNeeded) {
+    this(itemName, healthValue, cost, currentWorld);
+    setAnotherItemNeeded(isAnotherItemNeeded);
+  }
+
+  public Item(
+      String itemName,
+      Integer healthValue,
+      Integer cost,
+      String currentWorld,
+      Boolean isAnotherItemNeeded,
+      String nameOfOtherItem) {
+    this(itemName, healthValue, cost, currentWorld, isAnotherItemNeeded);
+    setNameOfOtherItem(nameOfOtherItem);
+  }
+
+  public Item(
+      String itemName,
+      Integer healthValue,
+      Integer cost,
+      String currentWorld,
+      Boolean isAnotherItemNeeded,
+      String nameOfOtherItem, String itemRevealed) {
+    this(itemName, healthValue, cost, currentWorld, isAnotherItemNeeded, nameOfOtherItem);
+    setItemRevealed(itemRevealed);
+  }
+
   /*
    * =============================================
    * =========== Business Methods ================
@@ -128,21 +165,38 @@ public class Item implements Serializable {
     return asciiArt;
   }
 
-
   @Override
   public String toString() {
-    return "Items{" +
-      "itemName='" + itemName + '\'' +
-      ", currentWorld='" + currentWorld + '\'' +
-      ", healthValue=" + healthValue +
-      ", cost=" + cost +
-      ", isAnotherItemNeeded=" + isAnotherItemNeeded +
-      ", purpose='" + purpose + '\'' +
-      ", nameOfOtherItem='" + nameOfOtherItem + '\'' +
-      ", whatDoesOtherItemDo='" + whatDoesOtherItemDo + '\'' +
-      ", itemRevealed='" + itemRevealed + '\'' +
-      ", asciiArt='" + asciiArt + '\'' +
-      ", anotherItemNeeded=" + getAnotherItemNeeded() +
-      '}';
+    return "Items{"
+        + "itemName='"
+        + itemName
+        + '\''
+        + ", currentWorld='"
+        + currentWorld
+        + '\''
+        + ", healthValue="
+        + healthValue
+        + ", cost="
+        + cost
+        + ", isAnotherItemNeeded="
+        + isAnotherItemNeeded
+        + ", purpose='"
+        + purpose
+        + '\''
+        + ", nameOfOtherItem='"
+        + nameOfOtherItem
+        + '\''
+        + ", whatDoesOtherItemDo='"
+        + whatDoesOtherItemDo
+        + '\''
+        + ", itemRevealed='"
+        + itemRevealed
+        + '\''
+        + ", asciiArt='"
+        + asciiArt
+        + '\''
+        + ", anotherItemNeeded="
+        + getAnotherItemNeeded()
+        + '}';
   }
 }

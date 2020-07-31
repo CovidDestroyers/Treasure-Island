@@ -16,8 +16,9 @@ import java.util.Scanner;
 
 public class Player implements Serializable {
   private static Player player;
+
   private final Vendor vendor = new Vendor();
-  private final List<Item> vendorItems = vendor.getVendorItems();
+  private final List<Item> vendorItems = vendor.getAllItems();
 
   public ArrayList<String> playerClues = new ArrayList<>();
   public String[] clues = {
@@ -119,7 +120,7 @@ public class Player implements Serializable {
             Color.ANSI_RED.getValue()
                 + "\nSecret Code: "
                 + Color.ANSI_GREEN.getValue()
-                + "What is the name of old and abandoned legendary ship you found in Ship Graveyard?"
+                + "What is the name of the old and abandoned legendary ship you found in Ship Graveyard?"
                 + Color.ANSI_RESET.getValue());
         break;
       case "Southend Beach":
@@ -172,57 +173,59 @@ public class Player implements Serializable {
 
   public void playerPurchase() {
     System.out.println("\nWhat would you like to buy?");
-    input = scanner.nextLine().trim().toLowerCase();
+    input = scanner.nextLine().trim();
     switch (input.toLowerCase()) {
-      case "Banana":
+      case "banana":
       case "b":
         System.out.println("You bought a banana");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("Banana").getHealthValue());
-        player.itemManager(vendor.findByName("Banana").getCost());
+            player.getPlayerHealth() + vendor.findByName("banana").getHealthValue());
+        player.itemManager(vendor.findByName("banana").getCost());
         break;
 
-      case "Apple":
+      case "apple":
       case "ap":
+        Item anApple = vendor.findByName("apple");
         System.out.println("bought apple");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("Apple").getHealthValue());
+            player.getPlayerHealth() + anApple.getHealthValue());
 
-        player.itemManager(vendor.findByName("Apple").getCost());
+        player.itemManager(anApple.getCost());
         break;
 
-      case "Rum":
+      case "rum":
       case "r":
         System.out.println("bought rum");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("Rum").getHealthValue());
-        player.itemManager(vendor.findByName("Rum").getCost());
+            player.getPlayerHealth() + vendor.findByName("rum").getHealthValue());
+        player.itemManager(vendor.findByName("rum").getCost());
         break;
 
-      case "Salted meat":
+      case "salted meat":
       case "sm":
-        System.out.println("bought salted meat");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("Salted meat").getHealthValue());
+            player.getPlayerHealth() + vendor.findByName("salted meat").getHealthValue());
+        player.itemManager(vendor.findByName("salted meat").getCost());
 
-        player.itemManager(vendor.findByName("Salted meat").getCost());
+        System.out.println("You bought some salted meat! Would you like some ale to wash it down?");
         break;
 
-      case "Sea biscuits":
+      case "sea biscuits":
       case "sb":
-        System.out.println("bought sea biscuts");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("Sea biscuits").getHealthValue());
+            player.getPlayerHealth() + vendor.findByName("sea biscuits").getHealthValue());
+        player.itemManager(vendor.findByName("sea biscuits").getCost());
 
-        player.itemManager(vendor.findByName("Sea biscuits").getCost());
+        System.out.println("You bought a delicious sea biscut!");
         break;
 
-      case "Ale":
+      case "ale":
       case "al":
-        System.out.println("Bought ale");
         player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("Ale").getHealthValue());
-        player.itemManager(vendor.findByName("Ale").getCost());
+            player.getPlayerHealth() + vendor.findByName("ale").getHealthValue());
+        player.itemManager(vendor.findByName("ale").getCost());
+
+        System.out.println("You bought some ale! Don't sail and drink!");
         break;
 
       default:
@@ -233,10 +236,12 @@ public class Player implements Serializable {
   }
 
   public void itemManager(Integer coins) {
-    if (getPlayerCoins() - coins < 0) {
+    Integer playerCoins = getPlayerCoins();
+    if (playerCoins - coins <= 0) {
       System.out.println("You can not afford this item");
+
     } else {
-      setPlayerCoins(getPlayerCoins() - coins);
+      setPlayerCoins(playerCoins - coins);
       System.out.println(
           "You spent " + coins + " gold. You now have " + getPlayerCoins() + " gold.");
       playerInfoConsoleOutput();
@@ -303,7 +308,6 @@ public class Player implements Serializable {
 
   public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
     String input = "";
-    playerInfoConsoleOutput();
 
     playerHealthCheck();
 
