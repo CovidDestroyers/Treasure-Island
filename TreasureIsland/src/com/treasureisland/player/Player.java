@@ -431,30 +431,32 @@ public class Player implements Serializable {
 
   // SET METHODS
 
-  // GET METHODS
-  public Integer getPlayerHealth() {
-    return this.playerHealth;
+  public void setPlayerName(String playerName) {
+    this.playerName = playerName;
   }
 
   public void setPlayerHealth(Integer playerHealth) {
     this.playerHealth = playerHealth;
   }
 
-  public Integer getPlayerCoins() {
-    return this.playerCoins;
-  }
-
   public void setPlayerCoins(int playerCoins) {
     this.playerCoins = playerCoins;
+  }
+
+  // GET METHODS
+  public Integer getPlayerHealth() {
+    return this.playerHealth;
+  }
+
+  public Integer getPlayerCoins() {
+    return this.playerCoins;
   }
 
   public String getPlayerName() {
     return this.playerName;
   }
 
-  public void setPlayerName(String playerName) {
-    this.playerName = playerName;
-  }
+
 
   @Override
   public String toString() {
