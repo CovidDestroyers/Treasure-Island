@@ -13,6 +13,11 @@ public enum Color {
     ANSI_PURPLE("\u001B[35m"),
     ANSI_CYAN("\u001B[36m"),
 
+  // Background Color
+
+  ANSI_BLUE_BACKGROUND( "\u001B[44m"),
+  ANSI_GREEN_BACKGROUND("\u001B[42m"),
+  ANSI_YELLOW_BACKGROUND("\u001B[43m"),
 
 
 

@@ -1,6 +1,8 @@
 package com.treasureisland;
+import com.sun.tools.javac.Main;
 import com.treasureisland.island.DirectionEnum;
 import com.treasureisland.island.IslandSelector;
+import com.treasureisland.map.MainMap;
 import com.treasureisland.world.*;
 
 
