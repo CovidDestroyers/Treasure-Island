@@ -318,7 +318,7 @@ public class Player implements Serializable {
 
   public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
     String interactionOptions =
-        "Where would you like to go?\n -Type \"T\": Talk\n -Type \"L\": Look Around\n -Type \"I\": Investigate\n -Type \"C\": See Clues\n -Type \"E\": Exit World";
+        "What actions would you like to make?\n -Type \"T\": Talk\n -Type \"L\": Look Around\n -Type \"I\": Investigate\n -Type \"C\": See Clues\n -Type \"E\": Exit World";
 
     String input = "";
 
