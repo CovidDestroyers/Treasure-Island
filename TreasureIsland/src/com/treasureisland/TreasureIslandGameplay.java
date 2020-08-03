@@ -104,10 +104,10 @@ public class TreasureIslandGameplay implements java.io.Serializable {
   public void storylineProgression(String fileName, String location, String start, String stop) {
     try {
       File myObj =
-          new File(
-              System.getProperty("user.dir")
-                  + "/TreasureIsland/src/com/treasureisland/text/"
-                  + fileName);
+        new File(
+          System.getProperty("user.dir")
+            + "/TreasureIsland/src/com/treasureisland/text/"
+            + fileName);
       System.out.println(location);
       Scanner myReader = new Scanner(myObj);
       boolean tokenFound = false;
@@ -135,61 +135,61 @@ public class TreasureIslandGameplay implements java.io.Serializable {
   public void welcomeToTreasureIsland() {
 
     System.out.println(
-        "\n"
-            + Color.ANSI_BLUE.getValue()
-            + " █     █░▓█████  ██▓     ▄████▄   ▒█████   ███▄ ▄███▓▓█████    ▄▄▄█████▓ ▒█████     ▄▄▄█████▓ ██▀███  ▓█████ ▄▄▄        ██████  █    ██  ██▀███  ▓█████     ██▓  ██████  ██▓    ▄▄▄       ███▄    █ ▓█████▄ \n"
-            + "▓█░ █ ░█░▓█   ▀ ▓██▒    ▒██▀ ▀█  ▒██▒  ██▒▓██▒▀█▀ ██▒▓█   ▀    ▓  ██▒ ▓▒▒██▒  ██▒   ▓  ██▒ ▓▒▓██ ▒ ██▒▓█   ▀▒████▄    ▒██    ▒  ██  ▓██▒▓██ ▒ ██▒▓█   ▀    ▓██▒▒██    ▒ ▓██▒   ▒████▄     ██ ▀█   █ ▒██▀ ██▌\n"
-            + "▒█░ █ ░█ ▒███   ▒██░    ▒▓█    ▄ ▒██░  ██▒▓██    ▓██░▒███      ▒ ▓██░ ▒░▒██░  ██▒   ▒ ▓██░ ▒░▓██ ░▄█ ▒▒███  ▒██  ▀█▄  ░ ▓██▄   ▓██  ▒██░▓██ ░▄█ ▒▒███      ▒██▒░ ▓██▄   ▒██░   ▒██  ▀█▄  ▓██  ▀█ ██▒░██   █▌\n"
-            + "░█░ █ ░█ ▒▓█  ▄ ▒██░    ▒▓▓▄ ▄██▒▒██   ██░▒██    ▒██ ▒▓█  ▄    ░ ▓██▓ ░ ▒██   ██░   ░ ▓██▓ ░ ▒██▀▀█▄  ▒▓█  ▄░██▄▄▄▄██   ▒   ██▒▓▓█  ░██░▒██▀▀█▄  ▒▓█  ▄    ░██░  ▒   ██▒▒██░   ░██▄▄▄▄██ ▓██▒  ▐▌██▒░▓█▄   ▌\n"
-            + "░░██▒██▓ ░▒████▒░██████▒▒ ▓███▀ ░░ ████▓▒░▒██▒   ░██▒░▒████▒     ▒██▒ ░ ░ ████▓▒░     ▒██▒ ░ ░██▓ ▒██▒░▒████▒▓█   ▓██▒▒██████▒▒▒▒█████▓ ░██▓ ▒██▒░▒████▒   ░██░▒██████▒▒░██████▒▓█   ▓██▒▒██░   ▓██░░▒████▓ \n"
-            + "░ ▓░▒ ▒  ░░ ▒░ ░░ ▒░▓  ░░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░   ░  ░░░ ▒░ ░     ▒ ░░   ░ ▒░▒░▒░      ▒ ░░   ░ ▒▓ ░▒▓░░░ ▒░ ░▒▒   ▓▒█░▒ ▒▓▒ ▒ ░░▒▓▒ ▒ ▒ ░ ▒▓ ░▒▓░░░ ▒░ ░   ░▓  ▒ ▒▓▒ ▒ ░░ ▒░▓  ░▒▒   ▓▒█░░ ▒░   ▒ ▒  ▒▒▓  ▒ \n"
-            + "  ▒ ░ ░   ░ ░  ░░ ░ ▒  ░  ░  ▒     ░ ▒ ▒░ ░  ░      ░ ░ ░  ░       ░      ░ ▒ ▒░        ░      ░▒ ░ ▒░ ░ ░  ░ ▒   ▒▒ ░░ ░▒  ░ ░░░▒░ ░ ░   ░▒ ░ ▒░ ░ ░  ░    ▒ ░░ ░▒  ░ ░░ ░ ▒  ░ ▒   ▒▒ ░░ ░░   ░ ▒░ ░ ▒  ▒ \n"
-            + "  ░   ░     ░     ░ ░   ░        ░ ░ ░ ▒  ░      ░      ░        ░      ░ ░ ░ ▒       ░        ░░   ░    ░    ░   ▒   ░  ░  ░   ░░░ ░ ░   ░░   ░    ░       ▒ ░░  ░  ░    ░ ░    ░   ▒      ░   ░ ░  ░ ░  ░ \n"
-            + "    ░       ░  ░    ░  ░░ ░          ░ ░         ░      ░  ░                ░ ░                 ░        ░  ░     ░  ░      ░     ░        ░        ░  ░    ░        ░      ░  ░     ░  ░         ░    ░    \n"
-            + "                        ░                                                                                                                                                                            ░      \n"
-            + Color.ANSI_RESET.getValue());
+      "\n"
+        + Color.ANSI_BLUE.getValue()
+        + " █     █░▓█████  ██▓     ▄████▄   ▒█████   ███▄ ▄███▓▓█████    ▄▄▄█████▓ ▒█████     ▄▄▄█████▓ ██▀███  ▓█████ ▄▄▄        ██████  █    ██  ██▀███  ▓█████     ██▓  ██████  ██▓    ▄▄▄       ███▄    █ ▓█████▄ \n"
+        + "▓█░ █ ░█░▓█   ▀ ▓██▒    ▒██▀ ▀█  ▒██▒  ██▒▓██▒▀█▀ ██▒▓█   ▀    ▓  ██▒ ▓▒▒██▒  ██▒   ▓  ██▒ ▓▒▓██ ▒ ██▒▓█   ▀▒████▄    ▒██    ▒  ██  ▓██▒▓██ ▒ ██▒▓█   ▀    ▓██▒▒██    ▒ ▓██▒   ▒████▄     ██ ▀█   █ ▒██▀ ██▌\n"
+        + "▒█░ █ ░█ ▒███   ▒██░    ▒▓█    ▄ ▒██░  ██▒▓██    ▓██░▒███      ▒ ▓██░ ▒░▒██░  ██▒   ▒ ▓██░ ▒░▓██ ░▄█ ▒▒███  ▒██  ▀█▄  ░ ▓██▄   ▓██  ▒██░▓██ ░▄█ ▒▒███      ▒██▒░ ▓██▄   ▒██░   ▒██  ▀█▄  ▓██  ▀█ ██▒░██   █▌\n"
+        + "░█░ █ ░█ ▒▓█  ▄ ▒██░    ▒▓▓▄ ▄██▒▒██   ██░▒██    ▒██ ▒▓█  ▄    ░ ▓██▓ ░ ▒██   ██░   ░ ▓██▓ ░ ▒██▀▀█▄  ▒▓█  ▄░██▄▄▄▄██   ▒   ██▒▓▓█  ░██░▒██▀▀█▄  ▒▓█  ▄    ░██░  ▒   ██▒▒██░   ░██▄▄▄▄██ ▓██▒  ▐▌██▒░▓█▄   ▌\n"
+        + "░░██▒██▓ ░▒████▒░██████▒▒ ▓███▀ ░░ ████▓▒░▒██▒   ░██▒░▒████▒     ▒██▒ ░ ░ ████▓▒░     ▒██▒ ░ ░██▓ ▒██▒░▒████▒▓█   ▓██▒▒██████▒▒▒▒█████▓ ░██▓ ▒██▒░▒████▒   ░██░▒██████▒▒░██████▒▓█   ▓██▒▒██░   ▓██░░▒████▓ \n"
+        + "░ ▓░▒ ▒  ░░ ▒░ ░░ ▒░▓  ░░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░   ░  ░░░ ▒░ ░     ▒ ░░   ░ ▒░▒░▒░      ▒ ░░   ░ ▒▓ ░▒▓░░░ ▒░ ░▒▒   ▓▒█░▒ ▒▓▒ ▒ ░░▒▓▒ ▒ ▒ ░ ▒▓ ░▒▓░░░ ▒░ ░   ░▓  ▒ ▒▓▒ ▒ ░░ ▒░▓  ░▒▒   ▓▒█░░ ▒░   ▒ ▒  ▒▒▓  ▒ \n"
+        + "  ▒ ░ ░   ░ ░  ░░ ░ ▒  ░  ░  ▒     ░ ▒ ▒░ ░  ░      ░ ░ ░  ░       ░      ░ ▒ ▒░        ░      ░▒ ░ ▒░ ░ ░  ░ ▒   ▒▒ ░░ ░▒  ░ ░░░▒░ ░ ░   ░▒ ░ ▒░ ░ ░  ░    ▒ ░░ ░▒  ░ ░░ ░ ▒  ░ ▒   ▒▒ ░░ ░░   ░ ▒░ ░ ▒  ▒ \n"
+        + "  ░   ░     ░     ░ ░   ░        ░ ░ ░ ▒  ░      ░      ░        ░      ░ ░ ░ ▒       ░        ░░   ░    ░    ░   ▒   ░  ░  ░   ░░░ ░ ░   ░░   ░    ░       ▒ ░░  ░  ░    ░ ░    ░   ▒      ░   ░ ░  ░ ░  ░ \n"
+        + "    ░       ░  ░    ░  ░░ ░          ░ ░         ░      ░  ░                ░ ░                 ░        ░  ░     ░  ░      ░     ░        ░        ░  ░    ░        ░      ░  ░     ░  ░         ░    ░    \n"
+        + "                        ░                                                                                                                                                                            ░      \n"
+        + Color.ANSI_RESET.getValue());
   }
 
   public void leavingIslandShipPrint() throws InterruptedException {
 
     System.out.println(
-        " "
-            + "               __|__ |___| |\\\n"
-            + "                |o__| |___| | \\\n"
-            + "                |___| |___| |o \\\n"
-            + "               _|___| |___| |__o\\\n"
-            + "              /...\\_____|___|____\\_/\n"
-            + "              \\   o * o * * o o  /\n"
-            + "            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      " "
+        + "               __|__ |___| |\\\n"
+        + "                |o__| |___| | \\\n"
+        + "                |___| |___| |o \\\n"
+        + "               _|___| |___| |__o\\\n"
+        + "              /...\\_____|___|____\\_/\n"
+        + "              \\   o * o * * o o  /\n"
+        + "            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
     Thread.sleep(1000);
     System.out.println(System.lineSeparator().repeat(50));
     System.out.println(
-        " "
-            + "                                               __|__ |___| |\\\n"
-            + "                                                |o__| |___| | \\\n"
-            + "                                                |___| |___| |o \\\n"
-            + "                                               _|___| |___| |__o\\\n"
-            + "                                            /...\\_____|___|____\\_/\n"
-            + "                                            \\   o * o * * o o  /\n"
-            + "                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      " "
+        + "                                               __|__ |___| |\\\n"
+        + "                                                |o__| |___| | \\\n"
+        + "                                                |___| |___| |o \\\n"
+        + "                                               _|___| |___| |__o\\\n"
+        + "                                            /...\\_____|___|____\\_/\n"
+        + "                                            \\   o * o * * o o  /\n"
+        + "                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~");
     Thread.sleep(1000);
     System.out.println(System.lineSeparator().repeat(50));
     System.out.println(
-        " "
-            + "                                                                               __|__ |___| |\\\n"
-            + "                                                                                |o__| |___| | \\\n"
-            + "                                                                                |___| |___| |o \\\n"
-            + "                                                                               _|___| |___| |__o\\\n"
-            + "                                                                            /...\\_____|___|____\\_/\n"
-            + "                                                                            \\   o * o * * o o  /\n"
-            + "                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      " "
+        + "                                                                               __|__ |___| |\\\n"
+        + "                                                                                |o__| |___| | \\\n"
+        + "                                                                                |___| |___| |o \\\n"
+        + "                                                                               _|___| |___| |__o\\\n"
+        + "                                                                            /...\\_____|___|____\\_/\n"
+        + "                                                                            \\   o * o * * o o  /\n"
+        + "                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 
   public void customGameplayOptions() throws InterruptedException {
     File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
     if (gameState.exists()) {
       System.out.println(
-          "Would you like to Load existing game<L>, play the full game<F>, or play on a sample island<S>?");
+        "Would you like to Load existing game<L>, play the full game<F>, or play on a sample island<S>?");
     } else {
       System.out.println("Would you like to play the full game<F>, or play on a sample island<S>?");
     }
@@ -221,12 +221,12 @@ public class TreasureIslandGameplay implements java.io.Serializable {
 
   public void testIslandSelector() throws InterruptedException {
     System.out.println(
-        "Which island would you like to play?\n"
-            + "1) Rum Runner Isle \n"
-            + "2) Port Royal \n"
-            + "3) Isla Cruces \n"
-            + "4) Isla de Muerta \n"
-            + "5) Back to main");
+      "Which island would you like to play?\n"
+        + "1) Rum Runner Isle \n"
+        + "2) Port Royal \n"
+        + "3) Isla Cruces \n"
+        + "4) Isla de Muerta \n"
+        + "5) Back to main");
     input = scanner.nextLine();
     if ("1".equals(input)) {
       rumRunnerIsle();
