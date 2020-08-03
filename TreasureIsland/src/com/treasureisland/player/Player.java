@@ -35,7 +35,7 @@ public class Player implements Serializable {
   transient Scanner scanner = new Scanner(System.in);
   private String playerName;
   private Integer playerCoins = 0;
-  private Integer playerHealth = 50;
+  private Integer playerHealth = 75;
   private SaveLoadGame saveLoadGame;
   /*
    * =============================================
