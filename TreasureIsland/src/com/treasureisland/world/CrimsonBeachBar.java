@@ -24,7 +24,7 @@ public class CrimsonBeachBar implements Location{
 
     @Override
     public void lookAroundLocation(){
-        game.storylineProgression("TI.txt", getLocationName(), "CStart", "CEnd");
+        game.storylineProgression("TI.txt", getLocationName(), "CBStart", "CBFEnd");
     }
 
     @Override
