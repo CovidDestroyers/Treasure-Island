@@ -27,8 +27,6 @@ public class SouthendBeachCruces implements Location, Serializable {
             player.haveIslandItem = true;
             game.storylineProgression("TI.txt", getLocationName(), "FStart", "FStop");
         }
-
-
     }
 
     @Override
