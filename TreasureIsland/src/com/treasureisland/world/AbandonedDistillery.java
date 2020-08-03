@@ -6,7 +6,7 @@ import com.treasureisland.player.Player;
 import java.io.Serializable;
 
 
-public class AbandonedDistillery implements Location, Serializable {
+public class AbandonedDistillery extends Location {
     private final TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

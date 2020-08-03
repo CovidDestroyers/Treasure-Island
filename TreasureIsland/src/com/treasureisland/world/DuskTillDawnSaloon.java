@@ -6,8 +6,7 @@ import com.treasureisland.player.Player;
 import java.io.IOException;
 import java.io.Serializable;
 
-
-public class DuskTillDawnSaloon implements Location, Serializable {
+public class DuskTillDawnSaloon extends Location {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

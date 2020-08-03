@@ -6,9 +6,10 @@ import com.treasureisland.player.Player;
 
 import java.io.Serializable;
 import java.util.Scanner;
-//TODO "complete" besides deciding if we need a key array, also potentialy adding coins
-//TODO decide if there is a vendor or something that coins can be spent. also potential health implementation
-public class SugarCaneField implements Location, Serializable {
+// TODO "complete" besides deciding if we need a key array, also potentialy adding coins
+// TODO decide if there is a vendor or something that coins can be spent. also potential health
+// implementation
+public class SugarCaneField extends Location {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

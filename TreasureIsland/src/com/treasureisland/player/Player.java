@@ -155,7 +155,10 @@ public class Player implements Serializable {
     }
   }
 
-  /** Player visits the Vendor - All Items from the Vendor are returned -> vendor.getAll() */
+  /**
+   * Player visits the Vendor
+   * All Items from the Vendor are returned -> vendor.getAll()
+   */
   public void playerVisitsVendor() {
     System.out.println("\nWelcome to my shop! Please browse my collection.\n");
     vendor.printVendorItems();
@@ -171,7 +174,7 @@ public class Player implements Serializable {
     }
   }
 
-  // TODO: Change this to Vendor class
+  // TODO: Put this in Vendor class
   public void playerPurchase() {
     System.out.println("\nWhat would you like to buy?");
     input = scanner.nextLine().trim();
@@ -248,6 +251,10 @@ public class Player implements Serializable {
     }
   }
 
+  /**
+   * This looks like this is generates the number of coins found when the player
+   * "investigates" things
+   */
   public void playerCoinGenerator() {
     Random rand = new Random();
     int upperBoundofCoins = 51;
@@ -259,6 +266,9 @@ public class Player implements Serializable {
     coinManager(coins);
   }
 
+  /**
+   * Checks Player Health and prints out death art if player is dead.
+   */
   public void playerHealthCheck() {
     if (player.getPlayerHealth() <= 0) {
       playerDeathArt();
@@ -270,12 +280,13 @@ public class Player implements Serializable {
     System.out.println("Would you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
     input = scanner.nextLine().trim().toLowerCase();
 
-    // DONE: NO IMPLEMENTATION YET FOR INVALID INPUT HANDLING
     if ("y".equals(input) || "yes".equals(input)) {
       TreasureIslandGameplay.getInstance().chosePlayerName();
+
     } else if ("n".equals(input) || "no".equals(input)) {
       System.out.println("Thank you for playing");
       System.exit(0);
+
     } else {
       System.out.println("Invalid Input, Try Again!!");
       playerDeathOptions();
