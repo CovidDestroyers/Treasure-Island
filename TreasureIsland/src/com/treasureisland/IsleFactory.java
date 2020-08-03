@@ -1,6 +1,5 @@
 package com.treasureisland;
 import com.treasureisland.island.DirectionEnum;
-import com.treasureisland.island.IslandSelector;
 import com.treasureisland.world.*;
 
 

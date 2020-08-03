@@ -14,20 +14,28 @@ public class TreasureIslandGameplay implements java.io.Serializable {
   String input;
   private static TreasureIslandGameplay treasureIslandGameplay = new TreasureIslandGameplay();
 
+  /*
+   * =============================================
+   * ============= Constructors ==================
+   * =============================================
+   */
   private TreasureIslandGameplay() {}
-
-  // TODO maybe create an input.isValid that accepts specific inputs. Would make validation easier
-  // and code cleaner.
 
   public static TreasureIslandGameplay getInstance() {
     return treasureIslandGameplay;
   }
 
+  /*
+   * =============================================
+   * =========== Business Methods ================
+   * =============================================
+   */
+
   // Player chooses name and is stored into playerName variable
   // calls first storyline txt file then puts player into rumDistillery()
   public void chosePlayerName() {
     welcomeToTreasureIsland();
-    System.out.println("Please enter your name");
+    System.out.println("Please enter your name: ");
     String input = scanner.nextLine();
     player.setPlayerName(input);
     System.out.println("\nWelcome, " + player.getPlayerName() + "\n \n");

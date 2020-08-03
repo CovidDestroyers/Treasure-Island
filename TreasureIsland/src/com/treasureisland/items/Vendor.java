@@ -1,10 +1,11 @@
 package com.treasureisland.items;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Vendor implements java.io.Serializable {
+public class Vendor implements Serializable {
 
   private final List<Item> vendorItems =
       new ArrayList<>(
@@ -34,9 +35,9 @@ public class Vendor implements java.io.Serializable {
    */
 
   // TODO: Change this to print out each item in a visually pleasing way
-  public void getAll() {
+  public void printVendorItems() {
     for (Item item : vendorItems) {
-      System.out.println(item.toString());
+      System.out.println(item.getItemName());
     }
   }
 

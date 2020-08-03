@@ -65,7 +65,8 @@ public class Item implements Serializable {
       Integer cost,
       String currentWorld,
       Boolean isAnotherItemNeeded,
-      String nameOfOtherItem, String itemRevealed) {
+      String nameOfOtherItem,
+      String itemRevealed) {
     this(itemName, healthValue, cost, currentWorld, isAnotherItemNeeded, nameOfOtherItem);
     setItemRevealed(itemRevealed);
   }
@@ -82,87 +83,87 @@ public class Item implements Serializable {
    * =============================================
    */
 
+  public String getItemName() {
+    return itemName;
+  }
+
   // SET METHODS
   public void setItemName(String itemName) {
     this.itemName = itemName;
-  }
-
-  public void setCurrentWorld(String currentWorld) {
-    this.currentWorld = currentWorld;
-  }
-
-  public void setHealthValue(Integer healthValue) {
-    this.healthValue = healthValue;
-  }
-
-  public void setCost(Integer cost) {
-    this.cost = cost;
-  }
-
-  public void setPurpose(String purpose) {
-    this.purpose = purpose;
-  }
-
-  public void setAnotherItemNeeded(Boolean anotherItemNeeded) {
-    isAnotherItemNeeded = anotherItemNeeded;
-  }
-
-  public void setNameOfOtherItem(String nameOfOtherItem) {
-    this.nameOfOtherItem = nameOfOtherItem;
-  }
-
-  public void setWhatDoesOtherItemDo(String whatDoesOtherItemDo) {
-    this.whatDoesOtherItemDo = whatDoesOtherItemDo;
-  }
-
-  public void setItemRevealed(String itemRevealed) {
-    this.itemRevealed = itemRevealed;
-  }
-
-  public void setAsciiArt(String asciiArt) {
-    this.asciiArt = asciiArt;
-  }
-
-  // GET METHODS
-
-  public String getItemName() {
-    return itemName;
   }
 
   public String getCurrentWorld() {
     return currentWorld;
   }
 
+  public void setCurrentWorld(String currentWorld) {
+    this.currentWorld = currentWorld;
+  }
+
   public Integer getHealthValue() {
     return healthValue;
+  }
+
+  public void setHealthValue(Integer healthValue) {
+    this.healthValue = healthValue;
   }
 
   public Integer getCost() {
     return cost;
   }
 
+  public void setCost(Integer cost) {
+    this.cost = cost;
+  }
+
   public String getPurpose() {
     return purpose;
   }
 
+  public void setPurpose(String purpose) {
+    this.purpose = purpose;
+  }
+
+  // GET METHODS
+
   public Boolean getAnotherItemNeeded() {
     return isAnotherItemNeeded;
+  }
+
+  public void setAnotherItemNeeded(Boolean anotherItemNeeded) {
+    isAnotherItemNeeded = anotherItemNeeded;
   }
 
   public String getNameOfOtherItem() {
     return nameOfOtherItem;
   }
 
+  public void setNameOfOtherItem(String nameOfOtherItem) {
+    this.nameOfOtherItem = nameOfOtherItem;
+  }
+
   public String getWhatDoesOtherItemDo() {
     return whatDoesOtherItemDo;
+  }
+
+  public void setWhatDoesOtherItemDo(String whatDoesOtherItemDo) {
+    this.whatDoesOtherItemDo = whatDoesOtherItemDo;
   }
 
   public String getItemRevealed() {
     return itemRevealed;
   }
 
+  public void setItemRevealed(String itemRevealed) {
+    this.itemRevealed = itemRevealed;
+  }
+
   public String getAsciiArt() {
     return asciiArt;
+  }
+
+  public void setAsciiArt(String asciiArt) {
+    this.asciiArt = asciiArt;
   }
 
   @Override

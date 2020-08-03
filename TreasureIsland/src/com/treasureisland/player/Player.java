@@ -6,6 +6,7 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.items.Item;
 import com.treasureisland.items.Vendor;
 import com.treasureisland.world.Location;
+import com.treasureisland.world.SouthendBeachCruces;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -158,7 +159,7 @@ public class Player implements Serializable {
   /** Player visits the Vendor - All Items from the Vendor are returned -> vendor.getAll() */
   public void playerVisitsVendor() {
     System.out.println("\nWelcome to my shop! Please browse my collection.\n");
-    vendor.getAll();
+    vendor.printVendorItems();
 
     System.out.println("\nWould you like to buy anything? y/n");
     input = scanner.nextLine();
@@ -171,6 +172,7 @@ public class Player implements Serializable {
     }
   }
 
+  // TODO: Change this to Vendor class
   public void playerPurchase() {
     System.out.println("\nWhat would you like to buy?");
     input = scanner.nextLine().trim();
@@ -187,8 +189,7 @@ public class Player implements Serializable {
       case "ap":
         Item anApple = vendor.findByName("apple");
         System.out.println("bought apple");
-        player.setPlayerHealth(
-            player.getPlayerHealth() + anApple.getHealthValue());
+        player.setPlayerHealth(player.getPlayerHealth() + anApple.getHealthValue());
 
         player.itemManager(anApple.getCost());
         break;
@@ -285,20 +286,29 @@ public class Player implements Serializable {
   }
 
   public void processMovement(String islandDestination) {
+    String directionOptions =
+        "Where would you like to go?\n -Type \"N\": North\n -Type \"S\": South\n -Type \"W\": West\n -Type \"E\": East\n -Type \"Save\": Save Game";
+
     try {
       while (!player.haveIslandItem) {
-        System.out.println(
-            "Where would you like to go. N/S/E/W/SaveGame"); // Quit => SOUT("THANKS FOR PLAYING) =>
-        // System.exit(0)
-        String direction = scanner.nextLine();
-        if ("savegame".equalsIgnoreCase(direction)) {
+        System.out.println(directionOptions);
+
+        String direction = scanner.nextLine().trim();
+
+        if ("save".equalsIgnoreCase(direction)) {
           SaveLoadGame.saveGame();
+          System.out.println("You cannot run forever my friend. Blackbeard will find you.");
+          System.out.println("Sleep well for it may be your last night.");
+          System.out.println(getCrossBones());
+          System.out.println("Goodbye for now.");
           System.exit(0);
+
+        } else {
+            player.location = IsleFactory.islandLocationFactory(direction, islandDestination);
+            System.out.println("You are now at the " + player.location.getLocationName());
+            playerInfoConsoleOutput();
+            playerInteractionOptions(direction);
         }
-        player.location = IsleFactory.islandLocationFactory(direction, islandDestination);
-        System.out.println("You are now at the " + player.location.getLocationName());
-        playerInfoConsoleOutput();
-        playerInteractionOptions(direction);
       }
 
     } catch (IOException | InterruptedException e) {
@@ -307,6 +317,9 @@ public class Player implements Serializable {
   }
 
   public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
+    String interactionOptions =
+        "Where would you like to go?\n -Type \"T\": Talk\n -Type \"L\": Look Around\n -Type \"I\": Investigate\n -Type \"C\": See Clues\n -Type \"E\": Exit World";
+
     String input = "";
 
     playerHealthCheck();
@@ -316,8 +329,7 @@ public class Player implements Serializable {
           "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Vendor(v)/ Clues(c)/ Exit(e)");
 
     } else {
-      System.out.println(
-          "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Clues(c)/ Exit(e)");
+      System.out.println(interactionOptions);
     }
 
     input = scanner.nextLine().trim();
@@ -370,17 +382,10 @@ public class Player implements Serializable {
     System.out.println(
         "\n"
             + Color.ANSI_RED.getValue()
-            + "▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄ \n"
-            + " ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▒██▀ ██▌▓██▒▓█   ▀ ▒██▀ ██▌\n"
-            + "  ▒██ ██░▒██░  ██▒▓██  ▒██░   ░██   █▌▒██▒▒███   ░██   █▌\n"
-            + "  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ░▓█▄   ▌░██░▒▓█  ▄ ░▓█▄   ▌\n"
-            + "  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░▒████▓ ░██░░▒████▒░▒████▓ \n"
-            + "   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒     ▒▒▓  ▒ ░▓  ░░ ▒░ ░ ▒▒▓  ▒ \n"
-            + " ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░     ░ ▒  ▒  ▒ ░ ░ ░  ░ ░ ▒  ▒ \n"
-            + " ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░     ░ ░  ░  ▒ ░   ░    ░ ░  ░ \n"
-            + " ░ ░         ░ ░     ░           ░     ░     ░  ░   ░    \n"
-            + " ░ ░                           ░                  ░      \n"
+            + getCrossBones()
             + Color.ANSI_RESET.getValue());
+
+    System.out.println("You dead!");
   }
 
   public void playerInfoConsoleOutput() {
@@ -460,7 +465,39 @@ public class Player implements Serializable {
     return this.playerName;
   }
 
-
+  public String getCrossBones() {
+    return "                     .ed\"\"\"\" \"\"\"$$$$be.\n"
+      + "                   -\"           ^\"\"**$$$e.\n"
+      + "                 .\"                   '$$$c\n"
+      + "                /                      \"4$$b\n"
+      + "               d  3                      $$$$\n"
+      + "               $  *                   .$$$$$$\n"
+      + "              .$  ^c           $$$$$e$$$$$$$$.\n"
+      + "              d$L  4.         4$$$$$$$$$$$$$$b\n"
+      + "              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$\n"
+      + "  e$\"\"=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$\n"
+      + " z$$b. ^c     3$$$F \"$$$$b   $\"$$$$$$$  $$$$*\"      .=\"\"$c\n"
+      + "4$$$$L        $$P\"  \"$$b   .$ $$$$$...e$$        .=  e$$$.\n"
+      + "^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$\n"
+      + "  \"**$$$ec   \"   %ce\"\"    $$$  $$$$$$$$$$*    .r\" =$$$$P\"\"\n"
+      + "        \"*$b.  \"c  *$e.    *** d$$$$$\"L$$    .d\"  e$$***\"\n"
+      + "          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*\".eeP\"\n"
+      + "             \"$$$$$$\"'$=e....$*$$**$cz$$\" \"..d$*\"\n"
+      + "               \"*$$$  *=%4.$ L L$ P3$$$F $$$P\"\n"
+      + "                  \"$   \"%*ebJLzb$e$$$$$b $P\"\n"
+      + "                    %..      4$$$$$$$$$$ \"\n"
+      + "                     $$$e   z$$$$$$$$$$%\n"
+      + "                      \"*$c  \"$$$$$$$P\"\n"
+      + "                       .\"\"\"*$$$$$$$$bc\n"
+      + "                    .-\"    .$***$$$\"\"\"*e.\n"
+      + "                 .-\"    .e$\"     \"*$c  ^*b.\n"
+      + "          .=*\"\"\"\"    .e$*\"          \"*bc  \"*$e..\n"
+      + "        .$\"        .z*\"               ^*$e.   \"*****e.\n"
+      + "        $$ee$c   .d\"                     \"*$.        3.\n"
+      + "        ^*$E\")$..$\"                         *   .ee==d%\n"
+      + "           $.d$$$*                           *  J$$$e*\n"
+      + "            \"\"\"\"\"                              \"$$$\"";
+  }
 
   @Override
   public String toString() {
