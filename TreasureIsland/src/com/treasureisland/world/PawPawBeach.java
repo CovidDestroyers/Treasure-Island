@@ -4,14 +4,15 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public class PawPawBeach implements Location{
+public class PawPawBeach implements Location, Serializable {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 
     @Override
     public String getLocationName() {
-        return "Pawpaw Beach ";
+        return "Pawpaw Beach";
     }
 
     @Override

@@ -6,12 +6,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
 
-public class SaveLoadGame {
+public class SaveLoadGame  implements java.io.Serializable {
     static TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
 
     public static void saveGame(){
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("TreasureIsland.sav");
+            FileOutputStream fileOutputStream = new FileOutputStream("TreasureIsland.ser"
+              + "");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(treasureIslandGameplay);
             objectOutputStream.flush();
@@ -23,9 +24,9 @@ public class SaveLoadGame {
         }
     }
 
-    static void loadGame(){
+    static TreasureIslandGameplay loadGame(){
         try{
-            FileInputStream fileInputStream = new FileInputStream("TreasureIsland.sav");
+            FileInputStream fileInputStream = new FileInputStream("TreasureIsland.ser");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             treasureIslandGameplay = (TreasureIslandGameplay) objectInputStream.readObject();
             objectInputStream.close();
@@ -34,6 +35,6 @@ public class SaveLoadGame {
         catch(Exception e){
             System.out.println(Arrays.toString(e.getStackTrace()));
         }
-
+      return treasureIslandGameplay;
     }
 }

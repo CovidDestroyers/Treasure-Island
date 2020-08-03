@@ -4,8 +4,9 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public class Graveyard implements Location {
+public class Graveyard implements Location, Serializable {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

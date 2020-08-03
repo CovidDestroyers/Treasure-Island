@@ -4,9 +4,10 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class SaintsLodgeCruces implements Location{
+public class SaintsLodgeCruces implements Location, Serializable {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

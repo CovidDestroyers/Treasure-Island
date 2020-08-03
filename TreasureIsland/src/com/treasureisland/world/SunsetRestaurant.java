@@ -3,7 +3,9 @@ package com.treasureisland.world;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
-public class SunsetRestaurant implements Location{
+import java.io.Serializable;
+
+public class SunsetRestaurant implements Location, Serializable {
     @Override
     public String getLocationName() {
         return "Sunset Restaurant";
@@ -15,7 +17,6 @@ public class SunsetRestaurant implements Location{
     public void talkToNPC() {
         System.out.println("Talking to a npc sunset restaurant");
         game.storylineProgression("TI.txt", getLocationName(), "RNDStart", "RNDStop");
-
     }
 
     @Override

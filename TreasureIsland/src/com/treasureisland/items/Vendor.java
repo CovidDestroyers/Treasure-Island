@@ -1,52 +1,59 @@
 package com.treasureisland.items;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Vendor {
+public class Vendor implements java.io.Serializable {
 
-    private static final Vendor item = new Vendor();
+  private final List<Item> vendorItems =
+      new ArrayList<>(
+          Arrays.asList(
+              new Item("banana", 5, 40),
+              new Item("apple", 3, 35),
+              new Item("rum", 0, 55),
+              new Item("salted meat", 10, 50),
+              new Item("sea biscuits", 2, 35),
+              new Item("ale", 1, 30)));
 
-    public Vendor(){
+  /*
+   * =============================================
+   * ============= Constructors ==================
+   * =============================================
+   */
+  public Vendor() {}
 
+  // public static Vendor getInstance() {
+  //  return vendor;
+  // }
+
+  /*
+   * =============================================
+   * =========== Business Methods ================
+   * =============================================
+   */
+
+  // TODO: Change this to print out each item in a visually pleasing way
+  public void getAll() {
+    for (Item item : vendorItems) {
+      System.out.println(item.toString());
     }
-
-    public static Vendor getInstance(){ return item;}
-
-    private List<Items> vendorItems = new ArrayList(Arrays.asList(
-            new Items("Banana", 5, 40),
-            new Items("Apple", 3, 35),
-            new Items("Rum", 0, 55),
-            new Items("Salted meat", 10, 50),
-            new Items("Sea biscuits", 2, 35),
-            new Items("Ale", 1, 30)
-    ));
+  }
 
 
-
-    public void getAll(){
-        for(Items item : vendorItems){
-            System.out.println(item.toString());
-        }
+  public Item findByName(String itemName) {
+    Item result = null;
+    String nameOfItem = itemName.trim().toLowerCase();
+    for (Item item : vendorItems) {
+      if (nameOfItem.equals(item.getItemName())) {
+        result = item;
+        break;
+      }
     }
+    return result;
+  }
 
-
-    public int size() {
-        return vendorItems.size();
-    }
-
-
-
-    public Items findByName(String name) {
-        Items result = null;
-        for (Items item : vendorItems) {
-            if (item.getItemName().equals(name)) {
-                result = item;
-                break;
-            }
-        }
-        return result;
-    }
-
-
-
+  public List<Item> getAllItems() {
+    return vendorItems;
+  }
 }
