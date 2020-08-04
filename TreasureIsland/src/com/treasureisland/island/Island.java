@@ -25,6 +25,37 @@ public abstract class Island {
    * =============================================
    */
 
+  /**
+   * @param direction
+   * @return
+   */
+  public Island changeIsland(String direction) {
+    Island nextIsland = null;
+
+    if ("north".equals(direction)) {
+      nextIsland = islandToTheNorth;
+
+    } else if ("east".equals(direction)) {
+      nextIsland = islandToTheEast;
+
+    } else if ("south".equals(direction)) {
+      nextIsland = islandToTheSouth;
+
+    } else if ("west".equals(direction)) {
+      nextIsland = islandToTheWest;
+
+    } else {
+      System.out.println("Error: unknown direction " + direction);
+    }
+
+    if (nextIsland == null) {
+      System.out.println("You cannot go " + direction + " from here.");
+      nextIsland = this;
+    }
+    return nextIsland;
+  }
+
+
   public void connectEastIsland(Island otherIsland) {
     setIslandToTheEast(otherIsland);
     otherIsland.setIslandToTheWest(this);
