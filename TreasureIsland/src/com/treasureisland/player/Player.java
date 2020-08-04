@@ -162,7 +162,6 @@ public class Player implements Serializable {
   public void playerVisitsVendor() {
     vendor.vendorIntroduction();
 
-    // System.out.println("\nWould you like to buy anything? y/n");
     input = scanner.nextLine();
 
     if ("y".equalsIgnoreCase(input)) {
