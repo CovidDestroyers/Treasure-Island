@@ -2,7 +2,7 @@ package com.treasureisland.island;
 
 import com.treasureisland.world.Scene;
 
-public class RumRunnerIsle {
+public class RumRunnerIsle extends Island {
   Scene location;
 
   // @Override

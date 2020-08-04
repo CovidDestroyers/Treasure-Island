@@ -1,4 +1,4 @@
 package com.treasureisland.island;
 
-public class IslaCruces {
-};
+public class IslaCruces extends Island {
+}
