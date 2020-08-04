@@ -5,7 +5,7 @@ import com.treasureisland.SaveLoadGame;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.items.Item;
 import com.treasureisland.items.Vendor;
-import com.treasureisland.world.Location;
+import com.treasureisland.world.Scene;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -29,7 +29,7 @@ public class Player implements Serializable {
     "Go " + Color.ANSI_BLUE.getValue() + "East" + Color.ANSI_RESET.getValue()
   };
 
-  public Location location;
+  public Scene location;
   public Boolean haveIslandItem = false;
   String input;
   transient Scanner scanner = new Scanner(System.in);
@@ -390,8 +390,7 @@ public class Player implements Serializable {
         location.vendor();
         playerInteractionOptions(direction);
         break;
-        // TODO try if statement to catch w direction for vendor.
-        // if player.direction is w then add vendor option as well (v)
+
       case "depart":
       case "d":
         tig.depart();

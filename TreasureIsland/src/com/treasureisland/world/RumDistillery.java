@@ -3,11 +3,10 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
 
-import java.io.Serializable;
 import java.util.Scanner;
 
 
-public class RumDistillery extends Location  {
+public class RumDistillery extends Scene {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
     Scanner scanner = new Scanner(System.in);

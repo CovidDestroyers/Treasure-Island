@@ -3,7 +3,7 @@ package com.treasureisland.world;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
-public class ShipGraveyard extends Location {
+public class ShipGraveyard extends Scene {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private Player player = Player.getInstance();
 

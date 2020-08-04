@@ -1,13 +1,9 @@
 package com.treasureisland.island;
 
-import com.treasureisland.world.AbandonedDistillery;
-import com.treasureisland.world.CrimsonBeachBar;
-import com.treasureisland.world.Location;
-import com.treasureisland.world.RumDistillery;
-import com.treasureisland.world.SugarCaneField;
+import com.treasureisland.world.Scene;
 
 public class RumRunnerIsle {
-  Location location;
+  Scene location;
 
   // @Override
   // public Location islandLocationSelector(IslandSelector rumRunnerIsle, DirectionEnum direction) {

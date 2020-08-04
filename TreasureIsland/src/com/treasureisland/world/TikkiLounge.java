@@ -5,7 +5,7 @@ import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import java.util.Scanner;
 
-public class TikkiLounge extends Location {
+public class TikkiLounge extends Scene {
 
   private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
   private final Player player = Player.getInstance();
