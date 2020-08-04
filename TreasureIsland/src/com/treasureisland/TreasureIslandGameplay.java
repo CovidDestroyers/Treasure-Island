@@ -19,7 +19,7 @@ public class TreasureIslandGameplay implements java.io.Serializable {
    * ============= Constructors ==================
    * =============================================
    */
-  private TreasureIslandGameplay() {}
+  public TreasureIslandGameplay() {}
 
   public static TreasureIslandGameplay getInstance() {
     return treasureIslandGameplay;
@@ -169,7 +169,7 @@ public class TreasureIslandGameplay implements java.io.Serializable {
         + "              /...\\_____|___|____\\_/\n"
         + "              \\   o * o * * o o  /\n"
         + "            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    Thread.sleep(1000);
+    Thread.sleep(2000);
     System.out.println(System.lineSeparator().repeat(50));
     System.out.println(
       " "
@@ -180,7 +180,7 @@ public class TreasureIslandGameplay implements java.io.Serializable {
         + "                                            /...\\_____|___|____\\_/\n"
         + "                                            \\   o * o * * o o  /\n"
         + "                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    Thread.sleep(1000);
+    Thread.sleep(2000);
     System.out.println(System.lineSeparator().repeat(50));
     System.out.println(
       " "
@@ -224,6 +224,61 @@ public class TreasureIslandGameplay implements java.io.Serializable {
       testIslandSelector();
     } else {
       customGameplayOptions();
+    }
+  }
+
+  public void depart(){
+    //TODO return to the main section of the island.
+    System.out.println("Good Bye!  Please come back!!");
+    System.out.println("Type in either: North, South, East or West.");
+    input = scanner.nextLine();
+    switch (input) {
+      case "North":
+      case "n":
+        break;
+      case "South":
+      case "s":
+        break;
+      case "East":
+      case "e":
+        break;
+      case "West":
+      case "w":
+        break;
+      default:
+        System.out.println("Invalid input, please try again. ");
+        depart();
+    }
+  }
+
+  public void sail() throws InterruptedException {
+    //TODO ask for a new island
+    System.out.println("Hello Captain. Please pick a direction to set sail! ");
+    System.out.println("Type in either: North, South, East, West or Not Ready??");
+    switch (input.toLowerCase()) {
+      case "Not Ready":
+      case "nr":
+        break;
+      case "North":
+      case "n":
+        leavingIslandShipPrint();
+        break;
+      case "south":
+      case "s":
+        leavingIslandShipPrint();
+        break;
+      case "east":
+      case "e":
+        leavingIslandShipPrint();
+        break;
+      case "west":
+      case "w":
+        leavingIslandShipPrint();
+        break;
+      default:
+        System.out.println("Invalid input, please try again. ");
+        sail();
+        break;
     }
   }
 

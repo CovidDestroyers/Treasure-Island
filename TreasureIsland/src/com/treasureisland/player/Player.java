@@ -341,7 +341,7 @@ public class Player implements Serializable {
 
   public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
     String input = "";
-
+    TreasureIslandGameplay tig = new TreasureIslandGameplay();
     String interactionOptions =
         "\nWhat actions would you like to make?\n -Type \"T\": Talk\n -Type \"L\": Look Around\n -Type "
             + "\"I\": Investigate\n -Type \"C\": See Clues\n -Type \"E\": Exit This World\n";
@@ -396,11 +396,11 @@ public class Player implements Serializable {
         // if player.direction is w then add vendor option as well (v)
       case "depart":
       case "d":
-        depart();
+        tig.depart();
         break;
       case "sail":
       case "s":
-        sail();
+        tig.sail();
         break;
       default:
         System.out.println("Invalid input, please try again.");
@@ -409,36 +409,9 @@ public class Player implements Serializable {
     }
   }
 
-  public void depart(){
-    //TODO return to the main section of the island.
-  }
 
-  public void sail() {
-    //TODO ask for a new island
-    System.out.println("Hello Captain. Please pick a direction to set sail! ");
-    System.out.println("Type in either: North, South, East, West or Not Ready??");
-    switch (input.toLowerCase()) {
-      case "Not Ready":
-      case "nr":
-        break;
-      case "North":
-      case "n":
-        break;
-      case "south":
-      case "s":
-        break;
-      case "east":
-      case "e":
-        break;
-      case "west":
-      case "w":
-        break;
-      default:
-        System.out.println("Invalid input, please try again. ");
-        sail();
-        break;
-    }
-  }
+
+
 
 
   public void playerDeathArt() {
