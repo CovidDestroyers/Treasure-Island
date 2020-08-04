@@ -6,6 +6,7 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.items.Item;
 import com.treasureisland.items.Vendor;
 import com.treasureisland.world.Location;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class Player implements Serializable {
    * ============= Constructors ==================
    * =============================================
    */
-  private Player() {}
+  public Player() {}
 
   public static Player getInstance() {
     if (player == null) {
@@ -326,6 +327,18 @@ public class Player implements Serializable {
     }
   }
 
+
+  public void clearScreen() {
+    for(int i = 0; i < 50; i++) {
+      System.out.println("\b");
+    }
+  }
+
+
+//  Scanner scanner = new Scanner(System.in);
+//        System.out.println(ANSI_CYAN + "Type back to return." + ANSI_RESET);
+//        scanner.next();
+
   public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
     String input = "";
 
@@ -381,8 +394,13 @@ public class Player implements Serializable {
         break;
         // TODO try if statement to catch w direction for vendor.
         // if player.direction is w then add vendor option as well (v)
-      case "exit":
-      case "e":
+      case "depart":
+      case "d":
+        depart();
+        break;
+      case "sail":
+      case "s":
+        sail();
         break;
       default:
         System.out.println("Invalid input, please try again.");
@@ -390,6 +408,38 @@ public class Player implements Serializable {
         break;
     }
   }
+
+  public void depart(){
+    //TODO return to the main section of the island.
+  }
+
+  public void sail() {
+    //TODO ask for a new island
+    System.out.println("Hello Captain. Please pick a direction to set sail! ");
+    System.out.println("Type in either: North, South, East, West or Not Ready??");
+    switch (input.toLowerCase()) {
+      case "Not Ready":
+      case "nr":
+        break;
+      case "North":
+      case "n":
+        break;
+      case "south":
+      case "s":
+        break;
+      case "east":
+      case "e":
+        break;
+      case "west":
+      case "w":
+        break;
+      default:
+        System.out.println("Invalid input, please try again. ");
+        sail();
+        break;
+    }
+  }
+
 
   public void playerDeathArt() {
     System.out.println(
