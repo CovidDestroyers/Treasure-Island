@@ -24,7 +24,7 @@ public abstract class Location implements Serializable {
 
   }
 
-  public void vendor() {
+  public void vendor() throws InterruptedException {
 
   }
 }

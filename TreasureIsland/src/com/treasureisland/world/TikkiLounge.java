@@ -50,7 +50,7 @@ public class TikkiLounge extends Location {
   }
 
   @Override
-  public void vendor() {
+  public void vendor()  {
     player.playerVisitsVendor();
   }
 }

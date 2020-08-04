@@ -18,7 +18,7 @@ public class Player implements Serializable {
   private static Player player;
 
   private final Vendor vendor = new Vendor();
-  private final List<Item> vendorItems = vendor.getAllItems();
+  private final List<Item> vendorItems = vendor.getVendorItems();
 
   public ArrayList<String> playerClues = new ArrayList<>();
   public String[] clues = {
@@ -141,7 +141,7 @@ public class Player implements Serializable {
    */
   public void coinManager(Integer coins) {
     if (coins.equals(0)) {
-      System.out.println("Nothing was found CM");
+      System.out.println("Nothing was found!");
     }
     if (coins > 0) {
       playerCoins += coins;
@@ -157,13 +157,12 @@ public class Player implements Serializable {
 
   /**
    * Player visits the Vendor
-   * All Items from the Vendor are returned -> vendor.getAll()
+   * All Items from the Vendor are printed out
    */
   public void playerVisitsVendor() {
-    System.out.println("\nWelcome to my shop! Please browse my collection.\n");
-    vendor.printVendorItems();
+    vendor.vendorIntroduction();
 
-    System.out.println("\nWould you like to buy anything? y/n");
+    // System.out.println("\nWould you like to buy anything? y/n");
     input = scanner.nextLine();
 
     if ("y".equalsIgnoreCase(input)) {
