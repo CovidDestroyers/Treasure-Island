@@ -3,9 +3,7 @@ package com.treasureisland.world;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
-import java.io.Serializable;
-
-public class DoubleCrossTavernCruces extends Location {
+public class DoubleCrossTavernCruces extends Scene {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

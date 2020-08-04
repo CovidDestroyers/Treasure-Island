@@ -3,10 +3,7 @@ package com.treasureisland.world;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
-import java.io.IOException;
-import java.io.Serializable;
-
-public class ChurchCruces extends Location {
+public class ChurchCruces extends Scene {
 
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();

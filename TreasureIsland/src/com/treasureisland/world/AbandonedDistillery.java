@@ -3,10 +3,8 @@ package com.treasureisland.world;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
-import java.io.Serializable;
 
-
-public class AbandonedDistillery extends Location {
+public class AbandonedDistillery extends Scene {
     private final TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

@@ -98,8 +98,7 @@ public class TreasureIslandGameplay implements java.io.Serializable {
   public void treasureIsland() {
     TreasureIslandGameplay.getInstance().storylineProgression("TI.txt", "", "TIStart", "TIEnd");
     Scanner scanner = new Scanner(System.in);
-    //        System.out.println(" Would you like to check your clues/Information  Yes(y)   No(o)
-    // \n");
+
     System.out.println(" Press (e) to exit");
     String input = scanner.nextLine();
     if (input.equalsIgnoreCase("e")) {
