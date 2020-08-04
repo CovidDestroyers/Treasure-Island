@@ -5,7 +5,7 @@ import com.treasureisland.SaveLoadGame;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.items.Item;
 import com.treasureisland.items.Vendor;
-import com.treasureisland.world.Location;
+import com.treasureisland.world.Scene;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -19,7 +19,7 @@ public class Player implements Serializable {
   private static Player player;
 
   private final Vendor vendor = new Vendor();
-  private final List<Item> vendorItems = vendor.getAllItems();
+  private final List<Item> vendorItems = vendor.getVendorItems();
 
   public ArrayList<String> playerClues = new ArrayList<>();
   public String[] clues = {
@@ -29,7 +29,7 @@ public class Player implements Serializable {
     "Go " + Color.ANSI_BLUE.getValue() + "East" + Color.ANSI_RESET.getValue()
   };
 
-  public Location location;
+  public Scene location;
   public Boolean haveIslandItem = false;
   String input;
   transient Scanner scanner = new Scanner(System.in);
@@ -142,7 +142,7 @@ public class Player implements Serializable {
    */
   public void coinManager(Integer coins) {
     if (coins.equals(0)) {
-      System.out.println("Nothing was found CM");
+      System.out.println("Nothing was found!");
     }
     if (coins > 0) {
       playerCoins += coins;
@@ -158,13 +158,11 @@ public class Player implements Serializable {
 
   /**
    * Player visits the Vendor
-   * All Items from the Vendor are returned -> vendor.getAll()
+   * All Items from the Vendor are printed out
    */
   public void playerVisitsVendor() {
-    System.out.println("\nWelcome to my shop! Please browse my collection.\n");
-    vendor.printVendorItems();
+    vendor.vendorIntroduction();
 
-    System.out.println("\nWould you like to buy anything? y/n");
     input = scanner.nextLine();
 
     if ("y".equalsIgnoreCase(input)) {
@@ -392,8 +390,7 @@ public class Player implements Serializable {
         location.vendor();
         playerInteractionOptions(direction);
         break;
-        // TODO try if statement to catch w direction for vendor.
-        // if player.direction is w then add vendor option as well (v)
+
       case "depart":
       case "d":
         tig.depart();

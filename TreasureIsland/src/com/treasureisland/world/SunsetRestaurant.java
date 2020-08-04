@@ -3,7 +3,7 @@ package com.treasureisland.world;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
-public class SunsetRestaurant extends Location {
+public class SunsetRestaurant extends Scene {
   @Override
   public String getLocationName() {
     return "Sunset Restaurant";

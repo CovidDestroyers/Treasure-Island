@@ -4,7 +4,7 @@ import com.treasureisland.island.DirectionEnum;
 import java.io.IOException;
 import java.io.Serializable;
 
-public abstract class Location implements Serializable {
+public abstract class Scene implements Serializable {
   String locationName = null;
   DirectionEnum direction = null;
 
@@ -24,7 +24,7 @@ public abstract class Location implements Serializable {
 
   }
 
-  public void vendor() {
+  public void vendor() throws InterruptedException {
 
   }
 }

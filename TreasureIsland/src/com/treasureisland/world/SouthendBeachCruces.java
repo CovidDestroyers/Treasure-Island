@@ -4,7 +4,7 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 import java.util.Scanner;
 
-public class SouthendBeachCruces extends Location {
+public class SouthendBeachCruces extends Scene {
   private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
   private final Player player = Player.getInstance();
 
