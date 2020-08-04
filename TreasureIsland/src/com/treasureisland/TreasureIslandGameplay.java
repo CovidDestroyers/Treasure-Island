@@ -228,7 +228,7 @@ public class TreasureIslandGameplay implements java.io.Serializable {
 
   public void depart(){
     //TODO return to the main section of the island.
-    System.out.println("Good Bye!  Please come back!!");
+    System.out.println("Good Bye!  Please come again!!");
     System.out.println("Type in either: North, South, East or West.");
     input = scanner.nextLine();
     switch (input) {
@@ -268,7 +268,6 @@ public class TreasureIslandGameplay implements java.io.Serializable {
         break;
       case "east":
       case "e":
-        leavingIslandShipPrint();
         break;
       case "west":
       case "w":

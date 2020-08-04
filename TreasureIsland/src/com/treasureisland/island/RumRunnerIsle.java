@@ -1,9 +1,39 @@
 package com.treasureisland.island;
 
-import com.treasureisland.world.Scene;
+import com.treasureisland.world.*;
 
 public class RumRunnerIsle extends Island {
   Scene location;
+
+
+  public void setIslandToTheNorth(Island islandToTheNorth) {
+    super.setIslandToTheNorth(islandToTheNorth);
+  }
+
+
+  public void setIslandToTheEast(Island islandToTheEast) {
+    super.setIslandToTheEast(islandToTheEast);
+  }
+
+
+  public void setNorthScene(RumDistillery northScene) {
+    super.setNorthScene(northScene);
+  }
+
+
+  public void setSouthScene(CrimsonBeachBar southScene) {
+    super.setSouthScene(southScene);
+  }
+
+
+  public void setWestScene(SugarCaneField westScene) {
+    super.setWestScene(westScene);
+  }
+
+
+  public void setEastScene(AbandonedDistillery eastScene) {
+    super.setEastScene(eastScene);
+  }
 
   // @Override
   // public Location islandLocationSelector(IslandSelector rumRunnerIsle, DirectionEnum direction) {
