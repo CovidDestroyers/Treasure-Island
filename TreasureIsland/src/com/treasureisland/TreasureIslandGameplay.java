@@ -268,10 +268,6 @@ public class TreasureIslandGameplay implements java.io.Serializable {
         break;
       case "east":
       case "e":
-        if(location.equals(rumRunnerIsle())) {
-
-        }
-        leavingIslandShipPrint();
         break;
       case "west":
       case "w":
