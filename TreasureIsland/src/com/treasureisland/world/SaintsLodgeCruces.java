@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class SaintsLodgeCruces implements Location, Serializable {
+public class SaintsLodgeCruces extends Location {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

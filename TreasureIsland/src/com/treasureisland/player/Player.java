@@ -6,9 +6,7 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.items.Item;
 import com.treasureisland.items.Vendor;
 import com.treasureisland.world.Location;
-import com.treasureisland.world.SouthendBeachCruces;
 
-import javax.accessibility.AccessibleSelection;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -158,7 +156,10 @@ public class Player implements Serializable {
     }
   }
 
-  /** Player visits the Vendor - All Items from the Vendor are returned -> vendor.getAll() */
+  /**
+   * Player visits the Vendor
+   * All Items from the Vendor are returned -> vendor.getAll()
+   */
   public void playerVisitsVendor() {
     System.out.println("\nWelcome to my shop! Please browse my collection.\n");
     vendor.printVendorItems();
@@ -174,7 +175,7 @@ public class Player implements Serializable {
     }
   }
 
-  // TODO: Change this to Vendor class
+  // TODO: Put this in Vendor class
   public void playerPurchase() {
     System.out.println("\nWhat would you like to buy?");
     input = scanner.nextLine().trim();
@@ -251,6 +252,10 @@ public class Player implements Serializable {
     }
   }
 
+  /**
+   * This looks like this is generates the number of coins found when the player
+   * "investigates" things
+   */
   public void playerCoinGenerator() {
     Random rand = new Random();
     int upperBoundofCoins = 51;
@@ -262,8 +267,9 @@ public class Player implements Serializable {
     coinManager(coins);
   }
 
-  // DONE: figure out why this is throwing NPE. Do not get NPE on any other class that imports
-  // TODO TreasureIslandGameScanner other than this one.
+  /**
+   * Checks Player Health and prints out death art if player is dead.
+   */
   public void playerHealthCheck() {
     if (player.getPlayerHealth() <= 0) {
       playerDeathArt();
@@ -272,15 +278,16 @@ public class Player implements Serializable {
   }
 
   public void playerDeathOptions() {
-    System.out.println("Would you like to play again?? Yes<Y> or No<N>");
-    input = scanner.nextLine();
+    System.out.println("Would you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
+    input = scanner.nextLine().trim().toLowerCase();
 
-    // DONE: NO IMPLEMENTATION YET FOR INVALID INPUT HANDLING
-    if ("y".equalsIgnoreCase(input)) {
+    if ("y".equals(input) || "yes".equals(input)) {
       TreasureIslandGameplay.getInstance().chosePlayerName();
-    } else if ("n".equalsIgnoreCase(input)) {
+
+    } else if ("n".equals(input) || "no".equals(input)) {
       System.out.println("Thank you for playing");
       System.exit(0);
+
     } else {
       System.out.println("Invalid Input, Try Again!!");
       playerDeathOptions();
@@ -306,10 +313,12 @@ public class Player implements Serializable {
           System.exit(0);
 
         } else {
-            player.location = IsleFactory.islandLocationFactory(direction, islandDestination);
-            System.out.println("You are now at the " + player.location.getLocationName());
-            playerInfoConsoleOutput();
-            playerInteractionOptions(direction);
+          player.location = IsleFactory.islandLocationFactory(direction, islandDestination);
+          System.out.println("\nYou are now at the " + player.location.getLocationName());
+          Thread.sleep(1000);
+          playerInfoConsoleOutput();
+          Thread.sleep(2000);
+          playerInteractionOptions(direction);
         }
       }
 
@@ -331,23 +340,26 @@ public class Player implements Serializable {
 //        scanner.next();
 
   public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
-    String interactionOptions =
-        "What actions would you like to make?\n -Type \"T\": Talk\n -Type \"L\": Look Around\n -Type \"I\": Investigate\n -Type \"C\": See Clues\n -Type \"E\": Exit World";
-
     String input = "";
+
+    String interactionOptions =
+        "\nWhat actions would you like to make?\n -Type \"T\": Talk\n -Type \"L\": Look Around\n -Type "
+            + "\"I\": Investigate\n -Type \"C\": See Clues\n -Type \"E\": Exit This World\n";
+
+    String interactOptionsWithVendor =
+        "\nWhat actions would you like to make? \n -Type \"T\": "
+            + "Talk\n -Type \"L\": Look Around\n -Type \"I\": Investigate\n -Type \"C\": See Clues\n "
+            + "-Type \"V\": Visit the Vendor\n -Type \"E\": Exit This World\n";
 
     playerHealthCheck();
 
     if ("w".equalsIgnoreCase(direction)) {
-      System.out.println(
-          "What actions would you like to make? Talk(t)/ Look(l)/ Investigate(i)/ Vendor(v)/ Clues(c)/ Exit(e)");
-
+      System.out.println(interactOptionsWithVendor);
     } else {
       System.out.println(interactionOptions);
     }
 
     input = scanner.nextLine().trim();
-    System.out.println("\n\n\n");
 
     switch (input.toLowerCase()) {
       case "talk":
@@ -431,31 +443,15 @@ public class Player implements Serializable {
 
   public void playerDeathArt() {
     System.out.println(
-        "\n"
-            + Color.ANSI_RED.getValue()
-            + getCrossBones()
-            + Color.ANSI_RESET.getValue());
+        "\n" + Color.ANSI_RED.getValue() + getCrossBones() + Color.ANSI_RESET.getValue());
 
     System.out.println("You dead!");
   }
 
   public void playerInfoConsoleOutput() {
     System.out.println(
-        "\n\n"
-            + "-----------------------------------------------------------"
-            + "\n"
-            + "                 "
-            + Color.ANSI_BLUE.getValue()
-            + "Treasure Island"
-            + Color.ANSI_RESET.getValue()
-            + "                           "
-            + "\n"
-            + "     "
-            + Color.ANSI_WHITE_BOLD.getValue()
-            + "Player"
-            + Color.ANSI_RESET.getValue()
-            + ": "
-            + player.getPlayerName()
+        "\n"
+            + "___________________________________________________________"
             + "\n"
             + "     "
             + Color.ANSI_PURPLE.getValue()
@@ -465,20 +461,18 @@ public class Player implements Serializable {
             + +player.getPlayerHealth()
             + "\n"
             + "     "
-            + Color.ANSI_GREEN.getValue()
-            + "Current Location"
-            + Color.ANSI_RESET.getValue()
-            + ": "
-            + location.getLocationName()
-            + "\n"
-            + "     "
             + Color.ANSI_YELLOW.getValue()
             + "Coins"
             + Color.ANSI_RESET.getValue()
             + ": "
             + player.getPlayerCoins()
             + "\n"
-            + "                                                           "
+            + "     "
+            + Color.ANSI_GREEN.getValue()
+            + "Current Location"
+            + Color.ANSI_RESET.getValue()
+            + ": "
+            + location.getLocationName()
             + "\n"
             + "___________________________________________________________");
   }
@@ -518,36 +512,36 @@ public class Player implements Serializable {
 
   public String getCrossBones() {
     return "                     .ed\"\"\"\" \"\"\"$$$$be.\n"
-      + "                   -\"           ^\"\"**$$$e.\n"
-      + "                 .\"                   '$$$c\n"
-      + "                /                      \"4$$b\n"
-      + "               d  3                      $$$$\n"
-      + "               $  *                   .$$$$$$\n"
-      + "              .$  ^c           $$$$$e$$$$$$$$.\n"
-      + "              d$L  4.         4$$$$$$$$$$$$$$b\n"
-      + "              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$\n"
-      + "  e$\"\"=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$\n"
-      + " z$$b. ^c     3$$$F \"$$$$b   $\"$$$$$$$  $$$$*\"      .=\"\"$c\n"
-      + "4$$$$L        $$P\"  \"$$b   .$ $$$$$...e$$        .=  e$$$.\n"
-      + "^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$\n"
-      + "  \"**$$$ec   \"   %ce\"\"    $$$  $$$$$$$$$$*    .r\" =$$$$P\"\"\n"
-      + "        \"*$b.  \"c  *$e.    *** d$$$$$\"L$$    .d\"  e$$***\"\n"
-      + "          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*\".eeP\"\n"
-      + "             \"$$$$$$\"'$=e....$*$$**$cz$$\" \"..d$*\"\n"
-      + "               \"*$$$  *=%4.$ L L$ P3$$$F $$$P\"\n"
-      + "                  \"$   \"%*ebJLzb$e$$$$$b $P\"\n"
-      + "                    %..      4$$$$$$$$$$ \"\n"
-      + "                     $$$e   z$$$$$$$$$$%\n"
-      + "                      \"*$c  \"$$$$$$$P\"\n"
-      + "                       .\"\"\"*$$$$$$$$bc\n"
-      + "                    .-\"    .$***$$$\"\"\"*e.\n"
-      + "                 .-\"    .e$\"     \"*$c  ^*b.\n"
-      + "          .=*\"\"\"\"    .e$*\"          \"*bc  \"*$e..\n"
-      + "        .$\"        .z*\"               ^*$e.   \"*****e.\n"
-      + "        $$ee$c   .d\"                     \"*$.        3.\n"
-      + "        ^*$E\")$..$\"                         *   .ee==d%\n"
-      + "           $.d$$$*                           *  J$$$e*\n"
-      + "            \"\"\"\"\"                              \"$$$\"";
+        + "                   -\"           ^\"\"**$$$e.\n"
+        + "                 .\"                   '$$$c\n"
+        + "                /                      \"4$$b\n"
+        + "               d  3                      $$$$\n"
+        + "               $  *                   .$$$$$$\n"
+        + "              .$  ^c           $$$$$e$$$$$$$$.\n"
+        + "              d$L  4.         4$$$$$$$$$$$$$$b\n"
+        + "              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$\n"
+        + "  e$\"\"=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$\n"
+        + " z$$b. ^c     3$$$F \"$$$$b   $\"$$$$$$$  $$$$*\"      .=\"\"$c\n"
+        + "4$$$$L        $$P\"  \"$$b   .$ $$$$$...e$$        .=  e$$$.\n"
+        + "^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$\n"
+        + "  \"**$$$ec   \"   %ce\"\"    $$$  $$$$$$$$$$*    .r\" =$$$$P\"\"\n"
+        + "        \"*$b.  \"c  *$e.    *** d$$$$$\"L$$    .d\"  e$$***\"\n"
+        + "          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*\".eeP\"\n"
+        + "             \"$$$$$$\"'$=e....$*$$**$cz$$\" \"..d$*\"\n"
+        + "               \"*$$$  *=%4.$ L L$ P3$$$F $$$P\"\n"
+        + "                  \"$   \"%*ebJLzb$e$$$$$b $P\"\n"
+        + "                    %..      4$$$$$$$$$$ \"\n"
+        + "                     $$$e   z$$$$$$$$$$%\n"
+        + "                      \"*$c  \"$$$$$$$P\"\n"
+        + "                       .\"\"\"*$$$$$$$$bc\n"
+        + "                    .-\"    .$***$$$\"\"\"*e.\n"
+        + "                 .-\"    .e$\"     \"*$c  ^*b.\n"
+        + "          .=*\"\"\"\"    .e$*\"          \"*bc  \"*$e..\n"
+        + "        .$\"        .z*\"               ^*$e.   \"*****e.\n"
+        + "        $$ee$c   .d\"                     \"*$.        3.\n"
+        + "        ^*$E\")$..$\"                         *   .ee==d%\n"
+        + "           $.d$$$*                           *  J$$$e*\n"
+        + "            \"\"\"\"\"                              \"$$$\"";
   }
 
   @Override

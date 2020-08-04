@@ -5,8 +5,7 @@ import com.treasureisland.player.Player;
 
 import java.io.Serializable;
 
-
-public class RoyalLodge implements Location, Serializable {
+public class RoyalLodge extends Location {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private Player player = Player.getInstance();
 

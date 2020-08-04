@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 
-public class RumDistillery implements Location, Serializable {
+public class RumDistillery extends Location  {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
     Scanner scanner = new Scanner(System.in);

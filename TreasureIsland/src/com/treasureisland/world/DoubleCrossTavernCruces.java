@@ -5,7 +5,7 @@ import com.treasureisland.player.Player;
 
 import java.io.Serializable;
 
-public class DoubleCrossTavernCruces implements Location, Serializable {
+public class DoubleCrossTavernCruces extends Location {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private final Player player = Player.getInstance();
 

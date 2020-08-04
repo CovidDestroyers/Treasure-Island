@@ -4,17 +4,27 @@ import com.treasureisland.island.DirectionEnum;
 import java.io.IOException;
 import java.io.Serializable;
 
-public interface Location extends Serializable {
+public abstract class Location implements Serializable {
   String locationName = null;
   DirectionEnum direction = null;
 
-  public String getLocationName();
+  public String getLocationName() {
+    return null;
+  }
 
-  public void talkToNPC() throws IOException, InterruptedException;
+  public void talkToNPC() throws IOException, InterruptedException {
 
-  public void lookAroundLocation() throws IOException, InterruptedException;
+  }
 
-  public void investigateArea() throws IOException, InterruptedException;
+  public void lookAroundLocation() throws IOException, InterruptedException {
 
-  public void vendor();
+  }
+
+  public void investigateArea() throws IOException, InterruptedException {
+
+  }
+
+  public void vendor() {
+
+  }
 }

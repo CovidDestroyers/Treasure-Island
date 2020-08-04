@@ -3,10 +3,7 @@ package com.treasureisland.world;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 
-import java.io.Serializable;
-//import java.io.IOException;
-
-public class ShipGraveyard implements Location, Serializable {
+public class ShipGraveyard extends Location {
     private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
     private Player player = Player.getInstance();
 
