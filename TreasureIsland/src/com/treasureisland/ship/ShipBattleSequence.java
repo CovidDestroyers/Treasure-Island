@@ -24,16 +24,16 @@ public class ShipBattleSequence  implements java.io.Serializable{
     public void shipBattleafterLeavingIsland(){
         while(playerShip.getPlayerShipHealth() > 0 && enemyShip.getEnemyShipHealth() > 0){
             System.out.println("You encountered " + enemyShip.getEnemyShipName());
-            System.out.println("Would you like to Attack or Defend? A/D");
+            System.out.println("Would you like to Attack<A> or Defend<D>??");
             input = scanner.nextLine();
             if("a".equalsIgnoreCase(input)){
                 playerShip.attackEnemyShip(enemyShip);
                 enemyAction();
             }
-            if("d".equalsIgnoreCase(input)){
+            else if("d".equalsIgnoreCase(input)){
                 playerShip.defendPlayerShip(enemyShip);
             }
-            System.out.println("\n");
+           System.out.println("\n");
             healthStatus();
             System.out.println("\n");
 

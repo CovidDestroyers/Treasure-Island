@@ -13,7 +13,7 @@ public class TreasureIslandGameplay implements java.io.Serializable {
   private final ShipBattleSequence shipBattleSequence = ShipBattleSequence.getInstance();
   transient Scanner scanner = new Scanner(System.in);
   String input;
-  private static TreasureIslandGameplay treasureIslandGameplay = new TreasureIslandGameplay();
+  public static TreasureIslandGameplay treasureIslandGameplay;
 
   /*
    * =============================================
@@ -23,6 +23,10 @@ public class TreasureIslandGameplay implements java.io.Serializable {
 
 
   public static TreasureIslandGameplay getInstance() {
+    if (treasureIslandGameplay == null){
+      treasureIslandGameplay = new TreasureIslandGameplay();
+
+    }
     return treasureIslandGameplay;
   }
 
