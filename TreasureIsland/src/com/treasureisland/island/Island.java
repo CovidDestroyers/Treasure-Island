@@ -58,15 +58,18 @@ public abstract class Island {
   }
 
 
-  public void connectEastIsland(Island otherIsland) {
+  public void connectEast(Island otherIsland) {
     setIslandToTheEast(otherIsland);
     otherIsland.setIslandToTheWest(this);
   }
 
-  public void connectSouthIsland(Island otherIsland) {
+
+  public void connectSouth(Island otherIsland) {
     setIslandToTheSouth(otherIsland);
     otherIsland.setIslandToTheNorth(this);
   }
+
+
 
   /*
    * =============================================

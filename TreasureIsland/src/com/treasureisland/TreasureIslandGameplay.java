@@ -1,5 +1,6 @@
 package com.treasureisland;
 
+import com.treasureisland.island.*;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import com.treasureisland.ship.ShipBattleSequence;
@@ -19,7 +20,7 @@ public class TreasureIslandGameplay implements java.io.Serializable {
    * ============= Constructors ==================
    * =============================================
    */
-  public TreasureIslandGameplay() {}
+
 
   public static TreasureIslandGameplay getInstance() {
     return treasureIslandGameplay;
@@ -47,6 +48,26 @@ public class TreasureIslandGameplay implements java.io.Serializable {
   // allows user to chose N/S/E/W from IsleFactory
   // playerInteractionOptions allows for player to talk, look around, investigate or leave
 
+
+  //--------------------------------------------------
+  private Island rumRunnerIsle;
+  private Island portRoyal;
+  private Island islaCruces;
+  private Island islaDeMuerta;
+
+  public TreasureIslandGameplay() {
+    rumRunnerIsle = new RumRunnerIsle();
+    portRoyal = new PortRoyal();
+    islaCruces = new IslaCruces();
+    islaDeMuerta = new IslaDeMuerta();
+
+    rumRunnerIsle.connectEast(islaCruces);
+    islaDeMuerta.connectEast(portRoyal);
+    portRoyal.connectSouth(islaCruces);
+    islaDeMuerta.connectSouth(rumRunnerIsle);
+  }
+
+  //--------------------------------------------------
   public void rumRunnerIsle() {
     try {
       // process player movement and takes in current island as parameter so factory knows where to
