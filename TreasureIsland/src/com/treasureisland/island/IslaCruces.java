@@ -1,9 +1,9 @@
 package com.treasureisland.island;
 
-import com.treasureisland.world.ChurchCruces;
-import com.treasureisland.world.DoubleCrossTavernCruces;
-import com.treasureisland.world.SaintsLodgeCruces;
-import com.treasureisland.world.SouthendBeachCruces;
+import com.treasureisland.scene.ChurchCruces;
+import com.treasureisland.scene.DoubleCrossTavernCruces;
+import com.treasureisland.scene.SaintsLodgeCruces;
+import com.treasureisland.scene.SouthendBeachCruces;
 
 public class IslaCruces extends Island {
 

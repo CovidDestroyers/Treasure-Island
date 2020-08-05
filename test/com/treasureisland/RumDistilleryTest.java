@@ -2,7 +2,7 @@ package com.treasureisland;
 
 import static org.junit.Assert.*;
 
-import com.treasureisland.world.RumDistillery;
+import com.treasureisland.scene.RumDistillery;
 
 public class RumDistilleryTest {
 

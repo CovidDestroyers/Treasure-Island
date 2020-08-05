@@ -1,6 +1,6 @@
 package com.treasureisland.island;
 
-import com.treasureisland.world.Scene;
+import com.treasureisland.scene.Scene;
 
 public abstract class Island {
   private Island islandToTheNorth;

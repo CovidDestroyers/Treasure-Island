@@ -1,22 +1,22 @@
 package com.treasureisland;
 
-import com.treasureisland.world.AbandonedDistillery;
-import com.treasureisland.world.AbandonedHouse;
-import com.treasureisland.world.ChurchCruces;
-import com.treasureisland.world.CrimsonBeachBar;
-import com.treasureisland.world.DoubleCrossTavernCruces;
-import com.treasureisland.world.DuskTillDawnSaloon;
-import com.treasureisland.world.Graveyard;
-import com.treasureisland.world.Scene;
-import com.treasureisland.world.PawPawBeach;
-import com.treasureisland.world.RoyalLodge;
-import com.treasureisland.world.RumDistillery;
-import com.treasureisland.world.SaintsLodgeCruces;
-import com.treasureisland.world.ShipGraveyard;
-import com.treasureisland.world.SouthendBeachCruces;
-import com.treasureisland.world.SugarCaneField;
-import com.treasureisland.world.SunsetRestaurant;
-import com.treasureisland.world.TikkiLounge;
+import com.treasureisland.scene.AbandonedDistillery;
+import com.treasureisland.scene.AbandonedHouse;
+import com.treasureisland.scene.ChurchCruces;
+import com.treasureisland.scene.CrimsonBeachBar;
+import com.treasureisland.scene.DoubleCrossTavernCruces;
+import com.treasureisland.scene.DuskTillDawnSaloon;
+import com.treasureisland.scene.Graveyard;
+import com.treasureisland.scene.Scene;
+import com.treasureisland.scene.PawPawBeach;
+import com.treasureisland.scene.RoyalLodge;
+import com.treasureisland.scene.RumDistillery;
+import com.treasureisland.scene.SaintsLodgeCruces;
+import com.treasureisland.scene.ShipGraveyard;
+import com.treasureisland.scene.SouthendBeachCruces;
+import com.treasureisland.scene.SugarCaneField;
+import com.treasureisland.scene.SunsetRestaurant;
+import com.treasureisland.scene.TikkiLounge;
 
 public class IsleFactory {
 

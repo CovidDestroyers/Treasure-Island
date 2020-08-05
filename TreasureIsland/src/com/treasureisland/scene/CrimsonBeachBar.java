@@ -1,4 +1,4 @@
-package com.treasureisland.world;
+package com.treasureisland.scene;
 
 import com.treasureisland.TreasureIslandGameplay;
 

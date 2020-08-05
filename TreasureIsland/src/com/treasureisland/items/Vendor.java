@@ -37,25 +37,22 @@ public class Vendor implements Serializable {
    * =============================================
    */
 
-
-  public void purchaseItems(Scanner in, String itemName) {
-
-  }
+  public void purchaseItems(Scanner in, String itemName) {}
 
   public void vendorIntroduction() {
-    String welcome = String.format("Welcome to my shop! My name is %s %s.\n", getVendorFirstName(),
-      getVendorLastName());
-    String instructions = "I have many wonderful things you can have, if you have enough coin"
-      + ".\nSimply type the name of the item you want and press \"enter\".\n";
+    String welcome =
+        String.format(
+            "Welcome to my shop! My name is %s %s.\n", getVendorFirstName(), getVendorLastName());
+    String instructions =
+        "I have many wonderful things you can have, if you have enough coin"
+            + ".\nSimply type the name of the item you want and press \"enter\".\n";
     System.out.println(welcome);
     System.out.println(instructions);
 
     printVendorItems();
   }
 
-  /**
-   * Prints all Vendor's Items in a Table
-   */
+  /** Prints all Vendor's Items in a Table */
   public void printVendorItems() {
     String leftAlignFormat = "| %-15s | %-4d   | %-4d  |%n";
 
@@ -68,7 +65,6 @@ public class Vendor implements Serializable {
     }
     System.out.format("+-----------------+--------+-------+%n\n");
   }
-
 
   public Item findByName(String itemName) {
     Item result = null;

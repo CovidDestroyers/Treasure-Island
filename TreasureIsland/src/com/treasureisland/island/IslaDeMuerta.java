@@ -1,9 +1,9 @@
 package com.treasureisland.island;
 
-import com.treasureisland.world.AbandonedDistillery;
-import com.treasureisland.world.DuskTillDawnSaloon;
-import com.treasureisland.world.Graveyard;
-import com.treasureisland.world.PawPawBeach;
+import com.treasureisland.scene.AbandonedDistillery;
+import com.treasureisland.scene.DuskTillDawnSaloon;
+import com.treasureisland.scene.Graveyard;
+import com.treasureisland.scene.PawPawBeach;
 
 public class IslaDeMuerta extends Island {
 

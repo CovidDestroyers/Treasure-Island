@@ -1,9 +1,9 @@
 package com.treasureisland.island;
 
-import com.treasureisland.world.RoyalLodge;
-import com.treasureisland.world.ShipGraveyard;
-import com.treasureisland.world.SunsetRestaurant;
-import com.treasureisland.world.TikkiLounge;
+import com.treasureisland.scene.RoyalLodge;
+import com.treasureisland.scene.ShipGraveyard;
+import com.treasureisland.scene.SunsetRestaurant;
+import com.treasureisland.scene.TikkiLounge;
 
 public class PortRoyal extends Island {
 
