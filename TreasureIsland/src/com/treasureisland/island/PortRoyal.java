@@ -8,9 +8,9 @@ import com.treasureisland.scene.TikkiLounge;
 public class PortRoyal extends Island {
 
   public PortRoyal() {
-    setNorthScene(new RoyalLodge());
-    setEastScene(new SunsetRestaurant());
-    setSouthScene(new ShipGraveyard());
-    setWestScene(new TikkiLounge());
+    // setNorthScene(new RoyalLodge());
+    // setEastScene(new SunsetRestaurant());
+    // setSouthScene(new ShipGraveyard());
+    // setWestScene(new TikkiLounge());
   }
 }

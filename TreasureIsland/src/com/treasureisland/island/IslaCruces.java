@@ -8,9 +8,9 @@ import com.treasureisland.scene.SouthendBeachCruces;
 public class IslaCruces extends Island {
 
   public IslaCruces() {
-    setNorthScene(new ChurchCruces());
-    setEastScene(new SaintsLodgeCruces());
-    setSouthScene(new SouthendBeachCruces());
-    setWestScene(new DoubleCrossTavernCruces());
+    // setNorthScene(new ChurchCruces());
+    // setEastScene(new SaintsLodgeCruces());
+    // setSouthScene(new SouthendBeachCruces());
+    // setWestScene(new DoubleCrossTavernCruces());
   }
 }

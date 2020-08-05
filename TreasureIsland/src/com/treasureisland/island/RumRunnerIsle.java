@@ -8,9 +8,9 @@ import com.treasureisland.scene.SugarCaneField;
 public class RumRunnerIsle extends Island {
 
   public RumRunnerIsle() {
-    setNorthScene(new RumDistillery());
-    setEastScene(new AbandonedDistillery());
-    setSouthScene(new CrimsonBeachBar());
-    setWestScene(new SugarCaneField());
+    // setNorthScene(new RumDistillery());
+    // setEastScene(new AbandonedDistillery());
+    // setSouthScene(new CrimsonBeachBar());
+    // setWestScene(new SugarCaneField());
   }
 }

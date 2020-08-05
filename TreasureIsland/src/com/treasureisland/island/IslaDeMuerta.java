@@ -8,9 +8,9 @@ import com.treasureisland.scene.PawPawBeach;
 public class IslaDeMuerta extends Island {
 
   public IslaDeMuerta() {
-    setNorthScene(new AbandonedDistillery());
-    setEastScene(new DuskTillDawnSaloon());
-    setSouthScene(new Graveyard());
-    setWestScene(new PawPawBeach());
+    // setNorthScene(new AbandonedDistillery());
+    // setEastScene(new DuskTillDawnSaloon());
+    // setSouthScene(new Graveyard());
+    // setWestScene(new PawPawBeach());
   }
 }
