@@ -83,10 +83,6 @@ public class Item implements Serializable {
    * =============================================
    */
 
-  public String getItemName() {
-    return itemName;
-  }
-
   // SET METHODS
   public void setItemName(String itemName) {
     this.itemName = itemName;
@@ -125,6 +121,10 @@ public class Item implements Serializable {
   }
 
   // GET METHODS
+
+  public String getItemName() {
+    return itemName;
+  }
 
   public Boolean getAnotherItemNeeded() {
     return isAnotherItemNeeded;

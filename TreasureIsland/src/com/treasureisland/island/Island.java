@@ -19,6 +19,8 @@ public abstract class Island {
    * =============================================
    */
 
+  public Island() {}
+
   /*
    * =============================================
    * =========== Business Methods ================
@@ -136,5 +138,4 @@ public abstract class Island {
   public void setWestScene(Scene westScene) {
     this.westScene = westScene;
   }
-  public Island() { }
 }
