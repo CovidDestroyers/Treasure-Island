@@ -24,7 +24,7 @@ public class SaintsLodgeCruces extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    System.out.println("Talking to npc at Saints Lodge");
+    System.out.println("Talking to Dirty Lewis Brown at Saints Lodge");
 
     // TODO: storylineProgrssion should be in the Scene class
     storylineProgression("TI.txt", getSceneName(), "SLStart", "SLStop");

@@ -106,7 +106,8 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("\nWelcome, " + player.getPlayerName() + "\n \n");
 
     System.out.println(
-        "Ahoy matey!  Welcome to Treasure Isalnd....well you are not there yet.  You need to find it.\n" +
+        "Ahoy matey!  \n" +
+          "Welcome to Treasure Isalnd....well you are not there yet.  You need to find it.\n" +
           "I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!\n" +
           "Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!\n" +
           "\n" +
