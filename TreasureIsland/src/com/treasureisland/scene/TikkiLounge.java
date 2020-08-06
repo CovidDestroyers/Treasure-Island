@@ -53,6 +53,6 @@ public class TikkiLounge extends Scene {
 
   @Override
   public void vendor() {
-    player.playerVisitsVendor();
+    // player.playerVisitsVendor();
   }
 }

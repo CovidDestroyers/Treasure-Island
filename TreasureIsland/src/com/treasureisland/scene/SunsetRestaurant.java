@@ -24,19 +24,16 @@ public class SunsetRestaurant extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    System.out.println("Talking to a npc sunset restaurant");
     storylineProgression("TI.txt", getSceneName(), "RNDStart", "RNDStop");
   }
 
   @Override
   public void lookAroundLocation(Player player) {
-    System.out.println("Looking around sunset restaurant");
-    storylineProgression("TI.txt", getSceneName(), "PSStart", "PSStop");
+    storylineProgression("TI.txt", getSceneName(), "PStart", "PStop");
   }
 
   @Override
   public void investigateArea(Player player) {
-    System.out.println("Investigating sunset restaurant");
     storylineProgression("TI.txt", getSceneName(), "SLStart", "SLStop");
   }
 

@@ -27,8 +27,6 @@ public class AbandonedHouse extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    System.out.println(
-        "After informing about the Abandoned house on the hill, my friend took me there and I searched . .");
     storylineProgression("TI.txt", getSceneName(), "FLStart", "FLStop");
   }
 

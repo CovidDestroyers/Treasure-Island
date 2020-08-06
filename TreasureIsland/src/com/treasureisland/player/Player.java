@@ -380,7 +380,9 @@ public class Player implements Serializable {
         player.playerVisitsVendor();
         playerInteractionOptions(direction);
         break;
-
+      case "exit":
+      case "e":
+        break;
       default:
         System.out.println("Invalid input, please try again.");
         playerInteractionOptions(input);

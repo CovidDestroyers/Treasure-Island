@@ -30,7 +30,6 @@ public class AbandonedDistillery extends Scene {
    */
   @Override
   public void enter(Scanner in, Player player) throws InterruptedException {
-    setPlayer(player);
   }
 
   @Override

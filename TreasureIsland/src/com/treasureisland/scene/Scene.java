@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public abstract class Scene implements Serializable {
   protected String sceneName;
-  protected Player player;
+  protected String storyFileName = "TI.txt";
 
   DirectionEnum direction;
 
@@ -39,7 +39,13 @@ public abstract class Scene implements Serializable {
   public abstract void enter(Scanner in, Player player) throws InterruptedException;
 
 
-  public abstract void talkToNPC(Player player);
+  public void talkToNPC(Player player) {
+
+  }
+
+  public void talkToNPC(Player player, String startPosition, String endPosition) {
+
+  }
 
   public abstract void lookAroundLocation(Player player);
 
@@ -70,21 +76,22 @@ public abstract class Scene implements Serializable {
 
       while (myReader.hasNextLine()) {
         String data = myReader.nextLine().trim();
-        if (data.equals(start)) {
 
+        if (data.equals(start)) {
           tokenFound = true;
-        } else if (data.equals(stop)) {
+        }
+
+        if (data.equals(stop)) {
           tokenFound = false;
         }
 
         if ((tokenFound) && (!data.equals(start))) {
-
           System.out.println(data);
           Thread.sleep(1000);
         }
       }
 
-      myReader.close();
+      // myReader.close();
     } catch (IOException | InterruptedException e) {
       e.printStackTrace();
     }
@@ -101,16 +108,9 @@ public abstract class Scene implements Serializable {
     return sceneName;
   }
 
-  public Player getPlayer() {
-    return player;
-  }
-
   // SET METHODS
   public void setSceneName(String sceneName) {
     this.sceneName = sceneName;
   }
 
-  public void setPlayer(Player player) {
-    this.player = player;
-  }
 }
