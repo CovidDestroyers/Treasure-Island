@@ -272,12 +272,12 @@ public class Player implements Serializable {
   }
 
   public void playerDeathOptions() {
-    System.out.println("Would you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
+    System.out.println("\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
     input = scanner.nextLine().trim().toLowerCase();
 
     if ("y".equals(input) || "yes".equals(input)) {
-      TreasureIslandGameplay.getInstance().chosePlayerName();
-
+      //TreasureIslandGameplay.getInstance().chosePlayerName();
+      new TreasureIslandGameplay().chosePlayerName();
     } else if ("n".equals(input) || "no".equals(input)) {
       System.out.println("Thank you for playing");
       System.exit(0);
@@ -396,7 +396,7 @@ public class Player implements Serializable {
     System.out.println(
         "\n" + Color.ANSI_RED.getValue() + getCrossBones() + Color.ANSI_RESET.getValue());
 
-    System.out.println("You dead!");
+    System.out.println(Color.ANSI_RED.getValue() + Color.ANSI_BOLD.getValue() + "You dead!" + Color.ANSI_RESET.getValue());
   }
 
   public void playerInfoConsoleOutput() {
@@ -430,10 +430,10 @@ public class Player implements Serializable {
 
   // Player and Pirate Fight Sequence
   public void attackPirate(Pirate pirate) {
-    System.out.println(
-      getPlayerName()
+    System.out.println("\n" +
+        Color.ANSI_GREEN.getValue() + getPlayerName() + Color.ANSI_RESET.getValue()
         + " attacked "
-        + pirate.getPirateName()
+        + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue()
         + " for "
         + playerAttackStrength
         + " damage.");
@@ -447,10 +447,10 @@ public class Player implements Serializable {
   public void defendPlayer(Pirate pirate) {
     int result = pirate.pirateAttackStrength - getPlayerHealth();
     if (result <= 0) {
-      System.out.println(pirate.getPirateName() + " did no damage.");
+      System.out.println(Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() + " did no damage.");
     } else {
       setPlayerHealth(getPlayerHealth() - result);
-      System.out.println(pirate.getPirateName() + " did " + result + " damage");
+      System.out.println(Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() + " did " + result + " damage");
     }
   }
 

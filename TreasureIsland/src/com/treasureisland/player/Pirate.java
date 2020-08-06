@@ -36,16 +36,15 @@ public class Pirate {
    */
   public void attackPlayer(Player player) {
     System.out.println(
-      getPirateName()
+      Color.ANSI_RED.getValue() + getPirateName() + Color.ANSI_RESET.getValue()
         + " attacked "
-        + player.getPlayerName()
+        + Color.ANSI_GREEN.getValue() + player.getPlayerName() + Color.ANSI_RESET.getValue()
         + " for "
         + pirateAttackStrength
         + " damage.");
     player.setPlayerHealth(player.getPlayerHealth() - pirateAttackStrength);
 
     if (player.getPlayerHealth() <= 0) {
-      System.out.println("You died");
       player.playerDeathArt();
       player.playerDeathOptions();
     }
@@ -54,10 +53,10 @@ public class Pirate {
   public void defendPirate(Player player) {
     int result = player.playerAttackStrength - getPirateHealth();
     if (result <= 0) {
-      System.out.println(getPirateName() + " did no damage.");
+      System.out.println(Color.ANSI_RED.getValue() + getPirateName() + Color.ANSI_RESET.getValue() + " did no damage.");
     } else {
       setPirateHealth(getPirateHealth() - result);
-      System.out.println(player.getPlayerName() + " did " + result + " damage");
+      System.out.println(Color.ANSI_GREEN.getValue() + player.getPlayerName() + Color.ANSI_RESET.getValue() + " did " + result + " damage");
     }
   }
 

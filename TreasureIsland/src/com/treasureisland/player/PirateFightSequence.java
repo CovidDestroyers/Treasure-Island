@@ -36,22 +36,22 @@ public class PirateFightSequence {
    */
   public void PlayerAndPirateFightSequence(Player player){
       while(player.getPlayerHealth() > 0 && pirate.getPirateHealth() > 0){
-        System.out.println("You encountered " + pirate.getPirateName());
+        System.out.println("You encountered '" + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() + "'");
         System.out.println("Would you like to Attack<A> or Defend<D>??");
         input = scanner.nextLine();
         if("a".equalsIgnoreCase(input)){
+          System.out.println("\n");
           player.attackPirate(pirate);
           enemyAction(player);
         }
         else if("d".equalsIgnoreCase(input)){
+          System.out.println("\n");
           player.defendPlayer(pirate);
         }
-        System.out.println("\n");
         healthStatus(player);
         System.out.println("\n");
-
       }
-      System.out.println("You defeated " + pirate.getPirateName() + "\n\n");
+      System.out.println(Color.ANSI_GREEN.getValue() + "WooooHooo!!! You defeated '" + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() +"'\n\n");
       player.setPlayerHealth(player.getPlayerHealth());
       pirate.setPirateHealth(pirate.getPirateHealth());
   }
@@ -70,7 +70,7 @@ public class PirateFightSequence {
   }
 
   public void healthStatus(Player player){
-    System.out.println("\n"+player.getPlayerName() + ": " + player.getPlayerHealth());
-    System.out.println("\n"+pirate.getPirateName() + ": " + pirate.getPirateHealth());
+    System.out.println("\n"+ Color.ANSI_GREEN.getValue() + player.getPlayerName() + Color.ANSI_RESET.getValue() + ": "  + player.getPlayerHealth());
+    System.out.println("\n"+ Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() + ": " + pirate.getPirateHealth());
   }
 }

@@ -40,6 +40,7 @@ public class CrimsonBeachBar extends Scene {
   @Override
   public void investigateArea(Player player) {
     storylineProgression("TI.txt", getSceneName(), "PTStart", "PTEnd");
+    System.out.println("\n");
     PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
   }
 
