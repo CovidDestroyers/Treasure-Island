@@ -97,7 +97,7 @@ public class TreasureIslandGameplay implements Serializable {
   // Player chooses name and is stored into playerName variable
   // calls first storyline txt file then puts player into rumDistillery()
   // ENtry point into
-  public void chosePlayerName() {
+  public void chosePlayerName() throws InterruptedException {
     welcomeToTreasureIsland();
     System.out.println("Please enter your name: ");
     String input = scanner.nextLine();
@@ -105,9 +105,9 @@ public class TreasureIslandGameplay implements Serializable {
 
     System.out.println("\nWelcome, " + player.getPlayerName() + "\n \n");
 
-    System.out.println(
-        "Ahoy matey!  \n" +
-          "Welcome to Treasure Isalnd....well you are not there yet.  You need to find it.\n" +
+    System.out.println( Color.ANSI_BLUE.getValue() +
+        "Ahoy " + player.getPlayerName() + "\n" +
+          "Welcome to Treasure Island....well you are not there yet.  You need to find it.\n" +
           "I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!\n" +
           "Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!\n" +
           "\n" +
@@ -118,9 +118,10 @@ public class TreasureIslandGameplay implements Serializable {
           "\n" +
           "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n" +
           "\n" +
-          "Your journey starts on Rum Runner Isle at the Rum Distillery.  Good luck!");
-    // storylineProgression("GameIntroText.txt", "", "start", "stop");
+          "Your journey starts on Rum Runner Isle.  Good luck!"+ Color.ANSI_RESET.getValue() );
+        // storylineProgression("GameIntroText.txt", "", "start", "stop");
     rumRunnerIsle();
+
   }
 
   // loop continues until they find the islands special item

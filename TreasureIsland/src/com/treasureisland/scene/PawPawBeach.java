@@ -16,17 +16,17 @@ public class PawPawBeach extends Scene {
   public void talkToNPC(Player player) {
     System.out.println(
         "A guy called Slimjaw has some interesting information but he was more interested in having a hot-dog eating competition");
-    storylineProgression("TI.txt", getSceneName(), "SJStart", "SJStop");
+    storylineProgression("TI.txt",  "SJStart", "SJStop");
   }
 
   @Override
   public void lookAroundLocation(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "PMStart", "PMStop");
+    storylineProgression("TI.txt",  "PMStart", "PMStop");
   }
 
   @Override
   public void investigateArea(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "CGStart", "CGStop");
+    storylineProgression("TI.txt",  "CGStart", "CGStop");
   }
 
   @Override

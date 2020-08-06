@@ -34,7 +34,7 @@ public class Pirate {
    * ============= Business Methods ==============
    * =============================================
    */
-  public void attackPlayer(Player player) {
+  public void attackPlayer(Player player) throws InterruptedException {
     System.out.println(
       Color.ANSI_RED.getValue() + getPirateName() + Color.ANSI_RESET.getValue()
         + " attacked "

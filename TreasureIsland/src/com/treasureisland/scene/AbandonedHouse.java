@@ -27,17 +27,17 @@ public class AbandonedHouse extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "FLStart", "FLStop");
+    storylineProgression("TI.txt", "FLStart", "FLStop");
   }
 
   @Override
   public void lookAroundLocation(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "DAStart", "DAStop");
+    storylineProgression("TI.txt",  "DAStart", "DAStop");
   }
 
   @Override
   public void investigateArea(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "HPStart", "HPStop");
+    storylineProgression("TI.txt",  "HPStart", "HPStop");
   }
 
   @Override

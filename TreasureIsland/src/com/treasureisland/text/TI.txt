@@ -4,10 +4,10 @@ Rum Island
   1) Rum distillery
 
   RDStart
-    a) Talked with the store house owner.
-        I applied for the position for store manager, to gain access to the property.
-        I checked the left corner of the store house as soon as I got a chance.
-        There was a nothing unusual about the place other than the small patch on the wall,
+      You talked with the store house owner.
+      and applied for the position of store manager, to gain access to the property.
+      I checked the left corner of the store house as soon as I got a chance.
+      There was a nothing unusual about the place other than the small patch on the wall,
         like it was fixed.
         I poked at the patch and it caved in a little bit. I looked inside and found . . .
           Nothing!

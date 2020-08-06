@@ -264,15 +264,17 @@ public class Player implements Serializable {
   }
 
   /** Checks Player Health and prints out death art if player is dead. */
-  public void playerHealthCheck() {
+  public void playerHealthCheck() throws InterruptedException {
     if (this.getPlayerHealth() <= 0) {
       playerDeathArt();
       playerDeathOptions();
     }
   }
 
-  public void playerDeathOptions() {
+
+  public void playerDeathOptions() throws InterruptedException {
     System.out.println("\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
+
     input = scanner.nextLine().trim().toLowerCase();
 
     if ("y".equals(input) || "yes".equals(input)) {

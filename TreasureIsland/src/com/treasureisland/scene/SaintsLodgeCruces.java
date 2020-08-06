@@ -27,21 +27,21 @@ public class SaintsLodgeCruces extends Scene {
     System.out.println("Talking to Dirty Lewis Brown at Saints Lodge");
 
     // TODO: storylineProgrssion should be in the Scene class
-    storylineProgression("TI.txt", getSceneName(), "SLStart", "SLStop");
+    storylineProgression("TI.txt", "SLStart", "SLStop");
     player.setPlayerHealth(player.getPlayerHealth() - 30);
   }
 
   @Override
   public void lookAroundLocation(Player player) {
     System.out.println("Looking around Saints Lodge");
-    storylineProgression("TI.txt", getSceneName(), "MRStart", "MRStop");
+    storylineProgression("TI.txt",  "MRStart", "MRStop");
     player.setPlayerHealth(player.getPlayerHealth() - 20);
   }
 
   @Override
   public void investigateArea(Player player) {
     System.out.println("Investigating Saints Lodge");
-    storylineProgression("TI.txt", getSceneName(), "PAStart", "PAStop");
+    storylineProgression("TI.txt",  "PAStart", "PAStop");
     player.setPlayerHealth(player.getPlayerHealth() - 15);
   }
 
