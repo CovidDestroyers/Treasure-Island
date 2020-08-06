@@ -3,32 +3,43 @@ package com.treasureisland.scene;
 import com.treasureisland.TreasureIslandGameplay;
 
 import com.treasureisland.player.Player;
+import java.util.Scanner;
 
 public class CrimsonBeachBar extends Scene {
 
-  private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
-  private Player player = Player.getInstance();
+  public CrimsonBeachBar(String sceneName) {
+    super(sceneName);
+  }
 
+  /**
+   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
+   * start each Scene's story
+   *
+   * @param in
+   * @param player
+   * @throws InterruptedException
+   */
   @Override
-  public String getLocationName() {
-    return "Crimson Beach Bar";
+  public void enter(Scanner in, Player player) throws InterruptedException {
+
   }
 
   @Override
-  public void talkToNPC() {
-    game.storylineProgression("TI.txt", getLocationName(), "JStart", "JEnd");
+  public void talkToNPC(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "JStart", "JEnd");
+
     //TODO another clue added 9999 in RumDistillery.java. hash out which clue added.
     player.playerClues.add("999");
   }
 
   @Override
-  public void lookAroundLocation(){
-    game.storylineProgression("TI.txt", getLocationName(), "CBStart", "CBEnd");
+  public void lookAroundLocation(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "CBStart", "CBEnd");
   }
 
   @Override
-  public void investigateArea(){
-    game.storylineProgression("TI.txt", getLocationName(), "PTStart", "PTEnd");
+  public void investigateArea(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "PTStart", "PTEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 10);
   }
 

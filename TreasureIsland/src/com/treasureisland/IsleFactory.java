@@ -7,11 +7,11 @@ import com.treasureisland.scene.CrimsonBeachBar;
 import com.treasureisland.scene.DoubleCrossTavernCruces;
 import com.treasureisland.scene.DuskTillDawnSaloon;
 import com.treasureisland.scene.Graveyard;
-import com.treasureisland.scene.Scene;
 import com.treasureisland.scene.PawPawBeach;
 import com.treasureisland.scene.RoyalLodge;
 import com.treasureisland.scene.RumDistillery;
 import com.treasureisland.scene.SaintsLodgeCruces;
+import com.treasureisland.scene.Scene;
 import com.treasureisland.scene.ShipGraveyard;
 import com.treasureisland.scene.SouthendBeachCruces;
 import com.treasureisland.scene.SugarCaneField;
@@ -31,19 +31,19 @@ public class IsleFactory {
       // islandFactorySelection.equalsIgnoreCase("rumRunnerIsle") old implementation
       switch (direction.toLowerCase()) {
         case "n":
-          location = new RumDistillery();
+          location = new RumDistillery("Rum Distillery");
           break;
 
         case "s":
-          location = new CrimsonBeachBar();
+          location = new CrimsonBeachBar("Crimson Beach Bar");
           break;
 
         case "e":
-          location = new AbandonedDistillery();
+          location = new AbandonedDistillery("Abandoned distillery");
           break;
 
         case "w":
-          location = new SugarCaneField();
+          location = new SugarCaneField("Sugar cane field");
           break;
 
         default:
@@ -56,18 +56,18 @@ public class IsleFactory {
     if ("portRoyal".equalsIgnoreCase(islandFactorySelection)) {
       switch (direction.toLowerCase()) {
         case "n":
-          location = new RoyalLodge();
+          location = new RoyalLodge("Royal Lodge");
           break;
         case "s":
-          location = new ShipGraveyard();
+          location = new ShipGraveyard("Ship Graveyard");
           break;
 
         case "e":
-          location = new SunsetRestaurant();
+          location = new SunsetRestaurant("Sunset Restaurant");
           break;
 
         case "w":
-          location = new TikkiLounge();
+          location = new TikkiLounge("Tikki Lounge");
           break;
 
         default:
@@ -80,18 +80,18 @@ public class IsleFactory {
     if ("islacruces".equalsIgnoreCase(islandFactorySelection)) {
       switch (direction.toLowerCase()) {
         case "n":
-          location = new ChurchCruces();
+          location = new ChurchCruces("Church Cruces");
           break;
         case "s":
-          location = new SouthendBeachCruces();
+          location = new SouthendBeachCruces("Southend Beach");
           break;
 
         case "e":
-          location = new SaintsLodgeCruces();
+          location = new SaintsLodgeCruces("Saints Lodge");
           break;
 
         case "w":
-          location = new DoubleCrossTavernCruces();
+          location = new DoubleCrossTavernCruces("Double Cross Tavern");
           break;
 
         default:
@@ -104,18 +104,18 @@ public class IsleFactory {
     if ("islademuerta".equalsIgnoreCase(islandFactorySelection)) {
       switch (direction.toLowerCase()) {
         case "n":
-          location = new AbandonedHouse();
+          location = new AbandonedHouse("Abandoned House On The Hill");
           break;
         case "s":
-          location = new Graveyard();
+          location = new Graveyard("Graveyard");
           break;
 
         case "e":
-          location = new DuskTillDawnSaloon();
+          location = new DuskTillDawnSaloon("Dusk Till Dawn Saloon");
           break;
 
         case "w":
-          location = new PawPawBeach();
+          location = new PawPawBeach("Pawpaw Beach");
           break;
 
         default:

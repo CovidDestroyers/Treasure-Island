@@ -1,42 +1,50 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
+import java.util.Scanner;
 
 public class SaintsLodgeCruces extends Scene {
-    private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
-    private final Player player = Player.getInstance();
 
-    @Override
-    public String getLocationName() {
-        return "Saints Lodge";
-    }
+  private final Player player = new Player();
 
-    @Override
-    public void talkToNPC() {
-        System.out.println("Talking to npc at Saints Lodge");
+  public SaintsLodgeCruces(String sceneName) {
+    super(sceneName);
+  }
 
-        game.storylineProgression("TI.txt", getLocationName(), "SLStart", "SLStop");
-        player.setPlayerHealth(player.getPlayerHealth() - 30);
+  /**
+   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
+   * start each Scene's story
+   *
+   * @param in
+   * @param player
+   * @throws InterruptedException
+   */
+  @Override
+  public void enter(Scanner in, Player player) throws InterruptedException {}
 
-    }
+  @Override
+  public void talkToNPC(Player player) {
+    System.out.println("Talking to npc at Saints Lodge");
 
-    @Override
-    public void lookAroundLocation()  {
-        System.out.println("Looking around Saints Lodge");
-        game.storylineProgression("TI.txt", getLocationName(), "MRStart", "MRStop");
-        player.setPlayerHealth(player.getPlayerHealth() - 20);
-    }
+    // TODO: storylineProgrssion should be in the Scene class
+    storylineProgression("TI.txt", getSceneName(), "SLStart", "SLStop");
+    player.setPlayerHealth(player.getPlayerHealth() - 30);
+  }
 
-    @Override
-    public void investigateArea()  {
-        System.out.println("Investigating Saints Lodge");
-        game.storylineProgression("TI.txt", getLocationName(), "PAStart", "PAStop");
-        player.setPlayerHealth(player.getPlayerHealth() - 15);
-    }
+  @Override
+  public void lookAroundLocation(Player player) {
+    System.out.println("Looking around Saints Lodge");
+    storylineProgression("TI.txt", getSceneName(), "MRStart", "MRStop");
+    player.setPlayerHealth(player.getPlayerHealth() - 20);
+  }
 
-    @Override
-    public void vendor() {
+  @Override
+  public void investigateArea(Player player) {
+    System.out.println("Investigating Saints Lodge");
+    storylineProgression("TI.txt", getSceneName(), "PAStart", "PAStop");
+    player.setPlayerHealth(player.getPlayerHealth() - 15);
+  }
 
-    }
+  @Override
+  public void vendor() {}
 }

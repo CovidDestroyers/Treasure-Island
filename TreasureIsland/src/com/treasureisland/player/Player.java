@@ -33,7 +33,7 @@ public class Player implements Serializable {
   String input;
   transient Scanner scanner = new Scanner(System.in);
   private String playerName;
-  private Integer playerCoins = 0;
+  private Integer playerCoins = 10;
   private Integer playerHealth = 75;
   private SaveLoadGame saveLoadGame;
   /*
@@ -59,7 +59,7 @@ public class Player implements Serializable {
 
   public void iterateThroughPlayerClues() {
 
-    switch (player.location.getLocationName()) {
+    switch (this.location.getSceneName()) {
       case "Rum Distillery":
         System.out.println(
             "\napply wha' ye got"
@@ -162,7 +162,7 @@ public class Player implements Serializable {
     input = scanner.nextLine();
 
     if ("y".equalsIgnoreCase(input)) {
-      player.playerPurchase();
+      this.playerPurchase();
     }
     if ("n".equalsIgnoreCase(input)) {
       System.out.println("Bye");
@@ -177,51 +177,51 @@ public class Player implements Serializable {
       case "banana":
       case "b":
         System.out.println("You bought a banana");
-        player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("banana").getHealthValue());
-        player.itemManager(vendor.findByName("banana").getCost());
+        this.setPlayerHealth(
+            this.getPlayerHealth() + vendor.findByName("banana").getHealthValue());
+        this.itemManager(vendor.findByName("banana").getCost());
         break;
 
       case "apple":
       case "ap":
         Item anApple = vendor.findByName("apple");
         System.out.println("bought apple");
-        player.setPlayerHealth(player.getPlayerHealth() + anApple.getHealthValue());
+        this.setPlayerHealth(this.getPlayerHealth() + anApple.getHealthValue());
 
-        player.itemManager(anApple.getCost());
+        this.itemManager(anApple.getCost());
         break;
 
       case "rum":
       case "r":
         System.out.println("bought rum");
-        player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("rum").getHealthValue());
-        player.itemManager(vendor.findByName("rum").getCost());
+        this.setPlayerHealth(
+            this.getPlayerHealth() + vendor.findByName("rum").getHealthValue());
+        this.itemManager(vendor.findByName("rum").getCost());
         break;
 
       case "salted meat":
       case "sm":
-        player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("salted meat").getHealthValue());
-        player.itemManager(vendor.findByName("salted meat").getCost());
+        this.setPlayerHealth(
+            this.getPlayerHealth() + vendor.findByName("salted meat").getHealthValue());
+        this.itemManager(vendor.findByName("salted meat").getCost());
 
         System.out.println("You bought some salted meat! Would you like some ale to wash it down?");
         break;
 
       case "sea biscuits":
       case "sb":
-        player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("sea biscuits").getHealthValue());
-        player.itemManager(vendor.findByName("sea biscuits").getCost());
+        this.setPlayerHealth(
+            this.getPlayerHealth() + vendor.findByName("sea biscuits").getHealthValue());
+        this.itemManager(vendor.findByName("sea biscuits").getCost());
 
         System.out.println("You bought a delicious sea biscut!");
         break;
 
       case "ale":
       case "al":
-        player.setPlayerHealth(
-            player.getPlayerHealth() + vendor.findByName("ale").getHealthValue());
-        player.itemManager(vendor.findByName("ale").getCost());
+        this.setPlayerHealth(
+            this.getPlayerHealth() + vendor.findByName("ale").getHealthValue());
+        this.itemManager(vendor.findByName("ale").getCost());
 
         System.out.println("You bought some ale! Don't sail and drink!");
         break;
@@ -263,7 +263,7 @@ public class Player implements Serializable {
 
   /** Checks Player Health and prints out death art if player is dead. */
   public void playerHealthCheck() {
-    if (player.getPlayerHealth() <= 0) {
+    if (this.getPlayerHealth() <= 0) {
       playerDeathArt();
       playerDeathOptions();
     }
@@ -291,7 +291,7 @@ public class Player implements Serializable {
         "Where would you like to go?\n -Type \"N\": North\n -Type \"S\": South\n -Type \"W\": West\n -Type \"E\": East\n -Type \"Save\": Save Game";
 
     try {
-      while (!player.haveIslandItem) {
+      while (!this.haveIslandItem) {
         System.out.println(directionOptions);
 
         String direction = scanner.nextLine().trim();
@@ -305,8 +305,8 @@ public class Player implements Serializable {
           System.exit(0);
 
         } else {
-          player.location = IsleFactory.islandLocationFactory(direction, islandDestination);
-          System.out.println("\nYou are now at the " + player.location.getLocationName());
+          this.location = IsleFactory.islandLocationFactory(direction, islandDestination);
+          System.out.println("\nYou are now at the " + this.location.getSceneName());
           Thread.sleep(1000);
           playerInfoConsoleOutput();
           Thread.sleep(2000);
@@ -325,13 +325,9 @@ public class Player implements Serializable {
     }
   }
 
-  //  Scanner scanner = new Scanner(System.in);
-  //        System.out.println(ANSI_CYAN + "Type back to return." + ANSI_RESET);
-  //        scanner.next();
-
   public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
     String input = "";
-    TreasureIslandGameplay tig = new TreasureIslandGameplay();
+
     String interactionOptions =
         "\nWhat actions would you like to make?\n -Type \"T\": Talk\n -Type \"L\": Look Around\n -Type "
             + "\"I\": Investigate\n -Type \"C\": See Clues\n -Type \"E\": Exit This World\n";
@@ -355,24 +351,25 @@ public class Player implements Serializable {
       case "talk":
       case "t":
         playerInfoConsoleOutput();
-        location.talkToNPC();
+        location.talkToNPC(player);
         playerInteractionOptions(direction);
         break;
       case "look":
       case "l":
         playerInfoConsoleOutput();
-        location.lookAroundLocation();
+        location.lookAroundLocation(player);
         playerInteractionOptions(direction);
         break;
       case "investigate":
       case "i":
         playerInfoConsoleOutput();
-        location.investigateArea();
+        location.investigateArea(player);
         playerInteractionOptions(direction);
         break;
       case "clues":
       case "c":
         playerInfoConsoleOutput();
+        // TODO: Move this method into each Scene class
         iterateThroughPlayerClues();
         playerInteractionOptions(direction);
         break;
@@ -380,17 +377,10 @@ public class Player implements Serializable {
       case "v":
         playerInfoConsoleOutput();
         location.vendor();
+        player.playerVisitsVendor();
         playerInteractionOptions(direction);
         break;
 
-      case "depart":
-      case "d":
-        tig.depart();
-        break;
-      case "sail":
-      case "s":
-        tig.sail();
-        break;
       default:
         System.out.println("Invalid input, please try again.");
         playerInteractionOptions(input);
@@ -415,21 +405,21 @@ public class Player implements Serializable {
             + "Health"
             + Color.ANSI_RESET.getValue()
             + ": "
-            + +player.getPlayerHealth()
+            + this.getPlayerHealth()
             + "\n"
             + "     "
             + Color.ANSI_YELLOW.getValue()
             + "Coins"
             + Color.ANSI_RESET.getValue()
             + ": "
-            + player.getPlayerCoins()
+            + this.getPlayerCoins()
             + "\n"
             + "     "
             + Color.ANSI_GREEN.getValue()
             + "Current Location"
             + Color.ANSI_RESET.getValue()
             + ": "
-            + location.getLocationName()
+            + location.getSceneName()
             + "\n"
             + "___________________________________________________________");
   }
@@ -503,33 +493,20 @@ public class Player implements Serializable {
 
   @Override
   public String toString() {
-    return "Player{"
-        + "player="
-        + player
-        + ", vendorItems="
-        + vendorItems
-        + ", playerClues="
-        + playerClues
-        + ", clues="
-        + Arrays.toString(clues)
-        + ", location="
-        + location
-        + ", haveIslandItem="
-        + haveIslandItem
-        + ", scanner="
-        + scanner
-        + ", input='"
-        + input
-        + '\''
-        + ", playerName='"
-        + playerName
-        + '\''
-        + ", playerCoins="
-        + playerCoins
-        + ", playerHealth="
-        + playerHealth
-        + ", saveLoadGame="
-        + saveLoadGame
-        + '}';
+    return "Player{" +
+      "vendor=" + vendor +
+      ", vendorItems=" + vendorItems +
+      ", playerClues=" + playerClues +
+      ", clues=" + Arrays.toString(clues) +
+      ", location=" + location +
+      ", haveIslandItem=" + haveIslandItem +
+      ", input='" + input + '\'' +
+      ", scanner=" + scanner +
+      ", playerName='" + playerName + '\'' +
+      ", playerCoins=" + playerCoins +
+      ", playerHealth=" + playerHealth +
+      ", saveLoadGame=" + saveLoadGame +
+      ", crossBones='" + getCrossBones() + '\'' +
+      '}';
   }
 }

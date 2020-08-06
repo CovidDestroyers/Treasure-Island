@@ -1,43 +1,47 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
+import java.util.Scanner;
 
 public class DuskTillDawnSaloon extends Scene {
-    private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
-    private final Player player = Player.getInstance();
 
-    @Override
-    public String getLocationName() {
-        return "Dusk Till Dawn Saloon ";
-    }
+  public DuskTillDawnSaloon(String sceneName) {
+    super(sceneName);
+  }
 
-    @Override
-    public void talkToNPC(){
-        System.out.println("You're talking to a npc at Dusk Till Dawn Saloon.");
-        game.storylineProgression("TI.txt", getLocationName(), "FIStart", "FIStop");
+  /**
+   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
+   * start each Scene's story
+   *
+   * @param in
+   * @param player
+   * @throws InterruptedException
+   */
+  @Override
+  public void enter(Scanner in, Player player) throws InterruptedException {}
 
-    }
+  @Override
+  public void talkToNPC(Player player) {
+    System.out.println("You're talking to a npc at Dusk Till Dawn Saloon.");
+    storylineProgression("TI.txt", getSceneName(), "FIStart", "FIStop");
+  }
 
-    @Override
-    public void lookAroundLocation(){
-        game.storylineProgression("TI.txt", getLocationName(), "WCStart", "WCStop");
+  @Override
+  public void lookAroundLocation(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "WCStart", "WCStop");
+  }
 
-    }
+  @Override
+  public void investigateArea(Player player) {
+    System.out.println(" Searching the saloon, I found out that John has a key I may need.");
+    storylineProgression("TI.txt", getSceneName(), "KJStart", "KJStop");
 
-    @Override
-    public void investigateArea() {
-        System.out.println(" Searching the saloon, I found out that John has a key I may need.");
-        game.storylineProgression("TI.txt", getLocationName(), "KJStart", "KJStop");
-        player.setPlayerHealth(player.getPlayerHealth() - 20);
-        System.out.println(" But you also got the key needed for the Treasure Island");
-        player.haveIslandItem = true;
+    player.setPlayerHealth(player.getPlayerHealth() - 20);
+    // TODO: ITEMS -> Key
+    System.out.println(" But you also got the key needed for the Treasure Island");
+    player.haveIslandItem = true;
+  }
 
-
-    }
-
-    @Override
-    public void vendor() {
-
-    }
+  @Override
+  public void vendor() {}
 }

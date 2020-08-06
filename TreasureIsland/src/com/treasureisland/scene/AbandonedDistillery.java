@@ -1,37 +1,57 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
-
+import java.util.Scanner;
 
 public class AbandonedDistillery extends Scene {
-    private final TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
-    private final Player player = Player.getInstance();
 
-    @Override
-    public String getLocationName() {
-        return "Abandoned distillery";
-    }
+  /*
+   * =============================================
+   * ============= Constructors ==================
+   * =============================================
+   */
+  public AbandonedDistillery(String sceneName) {
+    super(sceneName);
+  }
 
-    @Override
-    public void talkToNPC(){
-        treasureIslandGameplay.storylineProgression("TI.txt", getLocationName(), "BGStart", "BGEnd");
-    }
+  /*
+   * =============================================
+   * =========== Business Methods ================
+   * =============================================
+   */
 
-    @Override
-    public void lookAroundLocation(){
-        treasureIslandGameplay.storylineProgression("TI.txt", getLocationName(), "DSStart", "DSEnd");
-        player.setPlayerHealth(player.getPlayerHealth() - 50);
-    }
+  /**
+   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
+   * start each Scene's story
+   *
+   * @param in
+   * @param player
+   * @throws InterruptedException
+   */
+  @Override
+  public void enter(Scanner in, Player player) throws InterruptedException {
+    setPlayer(player);
+  }
 
-    @Override
-    public void investigateArea(){
-        treasureIslandGameplay.storylineProgression("TI.txt", getLocationName(), "DRStart", "DREnd");
-    }
+  @Override
+  public void talkToNPC(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "BGStart", "BGEnd");
+  }
 
-    @Override
-    public void vendor() {
+  @Override
+  public void lookAroundLocation(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "DSStart", "DSEnd");
+    player.setPlayerHealth(player.getPlayerHealth() - 50);
+  }
 
-    }
+  @Override
+  public void investigateArea(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "DRStart", "DREnd");
+  }
+
+  @Override
+  public void vendor() {
+
+  }
 
 }

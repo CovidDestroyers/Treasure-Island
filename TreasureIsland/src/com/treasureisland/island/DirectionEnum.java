@@ -1,5 +1,5 @@
 package com.treasureisland.island;
 
 public enum DirectionEnum {
-    N, S, E, W
+    NORTH, SOUTH, EAST, WEST
 }

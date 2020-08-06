@@ -1,20 +1,19 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
 import java.util.Scanner;
 
 public class SouthendBeachCruces extends Scene {
-  private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
-  private final Player player = Player.getInstance();
 
-  @Override
-  public String getLocationName() {
-    return "Southend Beach";
+  public SouthendBeachCruces(String sceneName) {
+    super(sceneName);
   }
 
   @Override
-  public void talkToNPC() {
+  public void enter(Scanner in, Player player) throws InterruptedException {}
+
+  @Override
+  public void talkToNPC(Player player) {
     System.out.println("Talking to a npc Southend Beach");
     System.out.println("To unlock the lockpin you need to surrender the stolen item");
     Scanner scan = new Scanner(System.in);
@@ -22,20 +21,20 @@ public class SouthendBeachCruces extends Scene {
     if (input.equalsIgnoreCase("goblet")) {
       System.out.println("DING DING DING \n You have unlocked your third treasure piece.");
       player.haveIslandItem = true;
-      game.storylineProgression("TI.txt", getLocationName(), "FStart", "FStop");
+      storylineProgression("TI.txt", getSceneName(), "FStart", "FStop");
     }
   }
 
   @Override
-  public void lookAroundLocation() {
+  public void lookAroundLocation(Player player) {
     System.out.println("Looking around Southend Beach");
-    game.storylineProgression("TI.txt", getLocationName(), "SHStart", "SHStop");
+    storylineProgression("TI.txt", getSceneName(), "SHStart", "SHStop");
   }
 
   @Override
-  public void investigateArea() {
+  public void investigateArea(Player player) {
     System.out.println("Investigating Southend beach");
-    game.storylineProgression("TI.txt", getLocationName(), "GHStart", "GHStop");
+    storylineProgression("TI.txt", getSceneName(), "GHStart", "GHStop");
   }
 
   @Override

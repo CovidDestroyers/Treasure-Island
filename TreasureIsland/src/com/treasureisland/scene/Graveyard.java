@@ -1,40 +1,43 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
+import java.util.Scanner;
 
 public class Graveyard extends Scene {
-    private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
-    private final Player player = Player.getInstance();
 
-    @Override
-    public String getLocationName() {
-        return "Graveyard";
-    }
+  public Graveyard(String sceneName) {
+    super(sceneName);
+  }
 
-    @Override
-    public void talkToNPC()  {
-        System.out.println("After some persuasion my acquaintance took me to the graveyard.");
-        game.storylineProgression("TI.txt", getLocationName(), "CQStart", "CQStop");
-        player.setPlayerHealth(player.getPlayerHealth() - 5);
+  /**
+   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
+   * start each Scene's story
+   *
+   * @param in
+   * @param player
+   * @throws InterruptedException
+   */
+  @Override
+  public void enter(Scanner in, Player player) throws InterruptedException {}
 
-    }
+  @Override
+  public void talkToNPC(Player player) {
+    System.out.println("After some persuasion my acquaintance took me to the graveyard.");
+    storylineProgression("TI.txt", getSceneName(), "CQStart", "CQStop");
+    player.setPlayerHealth(player.getPlayerHealth() - 5);
+  }
 
-    @Override
-    public void lookAroundLocation()  {
-        game.storylineProgression("TI.txt", getLocationName(),"STStart", "STStop");
+  @Override
+  public void lookAroundLocation(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "STStart", "STStop");
+  }
 
-    }
+  @Override
+  public void investigateArea(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "BTStart", "BTStop");
+    player.playerCoinGenerator();
+  }
 
-    @Override
-    public void investigateArea()  {
-        game.storylineProgression("TI.txt", getLocationName(), "BTStart", "BTStop");
-        player.playerCoinGenerator();
-
-    }
-
-    @Override
-    public void vendor() {
-
-    }
+  @Override
+  public void vendor() {}
 }

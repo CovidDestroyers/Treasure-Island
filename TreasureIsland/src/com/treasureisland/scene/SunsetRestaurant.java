@@ -1,33 +1,43 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
+import java.util.Scanner;
 
 public class SunsetRestaurant extends Scene {
-  @Override
-  public String getLocationName() {
-    return "Sunset Restaurant";
+
+  /*
+   * =============================================
+   * ============= Constructors ==================
+   * =============================================
+   */
+  public SunsetRestaurant(String sceneName) {
+    super(sceneName);
   }
 
-  private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
-  private final Player player = Player.getInstance();
+  /*
+   * =============================================
+   * =========== Business Methods ================
+   * =============================================
+   */
+  @Override
+  public void enter(Scanner in, Player player) throws InterruptedException {}
 
   @Override
-  public void talkToNPC() {
+  public void talkToNPC(Player player) {
     System.out.println("Talking to a npc sunset restaurant");
-    game.storylineProgression("TI.txt", getLocationName(), "RNDStart", "RNDStop");
+    storylineProgression("TI.txt", getSceneName(), "RNDStart", "RNDStop");
   }
 
   @Override
-  public void lookAroundLocation() {
+  public void lookAroundLocation(Player player) {
     System.out.println("Looking around sunset restaurant");
-    game.storylineProgression("TI.txt", getLocationName(), "PSStart", "PSStop");
+    storylineProgression("TI.txt", getSceneName(), "PSStart", "PSStop");
   }
 
   @Override
-  public void investigateArea() {
+  public void investigateArea(Player player) {
     System.out.println("Investigating sunset restaurant");
-    game.storylineProgression("TI.txt", getLocationName(), "SLStart", "SLStop");
+    storylineProgression("TI.txt", getSceneName(), "SLStart", "SLStop");
   }
 
   @Override

@@ -1,62 +1,51 @@
 package com.treasureisland.scene;
-import com.treasureisland.TreasureIslandGameplay;
+
 import com.treasureisland.player.Player;
-
-
 import java.util.Scanner;
 
-
 public class RumDistillery extends Scene {
-    private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
-    private final Player player = Player.getInstance();
-    Scanner scanner = new Scanner(System.in);
-    String input;
 
+  public RumDistillery(String sceneName) {
+    super(sceneName);
+  }
 
-    @Override
-    public String getLocationName() {
-        return "Rum Distillery";
-    }
+  @Override
+  public String getSceneName() {
+    return "Rum Distillery";
+  }
 
-    @Override
-    public void talkToNPC(){
-        System.out.println("You're talking to a npc in rum distillery");
-        game.storylineProgression("TI.txt", getLocationName(), "RDStart", "RDEnd");
-        player.playerClues.add("For the last occurrence, look under drum that gives men courage." + "\n"
-        + "Speak the pirates favorite letter, your reward shall be even better");
-    }
+  /**
+   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
+   * start each Scene's story
+   *
+   * @param in
+   * @param player
+   * @throws InterruptedException
+   */
+  @Override
+  public void enter(Scanner in, Player player) throws InterruptedException {}
 
-    @Override
-    public void lookAroundLocation(){
-        game.storylineProgression("TI.txt", getLocationName(), "OCStart", "OCEnd");
-        player.playerCoinGenerator();
-//        player.setPlayerHealth(player.getPlayerHealth() - 20);
+  @Override
+  public void talkToNPC(Player player) {
+    System.out.println("You're talking to a npc in rum distillery");
+    storylineProgression("TI.txt", getSceneName(), "RDStart", "RDEnd");
+    player.playerClues.add(
+        "For the last occurrence, look under drum that gives men courage."
+            + "\n"
+            + "Speak the pirates favorite letter, your reward shall be even better");
+  }
 
-    }
+  @Override
+  public void lookAroundLocation(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "OCStart", "OCEnd");
+    player.playerCoinGenerator();
+  }
 
-    @Override
-    public void investigateArea() {
-        game.storylineProgression("TI.txt", getLocationName(), "MBStart", "MBEnd");
+  @Override
+  public void investigateArea(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "MBStart", "MBEnd");
+  }
 
-//        System.out.println("-- I am sure i will find something interesting here " +
-//                "\n-- " + player.getPlayerName() + " looked under the cask and found ....");
-//        System.out.println("Speak the answer of my favorite letter");
-//        input = scanner.nextLine();
-//        if("sea".equalsIgnoreCase(input)){
-//            System.out.println("\n--- Numbers start to appear and........I see 9999 etched on the bottom.");
-//            player.playerClues.add("9999");
-//        }
-//        else{
-//            System.out.println("Nothing of interest here");
-//        }
-
-
-    }
-
-    @Override
-    public void vendor() {
-
-    }
-
-
+  @Override
+  public void vendor() {}
 }

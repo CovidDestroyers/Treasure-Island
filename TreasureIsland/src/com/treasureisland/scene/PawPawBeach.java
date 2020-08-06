@@ -1,40 +1,34 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
+import java.util.Scanner;
 
 public class PawPawBeach extends Scene {
-    private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
-    private final Player player = Player.getInstance();
 
-    @Override
-    public String getLocationName() {
-        return "Pawpaw Beach";
-    }
+  public PawPawBeach(String sceneName) {
+    super(sceneName);
+  }
 
-    @Override
-    public void talkToNPC() {
-        System.out.println("A guy called Slimjaw has some interesting information but he was more interested in having a hot-dog eating competition");
-        game.storylineProgression("TI.txt", getLocationName(), "SJStart", "SJStop");
+  @Override
+  public void enter(Scanner in, Player player) throws InterruptedException {}
 
-    }
+  @Override
+  public void talkToNPC(Player player) {
+    System.out.println(
+        "A guy called Slimjaw has some interesting information but he was more interested in having a hot-dog eating competition");
+    storylineProgression("TI.txt", getSceneName(), "SJStart", "SJStop");
+  }
 
-    @Override
-    public void lookAroundLocation() {
-        game.storylineProgression("TI.txt", getLocationName(), "PMStart", "PMStop");
+  @Override
+  public void lookAroundLocation(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "PMStart", "PMStop");
+  }
 
+  @Override
+  public void investigateArea(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "CGStart", "CGStop");
+  }
 
-    }
-
-    @Override
-    public void investigateArea() {
-        game.storylineProgression("TI.txt", getLocationName(), "CGStart", "CGStop");
-
-
-    }
-
-    @Override
-    public void vendor() {
-
-    }
+  @Override
+  public void vendor() {}
 }

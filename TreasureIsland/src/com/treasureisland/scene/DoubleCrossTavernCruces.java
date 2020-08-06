@@ -1,39 +1,47 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
+import java.util.Scanner;
 
 public class DoubleCrossTavernCruces extends Scene {
-    private final TreasureIslandGameplay game = TreasureIslandGameplay.getInstance();
-    private final Player player = Player.getInstance();
 
-    @Override
-    public String getLocationName() {
-        return "Double Cross Tavern";
-    }
+  /*
+   * =============================================
+   * ============= Constructors ==================
+   * =============================================
+   */
+  public DoubleCrossTavernCruces(String sceneName) {
+    super(sceneName);
+  }
 
-    @Override
-    public void talkToNPC()  {
-        System.out.println("Talking to a npc at Double Cross Tavern");
-        game.storylineProgression("TI.txt", getLocationName(), "TCStart", "TCStop");
+  /**
+   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
+   * start each Scene's story
+   *
+   * @param in
+   * @param player
+   * @throws InterruptedException
+   */
+  @Override
+  public void enter(Scanner in, Player player) throws InterruptedException {}
 
-    }
+  @Override
+  public void talkToNPC(Player player) {
+    System.out.println("Talking to a npc at Double Cross Tavern");
+    storylineProgression("TI.txt", getSceneName(), "TCStart", "TCStop");
+  }
 
-    @Override
-    public void lookAroundLocation()  {
-        game.storylineProgression("TI.txt", getLocationName(), "BAStart", "BAStop");
+  @Override
+  public void lookAroundLocation(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "BAStart", "BAStop");
+  }
 
-    }
+  @Override
+  public void investigateArea(Player player) {
+    storylineProgression("TI.txt", getSceneName(), "DStart", "DStop");
+    player.playerCoinGenerator();
+  }
 
-    @Override
-    public void investigateArea() {
-        game.storylineProgression("TI.txt", getLocationName(), "DStart", "DStop");
-        player.playerCoinGenerator();
-
-    }
-
-    @Override
-    public void vendor() {
-
-    }
+  @Override
+  public void vendor() {}
 }

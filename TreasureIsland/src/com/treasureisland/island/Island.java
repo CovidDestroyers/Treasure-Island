@@ -1,6 +1,8 @@
 package com.treasureisland.island;
 
+import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
+import java.util.Scanner;
 
 public abstract class Island {
   private Island islandToTheNorth;
@@ -26,6 +28,16 @@ public abstract class Island {
    * =========== Business Methods ================
    * =============================================
    */
+
+  /**
+   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
+   * start each Scene's story
+   *
+   * @param in
+   * @param player
+   * @throws InterruptedException
+   */
+  public abstract void enter(Scanner in, Player player) throws InterruptedException;
 
   /**
    * @param direction
