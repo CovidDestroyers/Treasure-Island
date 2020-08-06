@@ -27,8 +27,8 @@ public class RumDistillery extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    System.out.println("You're talking to Sean Philippa in rum distillery");
-    storylineProgression("TI.txt", getSceneName(), "RDStart", "RDEnd");
+    System.out.println("You're talking to Sean Philippa in the Rum distillery");
+    storylineProgression("TI.txt","RDStart", "RDEnd");
     player.playerClues.add(
         "For the last occurrence, look under drum that gives men courage."
             + "\n"
@@ -37,13 +37,13 @@ public class RumDistillery extends Scene {
 
   @Override
   public void lookAroundLocation(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "OCStart", "OCEnd");
+    storylineProgression("TI.txt", "OCStart", "OCEnd");
     player.playerCoinGenerator();
   }
 
   @Override
   public void investigateArea(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "MBStart", "MBEnd");
+    storylineProgression("TI.txt", "MBStart", "MBEnd");
   }
 
   @Override

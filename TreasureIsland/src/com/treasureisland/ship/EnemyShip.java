@@ -29,7 +29,7 @@ public class EnemyShip implements java.io.Serializable {
     this.enemyShipHealth = enemyShipHealth;
   }
 
-  public void attackPlayerShip(PlayerShip playerShip) {
+  public void attackPlayerShip(PlayerShip playerShip) throws InterruptedException {
     Integer enemyAttackStrength = new Random().nextInt(100);
     System.out.println(
         enemyShipName
