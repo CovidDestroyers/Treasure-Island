@@ -12,7 +12,7 @@ public class TikkiLounge extends Scene {
   }
 
   @Override
-  public void enter(Scanner in, Player player) throws InterruptedException {
+  public void enter(Player player) throws InterruptedException {
     this.in = in;
   }
 
@@ -28,7 +28,7 @@ public class TikkiLounge extends Scene {
               + "DING DING DING"
               + Color.ANSI_RESET.getValue()
               + "\n You have unlocked your second treasure piece.");
-      player.haveIslandItem = true;
+      player.setHasIslandItem(true);
     } else {
       System.out.println(
           "To get the code, you must do side quest talk to npc in \"Ship Graveyard\"");
@@ -48,11 +48,11 @@ public class TikkiLounge extends Scene {
     // TODO: ITEMS -> More keys
     System.out.println("You got one of the keys needed for the Treasure Island");
     player.playerCoinGenerator();
-    player.haveIslandItem = true;
+    player.setHasIslandItem(true);
   }
 
   @Override
-  public void vendor() {
-    // player.playerVisitsVendor();
+  public void vendor(Player player) {
+    player.playerVisitsVendor();
   }
 }

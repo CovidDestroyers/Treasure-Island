@@ -1,5 +1,6 @@
 package com.treasureisland.player;
 
+import com.treasureisland.OnlyOneScanner;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,10 +11,9 @@ public class PirateFightSequence {
    * ============= Variable Declarations =========
    * =============================================
    */
+  String input;
   public Pirate pirate = Pirate.getInstance();
-
-  public transient Scanner scanner = new Scanner(System.in);
-  public String input;
+  public transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   private static final PirateFightSequence pirateFightSequence = new PirateFightSequence();
 
 

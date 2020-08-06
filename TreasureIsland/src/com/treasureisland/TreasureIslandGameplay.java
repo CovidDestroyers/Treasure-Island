@@ -18,9 +18,9 @@ public class TreasureIslandGameplay implements Serializable {
   private final Island islaCruces;
   private final Island islaDeMuerta;
 
-  private final Player player;
-  private final ShipBattleSequence shipBattleSequence = ShipBattleSequence.getInstance();
-  transient Scanner scanner = new Scanner(System.in);
+  private Player player;
+  private final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
+  private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   String input;
   public static TreasureIslandGameplay treasureIslandGameplay;
 
@@ -31,7 +31,7 @@ public class TreasureIslandGameplay implements Serializable {
    */
 
   public TreasureIslandGameplay() {
-    player = Player.getInstance();
+    player = new Player();
     rumRunnerIsle = new RumRunnerIsle();
     portRoyal = new PortRoyal();
     islaCruces = new IslaCruces();
@@ -56,8 +56,8 @@ public class TreasureIslandGameplay implements Serializable {
    * =============================================
    */
 
-  public void start(Scanner in) throws InterruptedException {
-    scanner = in;
+  public void start() throws InterruptedException {
+    customGameplayOptions();
   }
 
   public void customGameplayOptions() throws InterruptedException {
@@ -69,21 +69,21 @@ public class TreasureIslandGameplay implements Serializable {
       System.out.println("Would you like to play the full game<F>, or play on a sample island<S>?");
     }
 
-    input = scanner.nextLine();
-    if ("l".equalsIgnoreCase(input)) {
+    input = scanner.nextLine().trim().toLowerCase();
+    if ("l".equals(input)) {
       treasureIslandGameplay = SaveLoadGame.loadGame();
       System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
-      System.out.println("Location: " + treasureIslandGameplay.player.location.getSceneName());
+      System.out.println("Location: " + treasureIslandGameplay.player.getCurrentScene().getSceneName());
       System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
       System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
 
       rumRunnerIsle();
-    } else if ("f".equalsIgnoreCase(input)) {
+    } else if ("f".equals(input)) {
       if (gameState.exists()) {
         gameState.delete();
       }
       chosePlayerName();
-    } else if ("s".equalsIgnoreCase(input)) {
+    } else if ("s".equals(input)) {
       if (gameState.exists()) {
         gameState.delete();
       }
@@ -136,8 +136,8 @@ public class TreasureIslandGameplay implements Serializable {
       System.out.println("Leaving Rum Runners Isle \n \n");
       leavingIslandShipPrint();
       Thread.sleep(5000);
-      player.haveIslandItem = false;
-      ShipBattleSequence.getInstance().shipBattleafterLeavingIsland();
+      player.setHasIslandItem(false);
+      shipBattleSequence.shipBattleafterLeavingIsland(scanner);
       portRoyal();
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -150,8 +150,8 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("Leaving Port Royal Isle \n \n");
     leavingIslandShipPrint();
     Thread.sleep(5000);
-    player.haveIslandItem = false;
-    ShipBattleSequence.getInstance().shipBattleafterLeavingIsland();
+    player.setHasIslandItem(false);
+    shipBattleSequence.shipBattleafterLeavingIsland(scanner);
     islaCruces();
   }
 
@@ -161,8 +161,8 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("Leaving Isla Cruces \n \n");
     leavingIslandShipPrint();
     Thread.sleep(5000);
-    player.haveIslandItem = false;
-    ShipBattleSequence.getInstance().shipBattleafterLeavingIsland();
+    player.setHasIslandItem(false);
+    shipBattleSequence.shipBattleafterLeavingIsland(scanner);
 
     islaDeMuerta();
   }

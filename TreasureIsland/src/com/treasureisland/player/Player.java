@@ -1,8 +1,10 @@
 package com.treasureisland.player;
 
 import com.treasureisland.IsleFactory;
+import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.SaveLoadGame;
 import com.treasureisland.TreasureIslandGameplay;
+import com.treasureisland.island.Island;
 import com.treasureisland.items.Item;
 import com.treasureisland.items.Vendor;
 import com.treasureisland.scene.Scene;
@@ -15,7 +17,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Player implements Serializable {
-  private static Player player;
 
   private final Vendor vendor = new Vendor();
   private final List<Item> vendorItems = vendor.getVendorItems();
@@ -28,15 +29,19 @@ public class Player implements Serializable {
     "Go " + Color.ANSI_BLUE.getValue() + "East" + Color.ANSI_RESET.getValue()
   };
 
-  public Scene location;
-  public Boolean haveIslandItem = false;
-  String input;
-  transient Scanner scanner = new Scanner(System.in);
   private String playerName;
+
+  private Scene currentScene;
+  private Island currentIsland;
+
+  private Boolean hasIslandItem = false;
   private Integer playerCoins = 10;
   private Integer playerHealth = 75;
-  public Integer playerAttackStrength = new Random().nextInt(75);
+  private Integer playerAttackStrength = new Random().nextInt(75);
   private SaveLoadGame saveLoadGame;
+
+  private String input;
+  private transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
 
   /*
    * =============================================
@@ -44,14 +49,6 @@ public class Player implements Serializable {
    * =============================================
    */
   public Player() {}
-
-  public static Player getInstance() {
-    if (player == null) {
-      player = new Player();
-    }
-
-    return player;
-  }
 
   /*
    * =============================================
@@ -61,7 +58,7 @@ public class Player implements Serializable {
 
   public void iterateThroughPlayerClues() {
 
-    switch (this.location.getSceneName()) {
+    switch (this.currentScene.getSceneName()) {
       case "Rum Distillery":
         System.out.println(
             "\napply wha' ye got"
@@ -179,8 +176,7 @@ public class Player implements Serializable {
       case "banana":
       case "b":
         System.out.println("You bought a banana");
-        this.setPlayerHealth(
-            this.getPlayerHealth() + vendor.findByName("banana").getHealthValue());
+        this.setPlayerHealth(this.getPlayerHealth() + vendor.findByName("banana").getHealthValue());
         this.itemManager(vendor.findByName("banana").getCost());
         break;
 
@@ -196,8 +192,7 @@ public class Player implements Serializable {
       case "rum":
       case "r":
         System.out.println("bought rum");
-        this.setPlayerHealth(
-            this.getPlayerHealth() + vendor.findByName("rum").getHealthValue());
+        this.setPlayerHealth(this.getPlayerHealth() + vendor.findByName("rum").getHealthValue());
         this.itemManager(vendor.findByName("rum").getCost());
         break;
 
@@ -221,8 +216,7 @@ public class Player implements Serializable {
 
       case "ale":
       case "al":
-        this.setPlayerHealth(
-            this.getPlayerHealth() + vendor.findByName("ale").getHealthValue());
+        this.setPlayerHealth(this.getPlayerHealth() + vendor.findByName("ale").getHealthValue());
         this.itemManager(vendor.findByName("ale").getCost());
 
         System.out.println("You bought some ale! Don't sail and drink!");
@@ -278,7 +272,7 @@ public class Player implements Serializable {
     input = scanner.nextLine().trim().toLowerCase();
 
     if ("y".equals(input) || "yes".equals(input)) {
-      //TreasureIslandGameplay.getInstance().chosePlayerName();
+      // TreasureIslandGameplay.getInstance().chosePlayerName();
       new TreasureIslandGameplay().chosePlayerName();
     } else if ("n".equals(input) || "no".equals(input)) {
       System.out.println("Thank you for playing");
@@ -295,7 +289,7 @@ public class Player implements Serializable {
         "Where would you like to go?\n -Type \"N\": North\n -Type \"S\": South\n -Type \"W\": West\n -Type \"E\": East\n -Type \"Save\": Save Game";
 
     try {
-      while (!this.haveIslandItem) {
+      while (!this.hasIslandItem) {
         System.out.println(directionOptions);
 
         String direction = scanner.nextLine().trim();
@@ -310,8 +304,8 @@ public class Player implements Serializable {
           System.exit(0);
 
         } else {
-          this.location = IsleFactory.islandLocationFactory(direction, islandDestination);
-          System.out.println("\nYou are now at the " + this.location.getSceneName());
+          this.currentScene = IsleFactory.islandLocationFactory(direction, islandDestination);
+          System.out.println("\nYou are now at the " + this.currentScene.getSceneName());
           Thread.sleep(1000);
           playerInfoConsoleOutput();
           Thread.sleep(2000);
@@ -356,19 +350,19 @@ public class Player implements Serializable {
       case "talk":
       case "t":
         playerInfoConsoleOutput();
-        location.talkToNPC(player);
+        currentScene.talkToNPC(this);
         playerInteractionOptions(direction);
         break;
       case "look":
       case "l":
         playerInfoConsoleOutput();
-        location.lookAroundLocation(player);
+        currentScene.lookAroundLocation(this);
         playerInteractionOptions(direction);
         break;
       case "investigate":
       case "i":
         playerInfoConsoleOutput();
-        location.investigateArea(player);
+        currentScene.investigateArea(this);
         playerInteractionOptions(direction);
         break;
       case "clues":
@@ -381,8 +375,8 @@ public class Player implements Serializable {
       case "vendor":
       case "v":
         playerInfoConsoleOutput();
-        location.vendor();
-        player.playerVisitsVendor();
+        currentScene.vendor(this);
+        playerVisitsVendor();
         playerInteractionOptions(direction);
         break;
       case "exit":
@@ -399,7 +393,11 @@ public class Player implements Serializable {
     System.out.println(
         "\n" + Color.ANSI_RED.getValue() + getCrossBones() + Color.ANSI_RESET.getValue());
 
-    System.out.println(Color.ANSI_RED.getValue() + Color.ANSI_BOLD.getValue() + "You dead!" + Color.ANSI_RESET.getValue());
+    System.out.println(
+        Color.ANSI_RED.getValue()
+            + Color.ANSI_BOLD.getValue()
+            + "You dead!"
+            + Color.ANSI_RESET.getValue());
   }
 
   public void playerInfoConsoleOutput() {
@@ -426,20 +424,25 @@ public class Player implements Serializable {
             + "Current Location"
             + Color.ANSI_RESET.getValue()
             + ": "
-            + location.getSceneName()
+            + currentScene.getSceneName()
             + "\n"
             + "___________________________________________________________");
   }
 
   // Player and Pirate Fight Sequence
   public void attackPirate(Pirate pirate) {
-    System.out.println("\n" +
-        Color.ANSI_GREEN.getValue() + getPlayerName() + Color.ANSI_RESET.getValue()
-        + " attacked "
-        + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue()
-        + " for "
-        + playerAttackStrength
-        + " damage.");
+    System.out.println(
+        "\n"
+            + Color.ANSI_GREEN.getValue()
+            + getPlayerName()
+            + Color.ANSI_RESET.getValue()
+            + " attacked "
+            + Color.ANSI_RED.getValue()
+            + pirate.getPirateName()
+            + Color.ANSI_RESET.getValue()
+            + " for "
+            + playerAttackStrength
+            + " damage.");
     pirate.setPirateHealth(pirate.getPirateHealth() - playerAttackStrength);
 
     if (pirate.getPirateHealth() <= 0) {
@@ -450,45 +453,55 @@ public class Player implements Serializable {
   public void defendPlayer(Pirate pirate) {
     int result = pirate.pirateAttackStrength - getPlayerHealth();
     if (result <= 0) {
-      System.out.println(Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() + " did no damage.");
+      System.out.println(
+          Color.ANSI_RED.getValue()
+              + pirate.getPirateName()
+              + Color.ANSI_RESET.getValue()
+              + " did no damage.");
     } else {
       setPlayerHealth(getPlayerHealth() - result);
-      System.out.println(Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() + " did " + result + " damage");
+      System.out.println(
+          Color.ANSI_RED.getValue()
+              + pirate.getPirateName()
+              + Color.ANSI_RESET.getValue()
+              + " did "
+              + result
+              + " damage");
     }
   }
 
   public String getCrossBones() {
     return "                     .ed\"\"\"\" \"\"\"$$$$be.\n"
-      + "                   -\"           ^\"\"**$$$e.\n"
-      + "                 .\"                   '$$$c\n"
-      + "                /                      \"4$$b\n"
-      + "               d  3                      $$$$\n"
-      + "               $  *                   .$$$$$$\n"
-      + "              .$  ^c           $$$$$e$$$$$$$$.\n"
-      + "              d$L  4.         4$$$$$$$$$$$$$$b\n"
-      + "              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$\n"
-      + "  e$\"\"=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$\n"
-      + " z$$b. ^c     3$$$F \"$$$$b   $\"$$$$$$$  $$$$*\"      .=\"\"$c\n"
-      + "4$$$$L        $$P\"  \"$$b   .$ $$$$$...e$$        .=  e$$$.\n"
-      + "^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$\n"
-      + "  \"**$$$ec   \"   %ce\"\"    $$$  $$$$$$$$$$*    .r\" =$$$$P\"\"\n"
-      + "        \"*$b.  \"c  *$e.    *** d$$$$$\"L$$    .d\"  e$$***\"\n"
-      + "          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*\".eeP\"\n"
-      + "             \"$$$$$$\"'$=e....$*$$**$cz$$\" \"..d$*\"\n"
-      + "               \"*$$$  *=%4.$ L L$ P3$$$F $$$P\"\n"
-      + "                  \"$   \"%*ebJLzb$e$$$$$b $P\"\n"
-      + "                    %..      4$$$$$$$$$$ \"\n"
-      + "                     $$$e   z$$$$$$$$$$%\n"
-      + "                      \"*$c  \"$$$$$$$P\"\n"
-      + "                       .\"\"\"*$$$$$$$$bc\n"
-      + "                    .-\"    .$***$$$\"\"\"*e.\n"
-      + "                 .-\"    .e$\"     \"*$c  ^*b.\n"
-      + "          .=*\"\"\"\"    .e$*\"          \"*bc  \"*$e..\n"
-      + "        .$\"        .z*\"               ^*$e.   \"*****e.\n"
-      + "        $$ee$c   .d\"                     \"*$.        3.\n"
-      + "        ^*$E\")$..$\"                         *   .ee==d%\n"
-      + "           $.d$$$*                           *  J$$$e*\n"
-      + "            \"\"\"\"\"                              \"$$$\"";
+        + "                   -\"           ^\"\"**$$$e.\n"
+        + "                 .\"                   '$$$c\n"
+        + "                /                      \"4$$b\n"
+        + "               d  3                      $$$$\n"
+        + "               $  *                   .$$$$$$\n"
+        + "              .$  ^c           $$$$$e$$$$$$$$.\n"
+        + "              d$L  4.         4$$$$$$$$$$$$$$b\n"
+        + "              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$\n"
+        + "  e$\"\"=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$\n"
+        + " z$$b. ^c     3$$$F \"$$$$b   $\"$$$$$$$  $$$$*\"      .=\"\"$c\n"
+        + "4$$$$L        $$P\"  \"$$b   .$ $$$$$...e$$        .=  e$$$.\n"
+        + "^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$\n"
+        + "  \"**$$$ec   \"   %ce\"\"    $$$  $$$$$$$$$$*    .r\" =$$$$P\"\"\n"
+        + "        \"*$b.  \"c  *$e.    *** d$$$$$\"L$$    .d\"  e$$***\"\n"
+        + "          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*\".eeP\"\n"
+        + "             \"$$$$$$\"'$=e....$*$$**$cz$$\" \"..d$*\"\n"
+        + "               \"*$$$  *=%4.$ L L$ P3$$$F $$$P\"\n"
+        + "                  \"$   \"%*ebJLzb$e$$$$$b $P\"\n"
+        + "                    %..      4$$$$$$$$$$ \"\n"
+        + "                     $$$e   z$$$$$$$$$$%\n"
+        + "                      \"*$c  \"$$$$$$$P\"\n"
+        + "                       .\"\"\"*$$$$$$$$bc\n"
+        + "                    .-\"    .$***$$$\"\"\"*e.\n"
+        + "                 .-\"    .e$\"     \"*$c  ^*b.\n"
+        + "          .=*\"\"\"\"    .e$*\"          \"*bc  \"*$e..\n"
+        + "        .$\"        .z*\"               ^*$e.   \"*****e.\n"
+        + "        $$ee$c   .d\"                     \"*$.        3.\n"
+        + "        ^*$E\")$..$\"                         *   .ee==d%\n"
+        + "           $.d$$$*                           *  J$$$e*\n"
+        + "            \"\"\"\"\"                              \"$$$\"";
   }
 
   /*
@@ -511,7 +524,15 @@ public class Player implements Serializable {
     this.playerCoins = playerCoins;
   }
 
+  public void setCurrentIsland(Island currentIsland) {
+    this.currentIsland = currentIsland;
+  }
+
   // GET METHODS
+  public Island getCurrentIsland() {
+    return currentIsland;
+  }
+
   public Integer getPlayerHealth() {
     return this.playerHealth;
   }
@@ -524,22 +545,90 @@ public class Player implements Serializable {
     return this.playerName;
   }
 
+  public Scene getCurrentScene() {
+    return currentScene;
+  }
+
+  public void setCurrentScene(Scene currentScene) {
+    this.currentScene = currentScene;
+  }
+
+  public Boolean getHasIslandItem() {
+    return hasIslandItem;
+  }
+
+  public void setHasIslandItem(Boolean hasIslandItem) {
+    this.hasIslandItem = hasIslandItem;
+  }
+
+  public void setPlayerCoins(Integer playerCoins) {
+    this.playerCoins = playerCoins;
+  }
+
+  public Integer getPlayerAttackStrength() {
+    return playerAttackStrength;
+  }
+
+  public void setPlayerAttackStrength(Integer playerAttackStrength) {
+    this.playerAttackStrength = playerAttackStrength;
+  }
+
+  public SaveLoadGame getSaveLoadGame() {
+    return saveLoadGame;
+  }
+
+  public void setSaveLoadGame(SaveLoadGame saveLoadGame) {
+    this.saveLoadGame = saveLoadGame;
+  }
+
+  public String getInput() {
+    return input;
+  }
+
+  public void setInput(String input) {
+    this.input = input;
+  }
+
+  public Scanner getScanner() {
+    return scanner;
+  }
+
+  public void setScanner(Scanner scanner) {
+    this.scanner = scanner;
+  }
+
   @Override
   public String toString() {
-    return "Player{" +
-      "vendor=" + vendor +
-      ", vendorItems=" + vendorItems +
-      ", playerClues=" + playerClues +
-      ", clues=" + Arrays.toString(clues) +
-      ", location=" + location +
-      ", haveIslandItem=" + haveIslandItem +
-      ", input='" + input + '\'' +
-      ", scanner=" + scanner +
-      ", playerName='" + playerName + '\'' +
-      ", playerCoins=" + playerCoins +
-      ", playerHealth=" + playerHealth +
-      ", saveLoadGame=" + saveLoadGame +
-      ", crossBones='" + getCrossBones() + '\'' +
-      '}';
+    return "Player{"
+        + "vendor="
+        + vendor
+        + ", vendorItems="
+        + vendorItems
+        + ", playerClues="
+        + playerClues
+        + ", clues="
+        + Arrays.toString(clues)
+        + ", currentScene="
+        + currentScene
+        + ", hasIslandItem="
+        + hasIslandItem
+        + ", input='"
+        + input
+        + '\''
+        + ", scanner="
+        + scanner
+        + ", playerName='"
+        + playerName
+        + '\''
+        + ", playerCoins="
+        + playerCoins
+        + ", playerHealth="
+        + playerHealth
+        + ", saveLoadGame="
+        + saveLoadGame
+        + ", crossBones='"
+        + getCrossBones()
+        + '\''
+        + '}';
   }
 }

@@ -12,9 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class ConsoleController {
-  Player player = Player.getInstance();
-  TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
-
   JFrame window;
   Container container;
   JPanel titleNamePanel, gamePanel, mainTextPanel;

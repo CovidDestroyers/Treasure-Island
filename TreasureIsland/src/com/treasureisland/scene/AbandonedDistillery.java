@@ -1,7 +1,6 @@
 package com.treasureisland.scene;
 
 import com.treasureisland.player.Player;
-import java.util.Scanner;
 
 public class AbandonedDistillery extends Scene {
 
@@ -24,12 +23,11 @@ public class AbandonedDistillery extends Scene {
    * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
    * start each Scene's story
    *
-   * @param in
    * @param player
    * @throws InterruptedException
    */
   @Override
-  public void enter(Scanner in, Player player) throws InterruptedException {
+  public void enter(Player player) throws InterruptedException {
   }
 
   @Override
@@ -49,7 +47,7 @@ public class AbandonedDistillery extends Scene {
   }
 
   @Override
-  public void vendor() {
+  public void vendor(Player player) {
 
   }
 

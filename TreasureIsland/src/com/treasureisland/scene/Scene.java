@@ -1,5 +1,6 @@
 package com.treasureisland.scene;
 
+import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.island.DirectionEnum;
 import com.treasureisland.player.Player;
 import java.io.File;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 public abstract class Scene implements Serializable {
   protected String sceneName;
   protected String storyFileName = "TI.txt";
+  protected Scanner scanner = OnlyOneScanner.getTheOneScanner();
 
   DirectionEnum direction;
 
@@ -32,11 +34,10 @@ public abstract class Scene implements Serializable {
    * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
    * start each Scene's story
    *
-   * @param in
    * @param player
    * @throws InterruptedException
    */
-  public abstract void enter(Scanner in, Player player) throws InterruptedException;
+  public abstract void enter(Player player) throws InterruptedException;
 
 
   public void talkToNPC(Player player) {
@@ -51,13 +52,12 @@ public abstract class Scene implements Serializable {
 
   public abstract void investigateArea(Player player) throws InterruptedException;
 
-  public abstract void vendor();
+  public abstract void vendor(Player player);
 
 
   /**
    *
    * @param fileName
-   * @param location
    * @param start
    * @param stop
    */
@@ -91,7 +91,7 @@ public abstract class Scene implements Serializable {
         }
       }
 
-      // myReader.close();
+      myReader.close();
     } catch (IOException | InterruptedException e) {
       e.printStackTrace();
     }

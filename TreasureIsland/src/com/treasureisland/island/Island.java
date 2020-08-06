@@ -6,15 +6,15 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public abstract class Island implements Serializable {
-  private Island islandToTheNorth;
-  private Island islandToTheSouth;
-  private Island islandToTheEast;
-  private Island islandToTheWest;
+  protected Island islandToTheNorth;
+  protected Island islandToTheSouth;
+  protected Island islandToTheEast;
+  protected Island islandToTheWest;
 
-  private Scene northScene;
-  private Scene southScene;
-  private Scene eastScene;
-  private Scene westScene;
+  protected Scene northScene;
+  protected Scene southScene;
+  protected Scene eastScene;
+  protected Scene westScene;
 
   /*
    * =============================================
@@ -45,19 +45,20 @@ public abstract class Island implements Serializable {
    * @return
    */
   public Island changeIsland(String direction) {
+    String sanitizedDirection = direction.trim().toLowerCase();
     Island nextIsland = null;
 
-    if ("north".equals(direction)) {
-      nextIsland = islandToTheNorth;
+    if ("north".equals(sanitizedDirection)) {
+      nextIsland = getIslandToTheNorth();
 
-    } else if ("east".equals(direction)) {
-      nextIsland = islandToTheEast;
+    } else if ("east".equals(sanitizedDirection)) {
+      nextIsland = getIslandToTheEast();
 
-    } else if ("south".equals(direction)) {
-      nextIsland = islandToTheSouth;
+    } else if ("south".equals(sanitizedDirection)) {
+      nextIsland = getIslandToTheSouth();
 
-    } else if ("west".equals(direction)) {
-      nextIsland = islandToTheWest;
+    } else if ("west".equals(sanitizedDirection)) {
+      nextIsland = getIslandToTheWest();
 
     } else {
       System.out.println("Error: unknown direction " + direction);
