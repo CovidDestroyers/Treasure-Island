@@ -27,7 +27,7 @@ public class DoubleCrossTavernCruces extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    System.out.println("Talking to a npc at Double Cross Tavern");
+    System.out.println("Talking to a Tony James at Double Cross Tavern");
     storylineProgression("TI.txt", getSceneName(), "TCStart", "TCStop");
   }
 

@@ -27,7 +27,7 @@ public class RumDistillery extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    System.out.println("You're talking to a npc in rum distillery");
+    System.out.println("You're talking to Sean Philippa in rum distillery");
     storylineProgression("TI.txt", getSceneName(), "RDStart", "RDEnd");
     player.playerClues.add(
         "For the last occurrence, look under drum that gives men courage."

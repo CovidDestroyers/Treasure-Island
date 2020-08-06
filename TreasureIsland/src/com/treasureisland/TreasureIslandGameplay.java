@@ -106,10 +106,19 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("\nWelcome, " + player.getPlayerName() + "\n \n");
 
     System.out.println(
-        "Ahoy matey, welcome to Rum Runners Isle!\n"
-            + "I hear ye be fed up with the pirate life and want to set off into the sun to never be seen again.\n"
-            + "Well I may have an just the adventure for you!\n"
-            + "Head on over to the rum distillery and grab a drink.");
+        "Ahoy matey!  \n" +
+          "Welcome to Treasure Isalnd....well you are not there yet.  You need to find it.\n" +
+          "I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!\n" +
+          "Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!\n" +
+          "\n" +
+          "All you need to do is find the diamond.\n" +
+          "\n" +
+          "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n" +
+          "the places.\n" +
+          "\n" +
+          "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n" +
+          "\n" +
+          "Your journey starts on Rum Runner Isle at the Rum Distillery.  Good luck!");
     // storylineProgression("GameIntroText.txt", "", "start", "stop");
     rumRunnerIsle();
   }
