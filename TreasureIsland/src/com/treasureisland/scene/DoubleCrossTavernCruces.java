@@ -28,17 +28,17 @@ public class DoubleCrossTavernCruces extends Scene {
   @Override
   public void talkToNPC(Player player) {
     System.out.println("Talking to a Tony James at Double Cross Tavern");
-    storylineProgression("TI.txt", getSceneName(), "TCStart", "TCStop");
+    storylineProgression("TI.txt",  "TCStart", "TCStop");
   }
 
   @Override
   public void lookAroundLocation(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "BAStart", "BAStop");
+    storylineProgression("TI.txt",  "BAStart", "BAStop");
   }
 
   @Override
   public void investigateArea(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "DStart", "DStop");
+    storylineProgression("TI.txt",  "DStart", "DStop");
     player.playerCoinGenerator();
   }
 

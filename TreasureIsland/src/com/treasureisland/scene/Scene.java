@@ -61,7 +61,7 @@ public abstract class Scene implements Serializable {
    * @param start
    * @param stop
    */
-  public void storylineProgression(String fileName, String location, String start, String stop) {
+  public void storylineProgression(String fileName, String start, String stop) {
     try {
       File myObj =
           new File(
@@ -69,7 +69,7 @@ public abstract class Scene implements Serializable {
                   + "/TreasureIsland/src/com/treasureisland/text/"
                   + fileName);
 
-      System.out.println(location);
+      //System.out.println(location);
 
       Scanner myReader = new Scanner(myObj);
       boolean tokenFound = false;

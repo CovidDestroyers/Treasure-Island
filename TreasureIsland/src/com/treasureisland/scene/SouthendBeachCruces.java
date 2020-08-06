@@ -21,20 +21,20 @@ public class SouthendBeachCruces extends Scene {
     if (input.equalsIgnoreCase("goblet")) {
       System.out.println("DING DING DING \n You have unlocked your third treasure piece.");
       player.haveIslandItem = true;
-      storylineProgression("TI.txt", getSceneName(), "FStart", "FStop");
+      storylineProgression("TI.txt",  "FStart", "FStop");
     }
   }
 
   @Override
   public void lookAroundLocation(Player player) {
     System.out.println("Looking around Southend Beach");
-    storylineProgression("TI.txt", getSceneName(), "SHStart", "SHStop");
+    storylineProgression("TI.txt",  "SHStart", "SHStop");
   }
 
   @Override
   public void investigateArea(Player player) {
     System.out.println("Investigating Southend beach");
-    storylineProgression("TI.txt", getSceneName(), "GHStart", "GHStop");
+    storylineProgression("TI.txt",  "GHStart", "GHStop");
   }
 
   @Override

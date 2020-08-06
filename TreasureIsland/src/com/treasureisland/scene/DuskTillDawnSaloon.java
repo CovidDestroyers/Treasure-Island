@@ -23,18 +23,18 @@ public class DuskTillDawnSaloon extends Scene {
   @Override
   public void talkToNPC(Player player) {
     System.out.println("You're talking to a npc at Dusk Till Dawn Saloon.");
-    storylineProgression("TI.txt", getSceneName(), "FIStart", "FIStop");
+    storylineProgression("TI.txt",  "FIStart", "FIStop");
   }
 
   @Override
   public void lookAroundLocation(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "WCStart", "WCStop");
+    storylineProgression("TI.txt",  "WCStart", "WCStop");
   }
 
   @Override
   public void investigateArea(Player player) {
     System.out.println(" Searching the saloon, I found out that John has a key I may need.");
-    storylineProgression("TI.txt", getSceneName(), "KJStart", "KJStop");
+    storylineProgression("TI.txt", "KJStart", "KJStop");
 
     player.setPlayerHealth(player.getPlayerHealth() - 20);
     // TODO: ITEMS -> Key

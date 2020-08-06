@@ -34,13 +34,13 @@ public class SugarCaneField extends Scene {
 
   @Override
   public void lookAroundLocation(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "WWStart", "WWEnd");
+    storylineProgression("TI.txt",  "WWStart", "WWEnd");
     player.playerCoinGenerator();
   }
 
   @Override
   public void investigateArea(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "SStart", "SEnd");
+    storylineProgression("TI.txt", "SStart", "SEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 5);
 
     // TODO decide what we want to do for the key. Will we need an object ArrayList to hold items?

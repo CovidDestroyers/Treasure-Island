@@ -23,18 +23,18 @@ public class Graveyard extends Scene {
   @Override
   public void talkToNPC(Player player) {
     System.out.println("After some persuasion my acquaintance took me to the graveyard.");
-    storylineProgression("TI.txt", getSceneName(), "CQStart", "CQStop");
+    storylineProgression("TI.txt", "CQStart", "CQStop");
     player.setPlayerHealth(player.getPlayerHealth() - 5);
   }
 
   @Override
   public void lookAroundLocation(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "STStart", "STStop");
+    storylineProgression("TI.txt",  "STStart", "STStop");
   }
 
   @Override
   public void investigateArea(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "BTStart", "BTStop");
+    storylineProgression("TI.txt", "BTStart", "BTStop");
     player.playerCoinGenerator();
   }
 

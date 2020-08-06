@@ -24,17 +24,17 @@ public class SunsetRestaurant extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "RNDStart", "RNDStop");
+    storylineProgression("TI.txt", "RNDStart", "RNDStop");
   }
 
   @Override
   public void lookAroundLocation(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "PStart", "PStop");
+    storylineProgression("TI.txt", "PStart", "PStop");
   }
 
   @Override
   public void investigateArea(Player player) {
-    storylineProgression("TI.txt", getSceneName(), "SLStart", "SLStop");
+    storylineProgression("TI.txt", "SLStart", "SLStop");
   }
 
   @Override
