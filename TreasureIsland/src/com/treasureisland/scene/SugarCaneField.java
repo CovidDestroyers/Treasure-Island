@@ -45,7 +45,7 @@ public class SugarCaneField extends Scene {
 
   @Override
   public void vendor(Player player) {
-    // player.playerVisitsVendor();
+    player.playerVisitsVendor();
   }
 
   /*

@@ -299,7 +299,6 @@ public class Player implements Serializable {
           System.out.println("We saved your game state!!");
           System.out.println("But You cannot run forever my friend. Black Beard will find you.");
           System.out.println("Sleep well for it may be your last night.");
-          //System.out.println(getCrossBones());
           System.out.println("Goodbye for now.");
           System.exit(0);
 
