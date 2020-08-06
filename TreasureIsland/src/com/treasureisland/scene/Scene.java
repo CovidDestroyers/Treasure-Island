@@ -49,7 +49,7 @@ public abstract class Scene implements Serializable {
 
   public abstract void lookAroundLocation(Player player);
 
-  public abstract void investigateArea(Player player);
+  public abstract void investigateArea(Player player) throws InterruptedException;
 
   public abstract void vendor();
 

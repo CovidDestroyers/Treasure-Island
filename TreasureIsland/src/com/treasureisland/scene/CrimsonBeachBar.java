@@ -40,10 +40,10 @@ public class CrimsonBeachBar extends Scene {
   }
 
   @Override
-  public void investigateArea(Player player) {
+  public void investigateArea(Player player) throws InterruptedException {
     storylineProgression("TI.txt",  "PTStart", "PTEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 10);
-    
+
     System.out.println("\n");
     PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
 
