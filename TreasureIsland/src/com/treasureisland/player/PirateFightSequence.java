@@ -34,7 +34,7 @@ public class PirateFightSequence {
    * ============= Business Methods ================
    * =============================================
    */
-  public void PlayerAndPirateFightSequence(Player player){
+  public void PlayerAndPirateFightSequence(Player player) throws InterruptedException {
       while(player.getPlayerHealth() > 0 && pirate.getPirateHealth() > 0){
         System.out.println("You encountered '" + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() + "'");
         System.out.println("Would you like to Attack<A> or Defend<D>??");
@@ -56,7 +56,7 @@ public class PirateFightSequence {
       pirate.setPirateHealth(pirate.getPirateHealth());
   }
 
-  public void enemyAction(Player player){
+  public void enemyAction(Player player) throws InterruptedException {
     Random rand = new Random();
     int result = rand.nextInt(10 - 1) + 1;
     if(pirate.getPirateHealth() > 0){
