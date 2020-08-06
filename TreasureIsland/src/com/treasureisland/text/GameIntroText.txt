@@ -1,6 +1,14 @@
 start
-Ahoy matey, welcome to Rum Runners Isle!
-I hear ye be fed up with the pirate life and want to set off into the sun to never be seen again.
-Well I may have an just the adventure for you!
-Head on over to the rum distillery and grab a drink.
+Ahoy matey!  Welcome to Treasure Isalnd....well you are not there yet.  You need to find it.
+I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!
+Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!
+
+All you need to do is find the diamond.
+
+Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between
+the places.
+
+The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.
+
+Your journey starts on Rum Runner Isle at the Rum Distillery.  Good luck!
 stop
