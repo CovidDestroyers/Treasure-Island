@@ -4,86 +4,84 @@ Rum Island
   1) Rum distillery
 
   RDStart
-      You talked with the store house owner.
-      and applied for the position of store manager, to gain access to the property.
-      I checked the left corner of the store house as soon as I got a chance.
-      There was a nothing unusual about the place other than the small patch on the wall,
-        like it was fixed.
-        I poked at the patch and it caved in a little bit. I looked inside and found . . .
-          Nothing!
+      he says to check the store house.
+      There was a nothing unusual about the place
+      other than the small patch on the wall,
+      like it was fixed.
+
+      You poke at the patch and it caved in a little bit.
+      When you look inside you found nothing!
   RDEnd
 
   UCStart
-    b) Under the cask marked 9999.
-        I am sure I will find something interesting there. I am sure of it.
-        I looked under the cask as soon as I got the chance and I found . . .
-          A snake!!
+    Under the cask marked 9999.
+    I am sure I will find something interesting there. I am sure of it.
+    I looked under the cask as soon as I got the chance and I found . . .
+    A snake!!
   UCEnd
 
   OCStart
-    c) At the bottom of the open cask by the main door.
-        I don't even remember as to how I got this clue!
-        But I can't ignore any clues. This treasure hunting is not easy.
-        As soon as I got the chance, I inconspicuously got to the main the door.
-        I checked the open cask and I could not see anything.
-        I put my hand into the cask to check the bottom of the cask with murky smelly liquid!
-        I felt something at the bottom of cask, I pulled it out . . .
-          It was a small sack of coins!
+    At the bottom of the open cask by the main door.
+    I don't even remember as to how I got this clue!
+    But I can't ignore any clues. This treasure hunting is not easy.
+    As soon as I got the chance, I inconspicuously got to the main the door.
+    I checked the open cask and I could not see anything.
+    I put my hand into the cask to check the bottom of the cask with murky smelly liquid!
+    I felt something at the bottom of cask, I pulled it out . . .
+    It was a small sack of coins!
   OCEnd
 
   MBStart
-    d) Ask master brewer for the Sunshine Rum sample.
-        This is the first thing I did, went straight to the master brewer.
-        I asked him " Can I get a sample of the Sunshine Rum"
-        MB - "You need what!" he replied with little surprised look on his face.
-        I repeated, can have some Sunshine rum?
-        MB grumbled something under his breath and disappeared for 10- 15 minutes,leaving me confused.
-        Finally he came back, gave me a clear looking liquid in a shot glass and asked me to drink up!
-        I looked at the shot glass and then back at MB, he was still staring at me!
-        I thought, whatever and drank up. I glanced at MB after taking the shot and he was still straining at me.
-        I finally asked, "Is that it?"
-        He kept staring at me for little more.
-        Then he finally passed me a envelop and said "I don't know how you know Great Joe but he told me to give this to the person asking for Sunshine Rum."
-          Received an envelop with a map inside. This is what we were looking for. Clues to the next island.
-    MBEnd
+    This is the first thing I did, went straight to the master brewer.
+    I asked him " Can I get a sample of the Sunshine Rum"
+    MB - "You need what!" he replied with little surprised look on his face.
+    I repeated, can have some Sunshine rum?
+    MB grumbled something under his breath and disappeared for 10- 15 minutes,leaving me confused.
+    Finally he came back, gave me a clear looking liquid in a shot glass and asked me to drink up!
+    I looked at the shot glass and then back at MB, he was still staring at me!
+    I thought, whatever and drank up. I glanced at MB after taking the shot and he was still straining at me.
+    I finally asked, "Is that it?"
+    He kept staring at me for little more.
+    Then he finally passed me a envelop and said "I don't know how you know Great Joe but he told me to give this to the person asking for Sunshine Rum."
+    Received an envelop with a map inside. This is what we were looking for. Clues to the next island.
+  MBEnd
 
 
 
   2) Sugar cane field
 
   WWStart
-    a) By the water well.
-        Found a spot that looked like it had been dug sometime back.
-        I dug around the same spot . . . .
+    Found a spot that looked like it had been dug sometime back.
+    I dug around the same spot . . . .
           and I found coins!
   WWEnd
 
   URStart
-    b) Under the big rock.
-        It took a day to scout the field, but I was able to find the biggest rock.
-        Ω didn't notice anything unusual around the bottom of this huge rock.
-        Should I look again?
-        I still found no sign of anything unusual near the bottom of rock but i didn't notice a small carving near the very bottom of the stone, an inch or so above the ground.
-        The carving looked like a scarecrow.
-        Found nothing else.
+
+    It took a day to scout the field, but I was able to find the biggest rock.
+    Ω didn't notice anything unusual around the bottom of this huge rock.
+    Should I look again?
+    I still found no sign of anything unusual near the bottom of rock but i didn't notice a small carving near the very bottom of the stone, an inch or so above the ground.
+    The carving looked like a scarecrow.
+    Found nothing else.
   UREnd
 
   SSStart
-    c) In the storage shed.
-        Luckily there is only one small storage shed.
-        It was filled with junk and didn't seem like it has been used in a while.
-        I started going through the junk and guess what I found. . .
-        Scorpion, in fact it found me!!
-          Health -5
+
+    Luckily there is only one small storage shed.
+    It was filled with junk and didn't seem like it has been used in a while.
+    I started going through the junk and guess what I found. . .
+    Scorpion, in fact it found me!!
+      Health -5
   SSEnd
 
   SStart
-    d) Check the scarecrow.
-        There are 5 scarecrows I counted across the fields and I looked way different than the others.
-        My pirate sense tells me that the different one holds a secret.
-        Upon the close examining of the scarecrow I found a . . .
-        . . . section on a stick that can be pulled out. In it was . . .
-          A key!
+
+    There are 5 scarecrows I counted across the fields and I looked way different than the others.
+    My pirate sense tells me that the different one holds a secret.
+    Upon the close examining of the scarecrow I found a . . .
+    . . . section on a stick that can be pulled out. In it was . . .
+      A key!
   SEnd
 
 
@@ -92,29 +90,28 @@ Rum Island
   3) Abandoned Distillery in the North.
 
   DSStart
-    a) By the distilling stills.
-        There are four of the stills and I am not sure where to begin.
-        I started with exploring around the stills and within walking few meters or so I found . . .
-        a weak spot on floor and I crashed to basement right through it!
-          Health -50
+
+    There are four of the stills and I am not sure where to begin.
+    I started with exploring around the stills and within walking few meters or so I found . . .
+    a weak spot on floor and I crashed to basement right through it!
+      Health -50
   DSEnd
 
   ORStart
-    b) In the manager's creepy old room.
-        The first thing I noticed is the big painting straight in front of the door.
-        Found a piece of paper with a title " Summon B" and instructions for summoning something!
+
+    The first thing I noticed is the big painting straight in front of the door.
+    Found a piece of paper with a title " Summon B" and instructions for summoning something!
   OREnd
 
   BGStart
-    c) Summon the brewers' ghost.
-        I guess that's what the paper I found was for.
-        I performed the instructions . . .
-          Nothing happens.
+
+    I guess that's what the paper I found was for.
+    I performed the instructions . . .
+      Nothing happens.
   BGEnd
 
   DRStart
-    d) Drink from rum crate by the big window to find the key.
-        All the bottles look like empty.
+        All the bottles look empty.
         But there seems to be little bit rum of left in one of the bottle.
         I took a sip from the bottle.
         When I was about to put the bottle back I found . . .
@@ -127,7 +124,6 @@ Rum Island
   4) Crimson Beach bar
 
   CBStart
-    a) Ask bartender for the Darkest Storm cocktail.
         It was early evening when I reached the bar.
         I went straight to the bar and ordered "Darkest Storm cocktail"
         I was hoping to get some sort of clue from the bartender after asking for the drink.
@@ -135,14 +131,12 @@ Rum Island
   CBEnd
 
   JStart
-    b) Ask to speak with Jojo for info.
         Jojo was an old friend and someone I can confide in.
         I told him about my plans but the only information he had for me was . . .
         To look out for a room somewhere on a different island and it has something to do with number 999.
   JEnd
 
   SJStart
-    c) Ask drunk Sam Jr.
         I decided to have one more drink and started chatting with Sam Jr.
         He a middle aged gentleman, who is a regular patron at the bar .
         Talking with him was interesting but it revealed . . .
@@ -150,7 +144,6 @@ Rum Island
   SJEnd
 
   PTStart
-    d) Search near the pair of palm trees.
         There were lot of trees around the bar.
         But there were only three which were in pairs.
         I examined all three and found . . .
@@ -164,7 +157,6 @@ Port Royal
   1)Royal Lodge
 
   R1Start
-    a) Room 101.
         I have heard various rumours about this room.
         I heard that there is a hidden map in this room
         Searching this room for the next few hours revealed . . .
@@ -172,21 +164,17 @@ Port Royal
   R1Stop
 
   BRStart
-    b) Steal the key hung in the breakfast room.
         While eating breakfast I noticed a key hung on the wall.
         I was able to find out that it is an old key that has been on that wall for years.
         I casually took of the key and examined it and then left it by my table.
         After finishing up my food I pretended to accidentally pick up the key in my pocket and tried to leave but . . .
         I got called out, I pretended it to be an accident and put the key back on the wall.
   BRStop
-
-    c) By the water fountain.
         It looked like a normal water fountain with a fish statue. People were sitting around it.
         I spent about 2 hours near that water fountain to find anything special but . . .
           found nothing.
 
   SRStart
-      d) Special room.
         This lodge had a special room, room 999!
         It seems like this room may hold some clues.
         I spent the whole night looking for clues from this room.
@@ -200,20 +188,17 @@ Port Royal
   2) Ship Graveyard
 
   SGStart
-    a) Biggest and most fragile ship.
         This was an old and abandoned legendary ship "High Tide".
         Exploring this I found a clue in journal . . .
           . . . about the meeting and a lost letter at the lounge.
   SGStop
 
   SBStart
-    b) The smallest boat.
         This boat looked to be in fixable shape.
-          Got a small boat for the main ship.
+        Got a small boat for the main ship.
   SBStop
 
   BBDStart
-    c) Open the box by the dock.
         This box looked old and worn down.
         Exploring the box I found
           coins
