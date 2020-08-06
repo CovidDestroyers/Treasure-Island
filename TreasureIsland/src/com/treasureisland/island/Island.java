@@ -2,9 +2,10 @@ package com.treasureisland.island;
 
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Island {
+public abstract class Island implements Serializable {
   private Island islandToTheNorth;
   private Island islandToTheSouth;
   private Island islandToTheEast;
