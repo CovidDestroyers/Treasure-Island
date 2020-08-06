@@ -31,7 +31,7 @@ public class TreasureIslandGameplay implements Serializable {
    */
 
   public TreasureIslandGameplay() {
-    player = new Player();
+    player = Player.getInstance();
     rumRunnerIsle = new RumRunnerIsle();
     portRoyal = new PortRoyal();
     islaCruces = new IslaCruces();

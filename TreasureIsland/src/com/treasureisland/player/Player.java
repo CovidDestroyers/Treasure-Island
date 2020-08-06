@@ -35,7 +35,9 @@ public class Player implements Serializable {
   private String playerName;
   private Integer playerCoins = 10;
   private Integer playerHealth = 75;
+  public Integer playerAttackStrength = new Random().nextInt(75);
   private SaveLoadGame saveLoadGame;
+
   /*
    * =============================================
    * ============= Constructors ==================
@@ -426,6 +428,66 @@ public class Player implements Serializable {
             + "___________________________________________________________");
   }
 
+  // Player and Pirate Fight Sequence
+  public void attackPirate(Pirate pirate) {
+    System.out.println(
+      getPlayerName()
+        + " attacked "
+        + pirate.getPirateName()
+        + " for "
+        + playerAttackStrength
+        + " damage.");
+    pirate.setPirateHealth(pirate.getPirateHealth() - playerAttackStrength);
+
+    if (pirate.getPirateHealth() <= 0) {
+      System.out.println("You defeated " + pirate.getPirateName());
+    }
+  }
+
+  public void defendPlayer(Pirate pirate) {
+    int result = pirate.pirateAttackStrength - getPlayerHealth();
+    if (result <= 0) {
+      System.out.println(pirate.getPirateName() + " did no damage.");
+    } else {
+      setPlayerHealth(getPlayerHealth() - result);
+      System.out.println(pirate.getPirateName() + " did " + result + " damage");
+    }
+  }
+
+  public String getCrossBones() {
+    return "                     .ed\"\"\"\" \"\"\"$$$$be.\n"
+      + "                   -\"           ^\"\"**$$$e.\n"
+      + "                 .\"                   '$$$c\n"
+      + "                /                      \"4$$b\n"
+      + "               d  3                      $$$$\n"
+      + "               $  *                   .$$$$$$\n"
+      + "              .$  ^c           $$$$$e$$$$$$$$.\n"
+      + "              d$L  4.         4$$$$$$$$$$$$$$b\n"
+      + "              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$\n"
+      + "  e$\"\"=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$\n"
+      + " z$$b. ^c     3$$$F \"$$$$b   $\"$$$$$$$  $$$$*\"      .=\"\"$c\n"
+      + "4$$$$L        $$P\"  \"$$b   .$ $$$$$...e$$        .=  e$$$.\n"
+      + "^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$\n"
+      + "  \"**$$$ec   \"   %ce\"\"    $$$  $$$$$$$$$$*    .r\" =$$$$P\"\"\n"
+      + "        \"*$b.  \"c  *$e.    *** d$$$$$\"L$$    .d\"  e$$***\"\n"
+      + "          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*\".eeP\"\n"
+      + "             \"$$$$$$\"'$=e....$*$$**$cz$$\" \"..d$*\"\n"
+      + "               \"*$$$  *=%4.$ L L$ P3$$$F $$$P\"\n"
+      + "                  \"$   \"%*ebJLzb$e$$$$$b $P\"\n"
+      + "                    %..      4$$$$$$$$$$ \"\n"
+      + "                     $$$e   z$$$$$$$$$$%\n"
+      + "                      \"*$c  \"$$$$$$$P\"\n"
+      + "                       .\"\"\"*$$$$$$$$bc\n"
+      + "                    .-\"    .$***$$$\"\"\"*e.\n"
+      + "                 .-\"    .e$\"     \"*$c  ^*b.\n"
+      + "          .=*\"\"\"\"    .e$*\"          \"*bc  \"*$e..\n"
+      + "        .$\"        .z*\"               ^*$e.   \"*****e.\n"
+      + "        $$ee$c   .d\"                     \"*$.        3.\n"
+      + "        ^*$E\")$..$\"                         *   .ee==d%\n"
+      + "           $.d$$$*                           *  J$$$e*\n"
+      + "            \"\"\"\"\"                              \"$$$\"";
+  }
+
   /*
    * =============================================
    * =========== Accessor Methods ================
@@ -457,40 +519,6 @@ public class Player implements Serializable {
 
   public String getPlayerName() {
     return this.playerName;
-  }
-
-  public String getCrossBones() {
-    return "                     .ed\"\"\"\" \"\"\"$$$$be.\n"
-        + "                   -\"           ^\"\"**$$$e.\n"
-        + "                 .\"                   '$$$c\n"
-        + "                /                      \"4$$b\n"
-        + "               d  3                      $$$$\n"
-        + "               $  *                   .$$$$$$\n"
-        + "              .$  ^c           $$$$$e$$$$$$$$.\n"
-        + "              d$L  4.         4$$$$$$$$$$$$$$b\n"
-        + "              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$\n"
-        + "  e$\"\"=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$\n"
-        + " z$$b. ^c     3$$$F \"$$$$b   $\"$$$$$$$  $$$$*\"      .=\"\"$c\n"
-        + "4$$$$L        $$P\"  \"$$b   .$ $$$$$...e$$        .=  e$$$.\n"
-        + "^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$\n"
-        + "  \"**$$$ec   \"   %ce\"\"    $$$  $$$$$$$$$$*    .r\" =$$$$P\"\"\n"
-        + "        \"*$b.  \"c  *$e.    *** d$$$$$\"L$$    .d\"  e$$***\"\n"
-        + "          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*\".eeP\"\n"
-        + "             \"$$$$$$\"'$=e....$*$$**$cz$$\" \"..d$*\"\n"
-        + "               \"*$$$  *=%4.$ L L$ P3$$$F $$$P\"\n"
-        + "                  \"$   \"%*ebJLzb$e$$$$$b $P\"\n"
-        + "                    %..      4$$$$$$$$$$ \"\n"
-        + "                     $$$e   z$$$$$$$$$$%\n"
-        + "                      \"*$c  \"$$$$$$$P\"\n"
-        + "                       .\"\"\"*$$$$$$$$bc\n"
-        + "                    .-\"    .$***$$$\"\"\"*e.\n"
-        + "                 .-\"    .e$\"     \"*$c  ^*b.\n"
-        + "          .=*\"\"\"\"    .e$*\"          \"*bc  \"*$e..\n"
-        + "        .$\"        .z*\"               ^*$e.   \"*****e.\n"
-        + "        $$ee$c   .d\"                     \"*$.        3.\n"
-        + "        ^*$E\")$..$\"                         *   .ee==d%\n"
-        + "           $.d$$$*                           *  J$$$e*\n"
-        + "            \"\"\"\"\"                              \"$$$\"";
   }
 
   @Override

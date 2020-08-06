@@ -1,7 +1,6 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.TreasureIslandGameplay;
-
+import com.treasureisland.player.PirateFightSequence;
 import com.treasureisland.player.Player;
 import java.util.Scanner;
 
@@ -35,12 +34,13 @@ public class CrimsonBeachBar extends Scene {
   @Override
   public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt", getSceneName(), "CBStart", "CBEnd");
+    player.setPlayerHealth(player.getPlayerHealth() - 10);
   }
 
   @Override
   public void investigateArea(Player player) {
     storylineProgression("TI.txt", getSceneName(), "PTStart", "PTEnd");
-    player.setPlayerHealth(player.getPlayerHealth() - 10);
+    PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
   }
 
   @Override
