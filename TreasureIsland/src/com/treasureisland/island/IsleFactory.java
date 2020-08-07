@@ -130,6 +130,10 @@ public class IsleFactory {
         case "west":
           scene = new PawPawBeach("Pawpaw Beach");
           break;
+        case "m":
+        case "map":
+          map.islaDeMuerta();
+          break;
         default:
           System.out.println("Error, please select correct input");
           break;

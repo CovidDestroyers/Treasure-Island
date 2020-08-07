@@ -362,7 +362,7 @@ public class Player implements Serializable {
         } else if("islaCruces".equalsIgnoreCase(islandDestination)){
           main.islaCruces();
         } else if("islademuerta".equalsIgnoreCase(islandDestination)){
-          main.islaCruces();
+          main.islaDeMuerta();
         } else {
           main.mainMap();
         }

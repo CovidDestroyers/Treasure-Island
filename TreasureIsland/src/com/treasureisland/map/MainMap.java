@@ -172,7 +172,7 @@ public class MainMap {
   }
 
 
-  public void deMuerta() {
+  public void islaDeMuerta() {
 
     System.out.println("\n" + Color.ANSI_BLUE.getValue()+ "          |\n" +
       "      XXXXXXXXX\n" +
