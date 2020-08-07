@@ -35,8 +35,8 @@ public class CrimsonBeachBar extends Scene {
 
   @Override
   public void lookAroundLocation(Player player) throws InterruptedException {
-
     storylineProgression("TI.txt",  "CBStart", "CBEnd");
+
     //player.setPlayerHealth(player.getPlayerHealth() - 10);
 
     storylineProgression("TI.txt",  "PTStart", "PTEnd");
@@ -49,6 +49,7 @@ public class CrimsonBeachBar extends Scene {
       System.out.println("\n");
       PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
     }
+
 
   }
 

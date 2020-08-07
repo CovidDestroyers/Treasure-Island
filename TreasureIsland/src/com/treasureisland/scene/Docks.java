@@ -14,4 +14,19 @@ public class Docks extends Scene {
 
   }
 
+  @Override
+  public void talkToNPC(Player player) {
+
+  }
+
+  @Override
+  public void lookAroundLocation(Player player) throws InterruptedException {
+
+  }
+
+  @Override
+  public void vendor(Player player) {
+
+  }
+
 }

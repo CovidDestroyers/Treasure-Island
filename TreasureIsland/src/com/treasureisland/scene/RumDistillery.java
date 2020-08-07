@@ -1,7 +1,8 @@
 package com.treasureisland.scene;
 
 import com.treasureisland.player.Player;
-import java.util.Arrays;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class RumDistillery extends Scene {
 
@@ -19,7 +20,20 @@ public class RumDistillery extends Scene {
    */
   @Override
   public void enter(Player player) throws InterruptedException {
-    System.out.println(southScene.getSceneName());
+    try {
+      displayInteractionOptions();
+      String userInput = scanner.nextLine().trim().toLowerCase();
+
+      if ("t".equals(userInput) || "talk".equals(userInput)) {
+        Method talkMethod = Scene.class.getMethod("talkToNPC", Player.class);
+        talkMethod.invoke(this, player);
+      }
+
+      System.out.println(RumDistillery.class.getMethod("talkToNPC", Player.class));
+    }
+    catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+      e.printStackTrace();
+    }
     System.out.println("You are in the rum distillery!");
   }
 

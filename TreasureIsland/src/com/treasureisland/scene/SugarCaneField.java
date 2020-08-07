@@ -39,7 +39,6 @@ public class SugarCaneField extends Scene {
     //player.playerClues.add("key");
   }
 
-
 //  @Override
 //  public void investigateArea(Player player) {
 //    storylineProgression("TI.txt", "SStart", "SEnd");

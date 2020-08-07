@@ -20,6 +20,17 @@ public abstract class Scene implements Serializable {
   protected Scene eastScene;
   protected Scene westScene;
 
+  protected String interActionOptions =
+      "\nWhat would you like to do?\n "
+          + " -Type \"T\": Talk\n "
+          + " -Type \"L\": Look Around\n "
+          + " -Type \"I\": Investigate\n "
+          + " -Type \"C\": See Clues\n "
+          + " -Type \"M\": Look at the Map\n "
+          + " -Type \"INV\": Inventory\n "
+          + " -Type \"G\": Grab Item\n "
+          + " -Type \"E\": Exit This Location\n ";
+
   /*
    * =============================================
    * ============= Constructors ==================
@@ -40,7 +51,7 @@ public abstract class Scene implements Serializable {
    * @return
    */
   public Scene changeScene(String direction) {
-    String trimmedDirection = direction.trim().toLowerCase().substring(0,1);
+    String trimmedDirection = direction.trim().toLowerCase().substring(0, 1);
     System.out.println(trimmedDirection);
 
     Scene nextScene = null;
@@ -87,32 +98,21 @@ public abstract class Scene implements Serializable {
    */
   public abstract void enter(Player player) throws InterruptedException;
 
+  /**
+   * Player talks to characters in this method
+   * @param player
+   */
+  public abstract void talkToNPC(Player player);
 
-  public void talkToNPC(Player player) {
-
-  }
-
-  public void talkToNPC(Player player, String startPosition, String endPosition) {
-
-  }
-
-  public void lookAroundLocation(Player player) throws InterruptedException {
-
-  }
+  public abstract void lookAroundLocation(Player player) throws InterruptedException;
 
   public void investigateArea(Player player) throws InterruptedException {
 
   }
 
-  public void vendor(Player player) {
-
-  }
-
-
-
+  public abstract void vendor(Player player);
 
   /**
-   *
    * @param fileName
    * @param start
    * @param stop
@@ -124,8 +124,6 @@ public abstract class Scene implements Serializable {
               System.getProperty("user.dir")
                   + "/TreasureIsland/src/com/treasureisland/text/"
                   + fileName);
-
-      //System.out.println(location);
 
       Scanner myReader = new Scanner(myObj);
       boolean tokenFound = false;
@@ -153,6 +151,10 @@ public abstract class Scene implements Serializable {
     }
   }
 
+  public void displayInteractionOptions() {
+    System.out.println(getInterActionOptions());
+  }
+
   /*
    * =============================================
    * =========== Accessor Methods ================
@@ -167,7 +169,6 @@ public abstract class Scene implements Serializable {
   public String getStoryFileName() {
     return storyFileName;
   }
-
 
   public String getStoryStart() {
     return storyStart;
@@ -191,6 +192,10 @@ public abstract class Scene implements Serializable {
 
   public Scene getWestScene() {
     return westScene;
+  }
+
+  public String getInterActionOptions() {
+    return interActionOptions;
   }
 
   // SET METHODS
@@ -226,4 +231,7 @@ public abstract class Scene implements Serializable {
     this.sceneName = sceneName;
   }
 
+  public void setInterActionOptions(String interActionOptions) {
+    this.interActionOptions = interActionOptions;
+  }
 }
