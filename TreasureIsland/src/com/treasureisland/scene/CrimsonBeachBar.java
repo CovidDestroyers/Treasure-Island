@@ -22,7 +22,7 @@ public class CrimsonBeachBar extends Scene {
    */
   @Override
   public void enter(Player player) throws InterruptedException {
-
+    System.out.println("You're in the crimson beach bar!");
   }
 
   @Override

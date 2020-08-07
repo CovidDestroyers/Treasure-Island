@@ -1,8 +1,6 @@
 package com.treasureisland.scene;
 
 import com.treasureisland.OnlyOneScanner;
-import com.treasureisland.island.DirectionEnum;
-import com.treasureisland.island.Island;
 import com.treasureisland.player.Player;
 import java.io.File;
 import java.io.IOException;
@@ -12,8 +10,8 @@ import java.util.Scanner;
 public abstract class Scene implements Serializable {
   protected Scanner scanner = OnlyOneScanner.getTheOneScanner();
 
-  protected String sceneName;
   protected String storyFileName = "TI.txt";
+  protected String sceneName;
   protected String storyStart;
   protected String storyEnd;
 
@@ -21,8 +19,6 @@ public abstract class Scene implements Serializable {
   protected Scene southScene;
   protected Scene eastScene;
   protected Scene westScene;
-
-  DirectionEnum direction;
 
   /*
    * =============================================
@@ -44,18 +40,21 @@ public abstract class Scene implements Serializable {
    * @return
    */
   public Scene changeScene(String direction) {
+    String trimmedDirection = direction.trim().toLowerCase().substring(0,1);
+    System.out.println(trimmedDirection);
+
     Scene nextScene = null;
 
-    if ("n".equals(direction)) {
+    if ("n".equals(trimmedDirection)) {
       nextScene = northScene;
 
-    } else if ("e".equals(direction)) {
+    } else if ("e".equals(trimmedDirection)) {
       nextScene = eastScene;
 
-    } else if ("s".equals(direction)) {
+    } else if ("s".equals(trimmedDirection)) {
       nextScene = southScene;
 
-    } else if ("w".equals(direction)) {
+    } else if ("w".equals(trimmedDirection)) {
       nextScene = westScene;
 
     } else {

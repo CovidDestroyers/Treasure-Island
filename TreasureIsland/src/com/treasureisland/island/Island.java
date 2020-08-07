@@ -56,19 +56,19 @@ public abstract class Island implements Serializable {
    * @return
    */
   public Island changeIsland(String direction) {
-    String sanitizedDirection = direction.trim().toLowerCase();
+    String sanitizedDirection = direction.trim().toLowerCase().substring(0, 1);
     Island nextIsland = null;
 
-    if ("north".equals(sanitizedDirection)) {
+    if ("n".equals(sanitizedDirection)) {
       nextIsland = getIslandToTheNorth();
 
-    } else if ("east".equals(sanitizedDirection)) {
+    } else if ("e".equals(sanitizedDirection)) {
       nextIsland = getIslandToTheEast();
 
-    } else if ("south".equals(sanitizedDirection)) {
+    } else if ("s".equals(sanitizedDirection)) {
       nextIsland = getIslandToTheSouth();
 
-    } else if ("west".equals(sanitizedDirection)) {
+    } else if ("w".equals(sanitizedDirection)) {
       nextIsland = getIslandToTheWest();
 
     } else {

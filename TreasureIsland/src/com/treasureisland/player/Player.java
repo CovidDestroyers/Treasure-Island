@@ -221,11 +221,11 @@ public class Player implements Serializable {
             SaveLoadGame.saveGame();
             System.out.println("We saved your game state!!");
             System.out.println(
-              "But You cannot run forever my friend."
-                + Color.ANSI_RED.getValue()
-                + "Black Beard "
-                + Color.ANSI_RESET.getValue()
-                + "will find you!!!");
+                "But You cannot run forever my friend."
+                    + Color.ANSI_RED.getValue()
+                    + "Black Beard "
+                    + Color.ANSI_RESET.getValue()
+                    + "will find you!!!");
             System.out.println("Sleep well for it may be your last night.");
             System.out.println("Goodbye for now.");
             System.exit(0);
@@ -236,11 +236,11 @@ public class Player implements Serializable {
           case "map":
             if ("rumRunnerisle".equalsIgnoreCase(islandDestination)) {
               main.rumRunner();
-            } else if("portRoyal".equalsIgnoreCase(islandDestination)){
+            } else if ("portRoyal".equalsIgnoreCase(islandDestination)) {
               main.portRoyal();
-            } else if("islaCruces".equalsIgnoreCase(islandDestination)){
+            } else if ("islaCruces".equalsIgnoreCase(islandDestination)) {
               main.islaCruces();
-            } else if("islademuerta".equalsIgnoreCase(islandDestination)){
+            } else if ("islademuerta".equalsIgnoreCase(islandDestination)) {
               main.islaDeMuerta();
             } else {
               main.mainMap();
@@ -259,7 +259,7 @@ public class Player implements Serializable {
             Thread.sleep(1000);
             playerInfoConsoleOutput();
             Thread.sleep(2000);
-            playerInteractionOptions(direction,islandDestination);
+            playerInteractionOptions(direction, islandDestination);
             break;
           default:
             System.out.println("Invalid input, please try again. ");
@@ -303,7 +303,8 @@ public class Player implements Serializable {
   }
 
   // Method for player interaction options
-  public void playerInteractionOptions(String direction, String islandDestination) throws IOException, InterruptedException {
+  public void playerInteractionOptions(String direction, String islandDestination)
+      throws IOException, InterruptedException {
     String input = "";
 
     String interactionOptions =
@@ -344,37 +345,37 @@ public class Player implements Serializable {
       case "t":
         playerInfoConsoleOutput();
         currentScene.talkToNPC(this);
-        playerInteractionOptions(direction,islandDestination);
+        playerInteractionOptions(direction, islandDestination);
         break;
       case "look":
       case "l":
         playerInfoConsoleOutput();
         currentScene.lookAroundLocation(this);
-        playerInteractionOptions(direction,islandDestination);
+        playerInteractionOptions(direction, islandDestination);
         break;
       case "investigate":
       case "i":
         playerInfoConsoleOutput();
         currentScene.investigateArea(this);
-        playerInteractionOptions(direction,islandDestination);
+        playerInteractionOptions(direction, islandDestination);
         break;
       case "clues":
       case "c":
         playerInfoConsoleOutput();
         // TODO: Move this method into each Scene class
         iterateThroughPlayerClues();
-        playerInteractionOptions(direction,islandDestination);
+        playerInteractionOptions(direction, islandDestination);
         break;
       case "map":
       case "m":
         MainMap main = new MainMap();
         if ("rumRunnerisle".equalsIgnoreCase(islandDestination)) {
           main.rumRunner();
-        } else if("portRoyal".equalsIgnoreCase(islandDestination)){
+        } else if ("portRoyal".equalsIgnoreCase(islandDestination)) {
           main.portRoyal();
-        } else if("islaCruces".equalsIgnoreCase(islandDestination)){
+        } else if ("islaCruces".equalsIgnoreCase(islandDestination)) {
           main.islaCruces();
-        } else if("islademuerta".equalsIgnoreCase(islandDestination)){
+        } else if ("islademuerta".equalsIgnoreCase(islandDestination)) {
           main.islaDeMuerta();
         } else {
           main.mainMap();
@@ -389,24 +390,24 @@ public class Player implements Serializable {
         } else {
           System.out.println("Invalid input, please try again.");
         }
-        playerInteractionOptions(direction,islandDestination);
+        playerInteractionOptions(direction, islandDestination);
         break;
       case "inventory":
       case "inv":
         printInventoryItems();
-        playerInteractionOptions(direction,islandDestination);
+        playerInteractionOptions(direction, islandDestination);
         break;
       case "grab":
       case "g":
         grabItemFromInventory();
-        playerInteractionOptions(direction,islandDestination);
+        playerInteractionOptions(direction, islandDestination);
         break;
       case "exit":
       case "e":
         break;
       default:
         System.out.println("Invalid input, please try again.");
-        playerInteractionOptions(input,islandDestination);
+        playerInteractionOptions(input, islandDestination);
         break;
     }
   }
@@ -425,12 +426,11 @@ public class Player implements Serializable {
     System.out.format("+-----------------+--------+%n\n");
   }
 
-  //Method for grab item from Inventory and it will increase player's health
-  public void grabItemFromInventory(){
-    if(playerInventory.size() == 0) {
-        System.out.println("Sorry!! There is nothing in your inventory to grab.");
-      }
-    else {
+  // Method for grab item from Inventory and it will increase player's health
+  public void grabItemFromInventory() {
+    if (playerInventory.size() == 0) {
+      System.out.println("Sorry!! There is nothing in your inventory to grab.");
+    } else {
       String instructions =
           "You have below available things you can have"
               + ".\nSimply type the name of the item you want to grab and press \"enter\".\n";

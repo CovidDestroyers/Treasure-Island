@@ -28,6 +28,7 @@ public class AbandonedDistillery extends Scene {
    */
   @Override
   public void enter(Player player) throws InterruptedException {
+    System.out.println("You're in the abandoned distillery!");
   }
 
   @Override

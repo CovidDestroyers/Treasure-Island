@@ -43,7 +43,7 @@ public class RumRunnerIsle extends Island {
     while (true) {
       userInput = in.nextLine().trim().toLowerCase();
 
-      if (userInput.matches("[n|s|e|w]")) {
+      if (DirectionEnum.isValid(userInput)) {
         System.out.println("You entered the right command!");
 
         currentScene = currentScene.changeScene(userInput);

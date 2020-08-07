@@ -1,6 +1,7 @@
 package com.treasureisland.scene;
 
 import com.treasureisland.player.Player;
+import java.util.Arrays;
 
 public class RumDistillery extends Scene {
 
@@ -18,6 +19,7 @@ public class RumDistillery extends Scene {
    */
   @Override
   public void enter(Player player) throws InterruptedException {
+    System.out.println(southScene.getSceneName());
     System.out.println("You are in the rum distillery!");
   }
 
