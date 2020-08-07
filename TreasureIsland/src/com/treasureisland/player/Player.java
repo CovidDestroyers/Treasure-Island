@@ -17,7 +17,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Player implements Serializable {
-
+  private static Player player;
   private final Vendor vendor;
   private final List<Item> vendorItems;
   public List<Item> playerInventory;
@@ -197,7 +197,6 @@ public class Player implements Serializable {
   // When player enters into game - start the process
   public void processMovement(String islandDestination) {
     String directionOptions =
-        "\nWhere would you like to go?\n -Type \"N\": North\n -Type \"S\": South\n -Type \"W\": West\n -Type \"E\": East\n -Type \"Save\": Save Game";
         "Where would you like to go?\n " +
           "-Type \"N\": North\n " +
           "-Type \"S\": South\n " +
@@ -260,7 +259,7 @@ public class Player implements Serializable {
         + "Current Location"
         + Color.ANSI_RESET.getValue()
         + ": "
-        + location.getSceneName()
+        + getCurrentScene().getSceneName()
         + "\n"
         + "___________________________________________________________");
   }

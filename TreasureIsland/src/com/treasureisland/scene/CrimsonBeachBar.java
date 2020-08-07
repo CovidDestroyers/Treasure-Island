@@ -9,8 +9,6 @@ import java.util.Scanner;
 
 public class CrimsonBeachBar extends Scene {
 
-  private final TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
-
   public CrimsonBeachBar(String sceneName) {
     super(sceneName);
   }
@@ -48,7 +46,7 @@ public class CrimsonBeachBar extends Scene {
     storylineProgression("TI.txt",  "PTStart", "PTEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 10);
 
-    Map<String, Boolean> availablePirates = treasureIslandGameplay.getAvailablePirates();
+    Map<String, Boolean> availablePirates = TreasureIslandGameplay.getInstance().getAvailablePirates();
     if(availablePirates.get("Crimson Beach Bar")) {
       Thread.sleep(1000);
       System.out.println("\n");

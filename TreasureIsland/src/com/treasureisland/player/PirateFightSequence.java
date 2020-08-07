@@ -55,7 +55,7 @@ public class PirateFightSequence {
       player.setPlayerHealth(player.getPlayerHealth());
       pirate.setPirateHealth(pirate.getPirateHealth());
       System.out.println(Color.ANSI_GREEN.getValue() + "WooooHooo!!! You defeated '" + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() +"'\n\n");
-      treasureIslandGameplay.setAvailablePirates(player.location.getSceneName());
+      treasureIslandGameplay.setAvailablePirates(player.getCurrentScene().getSceneName());
   }
 
   public void enemyAction(Player player) throws InterruptedException {

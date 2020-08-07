@@ -1,5 +1,7 @@
 package com.treasureisland.ship;
 
+import com.treasureisland.player.Player;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class ShipBattleSequence implements java.io.Serializable {
 
   public ShipBattleSequence() {}
 
-    public void shipBattleAfterLeavingIsland(Player player,Scanner scanner) throws InterruptedException {
+    public void shipBattleAfterLeavingIsland(Player player, Scanner scanner) throws InterruptedException {
         while(playerShip.getPlayerShipHealth() > 0 && enemyShip.getEnemyShipHealth() > 0){
             System.out.println("You encountered " + enemyShip.getEnemyShipName());
             System.out.println("Would you like to Attack<A> or Defend<D>??");
