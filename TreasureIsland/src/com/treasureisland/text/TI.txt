@@ -77,7 +77,7 @@ Rum Island
 
   SStart
 
-    There are 5 scarecrows I counted across the fields and I looked way different than the others.
+    There are 5 scarecrows I counted across the fields and one looked way different than the others.
     My pirate sense tells me that the different one holds a secret.
     Upon the close examining of the scarecrow I found a . . .
     . . . section on a stick that can be pulled out. In it was . . .
@@ -115,7 +115,7 @@ Rum Island
         But there seems to be little bit rum of left in one of the bottle.
         I took a sip from the bottle.
         When I was about to put the bottle back I found . . .
-          Antique coin.
+          9 Antique coins.
   DREnd
 
 
@@ -133,7 +133,7 @@ Rum Island
   JStart
         Jojo was an old friend and someone I can confide in.
         I told him about my plans but the only information he had for me was . . .
-        To look out for a room somewhere on a different island and it has something to do with number 999.
+        To look out for a room somewhere on a different island and it has something to do with number "999".
   JEnd
 
   SJStart

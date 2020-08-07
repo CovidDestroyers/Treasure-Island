@@ -24,6 +24,7 @@ public class Player implements Serializable {
   public List<Item> playerInventory;
 
   public ArrayList<String> playerClues = new ArrayList<>();
+  public ArrayList<String> playerTreasures = new ArrayList<>();
   public String[] clues = {
     "Go " + Color.ANSI_YELLOW.getValue() + "South" + Color.ANSI_RESET.getValue(),
     "Go North",
@@ -70,13 +71,28 @@ public class Player implements Serializable {
    * =============================================
    */
 
-  // Method to iterate through Player Clues
-  public void iterateThroughPlayerClues() {
+  //Method to display collected treasures by player.
+  public void iterateThroughPlayerTreasureRewards(){
+    System.out.println("\nBelow are the Treasures that you have collected so far,");
+    String leftAlignFormat = "| %-15s |%n";
+
+    System.out.format("+-----------------+%n");
+    System.out.format("| Reward          |%n");
+    System.out.format("+-----------------+%n");
+
+    for (String reward : playerTreasures) {
+      System.out.printf(leftAlignFormat, reward);
+    }
+    System.out.format("+-----------------+%n\n");
+  }
+
+  // Method to iterate through Clues
+  public void iterateThroughClues() {
 
     switch (this.currentScene.getSceneName()) {
       case "Rum Distillery":
         System.out.println(
-            "\napply wha' ye got"
+            "\napply what you got"
                 + Color.ANSI_YELLOW.getValue()
                 + "\nClue#1 "
                 + Color.ANSI_RESET.getValue()
@@ -100,7 +116,7 @@ public class Player implements Serializable {
                 + Color.ANSI_RESET.getValue()
                 + " .... "
                 + "\n"
-                + "\nwill reveal th' island t' kick off...");
+                + "\nwill reveal the island to kick off...");
 
         break;
       case "Crimson Beach Bar":
@@ -108,7 +124,7 @@ public class Player implements Serializable {
             Color.ANSI_YELLOW.getValue()
                 + "Clue#1"
                 + Color.ANSI_RESET.getValue()
-                + " How's th' cabin number Jojo said t' look aft?");
+                + " What is the cabin number Jojo said to look after?");
 
         break;
       case "Abandoned distillery":
@@ -116,7 +132,7 @@ public class Player implements Serializable {
             Color.ANSI_BLUE.getValue()
                 + "Clue#2"
                 + Color.ANSI_RESET.getValue()
-                + " How many Antique coins are thar?");
+                + " How many Antique coins are there?");
 
         break;
       case "Sugar cane field":
@@ -125,8 +141,6 @@ public class Player implements Serializable {
                 + "\nSecret Code: "
                 + Color.ANSI_GREEN.getValue()
                 + "Clue#3"
-                + Color.ANSI_RESET.getValue()
-                + " - lastOneDigitOff"
                 + Color.ANSI_RESET.getValue());
         break;
       case "Tikki Lounge":
@@ -257,10 +271,10 @@ public class Player implements Serializable {
           case "w":
             this.currentScene = IsleFactory.islandLocationFactory(direction, islandDestination);
             System.out.println("\nYou are now at the " + this.currentScene.getSceneName());
-            Thread.sleep(1000);
+            Thread.sleep(500);
             playerInfoConsoleOutput();
-            Thread.sleep(2000);
-            playerInteractionOptions(direction, islandDestination);
+            Thread.sleep(1000);
+            playerInteractionOptions(direction,islandDestination);
             break;
           default:
             System.out.println("Invalid input, please try again. ");
@@ -313,7 +327,8 @@ public class Player implements Serializable {
           + " -Type \"T\": Talk\n "
           + " -Type \"L\": Look Around\n "
           + " -Type \"I\": Investigate\n "
-          + " -Type \"C\": See Clues\n "
+          //+ " -Type \"C\": See Clues\n "
+          + " -Type \"R\": See Treasure Rewards\n "
           + " -Type \"M\": Look at the Map\n "
           + " -Type \"INV\": Inventory\n "
           + " -Type \"G\": Grab Item\n "
@@ -321,15 +336,16 @@ public class Player implements Serializable {
 
     String interactOptionsWithVendor =
         "\nWhat would you like to do? \n "
-          + "-Type \"T\": Talk\n "
-          + "-Type \"L\": Look Around\n "
-          + "-Type \"I\": Investigate\n "
-          + "-Type \"C\": See Clues\n "
-          + "-Type \"M\": Look at the Map\n "
-          + "-Type \"V\": Visit the Vendor\n "
-          + "-Type \"INV\": Inventory\n "
-          + "-Type \"G\": Grab Item\n "
-          + "-Type \"E\": Exit This Location\n ";
+          + " -Type \"T\": Talk\n "
+          + " -Type \"L\": Look Around\n "
+          + " -Type \"I\": Investigate\n "
+          //+ " -Type \"C\": See Clues\n "
+          + " -Type \"R\": See Treasure Rewards\n "
+          + " -Type \"M\": Look at the Map\n "
+          + " -Type \"V\": Visit the Vendor\n "
+          + " -Type \"INV\": Inventory\n "
+          + " -Type \"G\": Grab Item\n "
+          + " -Type \"E\": Exit This Location\n ";
 
     playerHealthCheck();
 
@@ -357,15 +373,22 @@ public class Player implements Serializable {
       case "investigate":
       case "i":
         playerInfoConsoleOutput();
+        iterateThroughClues();
         currentScene.investigateArea(this);
         playerInteractionOptions(direction, islandDestination);
         break;
-      case "clues":
-      case "c":
+//      case "clues":
+//      case "c":
+//        playerInfoConsoleOutput();
+//        // TODO: Move this method into each Scene class
+//        iterateThroughClues();
+//        playerInteractionOptions(direction,islandDestination);
+//        break;
+      case "reward":
+      case "r":
         playerInfoConsoleOutput();
-        // TODO: Move this method into each Scene class
-        iterateThroughPlayerClues();
-        playerInteractionOptions(direction, islandDestination);
+        iterateThroughPlayerTreasureRewards();
+        playerInteractionOptions(direction,islandDestination);
         break;
       case "map":
       case "m":

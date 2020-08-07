@@ -45,6 +45,7 @@ public class AbandonedDistillery extends Scene {
   @Override
   public void investigateArea(Player player) {
     storylineProgression("TI.txt",  "DRStart", "DREnd");
+    player.playerClues.add("9");
   }
 
   @Override

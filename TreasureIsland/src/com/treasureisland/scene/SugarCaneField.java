@@ -16,13 +16,12 @@ public class SugarCaneField extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    System.out.println("I wont talk without the code");
+    System.out.println("I won't talk without the secret code");
     String input = scanner.nextLine();
     if (input.equalsIgnoreCase("9999")) {
-      // TODO: ITEMS -> Cane Shard
       System.out.println(
-          "DING DING DING \n You have unlocked your first treasure piece. \n awarded the cane shard");
-      player.setHasIslandItem(true);
+          "DING DING DING \n You have unlocked your first treasure piece. \n awarded the \"An Emerald\"");
+      player.playerTreasures.add("An Emerald");
     } else {
       System.out.println("Go away");
     }
@@ -40,7 +39,7 @@ public class SugarCaneField extends Scene {
     player.setPlayerHealth(player.getPlayerHealth() - 5);
 
     // TODO decide what we want to do for the key. Will we need an object ArrayList to hold items?
-    player.playerClues.add("some placeholder for the key");
+    //player.playerClues.add("key");
   }
 
   @Override
