@@ -7,6 +7,7 @@ import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.island.Island;
 import com.treasureisland.items.Item;
 import com.treasureisland.items.Vendor;
+import com.treasureisland.map.MainMap;
 import com.treasureisland.scene.Scene;
 import java.io.IOException;
 import java.io.Serializable;
@@ -333,13 +334,23 @@ public class Player implements Serializable {
     String input = "";
 
     String interactionOptions =
-        "\nWhat actions would you like to make?\n -Type \"T\": Talk\n -Type \"L\": Look Around\n -Type "
-            + "\"I\": Investigate\n -Type \"C\": See Clues\n -Type \"E\": Exit This World\n";
+        "\nWhat would you like to do?\n" +
+          " -Type \"T\": Talk\n" +
+          " -Type \"L\": Look Around\n" +
+          " -Type \"I\": Investigate\n " +
+          " -Type \"C\": See Clues\n " +
+          " -Type \"M\": Look at the Map\n" +
+          " -Type \"E\": Exit This World\n";
 
     String interactOptionsWithVendor =
-        "\nWhat actions would you like to make? \n -Type \"T\": "
-            + "Talk\n -Type \"L\": Look Around\n -Type \"I\": Investigate\n -Type \"C\": See Clues\n "
-            + "-Type \"V\": Visit the Vendor\n -Type \"E\": Exit This World\n";
+        "\nWhat would you like to do? \n " +
+          "-Type \"T\": Talk\n " +
+          "-Type \"L\": Look Around\n " +
+          "-Type \"I\": Investigate\n " +
+          "-Type \"C\": See Clues\n " +
+          "-Type \"M\": Look at the Map\n" +
+          "-Type \"V\": Visit the Vendor\n " +
+          "-Type \"E\": Exit This World\n";
 
     playerHealthCheck();
 
@@ -377,6 +388,11 @@ public class Player implements Serializable {
         // TODO: Move this method into each Scene class
         iterateThroughPlayerClues();
         playerInteractionOptions(direction);
+        break;
+      case "map":
+      case "m":
+       MainMap main = new MainMap();
+       main.mainMap();
         break;
       case "vendor":
       case "v":

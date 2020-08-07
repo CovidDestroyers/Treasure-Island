@@ -1,6 +1,7 @@
 package com.treasureisland.island;
 
 import com.treasureisland.TreasureIslandGameplay;
+import com.treasureisland.map.MainMap;
 import com.treasureisland.scene.AbandonedDistillery;
 import com.treasureisland.scene.AbandonedHouse;
 import com.treasureisland.scene.ChurchCruces;
@@ -26,6 +27,7 @@ public class IsleFactory {
   public static Scene islandLocationFactory(String direction, String islandFactorySelection)
       throws InterruptedException {
     Scene location = null;
+    MainMap map = new MainMap();
     if ("rumrunnerisle".equalsIgnoreCase(islandFactorySelection)) {
       // islandFactorySelection.equalsIgnoreCase("rumRunnerIsle") old implementation
       switch (direction.toLowerCase()) {
@@ -43,6 +45,12 @@ public class IsleFactory {
 
         case "w":
           location = new SugarCaneField("Sugar cane field");
+          break;
+
+        case "m":
+        case "map":
+          map.rumRunner();
+
           break;
 
         default:
