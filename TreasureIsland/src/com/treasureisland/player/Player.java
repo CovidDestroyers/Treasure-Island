@@ -223,9 +223,9 @@ public class Player implements Serializable {
           System.out.println("Sleep well for it may be your last night.");
           System.out.println("Goodbye for now.");
           System.exit(0);
-//        } else if (true){
-//          MainMap map = new MainMap();
-//          map.mainMap();
+        } else if ("map".equalsIgnoreCase(direction)){
+          MainMap map = new MainMap();
+          map.mainMap();
         } else {
           this.currentScene = IsleFactory.islandLocationFactory(direction, islandDestination);
           System.out.println("\nYou are now at the " + this.currentScene.getSceneName());
@@ -235,7 +235,6 @@ public class Player implements Serializable {
           playerInteractionOptions(direction);
         }
       }
-
     } catch (IOException | InterruptedException e) {
       e.printStackTrace();
     }
@@ -517,15 +516,6 @@ public class Player implements Serializable {
         + "        ^*$E\")$..$\"                         *   .ee==d%\n"
         + "           $.d$$$*                           *  J$$$e*\n"
         + "            \"\"\"\"\"                              \"$$$\"";
-  }
-
-
-
-  // Method to clear the screen
-  public void clearScreen() {
-    for (int i = 0; i < 50; i++) {
-      System.out.println("\b");
-    }
   }
 
   /*
