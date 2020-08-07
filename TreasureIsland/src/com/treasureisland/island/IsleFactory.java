@@ -46,10 +46,6 @@ public class IsleFactory {
         case "west":
           scene = new SugarCaneField("Sugar cane field");
           break;
-        case "m":
-        case "map":
-          map.rumRunner();
-          break;
         default:
           System.out.println("Error, please select correct input");
           break;
@@ -73,10 +69,6 @@ public class IsleFactory {
         case "w":
         case "west":
           scene = new TikkiLounge("Tikki Lounge");
-          break;
-        case "m":
-        case "map":
-          map.portRoyal();
           break;
         default:
           System.out.println("Error, please select correct input");
@@ -102,10 +94,6 @@ public class IsleFactory {
         case "west":
           scene = new DoubleCrossTavernCruces("Double Cross Tavern");
           break;
-        case "m":
-        case "map":
-          map.islaCruces();
-          break;
         default:
           System.out.println("Error, please select correct input");
           break;
@@ -129,10 +117,6 @@ public class IsleFactory {
         case "w":
         case "west":
           scene = new PawPawBeach("Pawpaw Beach");
-          break;
-        case "m":
-        case "map":
-          map.islaDeMuerta();
           break;
         default:
           System.out.println("Error, please select correct input");

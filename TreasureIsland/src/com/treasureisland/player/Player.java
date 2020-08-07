@@ -208,13 +208,14 @@ public class Player implements Serializable {
             + "-Type \"W\": West\n "
             + "-Type \"E\": East\n "
             + "-Type \"Save\": Save Game\n "
-            + "-Type \"Map\": Map\n";
+            + "-Type \"Chart\": Game Chart\n "
+            + "-Type \"Map\": Island Map\n";
 
     try {
       while (!hasIslandItem) {
         System.out.println(directionOptions);
         String direction = scanner.nextLine().trim();
-
+        MainMap main = new MainMap();
         switch (direction.toLowerCase()) {
           case "save":
             SaveLoadGame.saveGame();
@@ -229,9 +230,21 @@ public class Player implements Serializable {
             System.out.println("Goodbye for now.");
             System.exit(0);
             break;
+          case "chart":
+            main.mainMap();
+            break;
           case "map":
-            MainMap map = new MainMap();
-            map.mainMap();
+            if ("rumRunnerisle".equalsIgnoreCase(islandDestination)) {
+              main.rumRunner();
+            } else if("portRoyal".equalsIgnoreCase(islandDestination)){
+              main.portRoyal();
+            } else if("islaCruces".equalsIgnoreCase(islandDestination)){
+              main.islaCruces();
+            } else if("islademuerta".equalsIgnoreCase(islandDestination)){
+              main.islaDeMuerta();
+            } else {
+              main.mainMap();
+            }
             break;
           case "north":
           case "n":
@@ -354,7 +367,7 @@ public class Player implements Serializable {
         break;
       case "map":
       case "m":
-       MainMap main = new MainMap();
+        MainMap main = new MainMap();
         if ("rumRunnerisle".equalsIgnoreCase(islandDestination)) {
           main.rumRunner();
         } else if("portRoyal".equalsIgnoreCase(islandDestination)){
