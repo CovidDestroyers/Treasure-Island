@@ -1,6 +1,7 @@
 package com.treasureisland.items;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Item implements Serializable {
   private String itemName;
@@ -76,6 +77,19 @@ public class Item implements Serializable {
    * =========== Business Methods ================
    * =============================================
    */
+
+  //Method to find the item by name
+  public static Item findByName(List<Item> items, String itemName) {
+    Item result = null;
+    String nameOfItem = itemName.trim().toLowerCase();
+    for (Item item : items) {
+      if (nameOfItem.equals(item.getItemName())) {
+        result = item;
+        break;
+      }
+    }
+    return result;
+  }
 
   /*
    * =============================================

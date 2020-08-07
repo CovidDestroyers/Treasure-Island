@@ -10,6 +10,8 @@ import com.treasureisland.player.Player;
 import com.treasureisland.ship.ShipBattleSequence;
 import java.io.File;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class TreasureIslandGameplay implements Serializable {
@@ -24,6 +26,7 @@ public class TreasureIslandGameplay implements Serializable {
   private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   String input;
   public static TreasureIslandGameplay treasureIslandGameplay;
+  private Map<String, Boolean> availablePirates = new HashMap<>();
 
   /*
    * =============================================
@@ -42,6 +45,8 @@ public class TreasureIslandGameplay implements Serializable {
     islaDeMuerta.connectEast(portRoyal);
     portRoyal.connectSouth(islaCruces);
     islaDeMuerta.connectSouth(rumRunnerIsle);
+
+    availablePirates.put("Crimson Beach Bar",true);
   }
 
   public static TreasureIslandGameplay getInstance() {
@@ -173,7 +178,7 @@ public class TreasureIslandGameplay implements Serializable {
       leavingIslandShipPrint();
       Thread.sleep(5000);
       player.setHasIslandItem(false);
-      shipBattleSequence.shipBattleafterLeavingIsland(scanner);
+      shipBattleSequence.shipBattleAfterLeavingIsland(this.player, scanner);
       portRoyal();
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -187,7 +192,7 @@ public class TreasureIslandGameplay implements Serializable {
     leavingIslandShipPrint();
     Thread.sleep(5000);
     player.setHasIslandItem(false);
-    shipBattleSequence.shipBattleafterLeavingIsland(scanner);
+    shipBattleSequence.shipBattleAfterLeavingIsland(this.player,scanner);
     islaCruces();
   }
 
@@ -198,7 +203,7 @@ public class TreasureIslandGameplay implements Serializable {
     leavingIslandShipPrint();
     Thread.sleep(5000);
     player.setHasIslandItem(false);
-    shipBattleSequence.shipBattleafterLeavingIsland(scanner);
+    shipBattleSequence.shipBattleAfterLeavingIsland(this.player,scanner);
 
     islaDeMuerta();
   }
@@ -358,5 +363,13 @@ public class TreasureIslandGameplay implements Serializable {
             + "                                                                                                                                             \n"
             + "                                                                                                                                             \n"
             + Color.ANSI_RESET.getValue());
+  }
+
+  public Map<String, Boolean> getAvailablePirates(){
+    return availablePirates;
+  }
+
+  public void setAvailablePirates(String key){
+    availablePirates.replace(key,false);
   }
 }

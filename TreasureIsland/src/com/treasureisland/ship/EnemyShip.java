@@ -4,10 +4,9 @@ import com.treasureisland.player.Player;
 import java.util.Random;
 
 public class EnemyShip implements java.io.Serializable {
-
     public final String enemyShipName = "The Queen Anne's Revenge";
     private   Integer enemyShipHealth = 100;
-    private Integer enemyAttackStrength;
+    public Integer enemyAttackStrength;
 
 
   public EnemyShip() {}
@@ -25,7 +24,7 @@ public class EnemyShip implements java.io.Serializable {
     this.enemyShipHealth = enemyShipHealth;
   }
 
-  public void attackPlayerShip(PlayerShip playerShip) {
+  public void attackPlayerShip(PlayerShip playerShip, Player player) throws InterruptedException {
     enemyAttackStrength = new Random().nextInt(100);
     System.out.println(
         enemyShipName
@@ -37,8 +36,8 @@ public class EnemyShip implements java.io.Serializable {
     playerShip.setPlayerShipHealth(playerShip.getPlayerShipHealth() - enemyAttackStrength);
 
     if (playerShip.getPlayerShipHealth() <= 0) {
-      // player.playerDeathArt();
-      // player.playerDeathOptions();
+      player.playerDeathArt();
+      player.playerDeathOptions();
     }
   }
 

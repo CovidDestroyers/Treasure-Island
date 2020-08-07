@@ -18,9 +18,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Player implements Serializable {
-
-  private final Vendor vendor = new Vendor();
-  private final List<Item> vendorItems = vendor.getVendorItems();
+  private static Player player;
+  private final Vendor vendor;
+  private final List<Item> vendorItems;
+  public List<Item> playerInventory;
 
   public ArrayList<String> playerClues = new ArrayList<>();
   public String[] clues = {
@@ -49,7 +50,18 @@ public class Player implements Serializable {
    * ============= Constructors ==================
    * =============================================
    */
-  public Player() {}
+  public Player() {
+    vendor = new Vendor();
+    vendorItems = vendor.getVendorItems();
+    playerInventory = new ArrayList<Item>();
+  }
+
+  public static Player getInstance() {
+    if (player == null) {
+      player = new Player();
+    }
+    return player;
+  }
 
   /*
    * =============================================
@@ -57,6 +69,7 @@ public class Player implements Serializable {
    * =============================================
    */
 
+  // Method to iterate through Player Clues
   public void iterateThroughPlayerClues() {
 
     switch (this.currentScene.getSceneName()) {
@@ -155,92 +168,12 @@ public class Player implements Serializable {
     }
   }
 
-  /** Player visits the Vendor All Items from the Vendor are printed out */
+  // Player visits the Vendor All Items from the Vendor are printed out
   public void playerVisitsVendor() {
     vendor.vendorIntroduction();
 
     input = scanner.nextLine();
-
-    if ("y".equalsIgnoreCase(input)) {
-      this.playerPurchase();
-    }
-    if ("n".equalsIgnoreCase(input)) {
-      System.out.println("Bye");
-    }
-  }
-
-  // TODO: Put this in Vendor class
-  public void playerPurchase() {
-    System.out.println("\nWhat would you like to buy?");
-    input = scanner.nextLine().trim();
-    switch (input.toLowerCase()) {
-      case "banana":
-      case "b":
-        System.out.println("You bought a banana");
-        this.setPlayerHealth(this.getPlayerHealth() + vendor.findByName("banana").getHealthValue());
-        this.itemManager(vendor.findByName("banana").getCost());
-        break;
-
-      case "apple":
-      case "ap":
-        Item anApple = vendor.findByName("apple");
-        System.out.println("bought apple");
-        this.setPlayerHealth(this.getPlayerHealth() + anApple.getHealthValue());
-
-        this.itemManager(anApple.getCost());
-        break;
-
-      case "rum":
-      case "r":
-        System.out.println("bought rum");
-        this.setPlayerHealth(this.getPlayerHealth() + vendor.findByName("rum").getHealthValue());
-        this.itemManager(vendor.findByName("rum").getCost());
-        break;
-
-      case "salted meat":
-      case "sm":
-        this.setPlayerHealth(
-            this.getPlayerHealth() + vendor.findByName("salted meat").getHealthValue());
-        this.itemManager(vendor.findByName("salted meat").getCost());
-
-        System.out.println("You bought some salted meat! Would you like some ale to wash it down?");
-        break;
-
-      case "sea biscuits":
-      case "sb":
-        this.setPlayerHealth(
-            this.getPlayerHealth() + vendor.findByName("sea biscuits").getHealthValue());
-        this.itemManager(vendor.findByName("sea biscuits").getCost());
-
-        System.out.println("You bought a delicious sea biscut!");
-        break;
-
-      case "ale":
-      case "al":
-        this.setPlayerHealth(this.getPlayerHealth() + vendor.findByName("ale").getHealthValue());
-        this.itemManager(vendor.findByName("ale").getCost());
-
-        System.out.println("You bought some ale! Don't sail and drink!");
-        break;
-
-      default:
-        System.out.println("Invalid input");
-        playerPurchase();
-        break;
-    }
-  }
-
-  public void itemManager(Integer coins) {
-    Integer playerCoins = getPlayerCoins();
-    if (playerCoins - coins <= 0) {
-      System.out.println("You can not afford this item");
-
-    } else {
-      setPlayerCoins(playerCoins - coins);
-      System.out.println(
-          "You spent " + coins + " gold. You now have " + getPlayerCoins() + " gold.");
-      playerInfoConsoleOutput();
-    }
+    vendor.purchaseItems(scanner, this, input);
   }
 
   /**
@@ -258,7 +191,7 @@ public class Player implements Serializable {
     coinManager(coins);
   }
 
-  /** Checks Player Health and prints out death art if player is dead. */
+  // Checks Player Health and prints out death art if player is dead.
   public void playerHealthCheck() throws InterruptedException {
     if (this.getPlayerHealth() <= 0) {
       playerDeathArt();
@@ -266,25 +199,7 @@ public class Player implements Serializable {
     }
   }
 
-
-  public void playerDeathOptions() throws InterruptedException {
-    System.out.println("\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
-
-    input = scanner.nextLine().trim().toLowerCase();
-
-    if ("y".equals(input) || "yes".equals(input)) {
-      // TreasureIslandGameplay.getInstance().chosePlayerName();
-      new TreasureIslandGameplay().chosePlayerName();
-    } else if ("n".equals(input) || "no".equals(input)) {
-      System.out.println("Thank you for playing");
-      System.exit(0);
-
-    } else {
-      System.out.println("Invalid Input, Try Again!!");
-      playerDeathOptions();
-    }
-  }
-
+  // When player enters into game - start the process
   public void processMovement(String islandDestination) {
     String directionOptions =
         "Where would you like to go?\n " +
@@ -326,12 +241,37 @@ public class Player implements Serializable {
     }
   }
 
-  public void clearScreen() {
-    for (int i = 0; i < 50; i++) {
-      System.out.println("\b");
-    }
+  // Display player info to Console
+  public void playerInfoConsoleOutput() {
+    System.out.println(
+      "\n"
+        + "___________________________________________________________"
+        + "\n"
+        + "     "
+        + Color.ANSI_PURPLE.getValue()
+        + "Health"
+        + Color.ANSI_RESET.getValue()
+        + ": "
+        + this.getPlayerHealth()
+        + "\n"
+        + "     "
+        + Color.ANSI_YELLOW.getValue()
+        + "Coins"
+        + Color.ANSI_RESET.getValue()
+        + ": "
+        + this.getPlayerCoins()
+        + "\n"
+        + "     "
+        + Color.ANSI_GREEN.getValue()
+        + "Current Location"
+        + Color.ANSI_RESET.getValue()
+        + ": "
+        + getCurrentScene().getSceneName()
+        + "\n"
+        + "___________________________________________________________");
   }
 
+  // Method for player interaction options
   public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
     String input = "";
 
@@ -342,6 +282,8 @@ public class Player implements Serializable {
           " -Type \"I\": Investigate\n " +
           " -Type \"C\": See Clues\n " +
           " -Type \"M\": Look at the Map\n" +
+          " -Type \"INV\": Inventory\n " +
+          " -Type \"G\": Grab Item\n " +
           " -Type \"E\": Exit This World\n";
 
     String interactOptionsWithVendor =
@@ -352,6 +294,8 @@ public class Player implements Serializable {
           "-Type \"C\": See Clues\n " +
           "-Type \"M\": Look at the Map\n" +
           "-Type \"V\": Visit the Vendor\n " +
+          "-Type \"INV\": Inventory\n " +
+          "-Type \"G\": Grab Item\n " +
           "-Type \"E\": Exit This World\n";
 
     playerHealthCheck();
@@ -398,9 +342,23 @@ public class Player implements Serializable {
         break;
       case "vendor":
       case "v":
-        playerInfoConsoleOutput();
-        currentScene.vendor(this);
-        playerVisitsVendor();
+        if ("w".equalsIgnoreCase(direction)) {
+          playerInfoConsoleOutput();
+          currentScene.vendor(this);
+          playerVisitsVendor();
+        } else {
+          System.out.println("Invalid input, please try again.");
+        }
+        playerInteractionOptions(direction);
+        break;
+      case "inventory":
+      case "inv":
+        printInventoryItems();
+        playerInteractionOptions(direction);
+        break;
+      case "grab":
+      case "g":
+        grabItemFromInventory();
         playerInteractionOptions(direction);
         break;
       case "exit":
@@ -413,48 +371,52 @@ public class Player implements Serializable {
     }
   }
 
-  public void playerDeathArt() {
-    System.out.println(
-        "\n" + Color.ANSI_RED.getValue() + getCrossBones() + Color.ANSI_RESET.getValue());
+  // Prints all Inventory Items in a Table */
+  public void printInventoryItems() {
+    String leftAlignFormat = "| %-15s | %-4d   |%n";
 
-    System.out.println(
-        Color.ANSI_RED.getValue()
-            + Color.ANSI_BOLD.getValue()
-            + "You dead!"
-            + Color.ANSI_RESET.getValue());
+    System.out.format("+-----------------+--------+%n");
+    System.out.format("| Name            | Health |%n");
+    System.out.format("+-----------------+--------+%n");
+
+    for (Item item : playerInventory) {
+      System.out.printf(leftAlignFormat, item.getItemName(), item.getHealthValue());
+    }
+    System.out.format("+-----------------+--------+%n\n");
   }
 
-  public void playerInfoConsoleOutput() {
-    System.out.println(
-        "\n"
-            + "___________________________________________________________"
-            + "\n"
-            + "     "
-            + Color.ANSI_PURPLE.getValue()
-            + "Health"
-            + Color.ANSI_RESET.getValue()
-            + ": "
-            + this.getPlayerHealth()
-            + "\n"
-            + "     "
-            + Color.ANSI_YELLOW.getValue()
-            + "Coins"
-            + Color.ANSI_RESET.getValue()
-            + ": "
-            + this.getPlayerCoins()
-            + "\n"
-            + "     "
-            + Color.ANSI_GREEN.getValue()
-            + "Current Location"
-            + Color.ANSI_RESET.getValue()
-            + ": "
-            + currentScene.getSceneName()
-            + "\n"
-            + "___________________________________________________________");
+  //Method for grab item from Inventory and it will increase player's health
+  public void grabItemFromInventory(){
+    if(playerInventory.size() == 0) {
+        System.out.println("Sorry!! There is nothing in your inventory to grab.");
+      }
+    else {
+      String instructions =
+        "You have below available things you can have"
+          + ".\nSimply type the name of the item you want to grab and press \"enter\".\n";
+      System.out.println(instructions);
+      printInventoryItems();
+      input = scanner.nextLine();
+      Item findItem = Item.findByName(playerInventory, input.trim().toLowerCase());
+      if (findItem != null) {
+        this.setPlayerHealth(this.getPlayerHealth() + findItem.getHealthValue());
+        System.out.println("You grabbed " + findItem.getItemName() + ". Your health is now " + this.getPlayerHealth() + ".");
+        playerInventory.remove(findItem);
+      } else {
+        System.out.println("You can't grab that item. The item is not in your inventory.");
+      }
+    }
   }
 
-  // Player and Pirate Fight Sequence
+  // Player and Pirate Fight Sequence - START
   public void attackPirate(Pirate pirate) {
+    System.out.println("\n" +
+      Color.ANSI_GREEN.getValue() + getPlayerName() + Color.ANSI_RESET.getValue()
+      + " attacked "
+      + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue()
+      + " for "
+      + playerAttackStrength
+      + " damage.");
     System.out.println(
         "\n"
             + Color.ANSI_GREEN.getValue()
@@ -493,7 +455,36 @@ public class Player implements Serializable {
               + " damage");
     }
   }
+  // Player and Pirate Fight Sequence - END
 
+  // Player's Death Art
+  public void playerDeathArt() {
+    System.out.println(
+        "\n" + Color.ANSI_RED.getValue() + getCrossBones() + Color.ANSI_RESET.getValue());
+
+    System.out.println(Color.ANSI_RED.getValue() + Color.ANSI_BOLD.getValue() + "You dead!" + Color.ANSI_RESET.getValue());
+  }
+
+  //Method to give options after player died
+  public void playerDeathOptions() throws InterruptedException {
+    System.out.println("\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
+
+    input = scanner.nextLine().trim().toLowerCase();
+
+    if ("y".equals(input) || "yes".equals(input)) {
+      //TreasureIslandGameplay.getInstance().chosePlayerName();
+      new TreasureIslandGameplay().chosePlayerName();
+    } else if ("n".equals(input) || "no".equals(input)) {
+      System.out.println("Thank you for playing");
+      System.exit(0);
+
+    } else {
+      System.out.println("Invalid Input, Try Again!!");
+      playerDeathOptions();
+    }
+  }
+
+  // Get Red cross image when player died
   public String getCrossBones() {
     return "                     .ed\"\"\"\" \"\"\"$$$$be.\n"
         + "                   -\"           ^\"\"**$$$e.\n"
@@ -526,6 +517,15 @@ public class Player implements Serializable {
         + "        ^*$E\")$..$\"                         *   .ee==d%\n"
         + "           $.d$$$*                           *  J$$$e*\n"
         + "            \"\"\"\"\"                              \"$$$\"";
+  }
+
+
+
+  // Method to clear the screen
+  public void clearScreen() {
+    for (int i = 0; i < 50; i++) {
+      System.out.println("\b");
+    }
   }
 
   /*
