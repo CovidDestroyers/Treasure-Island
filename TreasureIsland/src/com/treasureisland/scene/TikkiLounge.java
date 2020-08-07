@@ -39,17 +39,24 @@ public class TikkiLounge extends Scene {
   public void lookAroundLocation(Player player) {
     System.out.println("Looking around Tikki lounge, I ran into Callie ");
     storylineProgression("TI.txt",  "CAStart", "CAStop");
-  }
-
-  @Override
-  public void investigateArea(Player player) {
-    System.out.println("Investigating Tikki lounge, I ran into Sam.");
     storylineProgression("TI.txt",  "SAMStart", "SAMStop");
     // TODO: ITEMS -> More keys
     System.out.println("You got one of the keys needed for the Treasure Island");
     player.playerCoinGenerator();
+    System.out.println(" ");
     player.setHasIslandItem(true);
+    player.iterateThroughClues();
   }
+
+//  @Override
+//  public void investigateArea(Player player) {
+//    System.out.println("Investigating Tikki lounge, I ran into Sam.");
+//    storylineProgression("TI.txt",  "SAMStart", "SAMStop");
+//    // TODO: ITEMS -> More keys
+//    System.out.println("You got one of the keys needed for the Treasure Island");
+//    player.playerCoinGenerator();
+//    player.setHasIslandItem(true);
+//  }
 
   @Override
   public void vendor(Player player) {

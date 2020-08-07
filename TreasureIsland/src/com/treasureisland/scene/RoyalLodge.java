@@ -39,13 +39,15 @@ public class RoyalLodge extends Scene {
   public void lookAroundLocation(Player player) {
     System.out.println("Looking around royal lodge");
     storylineProgression("TI.txt",  "SRStart", "SRStop");
+    storylineProgression("TI.txt",  "BRStart", "BRStop");
+    player.iterateThroughClues();
   }
 
-  @Override
-  public void investigateArea(Player player) {
-    System.out.println("Investigating royal lodge");
-    storylineProgression("TI.txt",  "BRStart", "BRStop");
-  }
+//  @Override
+//  public void investigateArea(Player player) {
+//    System.out.println("Investigating royal lodge");
+//    storylineProgression("TI.txt",  "BRStart", "BRStop");
+//  }
 
   @Override
   public void vendor(Player player) {}
