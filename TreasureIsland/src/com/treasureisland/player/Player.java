@@ -345,19 +345,19 @@ public class Player implements Serializable {
       case "talk":
       case "t":
         playerInfoConsoleOutput();
-        currentScene.talkToNPC(this);
+        currentScene.talk(this);
         playerInteractionOptions(direction, islandDestination);
         break;
       case "look":
       case "l":
         playerInfoConsoleOutput();
-        currentScene.lookAroundLocation(this);
+        currentScene.look(this);
         playerInteractionOptions(direction, islandDestination);
         break;
       case "investigate":
       case "i":
         playerInfoConsoleOutput();
-        currentScene.investigateArea(this);
+        currentScene.investigate(this);
         playerInteractionOptions(direction, islandDestination);
         break;
       case "clues":

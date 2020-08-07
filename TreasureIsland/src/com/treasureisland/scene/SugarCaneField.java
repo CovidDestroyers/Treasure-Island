@@ -15,7 +15,7 @@ public class SugarCaneField extends Scene {
   }
 
   @Override
-  public void talkToNPC(Player player) {
+  public void talk(Player player) {
     System.out.println("I wont talk without the code");
     String input = scanner.nextLine();
     if (input.equalsIgnoreCase("9999")) {
@@ -29,13 +29,13 @@ public class SugarCaneField extends Scene {
   }
 
   @Override
-  public void lookAroundLocation(Player player) {
+  public void look(Player player) {
     storylineProgression("TI.txt",  "WWStart", "WWEnd");
     player.playerCoinGenerator();
   }
 
   @Override
-  public void investigateArea(Player player) {
+  public void investigate(Player player) {
     storylineProgression("TI.txt", "SStart", "SEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 5);
 

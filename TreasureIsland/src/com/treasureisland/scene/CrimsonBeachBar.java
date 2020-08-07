@@ -26,7 +26,7 @@ public class CrimsonBeachBar extends Scene {
   }
 
   @Override
-  public void talkToNPC(Player player) {
+  public void talk(Player player) {
     storylineProgression("TI.txt", "JStart", "JEnd");
 
     //TODO another clue added 9999 in RumDistillery.java. hash out which clue added.
@@ -34,7 +34,7 @@ public class CrimsonBeachBar extends Scene {
   }
 
   @Override
-  public void lookAroundLocation(Player player) {
+  public void look(Player player) {
 
     storylineProgression("TI.txt",  "CBStart", "CBEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 10);
@@ -42,7 +42,7 @@ public class CrimsonBeachBar extends Scene {
   }
 
   @Override
-  public void investigateArea(Player player) throws InterruptedException {
+  public void investigate(Player player) throws InterruptedException {
     storylineProgression("TI.txt",  "PTStart", "PTEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 10);
 

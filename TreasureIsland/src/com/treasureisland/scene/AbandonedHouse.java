@@ -24,17 +24,17 @@ public class AbandonedHouse extends Scene {
   public void enter(Player player) throws InterruptedException {}
 
   @Override
-  public void talkToNPC(Player player) {
+  public void talk(Player player) {
     storylineProgression("TI.txt", "FLStart", "FLStop");
   }
 
   @Override
-  public void lookAroundLocation(Player player) {
+  public void look(Player player) {
     storylineProgression("TI.txt",  "DAStart", "DAStop");
   }
 
   @Override
-  public void investigateArea(Player player) {
+  public void investigate(Player player) {
     storylineProgression("TI.txt",  "HPStart", "HPStop");
   }
 

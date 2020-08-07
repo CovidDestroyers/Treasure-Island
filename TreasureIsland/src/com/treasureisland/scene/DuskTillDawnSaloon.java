@@ -19,18 +19,18 @@ public class DuskTillDawnSaloon extends Scene {
   public void enter(Player player) throws InterruptedException {}
 
   @Override
-  public void talkToNPC(Player player) {
+  public void talk(Player player) {
     System.out.println("You're talking to a npc at Dusk Till Dawn Saloon.");
     storylineProgression("TI.txt",  "FIStart", "FIStop");
   }
 
   @Override
-  public void lookAroundLocation(Player player) {
+  public void look(Player player) {
     storylineProgression("TI.txt",  "WCStart", "WCStop");
   }
 
   @Override
-  public void investigateArea(Player player) {
+  public void investigate(Player player) {
     System.out.println(" Searching the saloon, I found out that John has a key I may need.");
     storylineProgression("TI.txt", "KJStart", "KJStop");
 

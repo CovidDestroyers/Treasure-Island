@@ -30,19 +30,19 @@ public class RoyalLodge extends Scene {
   public void enter(Player player) throws InterruptedException {}
 
   @Override
-  public void talkToNPC(Player player) {
+  public void talk(Player player) {
     System.out.println("Talking to a npc Royal lodge, I found out about room 101");
     storylineProgression("TI.txt",  "R1Start", "R1Stop");
   }
 
   @Override
-  public void lookAroundLocation(Player player) {
+  public void look(Player player) {
     System.out.println("Looking around royal lodge");
     storylineProgression("TI.txt",  "SRStart", "SRStop");
   }
 
   @Override
-  public void investigateArea(Player player) {
+  public void investigate(Player player) {
     System.out.println("Investigating royal lodge");
     storylineProgression("TI.txt",  "BRStart", "BRStop");
   }

@@ -13,7 +13,7 @@ public class SouthendBeachCruces extends Scene {
   public void enter(Player player) throws InterruptedException {}
 
   @Override
-  public void talkToNPC(Player player) {
+  public void talk(Player player) {
     System.out.println("Talking to a npc Southend Beach");
     System.out.println("To unlock the lockpin you need to surrender the stolen item");
 
@@ -26,13 +26,13 @@ public class SouthendBeachCruces extends Scene {
   }
 
   @Override
-  public void lookAroundLocation(Player player) {
+  public void look(Player player) {
     System.out.println("Looking around Southend Beach");
     storylineProgression("TI.txt",  "SHStart", "SHStop");
   }
 
   @Override
-  public void investigateArea(Player player) {
+  public void investigate(Player player) {
     System.out.println("Investigating Southend beach");
     storylineProgression("TI.txt",  "GHStart", "GHStop");
   }
