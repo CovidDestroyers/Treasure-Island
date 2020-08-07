@@ -120,7 +120,7 @@ public class TreasureIslandGameplay implements Serializable {
     String input = scanner.nextLine();
     player.setPlayerName(input);
 
-    String text = Color.ANSI_BLUE.getValue()+ "Ahoy " + player.getPlayerName() + " " + " " +
+    String text = Color.ANSI_BLUE.getValue()+ "Ahoy " + Color.ANSI_GREEN.getValue()+player.getPlayerName() +Color.ANSI_BLUE.getValue()+ "! " + " " +
       "Welcome to Treasure Island....well you are not there yet.  You need to find it first.\n"+
       "\n" +
       "I know you said you put this life behind you, but rumor has it " + Color.ANSI_RED.getValue() + "Black Beard " + Color.ANSI_BLUE.getValue() +"has a bounty on your head!!\n" +
