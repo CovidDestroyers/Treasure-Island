@@ -51,49 +51,58 @@ public class MainMap {
 
   public void rumRunner() {
 
-    System.out.println("\n" + Color.ANSI_BLUE.getValue() +
-      "                                                     XXXXXXXXXXX\n" +
-      "                                                XXXXX          XXX\n" +
-      "                                           XXXXX                 XX\n" +
-      "                                        XXXX                       XX\n" +
-      "                                     XXX                            XX\n" +
-      "                                   XX        Rum Distillery           X\n" +
-      "                                   X                                  XX\n" +
-      "                                  X                                   XXX\n" +
-      "                          XXXXXXXXX         ^                     XXXXX\n" +
-      "                      XXXXX                /X\\                  XXX\n" +
-      "                      X                   /   \\               XX\n" +
-      "                      X                  /     \\             XX\n" +
-      "                      XX                /       \\             XX\n" +
-      "                       X                                       XX\n" +
-      "                       X                                         XXX\n" +
-      "                       XXX                                         XXX\n" +
-      "                         XXXX                                        XX\n" +
-      "                            XXXXX                                      X\n" +
-      "                                XXX                                    XX\n" +
-      "                                  X                       Abandon       X\n" +
-      "                                  X                       Distillery    X\n" +
-      "                                  X                                     X\n" +
-      "                               XXXX                                     X\n" +
-      "                             XX                                        XX\n" +
-      "                           XX                                        XX\n" +
-      "                           X  Sugar Cane Field                     XX\n" +
-      "                          XX                                      X\n" +
-      "                          X                                      XX\n" +
-      "                      XXXXX                                     X\n" +
-      "                  XXXXX                    .-'-'-.-,._          XXXX\n" +
-      "             XXXXXX                    _.-'        ~  '             XX\n" +
-      "          XXXX                      .-'  ~   ~   _ _.-'               XXX\n" +
-      "        XXX                         '-._,.-'._.-'-'                     X\n" +
-      "       XX                                                               X\n" +
-      "     XX                                                                 X\n" +
-      "   XX                                                                  XX\n" +
-      "XXX                                                                    X\n" +
-      "XXX                                                                   XX\n" +
-      " XXXXXXXXX                     Crimson Beach Bar                    XXX\n" +
-      "          XXXXXXXXXXX                                          XXXXXX\n" +
-      "                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-      "                         Rum Runner Isla\n" + "\n");
+    System.out.println("\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901"+Color.ANSI_RESET.getValue()+"\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1                                                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"             "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                           "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "2                                              "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                    "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                         "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "3                                           "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                        "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "4                                        "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                             "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                      "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "5                                     "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                 "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                     "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6                                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"           Rum Distillery            "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "7                                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "8                                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "9                          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                  ^                          "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                    "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "0                      "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                     /X\\                     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                        "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1                      "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                    /   \\                 "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                           "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "2                      "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                   /     \\               "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                            "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "3                      "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                  /       \\               "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                           "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "4                       "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                          "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                          "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "5                       "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                             "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                       "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6                       "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                               "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                     "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "7                         "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                              "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                    "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "8                            "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                            "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "9                                "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                         "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "0                                 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                        Abandon        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1                                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                        Distillery     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "2                                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "3                               "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                          "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "4                            "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                            "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "5                           "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                            "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                    "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6                           "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"    Sugar Cane Field                       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                     "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "7                          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                         "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                        "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "8                          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                         "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                        "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "9                      "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                           "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                          "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "0                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                         .-'-'-.-,._              "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                       "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1             "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                          _.-'        ~  '               "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                     "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "2          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                          .-'  ~   ~   _ _.-'                  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "3        "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                            '-._,.-'._.-'-'                      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "4      "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "5     "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                    "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "7"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "8"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "9 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                              Crimson Beach Bar                       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                    "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "0          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                           "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                      "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1                    "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                       "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "                         "+Color.ANSI_BLACK.getValue()+"Rum Runner Isla"+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                    "+Color.ANSI_RESET.getValue()+ "\n"+
+      "\n" +
+      Color.ANSI_RESET.getValue());
+
+    Scanner scanner = OnlyOneScanner.getTheOneScanner();
+    System.out.println("Type back to return.");
+    scanner.next();
+    Player player = new Player();
+    player.clearScreen();
 
   }
 

@@ -63,6 +63,7 @@ public class TreasureIslandGameplay implements Serializable {
    */
 
   public void start() throws InterruptedException {
+    welcomeToTreasureIsland();
     currentIsland = rumRunnerIsle;
     customGameplayOptions();
     // currentIsland.enter(scanner, player);
@@ -114,26 +115,52 @@ public class TreasureIslandGameplay implements Serializable {
   // calls first storyline txt file then puts player into rumDistillery()
   // ENtry point into
   public void chosePlayerName() throws InterruptedException {
-    welcomeToTreasureIsland();
+    //welcomeToTreasureIsland();
     System.out.println("Please enter your name: ");
     String input = scanner.nextLine();
     player.setPlayerName(input);
 
-    System.out.println("\n" + Color.ANSI_BLUE.getValue() +
-        "Ahoy " + Color.ANSI_BOLD.getValue() +  player.getPlayerName() + Color.ANSI_RESET.getValue() + ",\n\n" +
-          Color.ANSI_BLUE.getValue() + "Welcome to Treasure Island....well you are not there yet.  You need to find it.\n" +
-          "I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!\n" +
-          "Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!\n" +
-          "\n" +
-          "All you need to do is find the diamond.\n" +
-          "\n" +
-          "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n" +
-          "the places.\n" +
-          "\n" +
-          "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n" +
-          "\n" +
-          "Your journey starts on Rum Runner Isle.  Good luck!"+ Color.ANSI_RESET.getValue() );
-        // storylineProgression("GameIntroText.txt", "", "start", "stop");
+    String text = Color.ANSI_BLUE.getValue()+ "Ahoy " + player.getPlayerName() + " " + " " +
+      "Welcome to Treasure Island....well you are not there yet.  You need to find it first.\n"+
+      "\n" +
+      "I know you said you put this life behind you, but rumor has it " + Color.ANSI_RED.getValue() + "Black Beard " + Color.ANSI_BLUE.getValue() +"has a bounty on your head!!\n" +
+      "Don't worry friend, I have a way to satisfy his bounty.....if you can survive his gang!!\n" +
+      "\n" +
+      "All you need to do is find the diamond.\n" +
+      "\n" +
+      "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n" +
+      "the places.\n" +
+      "\n" +
+      "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n" +
+      "\n" +
+      "Your journey starts on Rum Runner Isle.  Good luck!"+ Color.ANSI_RESET.getValue() +
+      "\n" +
+      "\n";
+    int i;
+    for(i = 0; i < text.length(); i++){
+      System.out.printf("%c", text.charAt(i));
+      try{
+        Thread.sleep(75);//0.5s pause between characters
+      }catch(InterruptedException ex){
+        Thread.currentThread().interrupt();
+      }
+    }
+
+//    System.out.println( Color.ANSI_BLUE.getValue() +
+//        "Ahoy " + player.getPlayerName() + "\n" +
+//          "Welcome to Treasure Island....well you are not there yet.  You need to find it.\n" +
+//          "I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!\n" +
+//          "Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!\n" +
+//          "\n" +
+//          "All you need to do is find the diamond.\n" +
+//          "\n" +
+//          "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n" +
+//          "the places.\n" +
+//          "\n" +
+//          "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n" +
+//          "\n" +
+//          "Your journey starts on Rum Runner Isle.  Good luck!"+ Color.ANSI_RESET.getValue() );
+//        // storylineProgression("GameIntroText.txt", "", "start", "stop");
     rumRunnerIsle();
 
   }
