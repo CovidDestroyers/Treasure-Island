@@ -308,27 +308,27 @@ public class Player implements Serializable {
     String input = "";
 
     String interactionOptions =
-        "\nWhat would you like to do?\n"
-            + " -Type \"T\": Talk\n"
-            + " -Type \"L\": Look Around\n"
-            + " -Type \"I\": Investigate\n "
-            + " -Type \"C\": See Clues\n "
-            + " -Type \"M\": Look at the Map\n"
-            + " -Type \"INV\": Inventory\n "
-            + " -Type \"G\": Grab Item\n "
-            + " -Type \"E\": Exit This World\n";
+        "\nWhat would you like to do?\n "
+          + " -Type \"T\": Talk\n "
+          + " -Type \"L\": Look Around\n "
+          + " -Type \"I\": Investigate\n "
+          + " -Type \"C\": See Clues\n "
+          + " -Type \"M\": Look at the Map\n "
+          + " -Type \"INV\": Inventory\n "
+          + " -Type \"G\": Grab Item\n "
+          + " -Type \"E\": Exit This Location\n ";
 
     String interactOptionsWithVendor =
         "\nWhat would you like to do? \n "
-            + "-Type \"T\": Talk\n "
-            + "-Type \"L\": Look Around\n "
-            + "-Type \"I\": Investigate\n "
-            + "-Type \"C\": See Clues\n "
-            + "-Type \"M\": Look at the Map\n"
-            + "-Type \"V\": Visit the Vendor\n "
-            + "-Type \"INV\": Inventory\n "
-            + "-Type \"G\": Grab Item\n "
-            + "-Type \"E\": Exit This World\n";
+          + "-Type \"T\": Talk\n "
+          + "-Type \"L\": Look Around\n "
+          + "-Type \"I\": Investigate\n "
+          + "-Type \"C\": See Clues\n "
+          + "-Type \"M\": Look at the Map\n "
+          + "-Type \"V\": Visit the Vendor\n "
+          + "-Type \"INV\": Inventory\n "
+          + "-Type \"G\": Grab Item\n "
+          + "-Type \"E\": Exit This Location\n ";
 
     playerHealthCheck();
 
