@@ -32,24 +32,22 @@ public class AbandonedDistillery extends Scene {
   }
 
   @Override
-  public void talk(Player player) {
-    storylineProgression("TI.txt",  "BGStart", "BGEnd");
+  public void talkToNPC(Player player) {
+    storylineProgression("TI.txt", "BGStart", "BGEnd");
   }
 
   @Override
-  public void look(Player player) {
-    storylineProgression("TI.txt",  "DSStart", "DSEnd");
+  public void lookAroundLocation(Player player) {
+    storylineProgression("TI.txt", "DSStart", "DSEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 50);
   }
 
-  @Override
-  public void investigate(Player player) {
-    storylineProgression("TI.txt",  "DRStart", "DREnd");
-  }
+  //  @Override
+  //  public void investigateArea(Player player) {
+  //    storylineProgression("TI.txt",  "DRStart", "DREnd");
+  //    player.playerClues.add("9");
+  //  }
 
   @Override
-  public void vendor(Player player) {
-
-  }
-
+  public void vendor(Player player) {}
 }

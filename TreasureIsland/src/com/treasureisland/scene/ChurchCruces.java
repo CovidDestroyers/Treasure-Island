@@ -19,7 +19,7 @@ public class ChurchCruces extends Scene {
   public void enter(Player player) throws InterruptedException {}
 
   @Override
-  public void talk(Player player) {
+  public void talkToNPC(Player player) {
     System.out.println("You are talking to Friar Domingo at Church Cruces");
     storylineProgression("TI.txt",  "FJStart", "FJStop");
 
@@ -29,13 +29,13 @@ public class ChurchCruces extends Scene {
   }
 
   @Override
-  public void look(Player player) {
+  public void lookAroundLocation(Player player) {
     System.out.println("looking around church");
     storylineProgression("TI.txt",  "CStart", "CStop");
   }
 
   @Override
-  public void investigate(Player player) {
+  public void investigateArea(Player player) {
     System.out.println("Investigating Church Cruces...");
     storylineProgression("TI.txt",  "AStart", "AStop");
   }

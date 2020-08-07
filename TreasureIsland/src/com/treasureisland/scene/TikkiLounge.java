@@ -17,7 +17,7 @@ public class TikkiLounge extends Scene {
   }
 
   @Override
-  public void talk(Player player) {
+  public void talkToNPC(Player player) {
     System.out.println("Talking to a npc Tikki lounge");
     System.out.println("I wont talk without the code");
 
@@ -36,13 +36,13 @@ public class TikkiLounge extends Scene {
   }
 
   @Override
-  public void look(Player player) {
+  public void lookAroundLocation(Player player) {
     System.out.println("Looking around Tikki lounge, I ran into Callie ");
     storylineProgression("TI.txt",  "CAStart", "CAStop");
   }
 
   @Override
-  public void investigate(Player player) {
+  public void investigateArea(Player player) {
     System.out.println("Investigating Tikki lounge, I ran into Sam.");
     storylineProgression("TI.txt",  "SAMStart", "SAMStop");
     // TODO: ITEMS -> More keys

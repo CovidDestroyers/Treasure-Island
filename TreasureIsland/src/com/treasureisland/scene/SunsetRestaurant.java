@@ -22,17 +22,17 @@ public class SunsetRestaurant extends Scene {
   public void enter(Player player) throws InterruptedException {}
 
   @Override
-  public void talk(Player player) {
+  public void talkToNPC(Player player) {
     storylineProgression("TI.txt", "RNDStart", "RNDStop");
   }
 
   @Override
-  public void look(Player player) {
+  public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt", "PStart", "PStop");
   }
 
   @Override
-  public void investigate(Player player) {
+  public void investigateArea(Player player) {
     storylineProgression("TI.txt", "SLStart", "SLStop");
   }
 

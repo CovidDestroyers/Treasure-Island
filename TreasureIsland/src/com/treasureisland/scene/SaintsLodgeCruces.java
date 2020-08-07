@@ -21,7 +21,7 @@ public class SaintsLodgeCruces extends Scene {
   public void enter(Player player) throws InterruptedException {}
 
   @Override
-  public void talk(Player player) {
+  public void talkToNPC(Player player) {
     System.out.println("Talking to Dirty Lewis Brown at Saints Lodge");
 
     // TODO: storylineProgrssion should be in the Scene class
@@ -30,14 +30,14 @@ public class SaintsLodgeCruces extends Scene {
   }
 
   @Override
-  public void look(Player player) {
+  public void lookAroundLocation(Player player) {
     System.out.println("Looking around Saints Lodge");
     storylineProgression("TI.txt",  "MRStart", "MRStop");
     player.setPlayerHealth(player.getPlayerHealth() - 20);
   }
 
   @Override
-  public void investigate(Player player) {
+  public void investigateArea(Player player) {
     System.out.println("Investigating Saints Lodge");
     storylineProgression("TI.txt",  "PAStart", "PAStop");
     player.setPlayerHealth(player.getPlayerHealth() - 15);

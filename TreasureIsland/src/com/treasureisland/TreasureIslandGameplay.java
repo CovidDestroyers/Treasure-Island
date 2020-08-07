@@ -66,8 +66,8 @@ public class TreasureIslandGameplay implements Serializable {
     welcomeToTreasureIsland();
     currentIsland = rumRunnerIsle;
     customGameplayOptions();
-    currentIsland.enter(scanner, player);
-    // rumRunnerIsle();
+    // currentIsland.enter(scanner, player);
+    rumRunnerIsle();
   }
 
   public void customGameplayOptions() throws InterruptedException {
@@ -156,7 +156,7 @@ public class TreasureIslandGameplay implements Serializable {
       }
     }
 
-    // rumRunnerIsle();
+    rumRunnerIsle();
   }
 
   // loop continues until they find the islands special item

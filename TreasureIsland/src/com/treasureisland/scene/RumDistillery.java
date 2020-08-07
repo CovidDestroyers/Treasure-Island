@@ -25,11 +25,11 @@ public class RumDistillery extends Scene {
       String userInput = scanner.nextLine().trim().toLowerCase();
 
       if ("t".equals(userInput) || "talk".equals(userInput)) {
-        Method talkMethod = Scene.class.getMethod("talk", Player.class);
+        Method talkMethod = Scene.class.getMethod("talkToNPC", Player.class);
         talkMethod.invoke(this, player);
       }
 
-      System.out.println(RumDistillery.class.getMethod("talk", Player.class));
+      System.out.println(RumDistillery.class.getMethod("talkToNPC", Player.class));
     }
     catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
       e.printStackTrace();
@@ -38,7 +38,7 @@ public class RumDistillery extends Scene {
   }
 
   @Override
-  public void talk(Player player) {
+  public void talkToNPC(Player player) {
     System.out.println("You're talking to Sean Philippa in the Rum distillery");
     storylineProgression("TI.txt","RDStart", "RDEnd");
     player.playerClues.add(
@@ -48,15 +48,18 @@ public class RumDistillery extends Scene {
   }
 
   @Override
-  public void look(Player player) {
+  public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt", "OCStart", "OCEnd");
+    storylineProgression("TI.txt", "MBStart", "MBEnd");
+    System.out.println(" ");
     player.playerCoinGenerator();
+    player.iterateThroughClues();
   }
 
-  @Override
-  public void investigate(Player player) {
-    storylineProgression("TI.txt", "MBStart", "MBEnd");
-  }
+//  @Override
+//  public void investigateArea(Player player) {
+//    storylineProgression("TI.txt", "MBStart", "MBEnd");
+//  }
 
   @Override
   public void vendor(Player player) {}

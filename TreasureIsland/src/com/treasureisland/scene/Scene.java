@@ -98,15 +98,19 @@ public abstract class Scene implements Serializable {
    */
   public abstract void enter(Player player) throws InterruptedException;
 
-  public void talk(Player player) {}
+  /**
+   * Player talks to characters in this method
+   * @param player
+   */
+  public abstract void talkToNPC(Player player);
 
-  // public void talkToNPC(Player player, String startPosition, String endPosition) {}
+  public abstract void lookAroundLocation(Player player) throws InterruptedException;
 
-  public void look(Player player) {}
+  public void investigateArea(Player player) throws InterruptedException {
 
-  public void investigate(Player player) throws InterruptedException {}
+  }
 
-  public void vendor(Player player) {}
+  public abstract void vendor(Player player);
 
   /**
    * @param fileName

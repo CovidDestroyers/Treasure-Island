@@ -26,7 +26,7 @@ public class CrimsonBeachBar extends Scene {
   }
 
   @Override
-  public void talk(Player player) {
+  public void talkToNPC(Player player) {
     storylineProgression("TI.txt", "JStart", "JEnd");
 
     //TODO another clue added 9999 in RumDistillery.java. hash out which clue added.
@@ -34,25 +34,23 @@ public class CrimsonBeachBar extends Scene {
   }
 
   @Override
-  public void look(Player player) {
-
+  public void lookAroundLocation(Player player) throws InterruptedException {
     storylineProgression("TI.txt",  "CBStart", "CBEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 10);
-
   }
 
-  @Override
-  public void investigate(Player player) throws InterruptedException {
-    storylineProgression("TI.txt",  "PTStart", "PTEnd");
-    player.setPlayerHealth(player.getPlayerHealth() - 10);
-
-    Map<String, Boolean> availablePirates = TreasureIslandGameplay.getInstance().getAvailablePirates();
-    if(availablePirates.get("Crimson Beach Bar")) {
-      Thread.sleep(1000);
-      System.out.println("\n");
-      PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
-    }
-  }
+//  @Override
+//  public void investigateArea(Player player) throws InterruptedException {
+//    storylineProgression("TI.txt",  "PTStart", "PTEnd");
+//    player.setPlayerHealth(player.getPlayerHealth() - 10);
+//
+//    Map<String, Boolean> availablePirates = TreasureIslandGameplay.getInstance().getAvailablePirates();
+//    if(availablePirates.get("Crimson Beach Bar")) {
+//      Thread.sleep(1000);
+//      System.out.println("\n");
+//      PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
+//    }
+//  }
 
   @Override
   public void vendor(Player player) {

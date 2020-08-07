@@ -19,19 +19,19 @@ public class Graveyard extends Scene {
   public void enter(Player player) throws InterruptedException {}
 
   @Override
-  public void talk(Player player) {
+  public void talkToNPC(Player player) {
     System.out.println("After some persuasion my acquaintance took me to the graveyard.");
     storylineProgression("TI.txt", "CQStart", "CQStop");
     player.setPlayerHealth(player.getPlayerHealth() - 5);
   }
 
   @Override
-  public void look(Player player) {
+  public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt",  "STStart", "STStop");
   }
 
   @Override
-  public void investigate(Player player) {
+  public void investigateArea(Player player) {
     storylineProgression("TI.txt", "BTStart", "BTStop");
     player.playerCoinGenerator();
   }
