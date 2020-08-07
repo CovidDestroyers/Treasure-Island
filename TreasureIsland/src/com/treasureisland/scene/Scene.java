@@ -96,7 +96,7 @@ public abstract class Scene implements Serializable {
 
   }
 
-  public void lookAroundLocation(Player player) {
+  public void lookAroundLocation(Player player) throws InterruptedException {
 
   }
 

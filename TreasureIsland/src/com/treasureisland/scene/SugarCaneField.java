@@ -31,16 +31,22 @@ public class SugarCaneField extends Scene {
   public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt",  "WWStart", "WWEnd");
     player.playerCoinGenerator();
-  }
-
-  @Override
-  public void investigateArea(Player player) {
     storylineProgression("TI.txt", "SStart", "SEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 5);
 
     // TODO decide what we want to do for the key. Will we need an object ArrayList to hold items?
     //player.playerClues.add("key");
   }
+
+
+//  @Override
+//  public void investigateArea(Player player) {
+//    storylineProgression("TI.txt", "SStart", "SEnd");
+//    player.setPlayerHealth(player.getPlayerHealth() - 5);
+//
+//    // TODO decide what we want to do for the key. Will we need an object ArrayList to hold items?
+//    player.playerClues.add("some placeholder for the key");
+//  }
 
   @Override
   public void vendor(Player player) {
