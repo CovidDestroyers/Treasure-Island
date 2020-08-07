@@ -292,7 +292,13 @@ public class Player implements Serializable {
 
   public void processMovement(String islandDestination) {
     String directionOptions =
-        "Where would you like to go?\n -Type \"N\": North\n -Type \"S\": South\n -Type \"W\": West\n -Type \"E\": East\n -Type \"Save\": Save Game";
+        "Where would you like to go?\n " +
+          "-Type \"N\": North\n " +
+          "-Type \"S\": South\n " +
+          "-Type \"W\": West\n " +
+          "-Type \"E\": East\n " +
+          "-Type \"Save\": Save Game\n " +
+          "-Type \"Map\": Map\n";
 
     try {
       while (!this.haveIslandItem) {
@@ -303,7 +309,7 @@ public class Player implements Serializable {
         if ("save".equalsIgnoreCase(direction)) {
           SaveLoadGame.saveGame();
           System.out.println("We saved your game state!!");
-          System.out.println("But You cannot run forever my friend. Black Beard will find you.");
+          System.out.println("But You cannot run forever my friend."+Color.ANSI_RED.getValue()+"Black Beard " +Color.ANSI_RESET.getValue()+ "will find you!!!");
           System.out.println("Sleep well for it may be your last night.");
           //System.out.println(getCrossBones());
           System.out.println("Goodbye for now.");
