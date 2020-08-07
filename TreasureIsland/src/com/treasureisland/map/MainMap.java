@@ -1,5 +1,6 @@
 package com.treasureisland.map;
 
+import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 
@@ -41,7 +42,7 @@ public class MainMap {
       Color.ANSI_BLUE_BACKGROUND.getValue()+"7                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                           "+Color.ANSI_RESET.getValue() +"\n" +
       "\n" +      Color.ANSI_RESET.getValue());
 
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = OnlyOneScanner.getTheOneScanner();
     System.out.println("Type back to return.");
     scanner.next();
     Player player = new Player();

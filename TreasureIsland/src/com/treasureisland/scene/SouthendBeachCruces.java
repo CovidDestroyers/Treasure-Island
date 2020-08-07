@@ -10,17 +10,17 @@ public class SouthendBeachCruces extends Scene {
   }
 
   @Override
-  public void enter(Scanner in, Player player) throws InterruptedException {}
+  public void enter(Player player) throws InterruptedException {}
 
   @Override
   public void talkToNPC(Player player) {
     System.out.println("Talking to a npc Southend Beach");
     System.out.println("To unlock the lockpin you need to surrender the stolen item");
-    Scanner scan = new Scanner(System.in);
-    String input = scan.nextLine();
+
+    String input = scanner.nextLine();
     if (input.equalsIgnoreCase("goblet")) {
       System.out.println("DING DING DING \n You have unlocked your third treasure piece.");
-      player.haveIslandItem = true;
+      player.setHasIslandItem(true);
       storylineProgression("TI.txt",  "FStart", "FStop");
     }
   }
@@ -38,5 +38,5 @@ public class SouthendBeachCruces extends Scene {
   }
 
   @Override
-  public void vendor() {}
+  public void vendor(Player player) {}
 }

@@ -1,7 +1,6 @@
 package com.treasureisland.scene;
 
 import com.treasureisland.player.Player;
-import java.util.Scanner;
 
 public class PawPawBeach extends Scene {
 
@@ -10,7 +9,7 @@ public class PawPawBeach extends Scene {
   }
 
   @Override
-  public void enter(Scanner in, Player player) throws InterruptedException {}
+  public void enter(Player player) throws InterruptedException {}
 
   @Override
   public void talkToNPC(Player player) {
@@ -30,5 +29,5 @@ public class PawPawBeach extends Scene {
   }
 
   @Override
-  public void vendor() {}
+  public void vendor(Player player) {}
 }

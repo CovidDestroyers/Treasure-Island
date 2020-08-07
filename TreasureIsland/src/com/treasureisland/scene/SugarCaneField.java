@@ -2,31 +2,27 @@ package com.treasureisland.scene;
 
 import com.treasureisland.player.Player;
 import java.util.Scanner;
-// TODO "complete" besides deciding if we need a key array, also potentialy adding coins
-// TODO decide if there is a vendor or something that coins can be spent. also potential health
-// implementation
 
 public class SugarCaneField extends Scene {
-  Scanner in = new Scanner(System.in);
 
   public SugarCaneField(String sceneName) {
     super(sceneName);
   }
 
   @Override
-  public void enter(Scanner in, Player player) throws InterruptedException {
-    this.in = in;
+  public void enter(Player player) throws InterruptedException {
+
   }
 
   @Override
   public void talkToNPC(Player player) {
     System.out.println("I wont talk without the code");
-    String input = in.nextLine();
+    String input = scanner.nextLine();
     if (input.equalsIgnoreCase("9999")) {
       // TODO: ITEMS -> Cane Shard
       System.out.println(
           "DING DING DING \n You have unlocked your first treasure piece. \n awarded the cane shard");
-      player.haveIslandItem = true;
+      player.setHasIslandItem(true);
     } else {
       System.out.println("Go away");
     }
@@ -48,8 +44,8 @@ public class SugarCaneField extends Scene {
   }
 
   @Override
-  public void vendor() {
-    // player.playerVisitsVendor();
+  public void vendor(Player player) {
+    player.playerVisitsVendor();
   }
 
   /*

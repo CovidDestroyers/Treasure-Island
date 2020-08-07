@@ -2,6 +2,7 @@ package com.treasureisland.player;
 
 import com.treasureisland.TreasureIslandGameplay;
 
+import com.treasureisland.OnlyOneScanner;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -12,24 +13,22 @@ public class PirateFightSequence {
    * ============= Variable Declarations =========
    * =============================================
    */
+  String input;
   public Pirate pirate = Pirate.getInstance();
-  public transient Scanner scanner = new Scanner(System.in);
-  public String input;
+  public transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   private static final PirateFightSequence pirateFightSequence = new PirateFightSequence();
   private final TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
-
 
   /*
    * =============================================
    * ============= Constructors ==================
    * =============================================
    */
-  private PirateFightSequence(){ }
+  private PirateFightSequence() {}
 
-  public static PirateFightSequence getInstance(){
+  public static PirateFightSequence getInstance() {
     return pirateFightSequence;
   }
-
 
   /*
    * =============================================

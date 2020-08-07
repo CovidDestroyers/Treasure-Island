@@ -51,7 +51,7 @@ public class Pirate {
   }
 
   public void defendPirate(Player player) {
-    int result = player.playerAttackStrength - getPirateHealth();
+    int result = player.getPlayerAttackStrength() - getPirateHealth();
     if (result <= 0) {
       System.out.println(Color.ANSI_RED.getValue() + getPirateName() + Color.ANSI_RESET.getValue() + " did no damage.");
     } else {

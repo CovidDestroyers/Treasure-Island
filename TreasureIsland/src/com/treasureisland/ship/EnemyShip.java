@@ -4,17 +4,13 @@ import com.treasureisland.player.Player;
 import java.util.Random;
 
 public class EnemyShip implements java.io.Serializable {
-    public final String enemyShipName = " An Unidentified Ship";
-    public Integer enemyShipHealth = 100;
-    public Integer enemyAttackStrength = new Random().nextInt(100);
-    private static final EnemyShip enemyShip = new EnemyShip();
+    public final String enemyShipName = "The Queen Anne's Revenge";
+    private   Integer enemyShipHealth = 100;
+    public Integer enemyAttackStrength;
 
 
-  private EnemyShip() {}
+  public EnemyShip() {}
 
-  public static EnemyShip getInstance() {
-    return enemyShip;
-  }
 
   public String getEnemyShipName() {
     return enemyShipName;
@@ -28,8 +24,8 @@ public class EnemyShip implements java.io.Serializable {
     this.enemyShipHealth = enemyShipHealth;
   }
 
-  public void attackPlayerShip(PlayerShip playerShip, Player player) throws InterruptedException {
-    Integer enemyAttackStrength = new Random().nextInt(100);
+  public void attackPlayerShip(PlayerShip playerShip) throws InterruptedException {
+    enemyAttackStrength = new Random().nextInt(100);
     System.out.println(
         enemyShipName
             + " attacked "
@@ -53,5 +49,13 @@ public class EnemyShip implements java.io.Serializable {
       setEnemyShipHealth(getEnemyShipHealth() - result);
       System.out.println(playerShip.getPlayerShipName() + " did " + result + " damage");
     }
+  }
+
+  public Integer getEnemyAttackStrength() {
+    return enemyAttackStrength;
+  }
+
+  public void setEnemyAttackStrength(Integer enemyAttackStrength) {
+    this.enemyAttackStrength = enemyAttackStrength;
   }
 }

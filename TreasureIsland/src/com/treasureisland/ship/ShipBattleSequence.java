@@ -1,27 +1,17 @@
 package com.treasureisland.ship;
 
-import com.treasureisland.player.Player;
-
 import java.util.Random;
 import java.util.Scanner;
 
-public class ShipBattleSequence  implements java.io.Serializable{
-    public EnemyShip enemyShip = EnemyShip.getInstance();
-    public PlayerShip playerShip = PlayerShip.getInstance();
+public class ShipBattleSequence implements java.io.Serializable {
+  public EnemyShip enemyShip = new EnemyShip();
+  public PlayerShip playerShip = new PlayerShip();
 
-    public transient Scanner scanner = new Scanner(System.in);
-    public String input;
-    private static final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
+  public String input;
 
-    private  ShipBattleSequence(){
+  public ShipBattleSequence() {}
 
-    }
-
-    public static ShipBattleSequence getInstance(){
-        return shipBattleSequence;
-    }
-
-    public void shipBattleAfterLeavingIsland(Player player) throws InterruptedException {
+    public void shipBattleAfterLeavingIsland(Player player,Scanner scanner) throws InterruptedException {
         while(playerShip.getPlayerShipHealth() > 0 && enemyShip.getEnemyShipHealth() > 0){
             System.out.println("You encountered " + enemyShip.getEnemyShipName());
             System.out.println("Would you like to Attack<A> or Defend<D>??");
@@ -58,8 +48,9 @@ public class ShipBattleSequence  implements java.io.Serializable{
         }
     }
 
-    public void healthStatus(){
-        System.out.println("\n"+playerShip.getPlayerShipName() + ": " + playerShip.getPlayerShipHealth());
-        System.out.println("\n"+enemyShip.getEnemyShipName() + ": " + enemyShip.getEnemyShipHealth());
-    }
+  public void healthStatus() {
+    System.out.println(
+        "\n" + playerShip.getPlayerShipName() + ": " + playerShip.getPlayerShipHealth());
+    System.out.println("\n" + enemyShip.getEnemyShipName() + ": " + enemyShip.getEnemyShipHealth());
+  }
 }

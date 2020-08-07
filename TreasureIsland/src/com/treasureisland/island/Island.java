@@ -3,18 +3,20 @@ package com.treasureisland.island;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public abstract class Island implements Serializable {
-  private Island islandToTheNorth;
-  private Island islandToTheSouth;
-  private Island islandToTheEast;
-  private Island islandToTheWest;
+  protected Island islandToTheNorth;
+  protected Island islandToTheSouth;
+  protected Island islandToTheEast;
+  protected Island islandToTheWest;
 
-  private Scene northScene;
-  private Scene southScene;
-  private Scene eastScene;
-  private Scene westScene;
+
+  protected Scene currentScene;
+  protected List<Scene> scenesOnIsland = new ArrayList<>();
 
   /*
    * =============================================
@@ -29,6 +31,15 @@ public abstract class Island implements Serializable {
    * =========== Business Methods ================
    * =============================================
    */
+
+  public void addScenesToIsland(Scene... scenes) {
+    try {
+      scenesOnIsland.addAll(Arrays.asList(scenes));
+    } catch (Exception e) {
+      System.out.println("Something broke :`(");
+      e.printStackTrace();
+    }
+  }
 
   /**
    * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
@@ -45,19 +56,20 @@ public abstract class Island implements Serializable {
    * @return
    */
   public Island changeIsland(String direction) {
+    String sanitizedDirection = direction.trim().toLowerCase();
     Island nextIsland = null;
 
-    if ("north".equals(direction)) {
-      nextIsland = islandToTheNorth;
+    if ("north".equals(sanitizedDirection)) {
+      nextIsland = getIslandToTheNorth();
 
-    } else if ("east".equals(direction)) {
-      nextIsland = islandToTheEast;
+    } else if ("east".equals(sanitizedDirection)) {
+      nextIsland = getIslandToTheEast();
 
-    } else if ("south".equals(direction)) {
-      nextIsland = islandToTheSouth;
+    } else if ("south".equals(sanitizedDirection)) {
+      nextIsland = getIslandToTheSouth();
 
-    } else if ("west".equals(direction)) {
-      nextIsland = islandToTheWest;
+    } else if ("west".equals(sanitizedDirection)) {
+      nextIsland = getIslandToTheWest();
 
     } else {
       System.out.println("Error: unknown direction " + direction);
@@ -121,37 +133,5 @@ public abstract class Island implements Serializable {
 
   public void setIslandToTheWest(Island islandToTheWest) {
     this.islandToTheWest = islandToTheWest;
-  }
-
-  public Scene getNorthScene() {
-    return northScene;
-  }
-
-  public void setNorthScene(Scene northScene) {
-    this.northScene = northScene;
-  }
-
-  public Scene getSouthScene() {
-    return southScene;
-  }
-
-  public void setSouthScene(Scene southScene) {
-    this.southScene = southScene;
-  }
-
-  public Scene getEastScene() {
-    return eastScene;
-  }
-
-  public void setEastScene(Scene eastScene) {
-    this.eastScene = eastScene;
-  }
-
-  public Scene getWestScene() {
-    return westScene;
-  }
-
-  public void setWestScene(Scene westScene) {
-    this.westScene = westScene;
   }
 }

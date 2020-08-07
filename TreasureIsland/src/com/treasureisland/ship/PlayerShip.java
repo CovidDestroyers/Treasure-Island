@@ -6,26 +6,12 @@ import java.util.Random;
 public class PlayerShip implements java.io.Serializable{
   private static final PlayerShip playerShip = new PlayerShip();
   public final String playerShipName = "The Black Pearl";
+
   public Integer playerShipHealth = 100;
   public Integer playerAttackStrength = new Random().nextInt(100);
 
-  private PlayerShip() {}
+  public PlayerShip() {}
 
-  public static PlayerShip getInstance() {
-    return playerShip;
-  }
-
-  public String getPlayerShipName() {
-    return playerShipName;
-  }
-
-  public Integer getPlayerShipHealth() {
-    return playerShipHealth;
-  }
-
-  public void setPlayerShipHealth(Integer playerShipHealth) {
-    this.playerShipHealth = playerShipHealth;
-  }
 
   public void attackEnemyShip(EnemyShip enemyShip) {
     System.out.println(
@@ -43,7 +29,7 @@ public class PlayerShip implements java.io.Serializable{
   }
 
   public void defendPlayerShip(EnemyShip enemyShip, Player player) throws InterruptedException {
-    int result = enemyShip.enemyAttackStrength - getPlayerShipHealth();
+    int result = enemyShip.getEnemyAttackStrength() - getPlayerShipHealth();
     if (result <= 0) {
       System.out.println(enemyShip.getEnemyShipName() + " did no damage.");
     } else {
@@ -54,5 +40,22 @@ public class PlayerShip implements java.io.Serializable{
         player.playerDeathOptions();
       }
     }
+  }
+
+  /*
+   * =============================================
+   * =========== Accessor Methods ================
+   * =============================================
+   */
+  public String getPlayerShipName() {
+    return playerShipName;
+  }
+
+  public Integer getPlayerShipHealth() {
+    return playerShipHealth;
+  }
+
+  public void setPlayerShipHealth(Integer playerShipHealth) {
+    this.playerShipHealth = playerShipHealth;
   }
 }

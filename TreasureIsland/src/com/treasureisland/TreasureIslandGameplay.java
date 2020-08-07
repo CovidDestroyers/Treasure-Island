@@ -19,10 +19,11 @@ public class TreasureIslandGameplay implements Serializable {
   private final Island portRoyal;
   private final Island islaCruces;
   private final Island islaDeMuerta;
+  private Island currentIsland;
 
   private final Player player;
-  private final ShipBattleSequence shipBattleSequence = ShipBattleSequence.getInstance();
-  transient Scanner scanner = new Scanner(System.in);
+  private final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
+  private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   String input;
   public static TreasureIslandGameplay treasureIslandGameplay;
   private Map<String, Boolean> availablePirates = new HashMap<>();
@@ -61,9 +62,14 @@ public class TreasureIslandGameplay implements Serializable {
    * =============================================
    */
 
-  public void start(Scanner in) throws InterruptedException {
-    scanner = in;
+  public void start() throws InterruptedException {
+    currentIsland = rumRunnerIsle;
+    customGameplayOptions();
+    // currentIsland.enter(scanner, player);
+    rumRunnerIsle();
   }
+
+
 
   public void customGameplayOptions() throws InterruptedException {
     File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
@@ -74,28 +80,33 @@ public class TreasureIslandGameplay implements Serializable {
       System.out.println("Would you like to play the full game<F>, or play on a sample island<S>?");
     }
 
-    input = scanner.nextLine();
-    if ("l".equalsIgnoreCase(input)) {
-      treasureIslandGameplay = SaveLoadGame.loadGame();
-      System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
-      System.out.println("Location: " + treasureIslandGameplay.player.location.getSceneName());
-      System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
-      System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
+    input = scanner.nextLine().trim().toLowerCase();
+    switch (input) {
+      case "l":
+        treasureIslandGameplay = SaveLoadGame.loadGame();
+        System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
+        System.out.println(
+          "Location: " + treasureIslandGameplay.player.getCurrentScene().getSceneName());
+        System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
+        System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
 
-      rumRunnerIsle();
-    } else if ("f".equalsIgnoreCase(input)) {
-      if (gameState.exists()) {
-        gameState.delete();
-      }
-      chosePlayerName();
-    } else if ("s".equalsIgnoreCase(input)) {
-      if (gameState.exists()) {
-        gameState.delete();
-      }
-      player.setPlayerName("Test Player");
-      testIslandSelector();
-    } else {
-      customGameplayOptions();
+        break;
+      case "f":
+        if (gameState.exists()) {
+          gameState.delete();
+        }
+        chosePlayerName();
+        break;
+      case "s":
+        if (gameState.exists()) {
+          gameState.delete();
+        }
+        player.setPlayerName("Test Player");
+        testIslandSelector();
+        break;
+      default:
+        customGameplayOptions();
+        break;
     }
   }
 
@@ -135,12 +146,12 @@ public class TreasureIslandGameplay implements Serializable {
     try {
       // process player movement and takes in current island as parameter so factory knows where to
       // delegate
-      this.player.processMovement("rumRunnerisle");
+      player.processMovement("rumRunnerisle");
       System.out.println("Leaving Rum Runners Isle \n \n");
       leavingIslandShipPrint();
       Thread.sleep(5000);
-      player.haveIslandItem = false;
-      ShipBattleSequence.getInstance().shipBattleAfterLeavingIsland(this.player);
+      player.setHasIslandItem(false);
+      shipBattleSequence.shipBattleAfterLeavingIsland(this.player, scanner);
       portRoyal();
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -153,8 +164,8 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("Leaving Port Royal Isle \n \n");
     leavingIslandShipPrint();
     Thread.sleep(5000);
-    player.haveIslandItem = false;
-    ShipBattleSequence.getInstance().shipBattleAfterLeavingIsland(this.player);
+    player.setHasIslandItem(false);
+    shipBattleSequence.shipBattleAfterLeavingIsland(this.player,scanner);
     islaCruces();
   }
 
@@ -164,8 +175,8 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("Leaving Isla Cruces \n \n");
     leavingIslandShipPrint();
     Thread.sleep(5000);
-    player.haveIslandItem = false;
-    ShipBattleSequence.getInstance().shipBattleAfterLeavingIsland(this.player);
+    player.setHasIslandItem(false);
+    shipBattleSequence.shipBattleAfterLeavingIsland(this.player,scanner);
 
     islaDeMuerta();
   }
@@ -313,17 +324,18 @@ public class TreasureIslandGameplay implements Serializable {
 
     System.out.println(
         "\n"
-            + Color.ANSI_GREEN.getValue() +
-          "    $$$$$$$$                                                                               $$$$$$            $$                            $$\n" +
-          "       $$                                                                                    $$              $$                            $$\n" +
-          "       $$      $$$$$$    $$$$$$    $$$$$$    $$$$$$$   $$    $$   $$$$$$    $$$$$$           $$     $$$$$$$  $$   $$$$$$   $$$$$$$    $$$$$$$\n" +
-          "       $$     $$    $$  $$    $$        $$  $$         $$    $$  $$    $$  $$    $$          $$    $$        $$        $$  $$    $$  $$    $$\n" +
-          "       $$     $$        $$$$$$$$   $$$$$$$   $$$$$$    $$    $$  $$        $$$$$$$$          $$     $$$$$$   $$   $$$$$$$  $$    $$  $$    $$\n" +
-          "       $$     $$        $$        $$    $$         $$  $$    $$  $$        $$                $$          $$  $$  $$    $$  $$    $$  $$    $$\n" +
-          "       $$     $$         $$$$$$$   $$$$$$$  $$$$$$$     $$$$$$   $$         $$$$$$$        $$$$$$  $$$$$$$   $$   $$$$$$$  $$    $$   $$$$$$$\n" +
-          "                                                                                                                                             \n" +
-          "                                                                                                                                             \n" +
-          "                                                                                                                                             \n" + Color.ANSI_RESET.getValue());
+            + Color.ANSI_GREEN.getValue()
+            + "    $$$$$$$$                                                                               $$$$$$            $$                            $$\n"
+            + "       $$                                                                                    $$              $$                            $$\n"
+            + "       $$      $$$$$$    $$$$$$    $$$$$$    $$$$$$$   $$    $$   $$$$$$    $$$$$$           $$     $$$$$$$  $$   $$$$$$   $$$$$$$    $$$$$$$\n"
+            + "       $$     $$    $$  $$    $$        $$  $$         $$    $$  $$    $$  $$    $$          $$    $$        $$        $$  $$    $$  $$    $$\n"
+            + "       $$     $$        $$$$$$$$   $$$$$$$   $$$$$$    $$    $$  $$        $$$$$$$$          $$     $$$$$$   $$   $$$$$$$  $$    $$  $$    $$\n"
+            + "       $$     $$        $$        $$    $$         $$  $$    $$  $$        $$                $$          $$  $$  $$    $$  $$    $$  $$    $$\n"
+            + "       $$     $$         $$$$$$$   $$$$$$$  $$$$$$$     $$$$$$   $$         $$$$$$$        $$$$$$  $$$$$$$   $$   $$$$$$$  $$    $$   $$$$$$$\n"
+            + "                                                                                                                                             \n"
+            + "                                                                                                                                             \n"
+            + "                                                                                                                                             \n"
+            + Color.ANSI_RESET.getValue());
   }
 
   public Map<String, Boolean> getAvailablePirates(){
