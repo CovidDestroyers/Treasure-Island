@@ -47,16 +47,4 @@ public class SugarCaneField extends Scene {
   public void vendor(Player player) {
     player.playerVisitsVendor();
   }
-
-  /*
-  public void vendor(){
-      sout welcome to my shop
-      vendorItems.getAll();
-      input selector for vendor items.
-      include method to grab item and increase health by amount
-      reduce player coins by amount
-      possibly include quantity that reduces by one every purchase
-  }
-   */
-
 }

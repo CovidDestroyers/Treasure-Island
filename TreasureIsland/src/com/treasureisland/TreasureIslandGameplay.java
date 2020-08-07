@@ -24,7 +24,7 @@ public class TreasureIslandGameplay implements Serializable {
   private final Player player;
   private final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
   private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
-  String input;
+  private String input;
   public static TreasureIslandGameplay treasureIslandGameplay;
   private Map<String, Boolean> availablePirates = new HashMap<>();
 

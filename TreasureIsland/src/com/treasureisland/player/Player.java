@@ -331,7 +331,6 @@ public class Player implements Serializable {
       case "clues":
       case "c":
         playerInfoConsoleOutput();
-        // TODO: Move this method into each Scene class
         iterateThroughPlayerClues();
         playerInteractionOptions(direction);
         break;
