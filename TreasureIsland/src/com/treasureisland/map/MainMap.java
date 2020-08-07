@@ -9,6 +9,9 @@ import java.util.Scanner;
 
 public class MainMap {
 
+  private String input;
+  private transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
+
   public void mainMap() {
 
     System.out.println("\n" +
@@ -42,11 +45,17 @@ public class MainMap {
       Color.ANSI_BLUE_BACKGROUND.getValue()+"7                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                           "+Color.ANSI_RESET.getValue() +"\n" +
       "\n" +      Color.ANSI_RESET.getValue());
 
-    Scanner scanner = OnlyOneScanner.getTheOneScanner();
-    System.out.println("Type back to return.");
-    scanner.next();
-    Player player = new Player();
-    player.clearScreen();
+    Boolean isBack = false;
+    while (!isBack) {
+      System.out.println("Type \"Back\" to Return.");
+      input = scanner.nextLine().trim();
+      if ("back".equalsIgnoreCase(input)) {
+        isBack = true;
+        clearScreen();
+      } else {
+        System.out.println("Invalid input, please try again.");
+      }
+    }
   }
 
   public void rumRunner() {
@@ -95,17 +104,22 @@ public class MainMap {
       Color.ANSI_BLUE_BACKGROUND.getValue() + "0          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                           "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                      "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "1                    "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                       "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "                         "+Color.ANSI_BLACK.getValue()+"Rum Runner Isle"+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                    "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "                         "+Color.ANSI_WHITE_BOLD.getValue()+"Rum Runner Isla"+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                    "+Color.ANSI_RESET.getValue()+ "\n"+
       "\n" +
       Color.ANSI_RESET.getValue());
 
-    Scanner scanner = OnlyOneScanner.getTheOneScanner();
-    System.out.println("Type back to return.");
-    scanner.next();
-    Player player = new Player();
-    player.clearScreen();
-
+    Boolean isBack = false;
+    while (!isBack) {
+      System.out.println("Type \"Back\" to Return.");
+      input = scanner.nextLine().trim();
+      if ("back".equalsIgnoreCase(input)) {
+        isBack = true;
+        clearScreen();
+      } else {
+        System.out.println("Invalid input, please try again.");
+      }
+    }
   }
-
 
   public void portRoyal() {
 
@@ -145,10 +159,22 @@ public class MainMap {
       "                    XX    Ship Graveyard   XX\n" +
       "                     XXXXXXXXXXXXXXXXXXXXXX\n" + "\n" +
       Color.ANSI_RESET.getValue());
+
+    Boolean isBack = false;
+    while (!isBack) {
+      System.out.println("Type \"Back\" to Return.");
+      input = scanner.nextLine().trim();
+      if ("back".equalsIgnoreCase(input)) {
+        isBack = true;
+        clearScreen();
+      } else {
+        System.out.println("Invalid input, please try again.");
+      }
+    }
   }
 
 
-  public void deMuerta() {
+  public void islaDeMuerta() {
 
     System.out.println("\n" + Color.ANSI_BLUE.getValue()+ "          |\n" +
       "      XXXXXXXXX\n" +
@@ -177,6 +203,18 @@ public class MainMap {
       "\n" +
       "                             Isla DeMuentes\n " +
       Color.ANSI_RESET.getValue());
+
+    Boolean isBack = false;
+    while (!isBack) {
+      System.out.println("Type \"Back\" to Return.");
+      input = scanner.nextLine().trim();
+      if ("back".equalsIgnoreCase(input)) {
+        isBack = true;
+        clearScreen();
+      } else {
+        System.out.println("Invalid input, please try again.");
+      }
+    }
   }
 
 
@@ -222,7 +260,24 @@ public class MainMap {
       "                       XXXXXXXX        XX\n" +
       "                              XXXXXXXXX\n "   +   "\n" +
       Color.ANSI_RESET.getValue());
+
+    Boolean isBack = false;
+    while (!isBack) {
+      System.out.println("Type \"Back\" to Return.");
+      input = scanner.nextLine().trim();
+      if ("back".equalsIgnoreCase(input)) {
+        isBack = true;
+        clearScreen();
+      } else {
+        System.out.println("Invalid input, please try again.");
+      }
+    }
   }
 
-
+  // Method to clear the screen
+  public void clearScreen() {
+    for (int i = 0; i < 50; i++) {
+      System.out.println("\b");
+    }
+  }
 }

@@ -24,9 +24,9 @@ public class TreasureIslandGameplay implements Serializable {
   private final Player player;
   private final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
   private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
-  String input;
+  private String input;
   public static TreasureIslandGameplay treasureIslandGameplay;
-  private Map<String, Boolean> availablePirates = new HashMap<>();
+  private final Map<String, Boolean> availablePirates = new HashMap<>();
 
   /*
    * =============================================
@@ -46,7 +46,7 @@ public class TreasureIslandGameplay implements Serializable {
     portRoyal.connectSouth(islaCruces);
     islaDeMuerta.connectSouth(rumRunnerIsle);
 
-    availablePirates.put("Crimson Beach Bar",true);
+    availablePirates.put("Crimson Beach Bar", true);
   }
 
   public static TreasureIslandGameplay getInstance() {
@@ -70,8 +70,6 @@ public class TreasureIslandGameplay implements Serializable {
     rumRunnerIsle();
   }
 
-
-
   public void customGameplayOptions() throws InterruptedException {
     File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
     if (gameState.exists()) {
@@ -87,7 +85,7 @@ public class TreasureIslandGameplay implements Serializable {
         treasureIslandGameplay = SaveLoadGame.loadGame();
         System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
         System.out.println(
-          "Location: " + treasureIslandGameplay.player.getCurrentScene().getSceneName());
+            "Location: " + treasureIslandGameplay.player.getCurrentScene().getSceneName());
         System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
         System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
 
@@ -115,54 +113,50 @@ public class TreasureIslandGameplay implements Serializable {
   // calls first storyline txt file then puts player into rumDistillery()
   // ENtry point into
   public void chosePlayerName() throws InterruptedException {
-    //welcomeToTreasureIsland();
+    // welcomeToTreasureIsland();
     System.out.println("Please enter your name: ");
     String input = scanner.nextLine();
     player.setPlayerName(input);
 
-    String text = Color.ANSI_BLUE.getValue()+ "Ahoy " + Color.ANSI_GREEN.getValue()+player.getPlayerName() +Color.ANSI_BLUE.getValue()+ "! " + " " +
-      "Welcome to Treasure Island....well you are not there yet.  You need to find it first.\n"+
-      "\n" +
-      "I know you said you put this life behind you, but rumor has it " + Color.ANSI_RED.getValue() + "Black Beard " + Color.ANSI_BLUE.getValue() +"has a bounty on your head!!\n" +
-      "Don't worry friend, I have a way to satisfy his bounty.....if you can survive his gang!!\n" +
-      "\n" +
-      "All you need to do is find the diamond.\n" +
-      "\n" +
-      "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n" +
-      "the places.\n" +
-      "\n" +
-      "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n" +
-      "\n" +
-      "Your journey starts on Rum Runner Isle.  Good luck!"+ Color.ANSI_RESET.getValue() +
-      "\n" +
-      "\n";
+    String text =
+        Color.ANSI_BLUE.getValue()
+            + "Ahoy "
+            + Color.ANSI_GREEN.getValue()
+            + player.getPlayerName()
+            + Color.ANSI_BLUE.getValue()
+            + "! "
+            + " "
+            + "Welcome to Treasure Island....well you are not there yet.  You need to find it first.\n"
+            + "\n"
+            + "I know you said you put this life behind you, but rumor has it "
+            + Color.ANSI_RED.getValue()
+            + "Black Beard "
+            + Color.ANSI_BLUE.getValue()
+            + "has a bounty on your head!!\n"
+            + "Don't worry friend, I have a way to satisfy his bounty.....if you can survive his gang!!\n"
+            + "\n"
+            + "All you need to do is find the diamond.\n"
+            + "\n"
+            + "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n"
+            + "the places.\n"
+            + "\n"
+            + "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n"
+            + "\n"
+            + "Your journey starts on Rum Runner Isle.  Good luck!"
+            + Color.ANSI_RESET.getValue()
+            + "\n"
+            + "\n";
     int i;
-    for(i = 0; i < text.length(); i++){
+    for (i = 0; i < text.length(); i++) {
       System.out.printf("%c", text.charAt(i));
-      try{
-        Thread.sleep(050);//0.5s pause between characters
-      }catch(InterruptedException ex){
+      try {
+        Thread.sleep(030); // 0.5s pause between characters
+      } catch (InterruptedException ex) {
         Thread.currentThread().interrupt();
       }
     }
 
-//    System.out.println( Color.ANSI_BLUE.getValue() +
-//        "Ahoy " + player.getPlayerName() + "\n" +
-//          "Welcome to Treasure Island....well you are not there yet.  You need to find it.\n" +
-//          "I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!\n" +
-//          "Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!\n" +
-//          "\n" +
-//          "All you need to do is find the diamond.\n" +
-//          "\n" +
-//          "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n" +
-//          "the places.\n" +
-//          "\n" +
-//          "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n" +
-//          "\n" +
-//          "Your journey starts on Rum Runner Isle.  Good luck!"+ Color.ANSI_RESET.getValue() );
-//        // storylineProgression("GameIntroText.txt", "", "start", "stop");
     rumRunnerIsle();
-
   }
 
   // loop continues until they find the islands special item
@@ -171,14 +165,12 @@ public class TreasureIslandGameplay implements Serializable {
 
   public void rumRunnerIsle() {
     try {
-      // process player movement and takes in current island as parameter so factory knows where to
-      // delegate
       player.processMovement("rumRunnerisle");
       System.out.println("Leaving Rum Runners Isle \n \n");
       leavingIslandShipPrint();
       Thread.sleep(5000);
       player.setHasIslandItem(false);
-      shipBattleSequence.shipBattleAfterLeavingIsland(this.player, scanner);
+      shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
       portRoyal();
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -192,7 +184,7 @@ public class TreasureIslandGameplay implements Serializable {
     leavingIslandShipPrint();
     Thread.sleep(5000);
     player.setHasIslandItem(false);
-    shipBattleSequence.shipBattleAfterLeavingIsland(this.player,scanner);
+    shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
     islaCruces();
   }
 
@@ -203,7 +195,7 @@ public class TreasureIslandGameplay implements Serializable {
     leavingIslandShipPrint();
     Thread.sleep(5000);
     player.setHasIslandItem(false);
-    shipBattleSequence.shipBattleAfterLeavingIsland(this.player,scanner);
+    shipBattleSequence.shipBattleAfterLeavingIsland(player,scanner);
 
     islaDeMuerta();
   }
@@ -365,11 +357,11 @@ public class TreasureIslandGameplay implements Serializable {
             + Color.ANSI_RESET.getValue());
   }
 
-  public Map<String, Boolean> getAvailablePirates(){
+  public Map<String, Boolean> getAvailablePirates() {
     return availablePirates;
   }
 
-  public void setAvailablePirates(String key){
-    availablePirates.replace(key,false);
+  public void setAvailablePirates(String key) {
+    availablePirates.replace(key, false);
   }
 }
