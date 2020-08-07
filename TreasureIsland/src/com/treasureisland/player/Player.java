@@ -45,6 +45,7 @@ public class Player implements Serializable {
   private String input;
   private transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
 
+
   /*
    * =============================================
    * ============= Constructors ==================
@@ -386,7 +387,6 @@ public class Player implements Serializable {
         if ("w".equalsIgnoreCase(direction)) {
           playerInfoConsoleOutput();
           currentScene.vendor(this);
-          playerVisitsVendor();
         } else {
           System.out.println("Invalid input, please try again.");
         }
@@ -467,23 +467,7 @@ public class Player implements Serializable {
             + " for "
             + playerAttackStrength
             + " damage.");
-    System.out.println(
-        "\n"
-            + Color.ANSI_GREEN.getValue()
-            + getPlayerName()
-            + Color.ANSI_RESET.getValue()
-            + " attacked "
-            + Color.ANSI_RED.getValue()
-            + pirate.getPirateName()
-            + Color.ANSI_RESET.getValue()
-            + " for "
-            + playerAttackStrength
-            + " damage.");
     pirate.setPirateHealth(pirate.getPirateHealth() - playerAttackStrength);
-
-    if (pirate.getPirateHealth() <= 0) {
-      System.out.println("You defeated " + pirate.getPirateName());
-    }
   }
 
   public void defendPlayer(Pirate pirate) {
@@ -526,10 +510,9 @@ public class Player implements Serializable {
     input = scanner.nextLine().trim().toLowerCase();
 
     if ("y".equals(input) || "yes".equals(input)) {
-      // TreasureIslandGameplay.getInstance().chosePlayerName();
       new TreasureIslandGameplay().chosePlayerName();
     } else if ("n".equals(input) || "no".equals(input)) {
-      System.out.println("Thank you for playing");
+      System.out.println("Thank you for playing!!");
       System.exit(0);
 
     } else {
