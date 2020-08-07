@@ -140,7 +140,7 @@ public class TreasureIslandGameplay implements Serializable {
     for(i = 0; i < text.length(); i++){
       System.out.printf("%c", text.charAt(i));
       try{
-        Thread.sleep(050);//0.5s pause between characters
+        Thread.sleep(020);//0.5s pause between characters
       }catch(InterruptedException ex){
         Thread.currentThread().interrupt();
       }
@@ -173,6 +173,7 @@ public class TreasureIslandGameplay implements Serializable {
     try {
       // process player movement and takes in current island as parameter so factory knows where to
       // delegate
+      setCurrentIsland(rumRunnerIsle);
       player.processMovement("rumRunnerisle");
       System.out.println("Leaving Rum Runners Isle \n \n");
       leavingIslandShipPrint();
@@ -186,6 +187,7 @@ public class TreasureIslandGameplay implements Serializable {
   }
 
   public void portRoyal() throws InterruptedException {
+    setCurrentIsland(portRoyal);
     System.out.println("You made it to Port Royal");
     player.processMovement("portRoyal");
     System.out.println("Leaving Port Royal Isle \n \n");
@@ -197,6 +199,7 @@ public class TreasureIslandGameplay implements Serializable {
   }
 
   public void islaCruces() throws InterruptedException {
+    setCurrentIsland(islaCruces);
     System.out.println("At Isla Cruces");
     player.processMovement("islaCruces");
     System.out.println("Leaving Isla Cruces \n \n");
@@ -204,11 +207,11 @@ public class TreasureIslandGameplay implements Serializable {
     Thread.sleep(5000);
     player.setHasIslandItem(false);
     shipBattleSequence.shipBattleAfterLeavingIsland(this.player,scanner);
-
     islaDeMuerta();
   }
 
   public void islaDeMuerta() throws InterruptedException {
+    setCurrentIsland(islaDeMuerta);
     System.out.println("At Isla de Muerta");
     player.processMovement("islademuerta");
     System.out.println("Leaving Isla De Muerta \n \n");
@@ -371,5 +374,13 @@ public class TreasureIslandGameplay implements Serializable {
 
   public void setAvailablePirates(String key){
     availablePirates.replace(key,false);
+  }
+
+  public Island getCurrentIsland() {
+    return currentIsland;
+  }
+
+  public void setCurrentIsland(Island currentIsland) {
+    this.currentIsland = currentIsland;
   }
 }

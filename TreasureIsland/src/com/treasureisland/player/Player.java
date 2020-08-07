@@ -208,31 +208,46 @@ public class Player implements Serializable {
           "-Type \"W\": West\n " +
           "-Type \"E\": East\n " +
           "-Type \"Save\": Save Game\n " +
-          "-Type \"Map\": Map\n";
+          "-Type \"M\": Map\n";
 
     try {
       while (!hasIslandItem) {
         System.out.println(directionOptions);
-
         String direction = scanner.nextLine().trim();
 
-        if ("save".equalsIgnoreCase(direction)) {
-          SaveLoadGame.saveGame();
-          System.out.println("We saved your game state!!");
-          System.out.println("But You cannot run forever my friend." + Color.ANSI_RED.getValue() + "Black Beard " + Color.ANSI_RESET.getValue() + "will find you!!!");
-          System.out.println("Sleep well for it may be your last night.");
-          System.out.println("Goodbye for now.");
-          System.exit(0);
-        } else if ("map".equalsIgnoreCase(direction)){
-          MainMap map = new MainMap();
-          map.mainMap();
-        } else {
-          this.currentScene = IsleFactory.islandLocationFactory(direction, islandDestination);
-          System.out.println("\nYou are now at the " + this.currentScene.getSceneName());
-          Thread.sleep(1000);
-          playerInfoConsoleOutput();
-          Thread.sleep(2000);
-          playerInteractionOptions(direction);
+        switch (direction.toLowerCase()) {
+          case "save":
+            SaveLoadGame.saveGame();
+            System.out.println("We saved your game state!!");
+            System.out.println("But You cannot run forever my friend." + Color.ANSI_RED.getValue() + "Black Beard " + Color.ANSI_RESET.getValue() + "will find you!!!");
+            System.out.println("Sleep well for it may be your last night.");
+            System.out.println("Goodbye for now.");
+            System.exit(0);
+            break;
+          case "map":
+          case "m":
+            MainMap map = new MainMap();
+            map.mainMap();
+            break;
+          case "north":
+          case "n":
+          case "south":
+          case "s":
+          case "east":
+          case "e":
+          case "west":
+          case "w":
+            this.currentScene = IsleFactory.islandLocationFactory(direction, islandDestination);
+            System.out.println("\nYou are now at the " + this.currentScene.getSceneName());
+            Thread.sleep(1000);
+            playerInfoConsoleOutput();
+            Thread.sleep(2000);
+            playerInteractionOptions(direction,islandDestination);
+            break;
+          default:
+            System.out.println("Invalid input, please try again. ");
+            processMovement(islandDestination);
+            break;
         }
       }
     } catch (IOException | InterruptedException e) {
@@ -271,7 +286,7 @@ public class Player implements Serializable {
   }
 
   // Method for player interaction options
-  public void playerInteractionOptions(String direction) throws IOException, InterruptedException {
+  public void playerInteractionOptions(String direction, String islandDestination) throws IOException, InterruptedException {
     String input = "";
 
     String interactionOptions =
@@ -283,19 +298,21 @@ public class Player implements Serializable {
           " -Type \"M\": Look at the Map\n" +
           " -Type \"INV\": Inventory\n " +
           " -Type \"G\": Grab Item\n " +
+          " -Type \"M\": Map\n " +
           " -Type \"E\": Exit This World\n";
 
     String interactOptionsWithVendor =
         "\nWhat would you like to do? \n " +
-          "-Type \"T\": Talk\n " +
-          "-Type \"L\": Look Around\n " +
-          "-Type \"I\": Investigate\n " +
-          "-Type \"C\": See Clues\n " +
-          "-Type \"M\": Look at the Map\n" +
-          "-Type \"V\": Visit the Vendor\n " +
-          "-Type \"INV\": Inventory\n " +
-          "-Type \"G\": Grab Item\n " +
-          "-Type \"E\": Exit This World\n";
+          " -Type \"T\": Talk\n " +
+          " -Type \"L\": Look Around\n " +
+          " -Type \"I\": Investigate\n " +
+          " -Type \"C\": See Clues\n " +
+          " -Type \"M\": Look at the Map\n" +
+          " -Type \"V\": Visit the Vendor\n " +
+          " -Type \"INV\": Inventory\n " +
+          " -Type \"G\": Grab Item\n " +
+          " -Type \"M\": Map\n " +
+          " -Type \"E\": Exit This World\n";
 
     playerHealthCheck();
 
@@ -313,31 +330,41 @@ public class Player implements Serializable {
       case "t":
         playerInfoConsoleOutput();
         currentScene.talkToNPC(this);
-        playerInteractionOptions(direction);
+        playerInteractionOptions(direction,islandDestination);
         break;
       case "look":
       case "l":
         playerInfoConsoleOutput();
         currentScene.lookAroundLocation(this);
-        playerInteractionOptions(direction);
+        playerInteractionOptions(direction,islandDestination);
         break;
       case "investigate":
       case "i":
         playerInfoConsoleOutput();
         currentScene.investigateArea(this);
-        playerInteractionOptions(direction);
+        playerInteractionOptions(direction,islandDestination);
         break;
       case "clues":
       case "c":
         playerInfoConsoleOutput();
         // TODO: Move this method into each Scene class
         iterateThroughPlayerClues();
-        playerInteractionOptions(direction);
+        playerInteractionOptions(direction,islandDestination);
         break;
       case "map":
       case "m":
        MainMap main = new MainMap();
-       main.mainMap();
+        if ("rumRunnerisle".equalsIgnoreCase(islandDestination)) {
+          main.rumRunner();
+        } else if("portRoyal".equalsIgnoreCase(islandDestination)){
+          main.portRoyal();
+        } else if("islaCruces".equalsIgnoreCase(islandDestination)){
+          main.islaCruces();
+        } else if("islademuerta".equalsIgnoreCase(islandDestination)){
+          main.islaCruces();
+        } else {
+          main.mainMap();
+        }
         break;
       case "vendor":
       case "v":
@@ -348,24 +375,24 @@ public class Player implements Serializable {
         } else {
           System.out.println("Invalid input, please try again.");
         }
-        playerInteractionOptions(direction);
+        playerInteractionOptions(direction,islandDestination);
         break;
       case "inventory":
       case "inv":
         printInventoryItems();
-        playerInteractionOptions(direction);
+        playerInteractionOptions(direction,islandDestination);
         break;
       case "grab":
       case "g":
         grabItemFromInventory();
-        playerInteractionOptions(direction);
+        playerInteractionOptions(direction,islandDestination);
         break;
       case "exit":
       case "e":
         break;
       default:
         System.out.println("Invalid input, please try again.");
-        playerInteractionOptions(input);
+        playerInteractionOptions(input,islandDestination);
         break;
     }
   }

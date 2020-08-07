@@ -26,33 +26,30 @@ public class IsleFactory {
 
   public static Scene islandLocationFactory(String direction, String islandFactorySelection)
       throws InterruptedException {
-    Scene location = null;
+    Scene scene = null;
     MainMap map = new MainMap();
     if ("rumrunnerisle".equalsIgnoreCase(islandFactorySelection)) {
-      // islandFactorySelection.equalsIgnoreCase("rumRunnerIsle") old implementation
       switch (direction.toLowerCase()) {
         case "n":
-          location = new RumDistillery("Rum Distillery");
+        case "north":
+          scene = new RumDistillery("Rum Distillery");
           break;
-
         case "s":
-          location = new CrimsonBeachBar("Crimson Beach Bar");
+        case "south":
+          scene = new CrimsonBeachBar("Crimson Beach Bar");
           break;
-
         case "e":
-          location = new AbandonedDistillery("Abandoned distillery");
+        case "east":
+          scene = new AbandonedDistillery("Abandoned distillery");
           break;
-
         case "w":
-          location = new SugarCaneField("Sugar cane field");
+        case "west":
+          scene = new SugarCaneField("Sugar cane field");
           break;
-
         case "m":
         case "map":
           map.rumRunner();
-
           break;
-
         default:
           System.out.println("Error, please select correct input");
           break;
@@ -62,20 +59,25 @@ public class IsleFactory {
     if ("portRoyal".equalsIgnoreCase(islandFactorySelection)) {
       switch (direction.toLowerCase()) {
         case "n":
-          location = new RoyalLodge("Royal Lodge");
+        case "north":
+          scene = new RoyalLodge("Royal Lodge");
           break;
         case "s":
-          location = new ShipGraveyard("Ship Graveyard");
+        case "south":
+          scene = new ShipGraveyard("Ship Graveyard");
           break;
-
         case "e":
-          location = new SunsetRestaurant("Sunset Restaurant");
+        case "east":
+          scene = new SunsetRestaurant("Sunset Restaurant");
           break;
-
         case "w":
-          location = new TikkiLounge("Tikki Lounge");
+        case "west":
+          scene = new TikkiLounge("Tikki Lounge");
           break;
-
+        case "m":
+        case "map":
+          map.portRoyal();
+          break;
         default:
           System.out.println("Error, please select correct input");
           break;
@@ -85,20 +87,25 @@ public class IsleFactory {
     if ("islacruces".equalsIgnoreCase(islandFactorySelection)) {
       switch (direction.toLowerCase()) {
         case "n":
-          location = new ChurchCruces("Church Cruces");
+        case "north":
+          scene = new ChurchCruces("Church Cruces");
           break;
         case "s":
-          location = new SouthendBeachCruces("Southend Beach");
+        case "south":
+          scene = new SouthendBeachCruces("Southend Beach");
           break;
-
         case "e":
-          location = new SaintsLodgeCruces("Saints Lodge");
+        case "east":
+          scene = new SaintsLodgeCruces("Saints Lodge");
           break;
-
         case "w":
-          location = new DoubleCrossTavernCruces("Double Cross Tavern");
+        case "west":
+          scene = new DoubleCrossTavernCruces("Double Cross Tavern");
           break;
-
+        case "m":
+        case "map":
+          map.islaCruces();
+          break;
         default:
           System.out.println("Error, please select correct input");
           break;
@@ -108,25 +115,26 @@ public class IsleFactory {
     if ("islademuerta".equalsIgnoreCase(islandFactorySelection)) {
       switch (direction.toLowerCase()) {
         case "n":
-          location = new AbandonedHouse("Abandoned House On The Hill");
+        case "north":
+          scene = new AbandonedHouse("Abandoned House On The Hill");
           break;
         case "s":
-          location = new Graveyard("Graveyard");
+        case "south":
+          scene = new Graveyard("Graveyard");
           break;
-
         case "e":
-          location = new DuskTillDawnSaloon("Dusk Till Dawn Saloon");
+        case "east":
+          scene = new DuskTillDawnSaloon("Dusk Till Dawn Saloon");
           break;
-
         case "w":
-          location = new PawPawBeach("Pawpaw Beach");
+        case "west":
+          scene = new PawPawBeach("Pawpaw Beach");
           break;
-
         default:
           System.out.println("Error, please select correct input");
           break;
       }
     }
-    return location;
+    return scene;
   }
 }
