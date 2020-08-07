@@ -1,10 +1,10 @@
 package com.treasureisland.player;
 
-import com.treasureisland.island.IsleFactory;
 import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.SaveLoadGame;
 import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.island.Island;
+import com.treasureisland.island.IsleFactory;
 import com.treasureisland.items.Item;
 import com.treasureisland.items.Vendor;
 import com.treasureisland.map.MainMap;
@@ -202,13 +202,13 @@ public class Player implements Serializable {
   // When player enters into game - start the process
   public void processMovement(String islandDestination) {
     String directionOptions =
-        "Where would you like to go?\n " +
-          "-Type \"N\": North\n " +
-          "-Type \"S\": South\n " +
-          "-Type \"W\": West\n " +
-          "-Type \"E\": East\n " +
-          "-Type \"Save\": Save Game\n " +
-          "-Type \"M\": Map\n";
+        "Where would you like to go?\n "
+            + "-Type \"N\": North\n "
+            + "-Type \"S\": South\n "
+            + "-Type \"W\": West\n "
+            + "-Type \"E\": East\n "
+            + "-Type \"Save\": Save Game\n "
+            + "-Type \"Map\": Map\n";
 
     try {
       while (!hasIslandItem) {
@@ -219,13 +219,17 @@ public class Player implements Serializable {
           case "save":
             SaveLoadGame.saveGame();
             System.out.println("We saved your game state!!");
-            System.out.println("But You cannot run forever my friend." + Color.ANSI_RED.getValue() + "Black Beard " + Color.ANSI_RESET.getValue() + "will find you!!!");
+            System.out.println(
+              "But You cannot run forever my friend."
+                + Color.ANSI_RED.getValue()
+                + "Black Beard "
+                + Color.ANSI_RESET.getValue()
+                + "will find you!!!");
             System.out.println("Sleep well for it may be your last night.");
             System.out.println("Goodbye for now.");
             System.exit(0);
             break;
           case "map":
-          case "m":
             MainMap map = new MainMap();
             map.mainMap();
             break;
@@ -258,31 +262,31 @@ public class Player implements Serializable {
   // Display player info to Console
   public void playerInfoConsoleOutput() {
     System.out.println(
-      "\n"
-        + "___________________________________________________________"
-        + "\n"
-        + "     "
-        + Color.ANSI_PURPLE.getValue()
-        + "Health"
-        + Color.ANSI_RESET.getValue()
-        + ": "
-        + this.getPlayerHealth()
-        + "\n"
-        + "     "
-        + Color.ANSI_YELLOW.getValue()
-        + "Coins"
-        + Color.ANSI_RESET.getValue()
-        + ": "
-        + this.getPlayerCoins()
-        + "\n"
-        + "     "
-        + Color.ANSI_GREEN.getValue()
-        + "Current Location"
-        + Color.ANSI_RESET.getValue()
-        + ": "
-        + getCurrentScene().getSceneName()
-        + "\n"
-        + "___________________________________________________________");
+        "\n"
+            + "___________________________________________________________"
+            + "\n"
+            + "     "
+            + Color.ANSI_PURPLE.getValue()
+            + "Health"
+            + Color.ANSI_RESET.getValue()
+            + ": "
+            + this.getPlayerHealth()
+            + "\n"
+            + "     "
+            + Color.ANSI_YELLOW.getValue()
+            + "Coins"
+            + Color.ANSI_RESET.getValue()
+            + ": "
+            + this.getPlayerCoins()
+            + "\n"
+            + "     "
+            + Color.ANSI_GREEN.getValue()
+            + "Current Location"
+            + Color.ANSI_RESET.getValue()
+            + ": "
+            + getCurrentScene().getSceneName()
+            + "\n"
+            + "___________________________________________________________");
   }
 
   // Method for player interaction options
@@ -290,29 +294,27 @@ public class Player implements Serializable {
     String input = "";
 
     String interactionOptions =
-        "\nWhat would you like to do?\n" +
-          " -Type \"T\": Talk\n" +
-          " -Type \"L\": Look Around\n" +
-          " -Type \"I\": Investigate\n " +
-          " -Type \"C\": See Clues\n " +
-          " -Type \"M\": Look at the Map\n" +
-          " -Type \"INV\": Inventory\n " +
-          " -Type \"G\": Grab Item\n " +
-          " -Type \"M\": Map\n " +
-          " -Type \"E\": Exit This World\n";
+        "\nWhat would you like to do?\n"
+            + " -Type \"T\": Talk\n"
+            + " -Type \"L\": Look Around\n"
+            + " -Type \"I\": Investigate\n "
+            + " -Type \"C\": See Clues\n "
+            + " -Type \"M\": Look at the Map\n"
+            + " -Type \"INV\": Inventory\n "
+            + " -Type \"G\": Grab Item\n "
+            + " -Type \"E\": Exit This World\n";
 
     String interactOptionsWithVendor =
-        "\nWhat would you like to do? \n " +
-          " -Type \"T\": Talk\n " +
-          " -Type \"L\": Look Around\n " +
-          " -Type \"I\": Investigate\n " +
-          " -Type \"C\": See Clues\n " +
-          " -Type \"M\": Look at the Map\n" +
-          " -Type \"V\": Visit the Vendor\n " +
-          " -Type \"INV\": Inventory\n " +
-          " -Type \"G\": Grab Item\n " +
-          " -Type \"M\": Map\n " +
-          " -Type \"E\": Exit This World\n";
+        "\nWhat would you like to do? \n "
+            + "-Type \"T\": Talk\n "
+            + "-Type \"L\": Look Around\n "
+            + "-Type \"I\": Investigate\n "
+            + "-Type \"C\": See Clues\n "
+            + "-Type \"M\": Look at the Map\n"
+            + "-Type \"V\": Visit the Vendor\n "
+            + "-Type \"INV\": Inventory\n "
+            + "-Type \"G\": Grab Item\n "
+            + "-Type \"E\": Exit This World\n";
 
     playerHealthCheck();
 
@@ -323,7 +325,6 @@ public class Player implements Serializable {
     }
 
     input = scanner.nextLine().trim();
-
 
     switch (input.toLowerCase()) {
       case "talk":
@@ -418,15 +419,20 @@ public class Player implements Serializable {
       }
     else {
       String instructions =
-        "You have below available things you can have"
-          + ".\nSimply type the name of the item you want to grab and press \"enter\".\n";
+          "You have below available things you can have"
+              + ".\nSimply type the name of the item you want to grab and press \"enter\".\n";
       System.out.println(instructions);
       printInventoryItems();
       input = scanner.nextLine();
       Item findItem = Item.findByName(playerInventory, input.trim().toLowerCase());
       if (findItem != null) {
         this.setPlayerHealth(this.getPlayerHealth() + findItem.getHealthValue());
-        System.out.println("You grabbed " + findItem.getItemName() + ". Your health is now " + this.getPlayerHealth() + ".");
+        System.out.println(
+            "You grabbed "
+                + findItem.getItemName()
+                + ". Your health is now "
+                + this.getPlayerHealth()
+                + ".");
         playerInventory.remove(findItem);
       } else {
         System.out.println("You can't grab that item. The item is not in your inventory.");
@@ -436,13 +442,18 @@ public class Player implements Serializable {
 
   // Player and Pirate Fight Sequence - START
   public void attackPirate(Pirate pirate) {
-    System.out.println("\n" +
-      Color.ANSI_GREEN.getValue() + getPlayerName() + Color.ANSI_RESET.getValue()
-      + " attacked "
-      + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue()
-      + " for "
-      + playerAttackStrength
-      + " damage.");
+    System.out.println(
+        "\n"
+            + Color.ANSI_GREEN.getValue()
+            + getPlayerName()
+            + Color.ANSI_RESET.getValue()
+            + " attacked "
+            + Color.ANSI_RED.getValue()
+            + pirate.getPirateName()
+            + Color.ANSI_RESET.getValue()
+            + " for "
+            + playerAttackStrength
+            + " damage.");
     System.out.println(
         "\n"
             + Color.ANSI_GREEN.getValue()
@@ -488,17 +499,21 @@ public class Player implements Serializable {
     System.out.println(
         "\n" + Color.ANSI_RED.getValue() + getCrossBones() + Color.ANSI_RESET.getValue());
 
-    System.out.println(Color.ANSI_RED.getValue() + Color.ANSI_BOLD.getValue() + "You dead!" + Color.ANSI_RESET.getValue());
+    System.out.println(
+        Color.ANSI_RED.getValue()
+            + Color.ANSI_BOLD.getValue()
+            + "You dead!"
+            + Color.ANSI_RESET.getValue());
   }
 
-  //Method to give options after player died
+  // Method to give options after player died
   public void playerDeathOptions() throws InterruptedException {
     System.out.println("\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
 
     input = scanner.nextLine().trim().toLowerCase();
 
     if ("y".equals(input) || "yes".equals(input)) {
-      //TreasureIslandGameplay.getInstance().chosePlayerName();
+      // TreasureIslandGameplay.getInstance().chosePlayerName();
       new TreasureIslandGameplay().chosePlayerName();
     } else if ("n".equals(input) || "no".equals(input)) {
       System.out.println("Thank you for playing");
