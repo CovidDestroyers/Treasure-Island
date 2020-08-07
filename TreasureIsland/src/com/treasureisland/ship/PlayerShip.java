@@ -6,7 +6,6 @@ import java.util.Random;
 public class PlayerShip implements java.io.Serializable{
   private static final PlayerShip playerShip = new PlayerShip();
   public final String playerShipName = "The Black Pearl";
-  public Player player = Player.getInstance();
   public Integer playerShipHealth = 100;
   public Integer playerAttackStrength = new Random().nextInt(100);
 
@@ -43,13 +42,17 @@ public class PlayerShip implements java.io.Serializable{
     }
   }
 
-  public void defendPlayerShip(EnemyShip enemyShip) {
+  public void defendPlayerShip(EnemyShip enemyShip, Player player) throws InterruptedException {
     int result = enemyShip.enemyAttackStrength - getPlayerShipHealth();
     if (result <= 0) {
       System.out.println(enemyShip.getEnemyShipName() + " did no damage.");
     } else {
       setPlayerShipHealth(getPlayerShipHealth() - result);
       System.out.println(enemyShip.getEnemyShipName() + " did " + result + " damage");
+      if (getPlayerShipHealth() <= 0) {
+        player.playerDeathArt();
+        player.playerDeathOptions();
+      }
     }
   }
 }

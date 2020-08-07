@@ -1,5 +1,7 @@
 package com.treasureisland.player;
 
+import com.treasureisland.TreasureIslandGameplay;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,10 +13,10 @@ public class PirateFightSequence {
    * =============================================
    */
   public Pirate pirate = Pirate.getInstance();
-
   public transient Scanner scanner = new Scanner(System.in);
   public String input;
   private static final PirateFightSequence pirateFightSequence = new PirateFightSequence();
+  private final TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
 
 
   /*
@@ -51,9 +53,10 @@ public class PirateFightSequence {
         healthStatus(player);
         System.out.println("\n");
       }
-      System.out.println(Color.ANSI_GREEN.getValue() + "WooooHooo!!! You defeated '" + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() +"'\n\n");
       player.setPlayerHealth(player.getPlayerHealth());
       pirate.setPirateHealth(pirate.getPirateHealth());
+      System.out.println(Color.ANSI_GREEN.getValue() + "WooooHooo!!! You defeated '" + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() +"'\n\n");
+      treasureIslandGameplay.setAvailablePirates(player.location.getSceneName());
   }
 
   public void enemyAction(Player player) throws InterruptedException {

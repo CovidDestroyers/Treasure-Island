@@ -4,9 +4,8 @@ import com.treasureisland.player.Player;
 import java.util.Random;
 
 public class EnemyShip implements java.io.Serializable {
-    public Player player = Player.getInstance();
     public final String enemyShipName = " An Unidentified Ship";
-    public   Integer enemyShipHealth = 100;
+    public Integer enemyShipHealth = 100;
     public Integer enemyAttackStrength = new Random().nextInt(100);
     private static final EnemyShip enemyShip = new EnemyShip();
 
@@ -29,7 +28,7 @@ public class EnemyShip implements java.io.Serializable {
     this.enemyShipHealth = enemyShipHealth;
   }
 
-  public void attackPlayerShip(PlayerShip playerShip) throws InterruptedException {
+  public void attackPlayerShip(PlayerShip playerShip, Player player) throws InterruptedException {
     Integer enemyAttackStrength = new Random().nextInt(100);
     System.out.println(
         enemyShipName
@@ -41,7 +40,6 @@ public class EnemyShip implements java.io.Serializable {
     playerShip.setPlayerShipHealth(playerShip.getPlayerShipHealth() - enemyAttackStrength);
 
     if (playerShip.getPlayerShipHealth() <= 0) {
-      System.out.println("You died");
       player.playerDeathArt();
       player.playerDeathOptions();
     }

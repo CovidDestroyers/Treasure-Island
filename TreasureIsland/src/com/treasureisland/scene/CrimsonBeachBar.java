@@ -1,10 +1,15 @@
 package com.treasureisland.scene;
 
+import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.PirateFightSequence;
 import com.treasureisland.player.Player;
+
+import java.util.Map;
 import java.util.Scanner;
 
 public class CrimsonBeachBar extends Scene {
+
+  private final TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
 
   public CrimsonBeachBar(String sceneName) {
     super(sceneName);
@@ -44,9 +49,12 @@ public class CrimsonBeachBar extends Scene {
     storylineProgression("TI.txt",  "PTStart", "PTEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 10);
 
-    System.out.println("\n");
-    PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
-
+    Map<String, Boolean> availablePirates = treasureIslandGameplay.getAvailablePirates();
+    if(availablePirates.get("Crimson Beach Bar")) {
+      Thread.sleep(1000);
+      System.out.println("\n");
+      PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
+    }
   }
 
   @Override

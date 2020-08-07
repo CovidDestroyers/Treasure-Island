@@ -21,17 +21,17 @@ public class ShipBattleSequence  implements java.io.Serializable{
         return shipBattleSequence;
     }
 
-    public void shipBattleafterLeavingIsland() throws InterruptedException {
+    public void shipBattleAfterLeavingIsland(Player player) throws InterruptedException {
         while(playerShip.getPlayerShipHealth() > 0 && enemyShip.getEnemyShipHealth() > 0){
             System.out.println("You encountered " + enemyShip.getEnemyShipName());
             System.out.println("Would you like to Attack<A> or Defend<D>??");
             input = scanner.nextLine();
             if("a".equalsIgnoreCase(input)){
                 playerShip.attackEnemyShip(enemyShip);
-                enemyAction();
+                enemyAction(player);
             }
             else if("d".equalsIgnoreCase(input)){
-                playerShip.defendPlayerShip(enemyShip);
+                playerShip.defendPlayerShip(enemyShip,player);
             }
            System.out.println("\n");
             healthStatus();
@@ -45,12 +45,12 @@ public class ShipBattleSequence  implements java.io.Serializable{
 
 
 
-    public void enemyAction() throws InterruptedException {
+    public void enemyAction(Player player) throws InterruptedException {
         Random rand = new Random();
         int result = rand.nextInt(10 - 1) + 1;
         if(enemyShip.getEnemyShipHealth() > 0){
             if(result > 0 && result <=7){
-                enemyShip.attackPlayerShip(playerShip);
+                enemyShip.attackPlayerShip(playerShip, player);
             }
             if(result > 7){
                 enemyShip.defendEnemyShip(playerShip);

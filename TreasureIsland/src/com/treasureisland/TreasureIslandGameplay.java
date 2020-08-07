@@ -10,6 +10,8 @@ import com.treasureisland.player.Player;
 import com.treasureisland.ship.ShipBattleSequence;
 import java.io.File;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class TreasureIslandGameplay implements Serializable {
@@ -23,6 +25,7 @@ public class TreasureIslandGameplay implements Serializable {
   transient Scanner scanner = new Scanner(System.in);
   String input;
   public static TreasureIslandGameplay treasureIslandGameplay;
+  private Map<String, Boolean> availablePirates = new HashMap<>();
 
   /*
    * =============================================
@@ -31,7 +34,7 @@ public class TreasureIslandGameplay implements Serializable {
    */
 
   public TreasureIslandGameplay() {
-    player = Player.getInstance();
+    player = new Player();
     rumRunnerIsle = new RumRunnerIsle();
     portRoyal = new PortRoyal();
     islaCruces = new IslaCruces();
@@ -41,6 +44,8 @@ public class TreasureIslandGameplay implements Serializable {
     islaDeMuerta.connectEast(portRoyal);
     portRoyal.connectSouth(islaCruces);
     islaDeMuerta.connectSouth(rumRunnerIsle);
+
+    availablePirates.put("Crimson Beach Bar",true);
   }
 
   public static TreasureIslandGameplay getInstance() {
@@ -103,11 +108,9 @@ public class TreasureIslandGameplay implements Serializable {
     String input = scanner.nextLine();
     player.setPlayerName(input);
 
-    System.out.println("\nWelcome, " + player.getPlayerName() + "\n \n");
-
-    System.out.println( Color.ANSI_BLUE.getValue() +
-        "Ahoy " + player.getPlayerName() + "\n" +
-          "Welcome to Treasure Island....well you are not there yet.  You need to find it.\n" +
+    System.out.println("\n" + Color.ANSI_BLUE.getValue() +
+        "Ahoy " + Color.ANSI_BOLD.getValue() +  player.getPlayerName() + Color.ANSI_RESET.getValue() + ",\n\n" +
+          Color.ANSI_BLUE.getValue() + "Welcome to Treasure Island....well you are not there yet.  You need to find it.\n" +
           "I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!\n" +
           "Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!\n" +
           "\n" +
@@ -132,12 +135,12 @@ public class TreasureIslandGameplay implements Serializable {
     try {
       // process player movement and takes in current island as parameter so factory knows where to
       // delegate
-      player.processMovement("rumRunnerisle");
+      this.player.processMovement("rumRunnerisle");
       System.out.println("Leaving Rum Runners Isle \n \n");
       leavingIslandShipPrint();
       Thread.sleep(5000);
       player.haveIslandItem = false;
-      ShipBattleSequence.getInstance().shipBattleafterLeavingIsland();
+      ShipBattleSequence.getInstance().shipBattleAfterLeavingIsland(this.player);
       portRoyal();
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -151,7 +154,7 @@ public class TreasureIslandGameplay implements Serializable {
     leavingIslandShipPrint();
     Thread.sleep(5000);
     player.haveIslandItem = false;
-    ShipBattleSequence.getInstance().shipBattleafterLeavingIsland();
+    ShipBattleSequence.getInstance().shipBattleAfterLeavingIsland(this.player);
     islaCruces();
   }
 
@@ -162,7 +165,7 @@ public class TreasureIslandGameplay implements Serializable {
     leavingIslandShipPrint();
     Thread.sleep(5000);
     player.haveIslandItem = false;
-    ShipBattleSequence.getInstance().shipBattleafterLeavingIsland();
+    ShipBattleSequence.getInstance().shipBattleAfterLeavingIsland(this.player);
 
     islaDeMuerta();
   }
@@ -321,5 +324,13 @@ public class TreasureIslandGameplay implements Serializable {
           "                                                                                                                                             \n" +
           "                                                                                                                                             \n" +
           "                                                                                                                                             \n" + Color.ANSI_RESET.getValue());
+  }
+
+  public Map<String, Boolean> getAvailablePirates(){
+    return availablePirates;
+  }
+
+  public void setAvailablePirates(String key){
+    availablePirates.replace(key,false);
   }
 }
