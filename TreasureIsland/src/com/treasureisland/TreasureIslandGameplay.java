@@ -140,7 +140,7 @@ public class TreasureIslandGameplay implements Serializable {
     for(i = 0; i < text.length(); i++){
       System.out.printf("%c", text.charAt(i));
       try{
-        Thread.sleep(75);//0.5s pause between characters
+        Thread.sleep(050);//0.5s pause between characters
       }catch(InterruptedException ex){
         Thread.currentThread().interrupt();
       }
