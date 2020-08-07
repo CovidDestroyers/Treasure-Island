@@ -33,6 +33,7 @@ public class SugarCaneField extends Scene {
     player.playerCoinGenerator();
     storylineProgression("TI.txt", "SStart", "SEnd");
     player.setPlayerHealth(player.getPlayerHealth() - 5);
+    player.iterateThroughClues();
 
     // TODO decide what we want to do for the key. Will we need an object ArrayList to hold items?
     //player.playerClues.add("key");

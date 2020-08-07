@@ -39,7 +39,7 @@ public class RumDistillery extends Scene {
     storylineProgression("TI.txt", "MBStart", "MBEnd");
     System.out.println(" ");
     player.playerCoinGenerator();
-    player.iterateThroughPlayerClues();
+    player.iterateThroughClues();
   }
 
 //  @Override

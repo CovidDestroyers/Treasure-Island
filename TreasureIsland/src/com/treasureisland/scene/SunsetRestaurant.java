@@ -29,12 +29,14 @@ public class SunsetRestaurant extends Scene {
   @Override
   public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt", "PStart", "PStop");
+    storylineProgression("TI.txt", "SLStart", "SLStop");
+    player.iterateThroughClues();
   }
 
-  @Override
-  public void investigateArea(Player player) {
-    storylineProgression("TI.txt", "SLStart", "SLStop");
-  }
+//  @Override
+//  public void investigateArea(Player player) {
+//    storylineProgression("TI.txt", "SLStart", "SLStop");
+//  }
 
   @Override
   public void vendor(Player player) {}

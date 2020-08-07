@@ -39,8 +39,10 @@ public class AbandonedDistillery extends Scene {
   @Override
   public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt",  "DSStart", "DSEnd");
-    player.setPlayerHealth(player.getPlayerHealth() - 50);
+
     storylineProgression("TI.txt",  "DRStart", "DREnd");
+    player.setPlayerHealth(player.getPlayerHealth() - 50);
+    player.iterateThroughClues();
     player.playerClues.add("9");
   }
 

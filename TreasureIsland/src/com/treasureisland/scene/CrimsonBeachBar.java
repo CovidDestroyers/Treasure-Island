@@ -37,10 +37,11 @@ public class CrimsonBeachBar extends Scene {
   public void lookAroundLocation(Player player) throws InterruptedException {
 
     storylineProgression("TI.txt",  "CBStart", "CBEnd");
-    player.setPlayerHealth(player.getPlayerHealth() - 10);
+    //player.setPlayerHealth(player.getPlayerHealth() - 10);
 
     storylineProgression("TI.txt",  "PTStart", "PTEnd");
-    player.setPlayerHealth(player.getPlayerHealth() - 10);
+    player.setPlayerHealth(player.getPlayerHealth() - 20);
+    player.iterateThroughClues();
 
     Map<String, Boolean> availablePirates = TreasureIslandGameplay.getInstance().getAvailablePirates();
     if(availablePirates.get("Crimson Beach Bar")) {

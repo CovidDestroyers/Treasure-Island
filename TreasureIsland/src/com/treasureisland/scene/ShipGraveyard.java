@@ -22,14 +22,18 @@ public class ShipGraveyard extends Scene {
   public void lookAroundLocation(Player player) {
     System.out.println("Looking around ship graveyard");
     storylineProgression("TI.txt",  "SBStart", "SBStop");
-  }
-
-  @Override
-  public void investigateArea(Player player) {
-    System.out.println("Investigating ship graveyard");
     storylineProgression("TI.txt",  "BBDtart", "BBDStop");
     player.playerCoinGenerator();
+    System.out.println(" ");
+    player.iterateThroughClues();
   }
+
+//  @Override
+//  public void investigateArea(Player player) {
+//    System.out.println("Investigating ship graveyard");
+//    storylineProgression("TI.txt",  "BBDtart", "BBDStop");
+//    player.playerCoinGenerator();
+//  }
 
   @Override
   public void vendor(Player player) {}
