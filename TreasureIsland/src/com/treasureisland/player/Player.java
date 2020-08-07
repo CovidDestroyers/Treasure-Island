@@ -304,11 +304,13 @@ public class Player implements Serializable {
         if ("save".equalsIgnoreCase(direction)) {
           SaveLoadGame.saveGame();
           System.out.println("We saved your game state!!");
-          System.out.println("But You cannot run forever my friend."+Color.ANSI_RED.getValue()+"Black Beard " +Color.ANSI_RESET.getValue()+ "will find you!!!");
+          System.out.println("But You cannot run forever my friend." + Color.ANSI_RED.getValue() + "Black Beard " + Color.ANSI_RESET.getValue() + "will find you!!!");
           System.out.println("Sleep well for it may be your last night.");
           System.out.println("Goodbye for now.");
           System.exit(0);
-
+//        } else if (true){
+//          MainMap map = new MainMap();
+//          map.mainMap();
         } else {
           this.currentScene = IsleFactory.islandLocationFactory(direction, islandDestination);
           System.out.println("\nYou are now at the " + this.currentScene.getSceneName());
