@@ -22,24 +22,24 @@ public class MainMap {
       Color.ANSI_BLUE_BACKGROUND.getValue()+"4                                                            "+Color.ANSI_GREEN_BACKGROUND.getValue()+"             "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"           "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"5                                                        "+Color.ANSI_GREEN_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"          "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"6    "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                            "+Color.ANSI_GREEN_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"         "+Color.ANSI_RESET.getValue() +"\n" +
-      Color.ANSI_BLUE_BACKGROUND.getValue()+"7   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"              "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                        "+Color.ANSI_GREEN_BACKGROUND.getValue()+"    "+Color.ANSI_BLACK.getValue()+"Isle Cruces"+Color.ANSI_GREEN_BACKGROUND.getValue() +"     "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"        "+Color.ANSI_RESET.getValue() +"\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue()+"7   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"              "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                       "+Color.ANSI_GREEN_BACKGROUND.getValue()+"    "+Color.ANSI_BLACK.getValue()+"Isle Cruces"+Color.ANSI_GREEN_BACKGROUND.getValue() +"     "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"        "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"8  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                           "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                             "+Color.ANSI_GREEN_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"       "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"9   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                           "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                             "+Color.ANSI_GREEN_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"       "+Color.ANSI_RESET.getValue() +"\n" +
-      Color.ANSI_BLUE_BACKGROUND.getValue()+"0    "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"          "+Color.ANSI_BLACK.getValue()+"Isla DeMuentes"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"   "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                              "+Color.ANSI_GREEN_BACKGROUND.getValue()+"               "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"        "+Color.ANSI_RESET.getValue() +"\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue()+"0    "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"          "+Color.ANSI_BLACK.getValue()+"Isle De Muentes"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"   "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                              "+Color.ANSI_GREEN_BACKGROUND.getValue()+"              "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"        "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"1      "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                         "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                   "+Color.ANSI_GREEN_BACKGROUND.getValue()+"        "+Color.ANSI_RESET.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"          "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"2            "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"             "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                           "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"3                                       "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"           "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                  "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"4                                     "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                 "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                              "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"5                                     "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                   "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                            "+Color.ANSI_RESET.getValue() +"\n" +
-      Color.ANSI_BLUE_BACKGROUND.getValue()+"6                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"               "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"    "+Color.ANSI_BLACK.getValue()+"Port Royal      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                           "+Color.ANSI_RESET.getValue() +"\n" +
-      Color.ANSI_BLUE_BACKGROUND.getValue()+"7                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"               "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                           "+Color.ANSI_RESET.getValue() +"\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue()+"6                     "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"             "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"    "+Color.ANSI_BLACK.getValue()+"Port Royal      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                            "+Color.ANSI_RESET.getValue() +"\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue()+"7                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"             "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                             "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"8                 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"            "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                    "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                            "+Color.ANSI_RESET.getValue() +"\n" +
-      Color.ANSI_BLUE_BACKGROUND.getValue()+"9                "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                       "+Color.ANSI_RESET.getValue() +"\n" +
-      Color.ANSI_BLUE_BACKGROUND.getValue()+"0              "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"         "+Color.ANSI_BLUE_BACKGROUND.getValue()+"     "+Color.ANSI_BLUE_BACKGROUND.getValue()+" "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                       "+Color.ANSI_RESET.getValue() +"\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue()+"9                "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                      "+Color.ANSI_RESET.getValue() +"\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue()+"0                "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"         "+Color.ANSI_BLUE_BACKGROUND.getValue()+"     "+Color.ANSI_BLUE_BACKGROUND.getValue()+" "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                     "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"1               "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"             "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                        "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"2              "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                 "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                     "+Color.ANSI_RESET.getValue() +"\n" +
-      Color.ANSI_BLUE_BACKGROUND.getValue()+"3            "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"     "+Color.ANSI_BLACK.getValue()+"Rum Runner   "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                      "+Color.ANSI_RESET.getValue() +"\n" +
-      Color.ANSI_BLUE_BACKGROUND.getValue()+"4              "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                 "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                     "+Color.ANSI_RESET.getValue() +"\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue()+"3            "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"   "+Color.ANSI_BLACK.getValue()+"Rum Runner Isle  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                    "+Color.ANSI_RESET.getValue() +"\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue()+"4              "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                      "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"5            "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                   "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                     "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"6               "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"               "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                      "+Color.ANSI_RESET.getValue() +"\n" +
       Color.ANSI_BLUE_BACKGROUND.getValue()+"7                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                           "+Color.ANSI_RESET.getValue() +"\n" +
@@ -67,7 +67,7 @@ public class MainMap {
       Color.ANSI_BLUE_BACKGROUND.getValue() + "3                                           "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                        "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "4                                        "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                             "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                      "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "5                                     "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                 "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                     "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "6                                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"           Rum Distillery            "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6                                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"           "+Color.ANSI_BLACK.getValue()+"Rum Distillery            "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "7                                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "8                                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "9                          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                  ^                          "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                    "+Color.ANSI_RESET.getValue()+ "\n"+
@@ -81,30 +81,29 @@ public class MainMap {
       Color.ANSI_BLUE_BACKGROUND.getValue() + "7                         "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                              "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                    "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "8                            "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                            "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "9                                "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                         "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "0                                 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                        Abandon        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "1                                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                        Distillery     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "0                                 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                        "+Color.ANSI_BLACK.getValue()+"Abandon        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1                                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                        "+Color.ANSI_BLACK.getValue()+"Distillery     "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "2                                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "3                               "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                          "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "4                            "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                            "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "5                           "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                            "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                    "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "6                           "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"    Sugar Cane Field                       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                     "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6                           "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"    "+Color.ANSI_BLACK.getValue()+"Sugar Cane Field                       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                     "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "7                          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                         "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                        "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "8                          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                         "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                        "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "9                      "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                           "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                          "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "0                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                         .-'-'-.-,._              "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                       "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "1             "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                          _.-'        ~  '               "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                     "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "2          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                          .-'  ~   ~   _ _.-'                  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "3        "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                            '-._,.-'._.-'-'                      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "0                  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                         "+Color.ANSI_WHITE_BOLD.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+".-'-'-.-,._"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"              "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                       "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1             "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                          "+Color.ANSI_WHITE_BOLD.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"_.-'        ~  '"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"               "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                     "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "2          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                          "+Color.ANSI_WHITE_BOLD.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+".-'  ~   ~   _ _.-'"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "3        "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                            "+Color.ANSI_WHITE_BOLD.getValue()+Color.ANSI_BLUE_BACKGROUND.getValue()+"'-._,.-'._.-'-'"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "4      "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                  "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "5     "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                    "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "6   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                  "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "7"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "8"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                   "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "9 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                               Crimson Beach Bar                       "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                    "+Color.ANSI_RESET.getValue()+ "\n"+
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "9 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                               "+Color.ANSI_BLACK.getValue()+"Crimson Beach Bar                      "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                    "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "0          "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                           "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                      "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "1                    "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                "+Color.ANSI_BLUE_BACKGROUND.getValue()+"                       "+Color.ANSI_RESET.getValue()+ "\n"+
       Color.ANSI_BLUE_BACKGROUND.getValue() + "                         "+Color.ANSI_BLACK.getValue()+"Rum Runner Isle"+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                    "+Color.ANSI_RESET.getValue()+ "\n"+
-      Color.ANSI_BLUE_BACKGROUND.getValue() + "                         "+Color.ANSI_WHITE_BOLD.getValue()+"Rum Runner Isla"+Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                    "+Color.ANSI_RESET.getValue()+ "\n"+
       "\n" +
       Color.ANSI_RESET.getValue());
 
@@ -121,15 +120,15 @@ public class MainMap {
     }
   }
 
-  public void portRoyal() {
+  public void islaCruces() {
 
     System.out.println("\n" + Color.ANSI_BLUE.getValue()+
       "0123456789012345678901234567890123456789012345678901234567890                 " +
       "                                    XXX\n" +
       "                                 XXX  XXXXX\n" +
       "                              XXXX        XXXX\n" +
-      "                            XXX    Royal     XX\n" +
-      "                          XXX      Lodge      XX\n" +
+      "                            XXX    Church     XX\n" +
+      "                          XXX                  XX\n" +
       "                        XXX                    XXX\n" +
       "                       XX                        X\n" +
       "                      XX                         XX\n" +
@@ -140,8 +139,8 @@ public class MainMap {
       "   XXXXXXXXXXXX                                     XX\n" +
       "   X                                                 X\n" +
       "   X                                                 X\n" +
-      "   X  Tikki                                          X\n" +
-      "   X  Lounge                              Sunset     X\n" +
+      "   X  Double                                          X\n" +
+      "   X  Cross                                Sunset     X\n" +
       "   XX                                     Restaurant X\n" +
       "    X                                               XX\n" +
       "     X                                              X\n" +
@@ -154,9 +153,9 @@ public class MainMap {
       "         XX                                      XX\n" +
       "           X                                     X\n" +
       "             XX                                 X\n" +
-      "Port Royal     XXXX                           XX\n" +
+      " Isle Cruces   XXXX                           XX\n" +
       "                  XX                        XXX\n" +
-      "                    XX    Ship Graveyard   XX\n" +
+      "                    XX    South End Beach   XX\n" +
       "                     XXXXXXXXXXXXXXXXXXXXXX\n" + "\n" +
       Color.ANSI_RESET.getValue());
 
@@ -218,48 +217,48 @@ public class MainMap {
   }
 
 
-  public void islaCruces() {
+  public void portRoyal() {
 
-    System.out.println("\n" + Color.ANSI_BLUE.getValue()+
-      "                        XXXXXXXXXXXXXXXXXX\n" +
-      "                  XXXXX                XXXXXX\n" +
-      "             XXXXX                           XXXXXX\n" +
-      "          XXXX                                    XXX\n" +
-      "       XXXX           Church                        XXXXX\n" +
-      "      XX                                                 XXX\n" +
-      "    XX                                                      XXX\n" +
-      "   X                                                           XXX\n" +
-      "  X                                                               XX\n" +
-      " X                                                                  XXX\n" +
-      " X                                                                     XXX\n" +
-      " X                                                                        XXXXX\n" +
-      " X                                                                             XXXXX\n" +
-      "X                                                                                  XX\n" +
-      "X   Double Cross                                                                    X\n" +
-      "X                                                                                    X\n" +
-      "X                                                                                    X\n" +
-      "X                                                                                    X\n" +
-      "X                                                                Saints Lodge        X\n" +
-      "X                                                                                    X\n" +
-      "X                                                                                    X\n" +
-      "X                                                                                   X\n" +
-      "X                                                                                   X\n" +
-      "XX                                                                                  X\n" +
-      " X                                                                                 X\n" +
-      " X                                                                                XX\n" +
-      " XX                                                                               X\n" +
-      "  XX                                                                             X\n" +
-      "   XX                                                                            X\n" +
-      "    XX                                                                          X\n" +
-      "      XX                                                                       XX\n" +
-      "       XXX                                                   XXXXXXXXXXXXXXXXXXX\n" +
-      "         XXX             South End Beach              XXXXXXXX\n" +
-      "            XXX                                  XXXXXX\n" +
-      "               XXX                         XXXXXX\n" +
-      "                  XXXXX                  XX         Isla Cruces\n" +
-      "                       XXXXXXXX        XX\n" +
-      "                              XXXXXXXXX\n "   +   "\n" +
-      Color.ANSI_RESET.getValue());
+    System.out.println("\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012" +Color.ANSI_BLUE_BACKGROUND.getValue()+Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1                         "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                  " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                 " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "2                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                           " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                              " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "3              "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                      " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                        " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "4           "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                           " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                      " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "5        "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                      "+Color.ANSI_BLACK.getValue()+"Royal Lodge"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                   " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6       "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                      " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                               " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "7     "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                           " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                            " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "8    "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                               " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                         " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "9   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                  " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                       " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "0  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                      " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                    " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                         " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                 " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "2  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                              " +Color.ANSI_BLUE_BACKGROUND.getValue()+"            " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "3  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                   " +Color.ANSI_BLUE_BACKGROUND.getValue()+"       " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "4 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                     " +Color.ANSI_BLUE_BACKGROUND.getValue()+"      " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "5 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"    "+Color.ANSI_BLACK.getValue()+"Tikki Lounge"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                      " +Color.ANSI_BLUE_BACKGROUND.getValue()+"     " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                      " +Color.ANSI_BLUE_BACKGROUND.getValue()+"     " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "7 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                      " +Color.ANSI_BLUE_BACKGROUND.getValue()+"     " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "8 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                      " +Color.ANSI_BLUE_BACKGROUND.getValue()+"     " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "9 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                 "+Color.ANSI_BLACK.getValue()+"Saints Lodge"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"         " +Color.ANSI_BLUE_BACKGROUND.getValue()+"     " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "0 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                      " +Color.ANSI_BLUE_BACKGROUND.getValue()+"     " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                      " +Color.ANSI_BLUE_BACKGROUND.getValue()+"     " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "2 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                     " +Color.ANSI_BLUE_BACKGROUND.getValue()+"      " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "3 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                     " +Color.ANSI_BLUE_BACKGROUND.getValue()+"      " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "4 "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                     " +Color.ANSI_BLUE_BACKGROUND.getValue()+"      " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "5  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                   " +Color.ANSI_BLUE_BACKGROUND.getValue()+"       " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                   " +Color.ANSI_BLUE_BACKGROUND.getValue()+"       " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "7  "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                  " +Color.ANSI_BLUE_BACKGROUND.getValue()+"        " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "8   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                                " +Color.ANSI_BLUE_BACKGROUND.getValue()+"         " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "9    "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                               " +Color.ANSI_BLUE_BACKGROUND.getValue()+"         " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "0     "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                              " +Color.ANSI_BLUE_BACKGROUND.getValue()+"         " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "1       "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                           " +Color.ANSI_BLUE_BACKGROUND.getValue()+"          " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "2        "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                                         " +Color.ANSI_BLUE_BACKGROUND.getValue()+"           " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "3         "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                                   " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "4             "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"             "+Color.ANSI_BLACK.getValue()+"Ship Graveyad"+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                 " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                    " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "5                "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                                  " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                          " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "6                   "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                        "+Color.ANSI_BLUE_BACKGROUND.getValue()+"          "+Color.ANSI_BLACK.getValue()+"Port Royal" +Color.ANSI_BLUE_BACKGROUND.getValue()+"                             " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "7                        "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"                  " +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                  " + Color.ANSI_RESET.getValue() + "\n" +
+      Color.ANSI_BLUE_BACKGROUND.getValue() + "8                               "+Color.ANSI_YELLOW_BACKGROUND.getValue()+"         "   +Color.ANSI_BLUE_BACKGROUND.getValue()+"                                                    " + Color.ANSI_RESET.getValue() + "\n");
 
     Boolean isBack = false;
     while (!isBack) {
