@@ -3,6 +3,9 @@ package com.treasureisland.island;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public abstract class Island implements Serializable {
@@ -11,10 +14,9 @@ public abstract class Island implements Serializable {
   protected Island islandToTheEast;
   protected Island islandToTheWest;
 
-  protected Scene northScene;
-  protected Scene southScene;
-  protected Scene eastScene;
-  protected Scene westScene;
+
+  protected Scene currentScene;
+  protected List<Scene> scenesOnIsland = new ArrayList<>();
 
   /*
    * =============================================
@@ -29,6 +31,15 @@ public abstract class Island implements Serializable {
    * =========== Business Methods ================
    * =============================================
    */
+
+  public void addScenesToIsland(Scene... scenes) {
+    try {
+      scenesOnIsland.addAll(Arrays.asList(scenes));
+    } catch (Exception e) {
+      System.out.println("Something broke :`(");
+      e.printStackTrace();
+    }
+  }
 
   /**
    * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
@@ -122,37 +133,5 @@ public abstract class Island implements Serializable {
 
   public void setIslandToTheWest(Island islandToTheWest) {
     this.islandToTheWest = islandToTheWest;
-  }
-
-  public Scene getNorthScene() {
-    return northScene;
-  }
-
-  public void setNorthScene(Scene northScene) {
-    this.northScene = northScene;
-  }
-
-  public Scene getSouthScene() {
-    return southScene;
-  }
-
-  public void setSouthScene(Scene southScene) {
-    this.southScene = southScene;
-  }
-
-  public Scene getEastScene() {
-    return eastScene;
-  }
-
-  public void setEastScene(Scene eastScene) {
-    this.eastScene = eastScene;
-  }
-
-  public Scene getWestScene() {
-    return westScene;
-  }
-
-  public void setWestScene(Scene westScene) {
-    this.westScene = westScene;
   }
 }

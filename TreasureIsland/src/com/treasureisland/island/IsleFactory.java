@@ -1,5 +1,6 @@
-package com.treasureisland;
+package com.treasureisland.island;
 
+import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.scene.AbandonedDistillery;
 import com.treasureisland.scene.AbandonedHouse;
 import com.treasureisland.scene.ChurchCruces;
@@ -21,8 +22,6 @@ import com.treasureisland.scene.TikkiLounge;
 public class IsleFactory {
 
   private IsleFactory() {}
-
-  private static final TreasureIslandGameplay playerGoesTo = TreasureIslandGameplay.getInstance();
 
   public static Scene islandLocationFactory(String direction, String islandFactorySelection)
       throws InterruptedException {
@@ -48,7 +47,6 @@ public class IsleFactory {
 
         default:
           System.out.println("Error, please select correct input");
-          playerGoesTo.rumRunnerIsle();
           break;
       }
     }
@@ -72,7 +70,6 @@ public class IsleFactory {
 
         default:
           System.out.println("Error, please select correct input");
-          playerGoesTo.portRoyal();
           break;
       }
     }
@@ -96,7 +93,6 @@ public class IsleFactory {
 
         default:
           System.out.println("Error, please select correct input");
-          playerGoesTo.islaCruces();
           break;
       }
     }
@@ -120,7 +116,6 @@ public class IsleFactory {
 
         default:
           System.out.println("Error, please select correct input");
-          playerGoesTo.islaDeMuerta();
           break;
       }
     }

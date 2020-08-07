@@ -17,8 +17,9 @@ public class TreasureIslandGameplay implements Serializable {
   private final Island portRoyal;
   private final Island islaCruces;
   private final Island islaDeMuerta;
+  private Island currentIsland;
 
-  private Player player;
+  private final Player player;
   private final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
   private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   String input;
@@ -57,8 +58,13 @@ public class TreasureIslandGameplay implements Serializable {
    */
 
   public void start() throws InterruptedException {
+    currentIsland = rumRunnerIsle;
     customGameplayOptions();
+    // currentIsland.enter(scanner, player);
+    rumRunnerIsle();
   }
+
+
 
   public void customGameplayOptions() throws InterruptedException {
     File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
@@ -70,27 +76,32 @@ public class TreasureIslandGameplay implements Serializable {
     }
 
     input = scanner.nextLine().trim().toLowerCase();
-    if ("l".equals(input)) {
-      treasureIslandGameplay = SaveLoadGame.loadGame();
-      System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
-      System.out.println("Location: " + treasureIslandGameplay.player.getCurrentScene().getSceneName());
-      System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
-      System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
+    switch (input) {
+      case "l":
+        treasureIslandGameplay = SaveLoadGame.loadGame();
+        System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
+        System.out.println(
+          "Location: " + treasureIslandGameplay.player.getCurrentScene().getSceneName());
+        System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
+        System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
 
-      rumRunnerIsle();
-    } else if ("f".equals(input)) {
-      if (gameState.exists()) {
-        gameState.delete();
-      }
-      chosePlayerName();
-    } else if ("s".equals(input)) {
-      if (gameState.exists()) {
-        gameState.delete();
-      }
-      player.setPlayerName("Test Player");
-      testIslandSelector();
-    } else {
-      customGameplayOptions();
+        break;
+      case "f":
+        if (gameState.exists()) {
+          gameState.delete();
+        }
+        chosePlayerName();
+        break;
+      case "s":
+        if (gameState.exists()) {
+          gameState.delete();
+        }
+        player.setPlayerName("Test Player");
+        testIslandSelector();
+        break;
+      default:
+        customGameplayOptions();
+        break;
     }
   }
 
@@ -105,23 +116,24 @@ public class TreasureIslandGameplay implements Serializable {
 
     System.out.println("\nWelcome, " + player.getPlayerName() + "\n \n");
 
-    System.out.println( Color.ANSI_BLUE.getValue() +
-        "Ahoy " + player.getPlayerName() + "\n" +
-          "Welcome to Treasure Island....well you are not there yet.  You need to find it.\n" +
-          "I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!\n" +
-          "Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!\n" +
-          "\n" +
-          "All you need to do is find the diamond.\n" +
-          "\n" +
-          "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n" +
-          "the places.\n" +
-          "\n" +
-          "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n" +
-          "\n" +
-          "Your journey starts on Rum Runner Isle.  Good luck!"+ Color.ANSI_RESET.getValue() );
-        // storylineProgression("GameIntroText.txt", "", "start", "stop");
-    rumRunnerIsle();
-
+    System.out.println(
+        Color.ANSI_BLUE.getValue()
+            + "Ahoy "
+            + player.getPlayerName()
+            + "\n"
+            + "Welcome to Treasure Island....well you are not there yet.  You need to find it.\n"
+            + "I know you said you put this life behind you, but rumor has it Black Beard has a bounty on your head!!\n"
+            + "Don't worry friend, I have a way to satisfy the bounty.....if you survive his gang!!\n"
+            + "\n"
+            + "All you need to do is find the diamond.\n"
+            + "\n"
+            + "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n"
+            + "the places.\n"
+            + "\n"
+            + "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n"
+            + "\n"
+            + "Your journey starts on Rum Runner Isle.  Good luck!"
+            + Color.ANSI_RESET.getValue());
   }
 
   // loop continues until they find the islands special item
@@ -310,16 +322,17 @@ public class TreasureIslandGameplay implements Serializable {
 
     System.out.println(
         "\n"
-            + Color.ANSI_GREEN.getValue() +
-          "    $$$$$$$$                                                                               $$$$$$            $$                            $$\n" +
-          "       $$                                                                                    $$              $$                            $$\n" +
-          "       $$      $$$$$$    $$$$$$    $$$$$$    $$$$$$$   $$    $$   $$$$$$    $$$$$$           $$     $$$$$$$  $$   $$$$$$   $$$$$$$    $$$$$$$\n" +
-          "       $$     $$    $$  $$    $$        $$  $$         $$    $$  $$    $$  $$    $$          $$    $$        $$        $$  $$    $$  $$    $$\n" +
-          "       $$     $$        $$$$$$$$   $$$$$$$   $$$$$$    $$    $$  $$        $$$$$$$$          $$     $$$$$$   $$   $$$$$$$  $$    $$  $$    $$\n" +
-          "       $$     $$        $$        $$    $$         $$  $$    $$  $$        $$                $$          $$  $$  $$    $$  $$    $$  $$    $$\n" +
-          "       $$     $$         $$$$$$$   $$$$$$$  $$$$$$$     $$$$$$   $$         $$$$$$$        $$$$$$  $$$$$$$   $$   $$$$$$$  $$    $$   $$$$$$$\n" +
-          "                                                                                                                                             \n" +
-          "                                                                                                                                             \n" +
-          "                                                                                                                                             \n" + Color.ANSI_RESET.getValue());
+            + Color.ANSI_GREEN.getValue()
+            + "    $$$$$$$$                                                                               $$$$$$            $$                            $$\n"
+            + "       $$                                                                                    $$              $$                            $$\n"
+            + "       $$      $$$$$$    $$$$$$    $$$$$$    $$$$$$$   $$    $$   $$$$$$    $$$$$$           $$     $$$$$$$  $$   $$$$$$   $$$$$$$    $$$$$$$\n"
+            + "       $$     $$    $$  $$    $$        $$  $$         $$    $$  $$    $$  $$    $$          $$    $$        $$        $$  $$    $$  $$    $$\n"
+            + "       $$     $$        $$$$$$$$   $$$$$$$   $$$$$$    $$    $$  $$        $$$$$$$$          $$     $$$$$$   $$   $$$$$$$  $$    $$  $$    $$\n"
+            + "       $$     $$        $$        $$    $$         $$  $$    $$  $$        $$                $$          $$  $$  $$    $$  $$    $$  $$    $$\n"
+            + "       $$     $$         $$$$$$$   $$$$$$$  $$$$$$$     $$$$$$   $$         $$$$$$$        $$$$$$  $$$$$$$   $$   $$$$$$$  $$    $$   $$$$$$$\n"
+            + "                                                                                                                                             \n"
+            + "                                                                                                                                             \n"
+            + "                                                                                                                                             \n"
+            + Color.ANSI_RESET.getValue());
   }
 }

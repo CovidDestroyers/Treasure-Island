@@ -1,6 +1,6 @@
 package com.treasureisland.player;
 
-import com.treasureisland.IsleFactory;
+import com.treasureisland.island.IsleFactory;
 import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.SaveLoadGame;
 import com.treasureisland.TreasureIslandGameplay;
@@ -295,7 +295,7 @@ public class Player implements Serializable {
           "-Type \"Map\": Map\n";
 
     try {
-      while (!this.hasIslandItem) {
+      while (!hasIslandItem) {
         System.out.println(directionOptions);
 
         String direction = scanner.nextLine().trim();
@@ -350,6 +350,7 @@ public class Player implements Serializable {
     }
 
     input = scanner.nextLine().trim();
+
 
     switch (input.toLowerCase()) {
       case "talk":

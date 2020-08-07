@@ -2,6 +2,7 @@ package com.treasureisland.scene;
 
 import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.island.DirectionEnum;
+import com.treasureisland.island.Island;
 import com.treasureisland.player.Player;
 import java.io.File;
 import java.io.IOException;
@@ -9,9 +10,17 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public abstract class Scene implements Serializable {
+  protected Scanner scanner = OnlyOneScanner.getTheOneScanner();
+
   protected String sceneName;
   protected String storyFileName = "TI.txt";
-  protected Scanner scanner = OnlyOneScanner.getTheOneScanner();
+  protected String storyStart;
+  protected String storyEnd;
+
+  protected Scene northScene;
+  protected Scene southScene;
+  protected Scene eastScene;
+  protected Scene westScene;
 
   DirectionEnum direction;
 
@@ -31,8 +40,48 @@ public abstract class Scene implements Serializable {
    */
 
   /**
-   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
-   * start each Scene's story
+   * @param direction
+   * @return
+   */
+  public Scene changeScene(String direction) {
+    Scene nextScene = null;
+
+    if ("n".equals(direction)) {
+      nextScene = northScene;
+
+    } else if ("e".equals(direction)) {
+      nextScene = eastScene;
+
+    } else if ("s".equals(direction)) {
+      nextScene = southScene;
+
+    } else if ("w".equals(direction)) {
+      nextScene = westScene;
+
+    } else {
+      System.out.println("Error: unknown direction " + direction);
+      System.out.println("Please try again...");
+    }
+
+    if (nextScene == null) {
+      System.out.println("You cannot go " + direction + " from here.");
+      nextScene = this;
+    }
+    return nextScene;
+  }
+
+  public void connectEast(Scene otherScene) {
+    setEastScene(otherScene);
+    otherScene.setWestScene(this);
+  }
+
+  public void connectSouth(Scene otherScene) {
+    setSouthScene(otherScene);
+    otherScene.setNorthScene(otherScene);
+  }
+
+  /**
+   * The entry point into all scene classes.
    *
    * @param player
    * @throws InterruptedException
@@ -48,11 +97,19 @@ public abstract class Scene implements Serializable {
 
   }
 
-  public abstract void lookAroundLocation(Player player);
+  public void lookAroundLocation(Player player) {
 
-  public abstract void investigateArea(Player player) throws InterruptedException;
+  }
 
-  public abstract void vendor(Player player);
+  public void investigateArea(Player player) throws InterruptedException {
+
+  }
+
+  public void vendor(Player player) {
+
+  }
+
+
 
 
   /**
@@ -108,7 +165,64 @@ public abstract class Scene implements Serializable {
     return sceneName;
   }
 
+  public String getStoryFileName() {
+    return storyFileName;
+  }
+
+
+  public String getStoryStart() {
+    return storyStart;
+  }
+
+  public String getStoryEnd() {
+    return storyEnd;
+  }
+
+  public Scene getNorthScene() {
+    return northScene;
+  }
+
+  public Scene getSouthScene() {
+    return southScene;
+  }
+
+  public Scene getEastScene() {
+    return eastScene;
+  }
+
+  public Scene getWestScene() {
+    return westScene;
+  }
+
   // SET METHODS
+  public void setWestScene(Scene westScene) {
+    this.westScene = westScene;
+  }
+
+  public void setStoryStart(String storyStart) {
+    this.storyStart = storyStart;
+  }
+
+  public void setStoryEnd(String storyEnd) {
+    this.storyEnd = storyEnd;
+  }
+
+  public void setNorthScene(Scene northScene) {
+    this.northScene = northScene;
+  }
+
+  public void setSouthScene(Scene southScene) {
+    this.southScene = southScene;
+  }
+
+  public void setEastScene(Scene eastScene) {
+    this.eastScene = eastScene;
+  }
+
+  public void setStoryFileName(String storyFileName) {
+    this.storyFileName = storyFileName;
+  }
+
   public void setSceneName(String sceneName) {
     this.sceneName = sceneName;
   }
