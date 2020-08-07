@@ -4,16 +4,24 @@ import com.treasureisland.player.Player;
 import com.treasureisland.scene.AbandonedDistillery;
 import com.treasureisland.scene.CrimsonBeachBar;
 import com.treasureisland.scene.RumDistillery;
+import com.treasureisland.scene.Scene;
 import com.treasureisland.scene.SugarCaneField;
 import java.util.Scanner;
 
 public class RumRunnerIsle extends Island {
+  private Scene rumDistillery = new RumDistillery("Rum Distillery");
+  private Scene abandonedDistillery = new AbandonedDistillery("Abandoned distillery");
+  private Scene crimsonBeachBar = new CrimsonBeachBar("Crimson Beach Bar");
+  private Scene sugarCaneField = new SugarCaneField("Sugar cane field");
+
 
   public RumRunnerIsle() {
-    // setNorthScene(new RumDistillery());
-    // setEastScene(new AbandonedDistillery());
-    // setSouthScene(new CrimsonBeachBar());
-    // setWestScene(new SugarCaneField());
+    addScenesToIsland(rumDistillery, abandonedDistillery, crimsonBeachBar, sugarCaneField);
+
+    rumDistillery.connectSouth(sugarCaneField);
+    rumDistillery.connectEast(abandonedDistillery);
+    sugarCaneField.connectEast(crimsonBeachBar);
+    abandonedDistillery.connectSouth(crimsonBeachBar);
   }
 
   /**
@@ -26,6 +34,26 @@ public class RumRunnerIsle extends Island {
    */
   @Override
   public void enter(Scanner in, Player player) throws InterruptedException {
+    String userInput = "";
+
+    currentScene = rumDistillery;
+
+    currentScene.enter(player);
+
+    while (true) {
+      userInput = in.nextLine().trim().toLowerCase();
+
+      if (userInput.matches("[n|s|e|w]")) {
+        System.out.println("You entered the right command!");
+
+        currentScene = currentScene.changeScene(userInput);
+
+        currentScene.enter(player);
+      } else {
+        System.out.println("Hmmmm it seems you have entered an incorrect command");
+
+      }
+    }
 
   }
 }

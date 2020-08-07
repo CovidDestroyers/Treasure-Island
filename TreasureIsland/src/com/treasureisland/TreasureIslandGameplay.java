@@ -17,8 +17,9 @@ public class TreasureIslandGameplay implements Serializable {
   private final Island portRoyal;
   private final Island islaCruces;
   private final Island islaDeMuerta;
+  private Island currentIsland;
 
-  private Player player;
+  private final Player player;
   private final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
   private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   String input;
@@ -58,8 +59,13 @@ public class TreasureIslandGameplay implements Serializable {
 
   public void start() throws InterruptedException {
     welcomeToTreasureIsland();
+    currentIsland = rumRunnerIsle;
     customGameplayOptions();
+    // currentIsland.enter(scanner, player);
+    rumRunnerIsle();
   }
+
+
 
   public void customGameplayOptions() throws InterruptedException {
     File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
@@ -71,27 +77,32 @@ public class TreasureIslandGameplay implements Serializable {
     }
 
     input = scanner.nextLine().trim().toLowerCase();
-    if ("l".equals(input)) {
-      treasureIslandGameplay = SaveLoadGame.loadGame();
-      System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
-      System.out.println("Location: " + treasureIslandGameplay.player.getCurrentScene().getSceneName());
-      System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
-      System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
+    switch (input) {
+      case "l":
+        treasureIslandGameplay = SaveLoadGame.loadGame();
+        System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
+        System.out.println(
+          "Location: " + treasureIslandGameplay.player.getCurrentScene().getSceneName());
+        System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
+        System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
 
-      rumRunnerIsle();
-    } else if ("f".equals(input)) {
-      if (gameState.exists()) {
-        gameState.delete();
-      }
-      chosePlayerName();
-    } else if ("s".equals(input)) {
-      if (gameState.exists()) {
-        gameState.delete();
-      }
-      player.setPlayerName("Test Player");
-      testIslandSelector();
-    } else {
-      customGameplayOptions();
+        break;
+      case "f":
+        if (gameState.exists()) {
+          gameState.delete();
+        }
+        chosePlayerName();
+        break;
+      case "s":
+        if (gameState.exists()) {
+          gameState.delete();
+        }
+        player.setPlayerName("Test Player");
+        testIslandSelector();
+        break;
+      default:
+        customGameplayOptions();
+        break;
     }
   }
 
@@ -335,16 +346,17 @@ public class TreasureIslandGameplay implements Serializable {
 
     System.out.println(
         "\n"
-            + Color.ANSI_GREEN.getValue() +
-          "    $$$$$$$$                                                                               $$$$$$            $$                            $$\n" +
-          "       $$                                                                                    $$              $$                            $$\n" +
-          "       $$      $$$$$$    $$$$$$    $$$$$$    $$$$$$$   $$    $$   $$$$$$    $$$$$$           $$     $$$$$$$  $$   $$$$$$   $$$$$$$    $$$$$$$\n" +
-          "       $$     $$    $$  $$    $$        $$  $$         $$    $$  $$    $$  $$    $$          $$    $$        $$        $$  $$    $$  $$    $$\n" +
-          "       $$     $$        $$$$$$$$   $$$$$$$   $$$$$$    $$    $$  $$        $$$$$$$$          $$     $$$$$$   $$   $$$$$$$  $$    $$  $$    $$\n" +
-          "       $$     $$        $$        $$    $$         $$  $$    $$  $$        $$                $$          $$  $$  $$    $$  $$    $$  $$    $$\n" +
-          "       $$     $$         $$$$$$$   $$$$$$$  $$$$$$$     $$$$$$   $$         $$$$$$$        $$$$$$  $$$$$$$   $$   $$$$$$$  $$    $$   $$$$$$$\n" +
-          "                                                                                                                                             \n" +
-          "                                                                                                                                             \n" +
-          "                                                                                                                                             \n" + Color.ANSI_RESET.getValue());
+            + Color.ANSI_GREEN.getValue()
+            + "    $$$$$$$$                                                                               $$$$$$            $$                            $$\n"
+            + "       $$                                                                                    $$              $$                            $$\n"
+            + "       $$      $$$$$$    $$$$$$    $$$$$$    $$$$$$$   $$    $$   $$$$$$    $$$$$$           $$     $$$$$$$  $$   $$$$$$   $$$$$$$    $$$$$$$\n"
+            + "       $$     $$    $$  $$    $$        $$  $$         $$    $$  $$    $$  $$    $$          $$    $$        $$        $$  $$    $$  $$    $$\n"
+            + "       $$     $$        $$$$$$$$   $$$$$$$   $$$$$$    $$    $$  $$        $$$$$$$$          $$     $$$$$$   $$   $$$$$$$  $$    $$  $$    $$\n"
+            + "       $$     $$        $$        $$    $$         $$  $$    $$  $$        $$                $$          $$  $$  $$    $$  $$    $$  $$    $$\n"
+            + "       $$     $$         $$$$$$$   $$$$$$$  $$$$$$$     $$$$$$   $$         $$$$$$$        $$$$$$  $$$$$$$   $$   $$$$$$$  $$    $$   $$$$$$$\n"
+            + "                                                                                                                                             \n"
+            + "                                                                                                                                             \n"
+            + "                                                                                                                                             \n"
+            + Color.ANSI_RESET.getValue());
   }
 }

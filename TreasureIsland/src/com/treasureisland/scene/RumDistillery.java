@@ -8,10 +8,6 @@ public class RumDistillery extends Scene {
     super(sceneName);
   }
 
-  @Override
-  public String getSceneName() {
-    return "Rum Distillery";
-  }
 
   /**
    * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
@@ -21,7 +17,9 @@ public class RumDistillery extends Scene {
    * @throws InterruptedException
    */
   @Override
-  public void enter(Player player) throws InterruptedException {}
+  public void enter(Player player) throws InterruptedException {
+    System.out.println("You are in the rum distillery!");
+  }
 
   @Override
   public void talkToNPC(Player player) {
