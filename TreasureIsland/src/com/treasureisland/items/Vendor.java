@@ -92,7 +92,7 @@ public class Vendor implements Serializable {
         String.format(
             "Welcome to my shop! My name is %s %s.\n", getVendorFirstName(), getVendorLastName());
     String instructions =
-        "I have many wonderful things you can have, if you have enough coin"
+        "I have many wonderful things you can have, if you have enough coins"
             + ".\nSimply type the name of the item you want and press \"enter\".\n";
     System.out.println(welcome);
     System.out.println(instructions);

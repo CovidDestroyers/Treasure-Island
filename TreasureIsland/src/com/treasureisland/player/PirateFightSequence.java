@@ -54,8 +54,10 @@ public class PirateFightSequence {
       }
       player.setPlayerHealth(player.getPlayerHealth());
       pirate.setPirateHealth(pirate.getPirateHealth());
-      System.out.println(Color.ANSI_GREEN.getValue() + "WooooHooo!!! You defeated '" + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() +"'\n\n");
-      treasureIslandGameplay.setAvailablePirates(player.getCurrentScene().getSceneName());
+      if (pirate.getPirateHealth() <= 0) {
+        System.out.println(Color.ANSI_BLUE.getValue() + "WooooHooo!!! You defeated '" + Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() +"'\n\n");
+        treasureIslandGameplay.setAvailablePirates(player.getCurrentScene().getSceneName());
+      }
   }
 
   public void enemyAction(Player player) throws InterruptedException {
@@ -73,6 +75,6 @@ public class PirateFightSequence {
 
   public void healthStatus(Player player){
     System.out.println("\n"+ Color.ANSI_GREEN.getValue() + player.getPlayerName() + Color.ANSI_RESET.getValue() + ": "  + player.getPlayerHealth());
-    System.out.println("\n"+ Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() + ": " + pirate.getPirateHealth());
+    System.out.println(Color.ANSI_RED.getValue() + pirate.getPirateName() + Color.ANSI_RESET.getValue() + ": " + pirate.getPirateHealth());
   }
 }

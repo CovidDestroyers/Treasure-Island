@@ -114,13 +114,13 @@ public class TreasureIslandGameplay implements Serializable {
   // ENtry point into
   public void chosePlayerName() throws InterruptedException {
     // welcomeToTreasureIsland();
-    System.out.println("Please enter your name: ");
+    System.out.println("\nPlease enter your name: ");
     String input = scanner.nextLine();
     player.setPlayerName(input);
 
     String text =
         Color.ANSI_BLUE.getValue()
-            + "Ahoy "
+            + "\nAhoy "
             + Color.ANSI_GREEN.getValue()
             + player.getPlayerName()
             + Color.ANSI_BLUE.getValue()
@@ -150,7 +150,7 @@ public class TreasureIslandGameplay implements Serializable {
     for (i = 0; i < text.length(); i++) {
       System.out.printf("%c", text.charAt(i));
       try {
-        Thread.sleep(030); // 0.5s pause between characters
+        Thread.sleep(000); // 0.5s pause between characters
       } catch (InterruptedException ex) {
         Thread.currentThread().interrupt();
       }
