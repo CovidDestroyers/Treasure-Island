@@ -5,8 +5,10 @@ import com.treasureisland.island.IslaDeMuerta;
 import com.treasureisland.island.Island;
 import com.treasureisland.island.PortRoyal;
 import com.treasureisland.island.RumRunnerIsle;
+import com.treasureisland.items.Item;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
+import com.treasureisland.scene.Scene;
 import com.treasureisland.ship.ShipBattleSequence;
 import java.io.File;
 import java.io.Serializable;
@@ -180,12 +182,15 @@ public class TreasureIslandGameplay implements Serializable {
   public void portRoyal() throws InterruptedException {
     System.out.println("You made it to Port Royal");
     player.processMovement("portRoyal");
-    System.out.println("Leaving Port Royal Isle \n \n");
-    leavingIslandShipPrint();
-    Thread.sleep(5000);
-    player.setHasIslandItem(false);
-    shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
-    islaCruces();
+    if(player.playerTreasures.size() == 2){
+      treasureIsland();
+    }
+//    System.out.println("Leaving Port Royal Isle \n \n");
+//    leavingIslandShipPrint();
+//    Thread.sleep(5000);
+//    player.setHasIslandItem(false);
+//    shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
+//    islaCruces();
   }
 
   public void islaCruces() throws InterruptedException {
@@ -209,16 +214,63 @@ public class TreasureIslandGameplay implements Serializable {
     // treasureIsland();
   }
 
-  // public void treasureIsland() {
-  //   TreasureIslandGameplay.getInstance().storylineProgression("TI.txt", "", "TIStart", "TIEnd");
-  //   Scanner scanner = new Scanner(System.in);
-  //
-  //   System.out.println(" Press (e) to exit");
-  //   String input = scanner.nextLine();
-  //   if (input.equalsIgnoreCase("e")) {
-  //     System.exit(0);
-  //   }
-  // }
+   public void treasureIsland() {
+     if(Item.findByName(player.playerInventory,"Key") != null){
+       if(player.playerTreasures.contains("Sacred Jewel")){
+         System.out.println("What! I have been to this island before, there are people inhabiting this island!!\n" +
+           "          How can treasure be on this island? It is supposed to be the biggest treasure in the world.\n" +
+           "          This is confusing, I have to figure out a way to make some sense of this situation.\n" +
+           "          Or else all this situation will be for nothing.\n" +
+           "\n" +
+           "\n" +
+           "\n" +
+           "          After revisiting the clues, I think I figured it out.\n" +
+           "          I need to get to this hidden monastery and I will find more info there.\n" +
+           "\n" +
+           "          Talking with the monks there, I found out that they had a very sacred jewel stolen from them years back.\n" +
+           "          Now that sounds interesting, the description they provided matched with the jewel I posses.\n" +
+           "\n" +
+           "          Should I give this jewel back to the monastery?\n" +
+           "\n" +
+           "          I gave the jewel to monastery and in return they provided me with a medium size box which had . . .\n" +
+           "              Three keyholes in it!\n" +
+           "              I took the box with me to open it privately.\n" +
+           "              Upon opening it I found . . .\n" +
+           "              Jewels, coins and the most treasured "  + Color.ANSI_BOLD.getValue() + Color.ANSI_BLUE.getValue() + "50 carat Diamond" + Color.ANSI_RESET.getValue() + "!");
+
+         playAgain();
+       }
+       else {
+         System.out.println(
+           "To get the sacred jewel, you have to look around in \"Port Royal\"");
+       }
+     }
+     else {
+       System.out.println(
+         "To get the key, you have to look around in \"Sugar Cane Field\" in \"Rum Runner Isle\"");
+     }
+   }
+
+   //Method to ask for play again the game
+   public void playAgain(){
+     System.out.println("\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
+
+     input = scanner.nextLine().trim().toLowerCase();
+
+     if ("y".equals(input) || "yes".equals(input)) {
+       try {
+         new TreasureIslandGameplay().chosePlayerName();
+       } catch (InterruptedException e) {
+         e.printStackTrace();
+       }
+     } else if ("n".equals(input) || "no".equals(input)) {
+       System.out.println("Thank you for playing!!");
+       System.exit(0);
+     } else {
+       System.out.println("Invalid Input, Try Again!!");
+       playAgain();
+     }
+   }
 
   // HELPER METHODS BELLOW
 

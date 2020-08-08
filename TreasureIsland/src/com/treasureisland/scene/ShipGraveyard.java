@@ -1,5 +1,7 @@
 package com.treasureisland.scene;
 
+import com.treasureisland.items.Item;
+import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 
 public class ShipGraveyard extends Scene {
@@ -12,8 +14,12 @@ public class ShipGraveyard extends Scene {
   @Override
   public void talkToNPC(Player player) {
     System.out.println(
-        "Talking to npc ship graveyard, I was pointed to check out the biggest ship ");
+        "Talking to Ryan at ship graveyard, I was pointed to check out the biggest ship ");
     storylineProgression("TI.txt",  "SGStart", "SGStop");
+    if(Item.findByName(player.playerInventory, "High Tide") == null) {
+      player.playerInventory.add(new Item("High Tide", 0, 0));
+      System.out.println("\n" + Color.ANSI_BLUE.getValue() + "Clue added to your Inventory!!" + Color.ANSI_RESET.getValue());
+    }
   }
 
   @Override

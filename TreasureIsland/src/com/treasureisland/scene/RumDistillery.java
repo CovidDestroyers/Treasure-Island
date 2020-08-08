@@ -1,11 +1,6 @@
 package com.treasureisland.scene;
 
-import com.treasureisland.Interactions;
 import com.treasureisland.player.Player;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RumDistillery extends Scene {
 
@@ -13,16 +8,14 @@ public class RumDistillery extends Scene {
     super(sceneName);
   }
 
-
-
   @Override
   public void talkToNPC(Player player) {
     System.out.println("You're talking to Sean Philippa in the Rum distillery");
     storylineProgression("TI.txt", "RDStart", "RDEnd");
-    player.playerClues.add(
-        "For the last occurrence, look under drum that gives men courage."
-            + "\n"
-            + "Speak the pirates favorite letter, your reward shall be even better");
+    //    player.playerClues.add(
+    //        "For the last occurrence, look under drum that gives men courage."
+    //            + "\n"
+    //            + "Speak the pirates favorite letter, your reward shall be even better");
   }
 
   @Override

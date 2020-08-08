@@ -21,13 +21,12 @@ public class RoyalLodge extends Scene {
 
   @Override
   public void talkToNPC(Player player) {
-    System.out.println("Talking to a npc Royal lodge, I found out about room 101");
+
     storylineProgression("TI.txt",  "R1Start", "R1Stop");
   }
 
   @Override
   public void lookAroundLocation(Player player) {
-    System.out.println("Looking around royal lodge");
     storylineProgression("TI.txt",  "SRStart", "SRStop");
     storylineProgression("TI.txt",  "BRStart", "BRStop");
     player.iterateThroughClues();

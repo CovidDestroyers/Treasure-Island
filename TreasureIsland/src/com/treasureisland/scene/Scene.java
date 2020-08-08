@@ -213,7 +213,7 @@ public abstract class Scene implements Serializable {
    * Player talks to characters in this method
    * @param player
    */
-  public abstract void talkToNPC(Player player);
+  public abstract void talkToNPC(Player player) throws InterruptedException;
 
   public abstract void lookAroundLocation(Player player) throws InterruptedException;
 

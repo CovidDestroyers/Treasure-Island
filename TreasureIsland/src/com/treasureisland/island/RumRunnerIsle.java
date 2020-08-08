@@ -47,6 +47,7 @@ public class RumRunnerIsle extends Island {
     while (!player.getHasIslandItem()) {
       System.out.println(this.directionOptions);
       userInput = scanner.nextLine().trim().toLowerCase();
+      player.setHasIslandItem(false);
 
       if ("save".equals(userInput)) {
         SaveLoadGame.saveGame();

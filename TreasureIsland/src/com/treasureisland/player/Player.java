@@ -39,7 +39,7 @@ public class Player implements Serializable {
 
   private Boolean hasIslandItem = false;
   private Integer playerCoins = 10;
-  private Integer playerHealth = 75;
+  private Integer playerHealth = 750;
   private Integer playerAttackStrength = new Random().nextInt(75);
   private SaveLoadGame saveLoadGame;
 
@@ -73,22 +73,26 @@ public class Player implements Serializable {
 
   //Method to display collected treasures by player.
   public void iterateThroughPlayerTreasureRewards(){
-    System.out.println("\nBelow are the Treasures that you have collected so far,");
-    String leftAlignFormat = "| %-15s |%n";
-
-    System.out.format("+-----------------+%n");
-    System.out.format("| Reward          |%n");
-    System.out.format("+-----------------+%n");
-
-    for (String reward : playerTreasures) {
-      System.out.printf(leftAlignFormat, reward);
+    if(playerTreasures.size() == 0){
+      System.out.println("\nYou didn't collect any treasures till now. Explore the islands, get the clues and collect some!!");
     }
-    System.out.format("+-----------------+%n\n");
+    else {
+      System.out.println("\nBelow are the Treasures that you have collected so far,");
+      String leftAlignFormat = "| %-15s |%n";
+
+      System.out.format("+-----------------+%n");
+      System.out.format("| Reward          |%n");
+      System.out.format("+-----------------+%n");
+
+      for (String reward : playerTreasures) {
+        System.out.printf(leftAlignFormat, reward);
+      }
+      System.out.format("+-----------------+%n\n");
+    }
   }
 
   // Method to iterate through Clues
   public void iterateThroughClues() {
-
     switch (currentScene.getSceneName()) {
       case "Rum Distillery":
         System.out.println(
@@ -136,6 +140,7 @@ public class Player implements Serializable {
 
         break;
       case "Sugar cane field":
+      case "Tikki Lounge":
         System.out.println(
             Color.ANSI_RED.getValue()
                 + "\nSecret Code: "
@@ -143,22 +148,29 @@ public class Player implements Serializable {
                 + "Clue#3"
                 + Color.ANSI_RESET.getValue());
         break;
-      case "Tikki Lounge":
+      case "Ship Graveyard":
         System.out.println(
-            Color.ANSI_RED.getValue()
-                + "\nSecret Code: "
-                + Color.ANSI_GREEN.getValue()
-                + "What is the name of the old and abandoned legendary ship you found in Ship Graveyard?"
-                + Color.ANSI_RESET.getValue());
+          Color.ANSI_YELLOW.getValue()
+            + "Clue#1"
+            + Color.ANSI_RESET.getValue()
+            + "What is the name of the old and abandoned legendary ship you found in Ship Graveyard?");
+
         break;
-      case "Southend Beach":
+      case "Sunset Restaurant":
         System.out.println(
-            Color.ANSI_RED.getValue()
-                + "\nSecret Code: "
-                + Color.ANSI_GREEN.getValue()
-                + "To get the lockpin you must surrender the item you stole in \"Church\""
-                + Color.ANSI_RESET.getValue());
+          Color.ANSI_BLUE.getValue()
+            + "Clue#2"
+            + Color.ANSI_RESET.getValue()
+            + " Which Room number you found out when talking to Tom?");
         break;
+//      case "Southend Beach":
+//        System.out.println(
+//            Color.ANSI_RED.getValue()
+//                + "\nSecret Code: "
+//                + Color.ANSI_GREEN.getValue()
+//                + "To get the lockpin you must surrender the item you stole in \"Church\""
+//                + Color.ANSI_RESET.getValue());
+//        break;
     }
   }
 
@@ -315,6 +327,40 @@ public class Player implements Serializable {
             + getCurrentScene().getSceneName()
             + "\n"
             + "___________________________________________________________");
+
+//    System.out.println("\n" +
+//      "+--------------------+-------+--------------+----------------------------------------------------------------------+\n" +
+//      "|     LOCATION       | COINS |    HEALTH    |  COMMANDS                                                            |\n" +
+//      "|" + currentIsland+"                |  "+getPlayerCoins()+"   |       "+getPlayerHealth()+                        "     |                                                                      |\n" +
+//      "|" +getCurrentScene().getSceneName()+"      |       |              |                                                                      |\n" +
+//      "+--------------------+-------+--------------+-------------------------------------------------+--------------------+\n" +
+//      "|                                                                                             |      TREASURE      |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             +--------------------+\n" +
+//      "|                                                                                             |      INVENTORY     |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "|                                                                                             |                    |\n" +
+//      "+---------------------------------------------------------------------------------------------+--------------------+\n");
   }
 
   // Method for player interaction options
@@ -374,6 +420,7 @@ public class Player implements Serializable {
       case "i":
         playerInfoConsoleOutput();
         iterateThroughClues();
+        System.out.println("\n");
         currentScene.investigateArea(this);
         playerInteractionOptions(direction, islandDestination);
         break;
@@ -455,15 +502,20 @@ public class Player implements Serializable {
       input = scanner.nextLine();
       Item findItem = Item.findByName(playerInventory, input.trim().toLowerCase());
       if (findItem != null) {
-        this.setPlayerHealth(this.getPlayerHealth() + findItem.getHealthValue());
-        System.out.println(
-            "You grabbed "
+          if(findItem.getHealthValue() == 0){
+            System.out.println("This is one of the clues that you got while visiting different locations.");
+          }
+          else {
+            this.setPlayerHealth(this.getPlayerHealth() + findItem.getHealthValue());
+            System.out.println(
+              "You grabbed "
                 + findItem.getItemName()
                 + ". Your health is now "
                 + this.getPlayerHealth()
                 + ".");
-        playerInventory.remove(findItem);
-      } else {
+            playerInventory.remove(findItem);
+          }
+        } else {
         System.out.println("You can't grab that item. The item is not in your inventory.");
       }
     }
