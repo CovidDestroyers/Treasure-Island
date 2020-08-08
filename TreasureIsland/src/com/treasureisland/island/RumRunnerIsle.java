@@ -1,8 +1,6 @@
 package com.treasureisland.island;
 
 import com.treasureisland.OnlyOneScanner;
-import com.treasureisland.SaveLoadGame;
-import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.AbandonedDistillery;
 import com.treasureisland.scene.CrimsonBeachBar;
@@ -18,6 +16,10 @@ public class RumRunnerIsle extends Island {
   private final Scene abandonedDistillery = new AbandonedDistillery("Abandoned distillery");
   private final Scene crimsonBeachBar = new CrimsonBeachBar("Crimson Beach Bar");
   private final Scene sugarCaneField = new SugarCaneField("Sugar cane field");
+
+  public RumRunnerIsle(String islandName) {
+    setName(islandName);
+  }
 
   public RumRunnerIsle() {
     setIslandName("rumRunnerisle");
@@ -38,49 +40,49 @@ public class RumRunnerIsle extends Island {
    */
   @Override
   public void enter(Player player) throws InterruptedException {
-    String userInput = "";
+    try {
 
-    currentScene = rumDistillery;
+      String userInput = "";
 
-    currentScene.enter(player, getIslandName());
+      while (!player.getHasIslandItem()) {
+        System.out.println(directionOptions);
 
-    while (!player.getHasIslandItem()) {
-      System.out.println(this.directionOptions);
-      userInput = scanner.nextLine().trim().toLowerCase();
-      player.setHasIslandItem(false);
+        userInput = scanner.nextLine().trim().toLowerCase();
 
-      if ("save".equals(userInput)) {
-        SaveLoadGame.saveGame();
-        System.out.println("We saved your game state!!");
-        System.out.println(
-            "But You cannot run forever my friend."
-                + Color.ANSI_RED.getValue()
-                + " Black Beard "
-                + Color.ANSI_RESET.getValue()
-                + "will find you!!!");
-        System.out.println("Sleep well for it may be your last night.");
-        System.out.println("Goodbye for now.");
-        System.exit(0);
+        if ("save".equals(userInput)) {
+          saveGame();
 
-      } else if ("chart".equals(userInput)) {
-        theMap.mainMap();
+        } else if ("chart".equals(userInput)) {
+          theMap.mainMap();
 
-      } else if ("map".equals(userInput)) {
-        theMap.rumRunner();
+        } else if ("map".equals(userInput)) {
+          theMap.rumRunner();
 
-      } else if (DirectionEnum.isValid(userInput)) {
-        currentScene = currentScene.changeScene(userInput);
+        } else if (DirectionEnum.isValid(userInput)) {
+          currentScene = currentScene.changeScene(userInput);
 
-        if (currentScene == null) {
-          System.out.println("Please try again...\n");
+          if (currentScene == null) {
+            System.out.println("Please try again...\n");
+          } else {
+            currentScene.enter(player, getIslandName());
+          }
+
         } else {
-          currentScene.enter(player, getIslandName());
+          System.out.println("Error: unknown direction " + userInput);
+          System.out.println("Please try again...");
         }
-
-      } else {
-        System.out.println("Error: unknown direction " + userInput);
-        System.out.println("Please try again...");
       }
+    } catch (InterruptedException e) {
+      System.out.println("Oops! Please try again...");
     }
   }
+
+  @Override
+  public void talkToNPC(Player player) throws InterruptedException {}
+
+  @Override
+  public void lookAroundLocation(Player player) throws InterruptedException {}
+
+  @Override
+  public void vendor(Player player) {}
 }

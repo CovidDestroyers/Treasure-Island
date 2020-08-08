@@ -93,7 +93,7 @@ public class Player implements Serializable {
 
   // Method to iterate through Clues
   public void iterateThroughClues() {
-    switch (currentScene.getSceneName()) {
+    switch (currentScene.getName()) {
       case "Rum Distillery":
         System.out.println(
             "\napply what you got"
@@ -282,7 +282,7 @@ public class Player implements Serializable {
           case "west":
           case "w":
             this.currentScene = IsleFactory.islandLocationFactory(direction, islandDestination);
-            System.out.println("\nYou are now at the " + this.currentScene.getSceneName());
+            System.out.println("\nYou are now at the " + this.currentScene.getName());
             Thread.sleep(500);
             playerInfoConsoleOutput();
             Thread.sleep(1000);
@@ -324,7 +324,7 @@ public class Player implements Serializable {
             + "Current Location"
             + Color.ANSI_RESET.getValue()
             + ": "
-            + getCurrentScene().getSceneName()
+            + getCurrentScene().getName()
             + "\n"
             + "___________________________________________________________");
 
@@ -332,7 +332,7 @@ public class Player implements Serializable {
 //      "+--------------------+-------+--------------+----------------------------------------------------------------------+\n" +
 //      "|     LOCATION       | COINS |    HEALTH    |  COMMANDS                                                            |\n" +
 //      "|" + currentIsland+"                |  "+getPlayerCoins()+"   |       "+getPlayerHealth()+                        "     |                                                                      |\n" +
-//      "|" +getCurrentScene().getSceneName()+"      |       |              |                                                                      |\n" +
+//      "|" +getCurrentScene().getName()+"      |       |              |                                                                      |\n" +
 //      "+--------------------+-------+--------------+-------------------------------------------------+--------------------+\n" +
 //      "|                                                                                             |      TREASURE      |\n" +
 //      "|                                                                                             |                    |\n" +

@@ -2,6 +2,7 @@ package com.treasureisland.scene;
 
 import com.treasureisland.Interactions;
 import com.treasureisland.OnlyOneScanner;
+import com.treasureisland.OurLogger;
 import com.treasureisland.map.MainMap;
 import com.treasureisland.player.Player;
 import java.io.File;
@@ -12,12 +13,14 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public abstract class Scene implements Serializable {
   protected transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
+  protected Logger logger = OurLogger.getLogger();
 
   protected String storyFileName = "TI.txt";
-  protected String sceneName;
+  protected String name;
   protected String storyStart;
   protected String storyEnd;
 
@@ -25,17 +28,7 @@ public abstract class Scene implements Serializable {
   protected Scene southScene;
   protected Scene eastScene;
   protected Scene westScene;
-
-  public MainMap getTheMap() {
-    return theMap;
-  }
-
-  public void setTheMap(MainMap theMap) {
-    this.theMap = theMap;
-  }
-
   protected MainMap theMap = new MainMap();
-
   protected String interActionOptions =
       "\nWhat would you like to do?\n "
           + " -Type \"T\": Talk\n "
@@ -51,8 +44,18 @@ public abstract class Scene implements Serializable {
    * ============= Constructors ==================
    * =============================================
    */
-  public Scene(String sceneName) {
-    setSceneName(sceneName);
+  public Scene() {}
+
+  public Scene(String name) {
+    setName(name);
+  }
+
+  public MainMap getTheMap() {
+    return theMap;
+  }
+
+  public void setTheMap(MainMap theMap) {
+    this.theMap = theMap;
   }
 
   /*
@@ -113,9 +116,10 @@ public abstract class Scene implements Serializable {
    * @throws InterruptedException
    */
   public void enter(Player player, String islandName) throws InterruptedException {
-    System.out.printf("You are in the %s!", getSceneName());
     String userInput = "";
     Method aMethod;
+
+    System.out.printf("You are in the %s!", getName());
 
     player.setCurrentScene(this);
 
@@ -156,7 +160,7 @@ public abstract class Scene implements Serializable {
         }
 
       } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
-        e.printStackTrace();
+        System.out.println("Error: Invalid Input. Please try again.");
       }
     }
   }
@@ -166,7 +170,6 @@ public abstract class Scene implements Serializable {
     Method rightMethod = null;
 
     try {
-
       if (isPlayerMethod(nameOfMethod)) {
         rightMethod = Player.class.getMethod(nameOfMethod);
       } else {
@@ -174,7 +177,8 @@ public abstract class Scene implements Serializable {
       }
 
     } catch (NoSuchMethodException e) {
-      e.printStackTrace();
+      // e.printStackTrace();
+      System.out.println("Error: Invalid Input. Please try again.");
     }
     return rightMethod;
   }
@@ -211,15 +215,14 @@ public abstract class Scene implements Serializable {
 
   /**
    * Player talks to characters in this method
+   *
    * @param player
    */
   public abstract void talkToNPC(Player player) throws InterruptedException;
 
   public abstract void lookAroundLocation(Player player) throws InterruptedException;
 
-  public void investigateArea(Player player) throws InterruptedException {
-
-  }
+  public void investigateArea(Player player) throws InterruptedException {}
 
   public abstract void vendor(Player player);
 
@@ -286,40 +289,64 @@ public abstract class Scene implements Serializable {
    */
 
   // GET METHODS
-  public String getSceneName() {
-    return sceneName;
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public String getStoryFileName() {
     return storyFileName;
   }
 
+  public void setStoryFileName(String storyFileName) {
+    this.storyFileName = storyFileName;
+  }
+
   public String getStoryStart() {
     return storyStart;
+  }
+
+  public void setStoryStart(String storyStart) {
+    this.storyStart = storyStart;
   }
 
   public String getStoryEnd() {
     return storyEnd;
   }
 
+  public void setStoryEnd(String storyEnd) {
+    this.storyEnd = storyEnd;
+  }
+
   public Scene getNorthScene() {
     return northScene;
+  }
+
+  public void setNorthScene(Scene northScene) {
+    this.northScene = northScene;
   }
 
   public Scene getSouthScene() {
     return southScene;
   }
 
+  public void setSouthScene(Scene southScene) {
+    this.southScene = southScene;
+  }
+
   public Scene getEastScene() {
     return eastScene;
   }
 
-  public Scene getWestScene() {
-    return westScene;
+  public void setEastScene(Scene eastScene) {
+    this.eastScene = eastScene;
   }
 
-  public String getInterActionOptions() {
-    return interActionOptions;
+  public Scene getWestScene() {
+    return westScene;
   }
 
   // SET METHODS
@@ -327,32 +354,8 @@ public abstract class Scene implements Serializable {
     this.westScene = westScene;
   }
 
-  public void setStoryStart(String storyStart) {
-    this.storyStart = storyStart;
-  }
-
-  public void setStoryEnd(String storyEnd) {
-    this.storyEnd = storyEnd;
-  }
-
-  public void setNorthScene(Scene northScene) {
-    this.northScene = northScene;
-  }
-
-  public void setSouthScene(Scene southScene) {
-    this.southScene = southScene;
-  }
-
-  public void setEastScene(Scene eastScene) {
-    this.eastScene = eastScene;
-  }
-
-  public void setStoryFileName(String storyFileName) {
-    this.storyFileName = storyFileName;
-  }
-
-  public void setSceneName(String sceneName) {
-    this.sceneName = sceneName;
+  public String getInterActionOptions() {
+    return interActionOptions;
   }
 
   public void setInterActionOptions(String interActionOptions) {

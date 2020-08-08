@@ -8,7 +8,6 @@ import com.treasureisland.island.RumRunnerIsle;
 import com.treasureisland.items.Item;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
-import com.treasureisland.scene.Scene;
 import com.treasureisland.ship.ShipBattleSequence;
 import java.io.File;
 import java.io.Serializable;
@@ -25,7 +24,7 @@ public class TreasureIslandGameplay implements Serializable {
 
   private final Player player;
   private final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
-  private transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
+  private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   private String input;
   public static TreasureIslandGameplay treasureIslandGameplay;
   private final Map<String, Boolean> availablePirates = new HashMap<>();
@@ -64,11 +63,21 @@ public class TreasureIslandGameplay implements Serializable {
    * =============================================
    */
 
-  public void start() throws InterruptedException {
-    welcomeToTreasureIsland();
-    currentIsland = rumRunnerIsle;
-    customGameplayOptions();
-    currentIsland.enter(player);
+  public void start() {
+    String userInput = "";
+    try {
+      welcomeToTreasureIsland();
+      currentIsland = rumRunnerIsle;
+      customGameplayOptions();
+
+      player.setHasIslandItem(false);
+
+      currentIsland.enter(player);
+    } catch (InterruptedException e) {
+      System.err.println("Ooops it looks like something broke.");
+      e.printStackTrace();
+    }
+
     // rumRunnerIsle();
   }
 
@@ -87,7 +96,7 @@ public class TreasureIslandGameplay implements Serializable {
         treasureIslandGameplay = SaveLoadGame.loadGame();
         System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
         System.out.println(
-            "Location: " + treasureIslandGameplay.player.getCurrentScene().getSceneName());
+            "Location: " + treasureIslandGameplay.player.getCurrentScene().getName());
         System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
         System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
 

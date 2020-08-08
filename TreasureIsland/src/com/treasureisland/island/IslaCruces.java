@@ -5,10 +5,7 @@ import com.treasureisland.player.Player;
 public class IslaCruces extends Island {
 
   public IslaCruces() {
-    // setNorthScene(new ChurchCruces());
-    // setEastScene(new SaintsLodgeCruces());
-    // setSouthScene(new SouthendBeachCruces());
-    // setWestScene(new DoubleCrossTavernCruces());
+    super();
   }
 
   /**
@@ -20,6 +17,21 @@ public class IslaCruces extends Island {
    */
   @Override
   public void enter(Player player) throws InterruptedException {
+
+  }
+
+  @Override
+  public void talkToNPC(Player player) throws InterruptedException {
+
+  }
+
+  @Override
+  public void lookAroundLocation(Player player) throws InterruptedException {
+
+  }
+
+  @Override
+  public void vendor(Player player) {
 
   }
 }

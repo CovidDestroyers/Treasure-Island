@@ -1,14 +1,17 @@
 package com.treasureisland.island;
 
+import com.treasureisland.SaveLoadGame;
 import com.treasureisland.map.MainMap;
+import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
-public abstract class Island implements Serializable {
+public abstract class Island extends Scene implements Serializable {
   protected Island islandToTheNorth;
   protected Island islandToTheSouth;
   protected Island islandToTheEast;
@@ -37,7 +40,13 @@ public abstract class Island implements Serializable {
    * =============================================
    */
 
-  public Island() {}
+  public Island() {
+
+  }
+
+  public Island(String islandName) {
+    super(islandName);
+  }
 
   /*
    * =============================================
@@ -104,6 +113,20 @@ public abstract class Island implements Serializable {
   public void connectSouth(Island otherIsland) {
     setIslandToTheSouth(otherIsland);
     otherIsland.setIslandToTheNorth(this);
+  }
+
+  public void saveGame() {
+    SaveLoadGame.saveGame();
+    System.out.println("We saved your game state!!");
+    System.out.println(
+        "But You cannot run forever my friend."
+            + Color.ANSI_RED.getValue()
+            + " Black Beard "
+            + Color.ANSI_RESET.getValue()
+            + "will find you!!!");
+    System.out.println("Sleep well for it may be your last night.");
+    System.out.println("Goodbye for now.");
+    System.exit(0);
   }
 
 

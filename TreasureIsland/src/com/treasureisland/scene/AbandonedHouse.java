@@ -9,7 +9,7 @@ public class AbandonedHouse extends Scene {
   }
 
   @Override
-  public String getSceneName() {
+  public String getName() {
     return "Abandoned House On The Hill ";
   }
 

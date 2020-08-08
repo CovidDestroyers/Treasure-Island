@@ -27,4 +27,19 @@ public class IslaDeMuerta extends Island {
   public void enter(Player player) throws InterruptedException {
 
   }
+
+  @Override
+  public void talkToNPC(Player player) throws InterruptedException {
+
+  }
+
+  @Override
+  public void lookAroundLocation(Player player) throws InterruptedException {
+
+  }
+
+  @Override
+  public void vendor(Player player) {
+
+  }
 }

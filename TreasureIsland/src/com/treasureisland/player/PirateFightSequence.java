@@ -62,7 +62,7 @@ public class PirateFightSequence {
           player.playerInventory.add(new Item("999",0,0));
           System.out.println("\n" + Color.ANSI_BLUE.getValue() + "Clue added to your Inventory!!" + Color.ANSI_RESET.getValue());
         }
-        treasureIslandGameplay.setAvailablePirates(player.getCurrentScene().getSceneName());
+        treasureIslandGameplay.setAvailablePirates(player.getCurrentScene().getName());
       }
   }
 

@@ -11,10 +11,10 @@ public class RumDistilleryTest {
   //   // Arrange
   //
   //   var test1 = new RumDistillery();
-  //   //        System.out.println(test1.getSceneName());
+  //   //        System.out.println(test1.getName());
   //   //        OUTPUT: Rum Distillery
   //   //        // Act
-  //   var expected = test1.getSceneName();
+  //   var expected = test1.getName();
   //   var actual = "Rum Distillery";
   //   //        // Assert
   //   assertEquals(expected, actual);

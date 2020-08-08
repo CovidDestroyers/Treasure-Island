@@ -1,7 +1,6 @@
 package com.treasureisland.scene;
 
 import com.treasureisland.player.Player;
-import java.util.Scanner;
 
 public class Docks extends Scene {
 
@@ -10,18 +9,14 @@ public class Docks extends Scene {
   }
 
   @Override
-  public void talkToNPC(Player player) {
-
-  }
+  public void enter(Player player, String islandName) {}
 
   @Override
-  public void lookAroundLocation(Player player) throws InterruptedException {
-
-  }
+  public void talkToNPC(Player player) {}
 
   @Override
-  public void vendor(Player player) {
+  public void lookAroundLocation(Player player) throws InterruptedException {}
 
-  }
-
+  @Override
+  public void vendor(Player player) {}
 }
