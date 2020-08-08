@@ -40,6 +40,8 @@ public class RumRunnerIsle extends Island {
 
     currentScene.enter(player);
 
+    player.setHasIslandItem(false);
+
     while (true) {
       userInput = in.nextLine().trim().toLowerCase();
 

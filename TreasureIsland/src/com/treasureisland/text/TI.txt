@@ -94,7 +94,7 @@ Rum Island
     There are four of the stills and I am not sure where to begin.
     I started with exploring around the stills and within walking few meters or so I found . . .
     a weak spot on floor and I crashed to basement right through it!
-      Health -50
+      Health -5
   DSEnd
 
   ORStart
@@ -575,6 +575,6 @@ Isla c
               Three keyholes in it!
               I took the box with me to open it privately.
               Upon opening it I found . . .
-              Jewels, coins and the most treasured 5o carat diamond!
+              Jewels, coins and the most treasured 50 carat diamond!
 
   TIStop

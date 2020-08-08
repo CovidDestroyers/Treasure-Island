@@ -6,7 +6,7 @@ import java.util.Random;
 public class EnemyShip implements java.io.Serializable {
     public final String enemyShipName = "The Queen Anne's Revenge";
     private   Integer enemyShipHealth = 100;
-    public Integer enemyAttackStrength;
+    public Integer enemyAttackStrength = new Random().nextInt(100);
 
 
   public EnemyShip() {}
@@ -25,7 +25,6 @@ public class EnemyShip implements java.io.Serializable {
   }
 
   public void attackPlayerShip(PlayerShip playerShip, Player player) throws InterruptedException {
-    enemyAttackStrength = new Random().nextInt(100);
     System.out.println(
         enemyShipName
             + " attacked "
