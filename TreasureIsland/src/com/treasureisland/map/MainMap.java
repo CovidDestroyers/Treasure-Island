@@ -4,10 +4,11 @@ import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 
-public class MainMap {
+public class MainMap implements Serializable {
 
   private String input;
   private transient Scanner scanner = OnlyOneScanner.getTheOneScanner();

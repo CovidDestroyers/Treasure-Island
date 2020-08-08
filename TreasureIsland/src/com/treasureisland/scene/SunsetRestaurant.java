@@ -18,8 +18,6 @@ public class SunsetRestaurant extends Scene {
    * =========== Business Methods ================
    * =============================================
    */
-  @Override
-  public void enter(Player player) throws InterruptedException {}
 
   @Override
   public void talkToNPC(Player player) {

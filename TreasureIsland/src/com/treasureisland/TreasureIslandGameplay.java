@@ -23,7 +23,7 @@ public class TreasureIslandGameplay implements Serializable {
 
   private final Player player;
   private final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
-  private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
+  private transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   private String input;
   public static TreasureIslandGameplay treasureIslandGameplay;
   private final Map<String, Boolean> availablePirates = new HashMap<>();
@@ -66,8 +66,8 @@ public class TreasureIslandGameplay implements Serializable {
     welcomeToTreasureIsland();
     currentIsland = rumRunnerIsle;
     customGameplayOptions();
-    // currentIsland.enter(scanner, player);
-    rumRunnerIsle();
+    currentIsland.enter(player);
+    // rumRunnerIsle();
   }
 
   public void customGameplayOptions() throws InterruptedException {
@@ -156,7 +156,7 @@ public class TreasureIslandGameplay implements Serializable {
       }
     }
 
-    rumRunnerIsle();
+    // rumRunnerIsle();
   }
 
   // loop continues until they find the islands special item
@@ -195,7 +195,7 @@ public class TreasureIslandGameplay implements Serializable {
     leavingIslandShipPrint();
     Thread.sleep(5000);
     player.setHasIslandItem(false);
-    shipBattleSequence.shipBattleAfterLeavingIsland(player,scanner);
+    shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
 
     islaDeMuerta();
   }

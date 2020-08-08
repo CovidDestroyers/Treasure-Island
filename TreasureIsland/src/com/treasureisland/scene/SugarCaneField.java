@@ -9,10 +9,6 @@ public class SugarCaneField extends Scene {
     super(sceneName);
   }
 
-  @Override
-  public void enter(Player player) throws InterruptedException {
-    System.out.println("You made it to the sugar can fields!");
-  }
 
   @Override
   public void talkToNPC(Player player) {

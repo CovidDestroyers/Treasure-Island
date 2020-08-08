@@ -13,17 +13,6 @@ public class CrimsonBeachBar extends Scene {
     super(sceneName);
   }
 
-  /**
-   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
-   * start each Scene's story
-   *
-   * @param player
-   * @throws InterruptedException
-   */
-  @Override
-  public void enter(Player player) throws InterruptedException {
-    System.out.println("You're in the crimson beach bar!");
-  }
 
   @Override
   public void talkToNPC(Player player) {

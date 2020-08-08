@@ -10,11 +10,6 @@ public class Docks extends Scene {
   }
 
   @Override
-  public void enter(Player player) throws InterruptedException {
-
-  }
-
-  @Override
   public void talkToNPC(Player player) {
 
   }

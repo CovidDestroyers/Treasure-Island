@@ -20,7 +20,8 @@ public class SaveLoadGame  implements java.io.Serializable {
             System.out.println("Game saved\n");
         }
         catch(Exception e){
-            System.out.println(Arrays.toString(e.getStackTrace()));
+            // System.out.println(Arrays.toString(e.getStackTrace()));
+          e.printStackTrace();
         }
     }
 

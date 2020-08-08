@@ -11,10 +11,6 @@ public class TikkiLounge extends Scene {
     super(sceneName);
   }
 
-  @Override
-  public void enter(Player player) throws InterruptedException {
-    this.in = in;
-  }
 
   @Override
   public void talkToNPC(Player player) {

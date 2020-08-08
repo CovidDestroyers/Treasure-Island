@@ -13,15 +13,6 @@ public class AbandonedHouse extends Scene {
     return "Abandoned House On The Hill ";
   }
 
-  /**
-   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
-   * start each Scene's story
-   *
-   * @param player
-   * @throws InterruptedException
-   */
-  @Override
-  public void enter(Player player) throws InterruptedException {}
 
   @Override
   public void talkToNPC(Player player) {

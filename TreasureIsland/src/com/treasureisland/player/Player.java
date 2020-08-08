@@ -89,7 +89,7 @@ public class Player implements Serializable {
   // Method to iterate through Clues
   public void iterateThroughClues() {
 
-    switch (this.currentScene.getSceneName()) {
+    switch (currentScene.getSceneName()) {
       case "Rum Distillery":
         System.out.println(
             "\napply what you got"
@@ -377,13 +377,6 @@ public class Player implements Serializable {
         currentScene.investigateArea(this);
         playerInteractionOptions(direction, islandDestination);
         break;
-        //      case "clues":
-        //      case "c":
-        //        playerInfoConsoleOutput();
-        //        // TODO: Move this method into each Scene class
-        //        iterateThroughClues();
-        //        playerInteractionOptions(direction,islandDestination);
-        //        break;
       case "reward":
       case "r":
         playerInfoConsoleOutput();

@@ -8,8 +8,6 @@ public class PawPawBeach extends Scene {
     super(sceneName);
   }
 
-  @Override
-  public void enter(Player player) throws InterruptedException {}
 
   @Override
   public void talkToNPC(Player player) {

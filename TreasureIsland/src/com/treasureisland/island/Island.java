@@ -1,12 +1,12 @@
 package com.treasureisland.island;
 
+import com.treasureisland.map.MainMap;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public abstract class Island implements Serializable {
   protected Island islandToTheNorth;
@@ -14,9 +14,22 @@ public abstract class Island implements Serializable {
   protected Island islandToTheEast;
   protected Island islandToTheWest;
 
+  protected MainMap theMap = new MainMap();
+
+  protected String islandName;
+
 
   protected Scene currentScene;
   protected List<Scene> scenesOnIsland = new ArrayList<>();
+  protected String directionOptions =
+      "Where would you like to go?\n "
+          + "-Type \"N\": North\n "
+          + "-Type \"S\": South\n "
+          + "-Type \"W\": West\n "
+          + "-Type \"E\": East\n "
+          + "-Type \"Save\": Save Game\n "
+          + "-Type \"Chart\": Game Chart\n "
+          + "-Type \"Map\": Island Map\n";
 
   /*
    * =============================================
@@ -45,11 +58,10 @@ public abstract class Island implements Serializable {
    * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
    * start each Scene's story
    *
-   * @param in
    * @param player
    * @throws InterruptedException
    */
-  public abstract void enter(Scanner in, Player player) throws InterruptedException;
+  public abstract void enter(Player player) throws InterruptedException;
 
   /**
    * @param direction
@@ -133,5 +145,29 @@ public abstract class Island implements Serializable {
 
   public void setIslandToTheWest(Island islandToTheWest) {
     this.islandToTheWest = islandToTheWest;
+  }
+
+  public String getIslandName() {
+    return islandName;
+  }
+
+  public void setIslandName(String islandName) {
+    this.islandName = islandName;
+  }
+
+  public String getDirectionOptions() {
+    return directionOptions;
+  }
+
+  public void setDirectionOptions(String directionOptions) {
+    this.directionOptions = directionOptions;
+  }
+
+  public Scene getCurrentScene() {
+    return currentScene;
+  }
+
+  public void setCurrentScene(Scene currentScene) {
+    this.currentScene = currentScene;
   }
 }

@@ -19,18 +19,6 @@ public class AbandonedDistillery extends Scene {
    * =============================================
    */
 
-  /**
-   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
-   * start each Scene's story
-   *
-   * @param player
-   * @throws InterruptedException
-   */
-  @Override
-  public void enter(Player player) throws InterruptedException {
-    System.out.println("You're in the abandoned distillery!");
-  }
-
   @Override
   public void talkToNPC(Player player) {
     storylineProgression("TI.txt", "BGStart", "BGEnd");
