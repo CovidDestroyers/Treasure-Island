@@ -40,6 +40,8 @@ public class RumRunnerIsle extends Island {
    */
   @Override
   public void enter(Player player) throws InterruptedException {
+    System.out.println("Welcome to Rum Runner Isle!\n");
+
     String userInput = "";
     String whereToGo = getDirectionOptions();
 
@@ -50,7 +52,6 @@ public class RumRunnerIsle extends Island {
       while (true) {
         whereToGo =
             (player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions();
-
         System.out.println(whereToGo);
 
         userInput = scanner.nextLine().trim().toLowerCase();

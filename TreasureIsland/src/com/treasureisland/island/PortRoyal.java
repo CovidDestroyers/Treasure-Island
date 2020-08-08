@@ -32,15 +32,25 @@ public class PortRoyal extends Island {
    */
   @Override
   public void enter(Player player) {
-    try {
-      String userInput = "";
+    System.out.println("You have arrived at Port Royal. Enjoy your stay...\n");
 
+    String userInput = "";
+    String whereToGo = getDirectionOptions();
+
+    try {
+      player.setCurrentIsland(this);
       currentScene = royalLounge;
 
-      while (!player.getHasIslandItem()) {
-        System.out.println(getDirectionOptions());
+      while (true) {
+        whereToGo =
+            (player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions();
+        System.out.println(whereToGo);
 
         userInput = scanner.nextLine().trim().toLowerCase();
+
+        if ("d".equals(userInput) || "docks".equals(userInput)) {
+          break;
+        }
 
         if ("save".equals(userInput)) {
           saveGame();

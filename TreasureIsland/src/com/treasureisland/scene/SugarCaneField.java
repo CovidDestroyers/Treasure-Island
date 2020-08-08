@@ -6,10 +6,20 @@ import com.treasureisland.player.Player;
 
 public class SugarCaneField extends Scene {
 
+  /*
+   * =============================================
+   * ============= Constructors ==================
+   * =============================================
+   */
   public SugarCaneField(String sceneName) {
     super(sceneName);
   }
 
+  /*
+   * =============================================
+   * =========== Business Methods ================
+   * =============================================
+   */
   @Override
   public void talkToNPC(Player player) {
     System.out.println("I won't talk without the secret code");

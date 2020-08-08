@@ -53,6 +53,19 @@ public abstract class Scene implements Serializable {
 
   /*
    * =============================================
+   * =========== Abstract Methods ================
+   * =============================================
+   */
+  public abstract void talkToNPC(Player player) throws InterruptedException;
+
+  public abstract void lookAroundLocation(Player player) throws InterruptedException;
+
+  public void investigateArea(Player player) throws InterruptedException {}
+
+  public abstract void vendor(Player player);
+
+  /*
+   * =============================================
    * =========== Business Methods ================
    * =============================================
    */
@@ -206,18 +219,9 @@ public abstract class Scene implements Serializable {
   }
 
   /**
-   * Player talks to characters in this method
-   *
-   * @param player
+   * Displays the Island Map
+   * @param islandName - the name of an Island
    */
-  public abstract void talkToNPC(Player player) throws InterruptedException;
-
-  public abstract void lookAroundLocation(Player player) throws InterruptedException;
-
-  public void investigateArea(Player player) throws InterruptedException {}
-
-  public abstract void vendor(Player player);
-
   public void displayIslandMap(String islandName) {
     if ("rumRunnerisle".equalsIgnoreCase(islandName)) {
       theMap.rumRunner();
@@ -360,4 +364,6 @@ public abstract class Scene implements Serializable {
   public void setTheMap(MainMap theMap) {
     this.theMap = theMap;
   }
+
+
 }

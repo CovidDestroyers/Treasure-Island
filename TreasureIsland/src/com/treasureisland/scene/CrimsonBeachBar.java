@@ -36,19 +36,6 @@ public class CrimsonBeachBar extends Scene {
     player.iterateThroughClues();
   }
 
-//  @Override
-//  public void investigateArea(Player player) throws InterruptedException {
-//    storylineProgression("TI.txt",  "PTStart", "PTEnd");
-//    player.setPlayerHealth(player.getPlayerHealth() - 10);
-//
-//    Map<String, Boolean> availablePirates = TreasureIslandGameplay.getInstance().getAvailablePirates();
-//    if(availablePirates.get("Crimson Beach Bar")) {
-//      Thread.sleep(1000);
-//      System.out.println("\n");
-//      PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
-//    }
-//  }
-
   @Override
   public void vendor(Player player) {
 

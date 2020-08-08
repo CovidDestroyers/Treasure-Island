@@ -76,14 +76,26 @@ public class TreasureIslandGameplay implements Serializable {
       currentIsland.enter(player);
 
       while (true) {
-        System.out.println(
-            "You see Port Royal to the North. Would you like to visit "
-                + "it?\n-Type: Y\n-Type: N");
+        String islandName = currentIsland.getIslandName();
+        String toRumRunner =
+          "You see Rum Runner Isle to the South. Would you like to visit "
+            + "it?\n-Type: Y\n-Type: N";
+        String toPortRoyal =
+          "You see Port Royal to the North. Would you like to visit "
+            + "it?\n-Type: Y\n-Type: N";
+
+        String whatIslandToGo =
+            ("portRoyal".equals(islandName))
+              ? toRumRunner : toPortRoyal;
+
+        System.out.println(whatIslandToGo);
 
         userInput = scanner.nextLine().trim().toLowerCase();
 
         if ("y".equals(userInput) || "yes".equals(userInput)) {
-          currentIsland = currentIsland.changeIsland("n");
+          String directionToGo = ("portRoyal".equals(islandName)) ? "s" : "n";
+
+          currentIsland = currentIsland.changeIsland(directionToGo);
           currentIsland.leavingIslandShipPrint();
 
           player.setHasIslandItem(false);

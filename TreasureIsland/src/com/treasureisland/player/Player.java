@@ -421,7 +421,7 @@ public class Player implements Serializable {
         playerInfoConsoleOutput();
         iterateThroughClues();
         System.out.println("\n");
-        currentScene.investigateArea(this);
+        // currentScene.investigateArea(this);
         playerInteractionOptions(direction, islandDestination);
         break;
       case "reward":
