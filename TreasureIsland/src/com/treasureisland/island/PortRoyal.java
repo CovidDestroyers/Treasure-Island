@@ -5,10 +5,7 @@ import com.treasureisland.player.Player;
 public class PortRoyal extends Island {
 
   public PortRoyal() {
-    // setNorthScene(new RoyalLodge());
-    // setEastScene(new SunsetRestaurant());
-    // setSouthScene(new ShipGraveyard());
-    // setWestScene(new TikkiLounge());
+    setIslandName("portRoyal");
   }
 
   /**
@@ -19,22 +16,53 @@ public class PortRoyal extends Island {
    * @throws InterruptedException
    */
   @Override
-  public void enter(Player player) throws InterruptedException {
+  public void enter(Player player) {
+    System.out.println("You made it to Port Royal!");
+    try {
+      String userInput = "";
 
+      // currentScene = rumDistillery;
+
+      while (!player.getHasIslandItem()) {
+        System.out.println(getDirectionOptions());
+
+        userInput = scanner.nextLine().trim().toLowerCase();
+
+        if ("save".equals(userInput)) {
+          saveGame();
+
+        } else if ("chart".equals(userInput)) {
+          theMap.mainMap();
+
+        } else if ("map".equals(userInput)) {
+          theMap.rumRunner();
+
+        } else if (DirectionEnum.isValid(userInput)) {
+          currentScene = currentScene.changeScene(userInput);
+
+          if (currentScene == null) {
+            System.out.println("Please try again...\n");
+          } else {
+            currentScene.enter(player, getIslandName());
+          }
+
+        } else {
+          System.out.println("Error: unknown direction " + userInput);
+          System.out.println("Please try again...\n");
+        }
+      }
+    } catch (InterruptedException e) {
+      System.out.println("Oops! Please try again...\n");
+      System.out.println(directionOptions);
+    }
   }
 
   @Override
-  public void talkToNPC(Player player) throws InterruptedException {
-
-  }
+  public void talkToNPC(Player player) throws InterruptedException {}
 
   @Override
-  public void lookAroundLocation(Player player) throws InterruptedException {
-
-  }
+  public void lookAroundLocation(Player player) throws InterruptedException {}
 
   @Override
-  public void vendor(Player player) {
-
-  }
+  public void vendor(Player player) {}
 }

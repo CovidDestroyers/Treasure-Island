@@ -41,11 +41,12 @@ public class RumRunnerIsle extends Island {
   @Override
   public void enter(Player player) throws InterruptedException {
     try {
-
       String userInput = "";
 
+      currentScene = rumDistillery;
+
       while (!player.getHasIslandItem()) {
-        System.out.println(directionOptions);
+        System.out.println(getDirectionOptions());
 
         userInput = scanner.nextLine().trim().toLowerCase();
 
@@ -69,11 +70,12 @@ public class RumRunnerIsle extends Island {
 
         } else {
           System.out.println("Error: unknown direction " + userInput);
-          System.out.println("Please try again...");
+          System.out.println("Please try again...\n");
         }
       }
     } catch (InterruptedException e) {
-      System.out.println("Oops! Please try again...");
+      System.out.println("Oops! Please try again...\n");
+      System.out.println(directionOptions);
     }
   }
 
