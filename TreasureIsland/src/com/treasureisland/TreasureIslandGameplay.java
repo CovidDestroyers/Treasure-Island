@@ -145,9 +145,12 @@ public class TreasureIslandGameplay implements Serializable {
     }
   }
 
-  // Player chooses name and is stored into playerName variable
-  // calls first storyline txt file then puts player into rumDistillery()
-  // ENtry point into
+  /**
+   * Player chooses name and is stored into playerName variable
+   * calls first storyline txt file
+   *
+   * @throws InterruptedException
+   */
   public void chosePlayerName() throws InterruptedException {
     // welcomeToTreasureIsland();
     System.out.println("\nPlease enter your name: ");
@@ -191,8 +194,6 @@ public class TreasureIslandGameplay implements Serializable {
         Thread.currentThread().interrupt();
       }
     }
-
-    // rumRunnerIsle();
   }
 
   // loop continues until they find the islands special item

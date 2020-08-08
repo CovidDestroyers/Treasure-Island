@@ -5,6 +5,7 @@ import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.OurLogger;
 import com.treasureisland.map.MainMap;
 import com.treasureisland.player.Player;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
 
 public abstract class Scene implements Serializable {
   protected transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
-  protected Logger logger = OurLogger.getLogger();
+  protected transient Logger logger = OurLogger.getLogger();
 
   protected String storyFileName = "TI.txt";
   protected String name;
@@ -170,11 +171,15 @@ public abstract class Scene implements Serializable {
     Method rightMethod = null;
 
     try {
-      if (isPlayerMethod(nameOfMethod)) {
-        rightMethod = Player.class.getMethod(nameOfMethod);
-      } else {
-        rightMethod = Scene.class.getMethod(nameOfMethod, Player.class);
-      }
+      rightMethod =
+          (isPlayerMethod(nameOfMethod))
+              ? Player.class.getMethod(nameOfMethod)
+              : Scene.class.getMethod(nameOfMethod, Player.class);
+      // if (isPlayerMethod(nameOfMethod)) {
+      //   rightMethod = Player.class.getMethod(nameOfMethod);
+      // } else {
+      //   rightMethod = Scene.class.getMethod(nameOfMethod, Player.class);
+      // }
 
     } catch (NoSuchMethodException e) {
       // e.printStackTrace();
@@ -239,6 +244,7 @@ public abstract class Scene implements Serializable {
       theMap.mainMap();
     }
   }
+
   /**
    * @param fileName
    * @param start

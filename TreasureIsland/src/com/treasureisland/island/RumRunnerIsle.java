@@ -50,7 +50,7 @@ public class RumRunnerIsle extends Island {
 
         userInput = scanner.nextLine().trim().toLowerCase();
 
-        player.setHasIslandItem(true);
+        // player.setHasIslandItem(true);
 
         if ("save".equals(userInput)) {
           saveGame();
