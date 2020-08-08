@@ -76,34 +76,29 @@ public class TreasureIslandGameplay implements Serializable {
       currentIsland.enter(player);
 
       while (true) {
-        System.out.println("Would you like to go to the docks?\n-Type: \"go "
-          + "to docks\"\n");
+        System.out.println(
+            "You see Port Royal to the North. Would you like to visit "
+                + "it?\n-Type: Y\n-Type: N");
+
         userInput = scanner.nextLine().trim().toLowerCase();
 
-        if (userInput.equals("go to docks")) {
-          System.out.println(
-              "You see Port Royal to the North. Would you like to visit "
-                  + "it?\n-Type: Y\n-Type: N");
-          userInput = scanner.nextLine().trim().toLowerCase();
+        if ("y".equals(userInput) || "yes".equals(userInput)) {
+          currentIsland = currentIsland.changeIsland("n");
+          currentIsland.leavingIslandShipPrint();
 
-          if ("y".equals(userInput)) {
-            currentIsland = currentIsland.changeIsland("n");
-            player.setHasIslandItem(false);
-
-          } else {
-            System.out.println("Very well then. You are staying on Rum Runner Isle.\n");
-          }
-
-          currentIsland.enter(player);
+          player.setHasIslandItem(false);
+          shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
+        } else {
+          System.out.println("Very well then. You are staying on Rum Runner Isle.\n");
         }
+        currentIsland.enter(player);
       }
+
     } catch (InterruptedException e) {
       System.out.println("Oops! Please try again...\n");
       System.out.println(currentIsland.getDirectionOptions());
       e.printStackTrace();
     }
-
-    // rumRunnerIsle();
   }
 
   public void customGameplayOptions() throws InterruptedException {
@@ -145,12 +140,7 @@ public class TreasureIslandGameplay implements Serializable {
     }
   }
 
-  /**
-   * Player chooses name and is stored into playerName variable
-   * calls first storyline txt file
-   *
-   * @throws InterruptedException
-   */
+  /** Player chooses name and is stored into playerName variable calls first storyline txt file */
   public void chosePlayerName() throws InterruptedException {
     // welcomeToTreasureIsland();
     System.out.println("\nPlease enter your name: ");
@@ -204,7 +194,7 @@ public class TreasureIslandGameplay implements Serializable {
     try {
       player.processMovement("rumRunnerisle");
       System.out.println("Leaving Rum Runners Isle \n \n");
-      leavingIslandShipPrint();
+      // leavingIslandShipPrint();
       Thread.sleep(5000);
       player.setHasIslandItem(false);
       shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
@@ -232,7 +222,7 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("At Isla Cruces");
     player.processMovement("islaCruces");
     System.out.println("Leaving Isla Cruces \n \n");
-    leavingIslandShipPrint();
+    // leavingIslandShipPrint();
     Thread.sleep(5000);
     player.setHasIslandItem(false);
     shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
@@ -244,7 +234,7 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("At Isla de Muerta");
     player.processMovement("islademuerta");
     System.out.println("Leaving Isla De Muerta \n \n");
-    leavingIslandShipPrint();
+    // leavingIslandShipPrint();
     Thread.sleep(5000);
     // treasureIsland();
   }
@@ -312,41 +302,6 @@ public class TreasureIslandGameplay implements Serializable {
 
   // HELPER METHODS BELLOW
 
-  public void leavingIslandShipPrint() throws InterruptedException {
-
-    System.out.println(
-        " "
-            + "               __|__ |___| |\\\n"
-            + "                |o__| |___| | \\\n"
-            + "                |___| |___| |o \\\n"
-            + "               _|___| |___| |__o\\\n"
-            + "              /...\\_____|___|____\\_/\n"
-            + "              \\   o * o * * o o  /\n"
-            + "            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    Thread.sleep(2000);
-    System.out.println(System.lineSeparator().repeat(50));
-    System.out.println(
-        " "
-            + "                                               __|__ |___| |\\\n"
-            + "                                                |o__| |___| | \\\n"
-            + "                                                |___| |___| |o \\\n"
-            + "                                               _|___| |___| |__o\\\n"
-            + "                                            /...\\_____|___|____\\_/\n"
-            + "                                            \\   o * o * * o o  /\n"
-            + "                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    Thread.sleep(2000);
-    System.out.println(System.lineSeparator().repeat(50));
-    System.out.println(
-        " "
-            + "                                                                               __|__ |___| |\\\n"
-            + "                                                                                |o__| |___| | \\\n"
-            + "                                                                                |___| |___| |o \\\n"
-            + "                                                                               _|___| |___| |__o\\\n"
-            + "                                                                            /...\\_____|___|____\\_/\n"
-            + "                                                                            \\   o * o * * o o  /\n"
-            + "                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  }
-
   public void depart() {
     // TODO return to the main section of the island.
     System.out.println("Good Bye!  Please come again!!");
@@ -381,18 +336,18 @@ public class TreasureIslandGameplay implements Serializable {
         break;
       case "North":
       case "n":
-        leavingIslandShipPrint();
+        // leavingIslandShipPrint();
         break;
       case "south":
       case "s":
-        leavingIslandShipPrint();
+        // leavingIslandShipPrint();
         break;
       case "east":
       case "e":
         break;
       case "west":
       case "w":
-        leavingIslandShipPrint();
+        // leavingIslandShipPrint();
         break;
       default:
         System.out.println("Invalid input, please try again. ");

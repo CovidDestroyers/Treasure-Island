@@ -32,7 +32,6 @@ public class PortRoyal extends Island {
    */
   @Override
   public void enter(Player player) {
-    System.out.println("You made it to Port Royal!");
     try {
       String userInput = "";
 

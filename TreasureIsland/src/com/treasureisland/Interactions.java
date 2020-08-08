@@ -15,7 +15,8 @@ public enum Interactions {
   V("V", "VENDOR"),
   E("E", "EXIT"),
   S("S", "SAVE"),
-  C("C", "CHART");
+  C("C", "CHART"),
+  D("D", "DOCKS");
 
 
 

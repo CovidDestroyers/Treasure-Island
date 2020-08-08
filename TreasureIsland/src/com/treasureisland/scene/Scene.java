@@ -51,14 +51,6 @@ public abstract class Scene implements Serializable {
     setName(name);
   }
 
-  public MainMap getTheMap() {
-    return theMap;
-  }
-
-  public void setTheMap(MainMap theMap) {
-    this.theMap = theMap;
-  }
-
   /*
    * =============================================
    * =========== Business Methods ================
@@ -93,8 +85,9 @@ public abstract class Scene implements Serializable {
     }
 
     if (nextScene == null) {
-      System.out.println("You cannot go " + direction + " from here.");
       nextScene = this;
+      System.out.printf("To the %s all you see is water. You're a lousy swimmer for a pirate so...\n", direction);
+      System.out.printf("I'm taking you back to the %s\n\n", nextScene.getName());
     }
 
     return nextScene;
@@ -120,7 +113,7 @@ public abstract class Scene implements Serializable {
     String userInput = "";
     Method aMethod;
 
-    System.out.printf("You are in the %s!", getName());
+    System.out.printf("Welcome to the %s!\n", getName());
 
     player.setCurrentScene(this);
 
@@ -175,14 +168,8 @@ public abstract class Scene implements Serializable {
           (isPlayerMethod(nameOfMethod))
               ? Player.class.getMethod(nameOfMethod)
               : Scene.class.getMethod(nameOfMethod, Player.class);
-      // if (isPlayerMethod(nameOfMethod)) {
-      //   rightMethod = Player.class.getMethod(nameOfMethod);
-      // } else {
-      //   rightMethod = Scene.class.getMethod(nameOfMethod, Player.class);
-      // }
 
     } catch (NoSuchMethodException e) {
-      // e.printStackTrace();
       System.out.println("Error: Invalid Input. Please try again.");
     }
     return rightMethod;
@@ -294,7 +281,6 @@ public abstract class Scene implements Serializable {
    * =============================================
    */
 
-  // GET METHODS
   public String getName() {
     return name;
   }
@@ -355,7 +341,6 @@ public abstract class Scene implements Serializable {
     return westScene;
   }
 
-  // SET METHODS
   public void setWestScene(Scene westScene) {
     this.westScene = westScene;
   }
@@ -366,5 +351,13 @@ public abstract class Scene implements Serializable {
 
   public void setInterActionOptions(String interActionOptions) {
     this.interActionOptions = interActionOptions;
+  }
+
+  public MainMap getTheMap() {
+    return theMap;
+  }
+
+  public void setTheMap(MainMap theMap) {
+    this.theMap = theMap;
   }
 }

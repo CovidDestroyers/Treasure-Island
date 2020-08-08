@@ -40,17 +40,24 @@ public class RumRunnerIsle extends Island {
    */
   @Override
   public void enter(Player player) throws InterruptedException {
-    try {
-      String userInput = "";
+    String userInput = "";
+    String whereToGo = getDirectionOptions();
 
+    try {
+      player.setCurrentIsland(this);
       currentScene = rumDistillery;
 
-      while (!player.getHasIslandItem()) {
-        System.out.println(getDirectionOptions());
+      while (true) {
+        whereToGo =
+            (player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions();
+
+        System.out.println(whereToGo);
 
         userInput = scanner.nextLine().trim().toLowerCase();
 
-        // player.setHasIslandItem(true);
+        if ("d".equals(userInput) || "docks".equals(userInput)) {
+          break;
+        }
 
         if ("save".equals(userInput)) {
           saveGame();
@@ -77,7 +84,7 @@ public class RumRunnerIsle extends Island {
       }
     } catch (InterruptedException e) {
       System.out.println("Oops! Please try again...\n");
-      System.out.println(directionOptions);
+      System.out.println(whereToGo);
     }
   }
 

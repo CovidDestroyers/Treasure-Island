@@ -1,7 +1,6 @@
 package com.treasureisland.island;
 
 import com.treasureisland.SaveLoadGame;
-import com.treasureisland.map.MainMap;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
@@ -16,10 +15,7 @@ public abstract class Island extends Scene implements Serializable {
   protected Island islandToTheEast;
   protected Island islandToTheWest;
 
-  protected MainMap theMap = new MainMap();
-
   protected String islandName;
-
 
   protected Scene currentScene;
   protected List<Scene> scenesOnIsland = new ArrayList<>();
@@ -33,15 +29,24 @@ public abstract class Island extends Scene implements Serializable {
           + "-Type \"Chart\": Game Chart\n "
           + "-Type \"Map\": Island Map\n";
 
+  protected String directOptionsWithDocks =
+      "Where would you like to go?\n "
+          + "-Type \"N\": North\n "
+          + "-Type \"S\": South\n "
+          + "-Type \"W\": West\n "
+          + "-Type \"E\": East\n "
+          + "-Type \"D\": Docks\n "
+          + "-Type \"Save\": Save Game\n "
+          + "-Type \"Chart\": Game Chart\n "
+          + "-Type \"Map\": Island Map\n";
+
   /*
    * =============================================
    * ============= Constructors ==================
    * =============================================
    */
 
-  public Island() {
-
-  }
+  public Island() {}
 
   public Island(String islandName) {
     super(islandName);
@@ -69,7 +74,7 @@ public abstract class Island extends Scene implements Serializable {
    * @param player
    * @throws InterruptedException
    */
-  public abstract void enter(Player player) throws InterruptedException;
+  public void enter(Player player) throws InterruptedException {}
 
   /**
    * @param direction
@@ -79,20 +84,26 @@ public abstract class Island extends Scene implements Serializable {
     String sanitizedDirection = direction.trim().toLowerCase().substring(0, 1);
     Island nextIsland = null;
 
-    if ("n".equals(sanitizedDirection)) {
-      nextIsland = getIslandToTheNorth();
+    switch (sanitizedDirection) {
+      case "n":
+        nextIsland = getIslandToTheNorth();
 
-    } else if ("e".equals(sanitizedDirection)) {
-      nextIsland = getIslandToTheEast();
+        break;
+      case "e":
+        nextIsland = getIslandToTheEast();
 
-    } else if ("s".equals(sanitizedDirection)) {
-      nextIsland = getIslandToTheSouth();
+        break;
+      case "s":
+        nextIsland = getIslandToTheSouth();
 
-    } else if ("w".equals(sanitizedDirection)) {
-      nextIsland = getIslandToTheWest();
+        break;
+      case "w":
+        nextIsland = getIslandToTheWest();
 
-    } else {
-      System.out.println("Error: unknown direction " + direction);
+        break;
+      default:
+        System.out.println("Error: unknown direction " + direction);
+        break;
     }
 
     if (nextIsland == null) {
@@ -102,12 +113,10 @@ public abstract class Island extends Scene implements Serializable {
     return nextIsland;
   }
 
-
   public void connectEast(Island otherIsland) {
     setIslandToTheEast(otherIsland);
     otherIsland.setIslandToTheWest(this);
   }
-
 
   public void connectSouth(Island otherIsland) {
     setIslandToTheSouth(otherIsland);
@@ -128,14 +137,11 @@ public abstract class Island extends Scene implements Serializable {
     System.exit(0);
   }
 
-
-
   /*
    * =============================================
    * =========== Accessor Methods ================
    * =============================================
    */
-
 
   public Island getIslandToTheNorth() {
     return islandToTheNorth;
@@ -191,5 +197,55 @@ public abstract class Island extends Scene implements Serializable {
 
   public void setCurrentScene(Scene currentScene) {
     this.currentScene = currentScene;
+  }
+
+  public List<Scene> getScenesOnIsland() {
+    return scenesOnIsland;
+  }
+
+  public void setScenesOnIsland(List<Scene> scenesOnIsland) {
+    this.scenesOnIsland = scenesOnIsland;
+  }
+
+  public String getDirectOptionsWithDocks() {
+    return directOptionsWithDocks;
+  }
+
+  public void setDirectOptionsWithDocks(String directOptionsWithDocks) {
+    this.directOptionsWithDocks = directOptionsWithDocks;
+  }
+
+  public void leavingIslandShipPrint() throws InterruptedException {
+    System.out.println(
+        " "
+            + "               __|__ |___| |\\\n"
+            + "                |o__| |___| | \\\n"
+            + "                |___| |___| |o \\\n"
+            + "               _|___| |___| |__o\\\n"
+            + "              /...\\_____|___|____\\_/\n"
+            + "              \\   o * o * * o o  /\n"
+            + "            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    Thread.sleep(2000);
+    System.out.println(System.lineSeparator().repeat(50));
+    System.out.println(
+        " "
+            + "                                               __|__ |___| |\\\n"
+            + "                                                |o__| |___| | \\\n"
+            + "                                                |___| |___| |o \\\n"
+            + "                                               _|___| |___| |__o\\\n"
+            + "                                            /...\\_____|___|____\\_/\n"
+            + "                                            \\   o * o * * o o  /\n"
+            + "                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    Thread.sleep(2000);
+    System.out.println(System.lineSeparator().repeat(50));
+    System.out.println(
+        " "
+            + "                                                                               __|__ |___| |\\\n"
+            + "                                                                                |o__| |___| | \\\n"
+            + "                                                                                |___| |___| |o \\\n"
+            + "                                                                               _|___| |___| |__o\\\n"
+            + "                                                                            /...\\_____|___|____\\_/\n"
+            + "                                                                            \\   o * o * * o o  /\n"
+            + "                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 }
