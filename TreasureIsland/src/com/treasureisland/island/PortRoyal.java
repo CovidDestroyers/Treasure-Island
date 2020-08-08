@@ -1,11 +1,26 @@
 package com.treasureisland.island;
 
 import com.treasureisland.player.Player;
+import com.treasureisland.scene.RoyalLodge;
+import com.treasureisland.scene.Scene;
+import com.treasureisland.scene.ShipGraveyard;
+import com.treasureisland.scene.SunsetRestaurant;
+import com.treasureisland.scene.TikkiLounge;
 
 public class PortRoyal extends Island {
+  private final Scene royalLounge = new RoyalLodge("Royal Lodge");
+  private final Scene sunSetRestaurant = new SunsetRestaurant("Sunset Restaurant");
+  private final Scene tikkiLounge = new TikkiLounge("Tikki Lounge");
+  private final Scene shipGraveyard = new ShipGraveyard("Ship Graveyard");
 
   public PortRoyal() {
     setIslandName("portRoyal");
+    addScenesToIsland(royalLounge, sunSetRestaurant, tikkiLounge, shipGraveyard);
+
+    royalLounge.connectSouth(tikkiLounge);
+    royalLounge.connectEast(sunSetRestaurant);
+    sunSetRestaurant.connectSouth(shipGraveyard);
+    tikkiLounge.connectEast(shipGraveyard);
   }
 
   /**
@@ -21,7 +36,7 @@ public class PortRoyal extends Island {
     try {
       String userInput = "";
 
-      // currentScene = rumDistillery;
+      currentScene = royalLounge;
 
       while (!player.getHasIslandItem()) {
         System.out.println(getDirectionOptions());
