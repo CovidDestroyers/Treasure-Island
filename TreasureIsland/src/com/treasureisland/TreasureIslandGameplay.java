@@ -76,11 +76,13 @@ public class TreasureIslandGameplay implements Serializable {
       currentIsland.enter(player);
 
       while (true) {
+        System.out.println("Would you like to go to the docks?\n-Type: \"go "
+          + "to docks\"\n");
         userInput = scanner.nextLine().trim().toLowerCase();
 
         if (userInput.equals("go to docks")) {
           System.out.println(
-              "You see Port Royal to the North. Would you lile to visit "
+              "You see Port Royal to the North. Would you like to visit "
                   + "it?\n-Type: Y\n-Type: N");
           userInput = scanner.nextLine().trim().toLowerCase();
 
