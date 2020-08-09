@@ -14,8 +14,8 @@ public class PortRoyal extends Island {
   private final Scene shipGraveyard = new ShipGraveyard("Ship Graveyard");
 
   public PortRoyal() {
-    setIslandName("portRoyal");
-    addScenesToIsland(royalLounge, sunSetRestaurant, tikkiLounge, shipGraveyard);
+    setIslandName("Port Royal");
+    setCurrentScene(royalLounge);
 
     royalLounge.connectSouth(tikkiLounge);
     royalLounge.connectEast(sunSetRestaurant);
@@ -23,63 +23,6 @@ public class PortRoyal extends Island {
     tikkiLounge.connectEast(shipGraveyard);
   }
 
-  /**
-   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
-   * start each Scene's story
-   *
-   * @param player
-   * @throws InterruptedException
-   */
-  @Override
-  public void enter(Player player) {
-    System.out.println("You have arrived at Port Royal. Enjoy your stay...\n");
-
-    String userInput = "";
-    String whereToGo = getDirectionOptions();
-
-    try {
-      player.setCurrentIsland(this);
-      currentScene = royalLounge;
-
-      while (true) {
-        whereToGo =
-            (player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions();
-        System.out.println(whereToGo);
-
-        userInput = scanner.nextLine().trim().toLowerCase();
-
-        if ("d".equals(userInput) || "docks".equals(userInput)) {
-          break;
-        }
-
-        if ("save".equals(userInput)) {
-          saveGame();
-
-        } else if ("chart".equals(userInput)) {
-          theMap.mainMap();
-
-        } else if ("map".equals(userInput)) {
-          theMap.rumRunner();
-
-        } else if (DirectionEnum.isValid(userInput)) {
-          currentScene = currentScene.changeScene(userInput);
-
-          if (currentScene == null) {
-            System.out.println("Please try again...\n");
-          } else {
-            currentScene.enter(player, getIslandName());
-          }
-
-        } else {
-          System.out.println("Error: unknown direction " + userInput);
-          System.out.println("Please try again...\n");
-        }
-      }
-    } catch (InterruptedException e) {
-      System.out.println("Oops! Please try again...\n");
-      System.out.println(directionOptions);
-    }
-  }
 
   @Override
   public void talkToNPC(Player player) throws InterruptedException {}

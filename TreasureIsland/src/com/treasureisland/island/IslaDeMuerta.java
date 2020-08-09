@@ -10,36 +10,19 @@ public class IslaDeMuerta extends Island {
    * =============================================
    */
   public IslaDeMuerta() {
-    // setNorthScene(new AbandonedDistillery());
-    // setEastScene(new DuskTillDawnSaloon());
-    // setSouthScene(new Graveyard());
-    // setWestScene(new PawPawBeach());
+    setIslandName("Isla De Muerta");
   }
 
-  /**
-   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
-   * start each Scene's story
-   *
-   * @param player
-   * @throws InterruptedException
-   */
-  @Override
-  public void enter(Player player) throws InterruptedException {
-
+  public IslaDeMuerta(String islandName) {
+    setName(islandName);
   }
 
   @Override
-  public void talkToNPC(Player player) throws InterruptedException {
-
-  }
+  public void talkToNPC(Player player) throws InterruptedException {}
 
   @Override
-  public void lookAroundLocation(Player player) throws InterruptedException {
-
-  }
+  public void lookAroundLocation(Player player) throws InterruptedException {}
 
   @Override
-  public void vendor(Player player) {
-
-  }
+  public void vendor(Player player) {}
 }

@@ -22,8 +22,8 @@ public class RumRunnerIsle extends Island {
   }
 
   public RumRunnerIsle() {
-    setIslandName("rumRunnerisle");
-    addScenesToIsland(rumDistillery, abandonedDistillery, crimsonBeachBar, sugarCaneField);
+    setIslandName("Rum Runner Isle");
+    setCurrentScene(rumDistillery);
 
     rumDistillery.connectSouth(sugarCaneField);
     rumDistillery.connectEast(abandonedDistillery);
@@ -31,63 +31,6 @@ public class RumRunnerIsle extends Island {
     abandonedDistillery.connectSouth(crimsonBeachBar);
   }
 
-  /**
-   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
-   * start each Scene's story
-   *
-   * @param player
-   * @throws InterruptedException
-   */
-  @Override
-  public void enter(Player player) throws InterruptedException {
-    System.out.println("Welcome to Rum Runner Isle!\n");
-
-    String userInput = "";
-    String whereToGo = getDirectionOptions();
-
-    try {
-      player.setCurrentIsland(this);
-      currentScene = rumDistillery;
-
-      while (true) {
-        whereToGo =
-            (player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions();
-        System.out.println(whereToGo);
-
-        userInput = scanner.nextLine().trim().toLowerCase();
-
-        if ("d".equals(userInput) || "docks".equals(userInput)) {
-          break;
-        }
-
-        if ("save".equals(userInput)) {
-          saveGame();
-
-        } else if ("chart".equals(userInput)) {
-          theMap.mainMap();
-
-        } else if ("map".equals(userInput)) {
-          theMap.rumRunner();
-
-        } else if (DirectionEnum.isValid(userInput)) {
-          currentScene = currentScene.changeScene(userInput);
-
-          if (currentScene == null) {
-            System.out.println("Please try again...\n");
-          } else {
-            currentScene.enter(player, getIslandName());
-          }
-
-        } else {
-          System.out.println("Error: unknown direction " + userInput);
-          System.out.println("Please try again...\n");
-        }
-      }
-    } catch (InterruptedException e) {
-      System.out.println("Oops! Please try again...\n");
-      System.out.println(whereToGo);
-    }
-  }
 
   @Override
   public void talkToNPC(Player player) throws InterruptedException {}

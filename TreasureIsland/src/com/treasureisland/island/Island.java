@@ -1,10 +1,12 @@
 package com.treasureisland.island;
 
+import com.treasureisland.Interactions;
 import com.treasureisland.SaveLoadGame;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -58,6 +60,69 @@ public abstract class Island extends Scene implements Serializable {
    * =============================================
    */
 
+  /**
+   * The entry point into all scene classes. The Game class will call
+   * `Island.enter( player);`to start each Island's story
+   * @param player - Player object
+   *
+   */
+  public void enter(Player player) {
+    displayWelcomeMessage();
+
+    String userInput = "";
+    String whereToGo = getDirectionOptions();
+
+    try {
+      player.setCurrentIsland(this);
+
+      while (true) {
+        whereToGo =
+            (player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions();
+        System.out.println(whereToGo);
+
+        userInput = scanner.nextLine().trim().toLowerCase();
+
+        if (("d".equals(userInput) || "docks".equals(userInput)) && player.getHasIslandItem()) {
+          break;
+        } else {
+          System.out.println(
+              "You need a special item to get off this island. Please try again...\n");
+        }
+
+        if ("save".equals(userInput)) {
+          saveGame();
+
+        } else if ("chart".equals(userInput)) {
+          theMap.mainMap();
+
+        } else if ("map".equals(userInput)) {
+          theMap.rumRunner();
+
+        } else if (DirectionEnum.isValid(userInput)) {
+          currentScene = currentScene.changeScene(userInput);
+
+          if (currentScene == null) {
+            System.out.println("Please try again...\n");
+          } else {
+            currentScene.enter(player, getIslandName());
+          }
+
+        } else {
+          System.out.println("Error: unknown direction " + userInput);
+          System.out.println("Please try again...\n");
+        }
+      }
+    } catch (InterruptedException e) {
+      System.out.println("Oops! Please try again...\n");
+      System.out.println(directionOptions);
+    }
+  }
+
+  protected void displayWelcomeMessage() {
+    System.out.printf("You have arrived at %s. Enjoy your stay...",
+      getIslandName());
+  }
+
   public void addScenesToIsland(Scene... scenes) {
     try {
       scenesOnIsland.addAll(Arrays.asList(scenes));
@@ -66,15 +131,6 @@ public abstract class Island extends Scene implements Serializable {
       e.printStackTrace();
     }
   }
-
-  /**
-   * The entry point into all scene classes. The Game class will call `Scene.enter(in, player);` to
-   * start each Scene's story
-   *
-   * @param player
-   * @throws InterruptedException
-   */
-  public void enter(Player player) throws InterruptedException {}
 
   /**
    * @param direction

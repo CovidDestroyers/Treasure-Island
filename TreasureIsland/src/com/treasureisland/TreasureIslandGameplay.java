@@ -77,16 +77,10 @@ public class TreasureIslandGameplay implements Serializable {
 
       while (true) {
         String islandName = currentIsland.getIslandName();
-        String toRumRunner =
-          "You see Rum Runner Isle to the South. Would you like to visit "
-            + "it?\n-Type: Y\n-Type: N";
-        String toPortRoyal =
-          "You see Port Royal to the North. Would you like to visit "
-            + "it?\n-Type: Y\n-Type: N";
 
         String whatIslandToGo =
             ("portRoyal".equals(islandName))
-              ? toRumRunner : toPortRoyal;
+              ? toRumRunner() : toPortRoyal();
 
         System.out.println(whatIslandToGo);
 
@@ -100,8 +94,9 @@ public class TreasureIslandGameplay implements Serializable {
 
           player.setHasIslandItem(false);
           shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
-        } else {
-          System.out.println("Very well then. You are staying on Rum Runner Isle.\n");
+        }
+        else {
+          displayStayMessage();
         }
         currentIsland.enter(player);
       }
@@ -112,6 +107,7 @@ public class TreasureIslandGameplay implements Serializable {
       e.printStackTrace();
     }
   }
+
 
   public void customGameplayOptions() throws InterruptedException {
     File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
@@ -412,6 +408,19 @@ public class TreasureIslandGameplay implements Serializable {
             + "                                                                                                                                             \n"
             + "                                                                                                                                             \n"
             + Color.ANSI_RESET.getValue());
+  }
+
+  public String toRumRunner() {
+    return "You see Rum Runner Isle to the South. Would you like to visit "
+        + "it?\n-Type: Y\n-Type: N";
+  }
+
+  public String toPortRoyal() {
+    return "You see Port Royal to the North. Would you like to visit " + "it?\n-Type: Y\n-Type: N";
+  }
+
+  private void displayStayMessage() {
+    System.out.printf("Very well then. You are staying on %s.\n", currentIsland.getIslandName());
   }
 
   public Map<String, Boolean> getAvailablePirates() {

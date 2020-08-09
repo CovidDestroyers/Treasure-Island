@@ -5,7 +5,6 @@ import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.OurLogger;
 import com.treasureisland.map.MainMap;
 import com.treasureisland.player.Player;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -99,7 +98,8 @@ public abstract class Scene implements Serializable {
 
     if (nextScene == null) {
       nextScene = this;
-      System.out.printf("To the %s all you see is water. You're a lousy swimmer for a pirate so...\n", direction);
+      System.out.printf(
+          "To the %s all you see is water. You're a lousy swimmer for a pirate so...\n", direction);
       System.out.printf("I'm taking you back to the %s\n\n", nextScene.getName());
     }
 
@@ -138,11 +138,8 @@ public abstract class Scene implements Serializable {
         userInput = scanner.nextLine().trim().toLowerCase();
 
         if (!userInput.equals("")) {
-          if (userInput.startsWith("i")) {
-            userInput = userInput.substring(0, 3);
-          } else {
-            userInput = userInput.substring(0, 1);
-          }
+          userInput =
+              (userInput.startsWith("i")) ? userInput.substring(0, 3) : userInput.substring(0, 1);
         }
 
         if (Interactions.isValid(userInput)) {
@@ -161,7 +158,6 @@ public abstract class Scene implements Serializable {
               aMethod.invoke(this, player);
             }
           }
-
         } else {
           System.out.println("Error: Invalid Input. Please try again.");
         }
@@ -220,16 +216,17 @@ public abstract class Scene implements Serializable {
 
   /**
    * Displays the Island Map
+   *
    * @param islandName - the name of an Island
    */
   public void displayIslandMap(String islandName) {
-    if ("rumRunnerisle".equalsIgnoreCase(islandName)) {
+    if ("Rum Runner Isle".equalsIgnoreCase(islandName)) {
       theMap.rumRunner();
-    } else if ("portRoyal".equalsIgnoreCase(islandName)) {
+    } else if ("Port Royal".equalsIgnoreCase(islandName)) {
       theMap.portRoyal();
-    } else if ("islaCruces".equalsIgnoreCase(islandName)) {
+    } else if ("Isla Cruces".equalsIgnoreCase(islandName)) {
       theMap.islaCruces();
-    } else if ("islademuerta".equalsIgnoreCase(islandName)) {
+    } else if ("Isla De Muerta".equalsIgnoreCase(islandName)) {
       theMap.islaDeMuerta();
     } else {
       theMap.mainMap();
@@ -364,6 +361,4 @@ public abstract class Scene implements Serializable {
   public void setTheMap(MainMap theMap) {
     this.theMap = theMap;
   }
-
-
 }
