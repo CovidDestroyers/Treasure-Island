@@ -19,7 +19,7 @@ public abstract class Scene implements Serializable {
   protected transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   protected transient Logger logger = OurLogger.getLogger();
 
-  protected Map<String, String> methods = new HashMap<>();
+  protected Map<String, String> methods;
 
   protected String storyFileName = "TI.txt";
   protected String name;
@@ -50,14 +50,7 @@ public abstract class Scene implements Serializable {
 
   public Scene(String name) {
     setName(name);
-    methods.put("t", "talkToNPC");
-    methods.put("l", "lookAroundLocation");
-    methods.put("v", "vendor");
-    methods.put("e", "exit");
-    methods.put("g", "grabItemFromInventory");
-    methods.put("i", "printInventoryItems");
-    methods.put("r", "iterateThroughPlayerTreasureRewards");
-    methods.put("m", "displayIslandMap");
+    setMethods(buildMethodMap());
   }
 
   /*
@@ -65,13 +58,20 @@ public abstract class Scene implements Serializable {
    * =========== Abstract Methods ================
    * =============================================
    */
+
+  /**
+   * These methods are used for custom gameplay in each Scene class
+   *
+   * @param player - Player object
+   * @throws InterruptedException - from the global Scanner object OnlyOneScanner
+   */
   public abstract void talkToNPC(Player player) throws InterruptedException;
 
   public abstract void lookAroundLocation(Player player) throws InterruptedException;
 
-  public void investigateArea(Player player) throws InterruptedException {}
-
   public abstract void vendor(Player player);
+
+  public void investigateArea(Player player) throws InterruptedException {}
 
   /*
    * =============================================
@@ -80,7 +80,9 @@ public abstract class Scene implements Serializable {
    */
 
   /**
+   * Gets the correct Scene class based on direction
    * @param direction - user command given through the console
+   *                  - Validated by DirectionEnum.isValid
    * @return a Scene class in the specified direction
    */
   public Scene changeScene(String direction) {
@@ -116,11 +118,21 @@ public abstract class Scene implements Serializable {
     return nextScene;
   }
 
+  /**
+   *
+   *  @param otherScene - the Scene class to the East of the invoking Scene
+   * class
+   * */
   public void connectEast(Scene otherScene) {
     setEastScene(otherScene);
     otherScene.setWestScene(this);
   }
 
+  /**
+   *
+   * @param otherScene - the Scene class to the South of the invoking Scene
+   * class
+   */
   public void connectSouth(Scene otherScene) {
     setSouthScene(otherScene);
     otherScene.setNorthScene(otherScene);
@@ -129,7 +141,8 @@ public abstract class Scene implements Serializable {
   /**
    * The entry point into all scene classes.
    *
-   * @param player
+   * @param player - Player object
+   * @param islandName - String: name of an Island
    * @throws InterruptedException
    */
   public void enter(Player player, String islandName) throws InterruptedException {
@@ -200,6 +213,11 @@ public abstract class Scene implements Serializable {
     return rightMethod;
   }
 
+  /**
+   * Gets the name of a method from the `methods` Map
+   * @param userInput - user command from console
+   * @return - String with name of method if found
+   */
   public String getNameOfMethod(String userInput) {
     String userIn = userInput.substring(0, 1);
 
@@ -210,6 +228,11 @@ public abstract class Scene implements Serializable {
     return methodName;
   }
 
+  /**
+   * Checks if a method is a Player method
+   * @param aMethodName - name of a method
+   * @return - Boolean
+   */
   public Boolean isPlayerMethod(String aMethodName) {
     boolean playerMethod = false;
     if ("grabItemFromInventory".equals(aMethodName)
@@ -218,6 +241,20 @@ public abstract class Scene implements Serializable {
       playerMethod = true;
     }
     return playerMethod;
+  }
+
+  public Map<String, String> buildMethodMap() {
+    Map<String, String> mapOfMethods = new HashMap<>();
+    mapOfMethods.put("t", "talkToNPC");
+    mapOfMethods.put("l", "lookAroundLocation");
+    mapOfMethods.put("v", "vendor");
+    mapOfMethods.put("e", "exit");
+    mapOfMethods.put("g", "grabItemFromInventory");
+    mapOfMethods.put("i", "printInventoryItems");
+    mapOfMethods.put("r", "iterateThroughPlayerTreasureRewards");
+    mapOfMethods.put("m", "displayIslandMap");
+
+    return mapOfMethods;
   }
 
   /**
@@ -240,9 +277,9 @@ public abstract class Scene implements Serializable {
   }
 
   /**
-   * @param fileName
-   * @param start
-   * @param stop
+   * @param fileName - Name of file where story line is kept
+   * @param start - start location of scene storyline
+   * @param stop - stop location of scene storyline
    */
   public void storylineProgression(String fileName, String start, String stop) {
     try {
@@ -287,6 +324,14 @@ public abstract class Scene implements Serializable {
    * =========== Accessor Methods ================
    * =============================================
    */
+
+  public Map<String, String> getMethods() {
+    return methods;
+  }
+
+  public void setMethods(Map<String, String> methods) {
+    this.methods = methods;
+  }
 
   public String getName() {
     return name;
