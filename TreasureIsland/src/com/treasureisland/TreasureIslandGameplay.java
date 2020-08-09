@@ -41,12 +41,10 @@ public class TreasureIslandGameplay implements Serializable {
     islaCruces = new IslaCruces();
     islaDeMuerta = new IslaDeMuerta();
 
-    // rumRunnerIsle.connectEast(islaCruces);
     portRoyal.connectSouth(rumRunnerIsle);
-
-    // islaDeMuerta.connectEast(portRoyal);
-    // portRoyal.connectSouth(islaCruces);
-    // islaDeMuerta.connectSouth(rumRunnerIsle);
+    portRoyal.connectEast(islaDeMuerta);
+    islaDeMuerta.connectSouth(islaCruces);
+    rumRunnerIsle.connectEast(islaCruces);
 
     availablePirates.put("Crimson Beach Bar", true);
   }
@@ -68,33 +66,31 @@ public class TreasureIslandGameplay implements Serializable {
     String userInput = "";
     try {
       welcomeToTreasureIsland();
-      currentIsland = rumRunnerIsle;
+      islandSetUp(rumRunnerIsle);
       customGameplayOptions();
-
-      player.setHasIslandItem(false);
 
       currentIsland.enter(player);
 
       while (true) {
         String islandName = currentIsland.getIslandName();
 
-        String whatIslandToGo = ("portRoyal".equals(islandName)) ? toRumRunner() : toPortRoyal();
+        String whatIslandToGo = ("Port Royal".equals(islandName)) ? toRumRunner() : toPortRoyal();
 
         System.out.println(whatIslandToGo);
 
         userInput = scanner.nextLine().trim().toLowerCase();
 
         if ("y".equals(userInput) || "yes".equals(userInput)) {
-          String directionToGo = ("portRoyal".equals(islandName)) ? "s" : "n";
+          String directionToGo = ("Port Royal".equals(islandName)) ? "s" : "n";
 
-          currentIsland = currentIsland.changeIsland(directionToGo);
+          islandSetUp(currentIsland.changeIsland(directionToGo));
           currentIsland.leavingIslandShipPrint();
 
-          player.setHasIslandItem(false);
           shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
         } else {
           displayStayMessage();
         }
+        player.setCurrentIsland(currentIsland);
         currentIsland.enter(player);
 
         if (player.playerTreasures.size() == 2) {
@@ -107,6 +103,12 @@ public class TreasureIslandGameplay implements Serializable {
       System.out.println(currentIsland.getDirectionOptions());
       e.printStackTrace();
     }
+  }
+
+  /** Sets currentIsland to Rum Runner and */
+  public void islandSetUp(Island anIsland) {
+    currentIsland = anIsland;
+    player.setHasIslandItem(false);
   }
 
   public void customGameplayOptions() throws InterruptedException {
@@ -122,11 +124,11 @@ public class TreasureIslandGameplay implements Serializable {
     switch (input) {
       case "l":
         treasureIslandGameplay = SaveLoadGame.loadGame();
+        if (treasureIslandGameplay.player.getCurrentScene() == null) {
+          treasureIslandGameplay.player.setCurrentScene(currentIsland.getCurrentScene());
+        }
         System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
-        System.out.println(
-            "Location: " + treasureIslandGameplay.player.getCurrentScene().getName());
-        System.out.println("Player Health: " + treasureIslandGameplay.player.getPlayerHealth());
-        System.out.println("Player Coins: " + treasureIslandGameplay.player.getPlayerCoins());
+        treasureIslandGameplay.player.playerInfoConsoleOutput();
 
         break;
       case "f":
@@ -257,7 +259,8 @@ public class TreasureIslandGameplay implements Serializable {
       }
     } else {
       System.out.println(
-          "To get the key, you have to look around in \"Sugar Cane Field\" in \"Rum Runner Isle\"");
+          "To get the key, you have to look in the \"Sugar Cane "
+              + "Field\" in \"Rum Runner Isle\"");
     }
   }
 

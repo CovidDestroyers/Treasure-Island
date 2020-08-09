@@ -23,7 +23,6 @@ public class PortRoyal extends Island {
     tikkiLounge.connectEast(shipGraveyard);
   }
 
-
   @Override
   public void talkToNPC(Player player) throws InterruptedException {}
 
@@ -33,14 +32,18 @@ public class PortRoyal extends Island {
   @Override
   public void vendor(Player player) {}
 
-
   @Override
   public String toString() {
-    return "PortRoyal{" +
-      "royalLounge=" + royalLounge +
-      ", sunSetRestaurant=" + sunSetRestaurant +
-      ", tikkiLounge=" + tikkiLounge +
-      ", shipGraveyard=" + shipGraveyard +
-      "} " + super.toString();
+    return "PortRoyal{"
+        + "royalLounge="
+        + royalLounge
+        + ", sunSetRestaurant="
+        + sunSetRestaurant
+        + ", tikkiLounge="
+        + tikkiLounge
+        + ", shipGraveyard="
+        + shipGraveyard
+        + "} "
+        + super.toString();
   }
 }

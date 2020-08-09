@@ -7,7 +7,8 @@ import java.io.ObjectOutputStream;
 import java.util.Arrays;
 
 public class SaveLoadGame  implements java.io.Serializable {
-    static TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
+    public static TreasureIslandGameplay treasureIslandGameplay =
+    TreasureIslandGameplay.getInstance();
 
     public static void saveGame(){
         try {
@@ -20,8 +21,7 @@ public class SaveLoadGame  implements java.io.Serializable {
             System.out.println("Game saved\n");
         }
         catch(Exception e){
-            // System.out.println(Arrays.toString(e.getStackTrace()));
-          e.printStackTrace();
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
     }
 

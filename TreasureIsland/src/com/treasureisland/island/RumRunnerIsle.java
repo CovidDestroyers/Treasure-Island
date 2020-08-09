@@ -13,9 +13,10 @@ public class RumRunnerIsle extends Island {
   private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
 
   private final Scene rumDistillery = new RumDistillery("Rum Distillery");
-  private final Scene abandonedDistillery = new AbandonedDistillery("Abandoned distillery");
+  private final Scene abandonedDistillery = new AbandonedDistillery(
+    "Abandoned Distillery");
   private final Scene crimsonBeachBar = new CrimsonBeachBar("Crimson Beach Bar");
-  private final Scene sugarCaneField = new SugarCaneField("Sugar cane field");
+  private final Scene sugarCaneField = new SugarCaneField("Sugar Cane Field");
 
   public RumRunnerIsle(String islandName) {
     setName(islandName);

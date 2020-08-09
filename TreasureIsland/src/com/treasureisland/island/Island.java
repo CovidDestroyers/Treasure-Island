@@ -1,12 +1,10 @@
 package com.treasureisland.island;
 
-import com.treasureisland.Interactions;
 import com.treasureisland.SaveLoadGame;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -61,19 +59,17 @@ public abstract class Island extends Scene implements Serializable {
    */
 
   /**
-   * The entry point into all scene classes. The Game class will call
-   * `Island.enter( player);`to start each Island's story
-   * @param player - Player object
+   * The entry point into all scene classes. The Game class will call `Island.enter( player);`to
+   * start each Island's story
    *
+   * @param player - Player object
    */
   public void enter(Player player) {
-    displayWelcomeMessage();
-
     String userInput = "";
     String whereToGo = getDirectionOptions();
 
     try {
-      player.setCurrentIsland(this);
+      displayWelcomeMessage();
 
       while (true) {
         whereToGo =
@@ -84,18 +80,15 @@ public abstract class Island extends Scene implements Serializable {
 
         if (("d".equals(userInput) || "docks".equals(userInput)) && player.getHasIslandItem()) {
           break;
-        } else {
-          System.out.println(
-              "You need a special item to get off this island. Please try again...\n");
         }
 
         if ("save".equals(userInput)) {
           saveGame();
 
-        } else if ("chart".equals(userInput)) {
+        } else if ("chart".equals(userInput) || "c".equals(userInput)) {
           theMap.mainMap();
 
-        } else if ("map".equals(userInput)) {
+        } else if ("map".equals(userInput) || "m".equals(userInput)) {
           theMap.rumRunner();
 
         } else if (DirectionEnum.isValid(userInput)) {
@@ -103,7 +96,9 @@ public abstract class Island extends Scene implements Serializable {
 
           if (currentScene == null) {
             System.out.println("Please try again...\n");
+
           } else {
+            player.setCurrentScene(currentScene);
             currentScene.enter(player, getIslandName());
           }
 
@@ -119,8 +114,7 @@ public abstract class Island extends Scene implements Serializable {
   }
 
   protected void displayWelcomeMessage() {
-    System.out.printf("You have arrived at %s. Enjoy your stay...",
-      getIslandName());
+    System.out.printf("You have arrived at %s. Enjoy your stay...", getIslandName());
   }
 
   public void addScenesToIsland(Scene... scenes) {
@@ -305,19 +299,31 @@ public abstract class Island extends Scene implements Serializable {
             + "                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 
-
   @Override
   public String toString() {
-    return "Island{" +
-      "islandToTheNorth=" + islandToTheNorth +
-      ", islandToTheSouth=" + islandToTheSouth +
-      ", islandToTheEast=" + islandToTheEast +
-      ", islandToTheWest=" + islandToTheWest +
-      ", islandName='" + islandName + '\'' +
-      ", currentScene=" + currentScene +
-      ", scenesOnIsland=" + scenesOnIsland +
-      ", directionOptions='" + directionOptions + '\'' +
-      ", directOptionsWithDocks='" + directOptionsWithDocks + '\'' +
-      "} " + super.toString();
+    return "Island{"
+        + "islandToTheNorth="
+        + islandToTheNorth
+        + ", islandToTheSouth="
+        + islandToTheSouth
+        + ", islandToTheEast="
+        + islandToTheEast
+        + ", islandToTheWest="
+        + islandToTheWest
+        + ", islandName='"
+        + islandName
+        + '\''
+        + ", currentScene="
+        + currentScene
+        + ", scenesOnIsland="
+        + scenesOnIsland
+        + ", directionOptions='"
+        + directionOptions
+        + '\''
+        + ", directOptionsWithDocks='"
+        + directOptionsWithDocks
+        + '\''
+        + "} "
+        + super.toString();
   }
 }

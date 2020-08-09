@@ -19,6 +19,8 @@ public abstract class Scene implements Serializable {
   protected transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   protected transient Logger logger = OurLogger.getLogger();
 
+  protected Map<String, String> methods = new HashMap<>();
+
   protected String storyFileName = "TI.txt";
   protected String name;
   protected String storyStart;
@@ -48,6 +50,14 @@ public abstract class Scene implements Serializable {
 
   public Scene(String name) {
     setName(name);
+    methods.put("t", "talkToNPC");
+    methods.put("l", "lookAroundLocation");
+    methods.put("v", "vendor");
+    methods.put("e", "exit");
+    methods.put("g", "grabItemFromInventory");
+    methods.put("i", "printInventoryItems");
+    methods.put("r", "iterateThroughPlayerTreasureRewards");
+    methods.put("m", "displayIslandMap");
   }
 
   /*
@@ -70,8 +80,8 @@ public abstract class Scene implements Serializable {
    */
 
   /**
-   * @param direction
-   * @return
+   * @param direction - user command given through the console
+   * @return a Scene class in the specified direction
    */
   public Scene changeScene(String direction) {
     String trimmedDirection = direction.trim().toLowerCase().substring(0, 1);
@@ -144,6 +154,7 @@ public abstract class Scene implements Serializable {
 
         if (Interactions.isValid(userInput)) {
           if ("e".equals(userInput)) {
+            System.out.printf("You have left %s\n", getName());
             break;
           } else if ("m".equals(userInput)) {
             displayIslandMap(islandName);
@@ -168,6 +179,11 @@ public abstract class Scene implements Serializable {
     }
   }
 
+  /**
+   *
+   * @param userInput - user typed commands from  console
+   * @return a Method from Player or Scene based on the
+   */
   public Method getRightMethod(String userInput) {
     String nameOfMethod = getNameOfMethod(userInput);
     Method rightMethod = null;
@@ -185,16 +201,6 @@ public abstract class Scene implements Serializable {
   }
 
   public String getNameOfMethod(String userInput) {
-    Map<String, String> methods = new HashMap<>();
-    methods.put("t", "talkToNPC");
-    methods.put("l", "lookAroundLocation");
-    methods.put("v", "vendor");
-    methods.put("e", "exit");
-    methods.put("g", "grabItemFromInventory");
-    methods.put("i", "printInventoryItems");
-    methods.put("r", "iterateThroughPlayerTreasureRewards");
-    methods.put("m", "displayIslandMap");
-
     String userIn = userInput.substring(0, 1);
 
     String methodName = null;
