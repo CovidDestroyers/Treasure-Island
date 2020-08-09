@@ -78,9 +78,7 @@ public class TreasureIslandGameplay implements Serializable {
       while (true) {
         String islandName = currentIsland.getIslandName();
 
-        String whatIslandToGo =
-            ("portRoyal".equals(islandName))
-              ? toRumRunner() : toPortRoyal();
+        String whatIslandToGo = ("portRoyal".equals(islandName)) ? toRumRunner() : toPortRoyal();
 
         System.out.println(whatIslandToGo);
 
@@ -94,11 +92,14 @@ public class TreasureIslandGameplay implements Serializable {
 
           player.setHasIslandItem(false);
           shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
-        }
-        else {
+        } else {
           displayStayMessage();
         }
         currentIsland.enter(player);
+
+        if (player.playerTreasures.size() == 2) {
+          treasureIsland();
+        }
       }
 
     } catch (InterruptedException e) {
@@ -107,7 +108,6 @@ public class TreasureIslandGameplay implements Serializable {
       e.printStackTrace();
     }
   }
-
 
   public void customGameplayOptions() throws InterruptedException {
     File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
@@ -250,33 +250,7 @@ public class TreasureIslandGameplay implements Serializable {
   public void treasureIsland() {
     if (Item.findByName(player.playerInventory, "Key") != null) {
       if (player.playerTreasures.contains("Sacred Jewel")) {
-        System.out.println(
-            "What! I have been to this island before, there are people inhabiting this island!!\n"
-                + "          How can treasure be on this island? It is supposed to be the biggest treasure in the world.\n"
-                + "          This is confusing, I have to figure out a way to make some sense of this situation.\n"
-                + "          Or else all this situation will be for nothing.\n"
-                + "\n"
-                + "\n"
-                + "\n"
-                + "          After revisiting the clues, I think I figured it out.\n"
-                + "          I need to get to this hidden monastery and I will find more info there.\n"
-                + "\n"
-                + "          Talking with the monks there, I found out that they had a very sacred jewel stolen from them years back.\n"
-                + "          Now that sounds interesting, the description they provided matched with the jewel I posses.\n"
-                + "\n"
-                + "          Should I give this jewel back to the monastery?\n"
-                + "\n"
-                + "          I gave the jewel to monastery and in return they provided me with a medium size box which had . . .\n"
-                + "              Three keyholes in it!\n"
-                + "              I took the box with me to open it privately.\n"
-                + "              Upon opening it I found . . .\n"
-                + "              Jewels, coins and the most treasured "
-                + Color.ANSI_BOLD.getValue()
-                + Color.ANSI_BLUE.getValue()
-                + "50 carat Diamond"
-                + Color.ANSI_RESET.getValue()
-                + "!");
-
+        displayTreasureIslandStory();
         playAgain();
       } else {
         System.out.println("To get the sacred jewel, you have to look around in \"Port Royal\"");
@@ -305,62 +279,6 @@ public class TreasureIslandGameplay implements Serializable {
     } else {
       System.out.println("Invalid Input, Try Again!!");
       playAgain();
-    }
-  }
-
-  // HELPER METHODS BELLOW
-
-  public void depart() {
-    // TODO return to the main section of the island.
-    System.out.println("Good Bye!  Please come again!!");
-    System.out.println("Type in either: North, South, East or West.");
-    input = scanner.nextLine();
-    switch (input) {
-      case "North":
-      case "n":
-        break;
-      case "South":
-      case "s":
-        break;
-      case "East":
-      case "e":
-        break;
-      case "West":
-      case "w":
-        break;
-      default:
-        System.out.println("Invalid input, please try again. ");
-        depart();
-    }
-  }
-
-  public void sail() throws InterruptedException {
-    // TODO ask for a new island
-    System.out.println("Hello Captain. Please pick a direction to set sail! ");
-    System.out.println("Type in either: North, South, East, West or Not Ready??");
-    switch (input.toLowerCase()) {
-      case "Not Ready":
-      case "nr":
-        break;
-      case "North":
-      case "n":
-        // leavingIslandShipPrint();
-        break;
-      case "south":
-      case "s":
-        // leavingIslandShipPrint();
-        break;
-      case "east":
-      case "e":
-        break;
-      case "west":
-      case "w":
-        // leavingIslandShipPrint();
-        break;
-      default:
-        System.out.println("Invalid input, please try again. ");
-        sail();
-        break;
     }
   }
 
@@ -431,23 +349,67 @@ public class TreasureIslandGameplay implements Serializable {
     availablePirates.replace(key, false);
   }
 
+  public void displayTreasureIslandStory() {
+    System.out.println(
+        "What! I have been to this island before, there are people inhabiting this island!!\n"
+            + "          How can treasure be on this island? It is supposed to be the biggest treasure in the world.\n"
+            + "          This is confusing, I have to figure out a way to make some sense of this situation.\n"
+            + "          Or else all this situation will be for nothing.\n"
+            + "\n"
+            + "\n"
+            + "\n"
+            + "          After revisiting the clues, I think I figured it out.\n"
+            + "          I need to get to this hidden monastery and I will find more info there.\n"
+            + "\n"
+            + "          Talking with the monks there, I found out that they had a very sacred jewel stolen from them years back.\n"
+            + "          Now that sounds interesting, the description they provided matched with the jewel I posses.\n"
+            + "\n"
+            + "          Should I give this jewel back to the monastery?\n"
+            + "\n"
+            + "          I gave the jewel to monastery and in return they provided me with a medium size box which had . . .\n"
+            + "              Three keyholes in it!\n"
+            + "              I took the box with me to open it privately.\n"
+            + "              Upon opening it I found . . .\n"
+            + "              Jewels, coins and the most treasured "
+            + Color.ANSI_BOLD.getValue()
+            + Color.ANSI_BLUE.getValue()
+            + "50 carat Diamond"
+            + Color.ANSI_RESET.getValue()
+            + "!");
+  }
 
   @Override
   public String toString() {
-    return "TreasureIslandGameplay{" +
-      "treasureIslandGameplay=" + treasureIslandGameplay +
-      ", rumRunnerIsle=" + rumRunnerIsle +
-      ", portRoyal=" + portRoyal +
-      ", islaCruces=" + islaCruces +
-      ", islaDeMuerta=" + islaDeMuerta +
-      ", player=" + player +
-      ", shipBattleSequence=" + shipBattleSequence +
-      ", scanner=" + scanner +
-      ", availablePirates=" + availablePirates +
-      ", currentIsland=" + currentIsland +
-      ", input='" + input + '\'' +
-      ", toRumRunner='" + toRumRunner() + '\'' +
-      ", toPortRoyal='" + toPortRoyal() + '\'' +
-      '}';
+    return "TreasureIslandGameplay{"
+        + "treasureIslandGameplay="
+        + treasureIslandGameplay
+        + ", rumRunnerIsle="
+        + rumRunnerIsle
+        + ", portRoyal="
+        + portRoyal
+        + ", islaCruces="
+        + islaCruces
+        + ", islaDeMuerta="
+        + islaDeMuerta
+        + ", player="
+        + player
+        + ", shipBattleSequence="
+        + shipBattleSequence
+        + ", scanner="
+        + scanner
+        + ", availablePirates="
+        + availablePirates
+        + ", currentIsland="
+        + currentIsland
+        + ", input='"
+        + input
+        + '\''
+        + ", toRumRunner='"
+        + toRumRunner()
+        + '\''
+        + ", toPortRoyal='"
+        + toPortRoyal()
+        + '\''
+        + '}';
   }
 }
