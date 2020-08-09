@@ -304,4 +304,20 @@ public abstract class Island extends Scene implements Serializable {
             + "                                                                            \\   o * o * * o o  /\n"
             + "                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
+
+
+  @Override
+  public String toString() {
+    return "Island{" +
+      "islandToTheNorth=" + islandToTheNorth +
+      ", islandToTheSouth=" + islandToTheSouth +
+      ", islandToTheEast=" + islandToTheEast +
+      ", islandToTheWest=" + islandToTheWest +
+      ", islandName='" + islandName + '\'' +
+      ", currentScene=" + currentScene +
+      ", scenesOnIsland=" + scenesOnIsland +
+      ", directionOptions='" + directionOptions + '\'' +
+      ", directOptionsWithDocks='" + directOptionsWithDocks + '\'' +
+      "} " + super.toString();
+  }
 }

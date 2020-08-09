@@ -430,4 +430,24 @@ public class TreasureIslandGameplay implements Serializable {
   public void setAvailablePirates(String key) {
     availablePirates.replace(key, false);
   }
+
+
+  @Override
+  public String toString() {
+    return "TreasureIslandGameplay{" +
+      "treasureIslandGameplay=" + treasureIslandGameplay +
+      ", rumRunnerIsle=" + rumRunnerIsle +
+      ", portRoyal=" + portRoyal +
+      ", islaCruces=" + islaCruces +
+      ", islaDeMuerta=" + islaDeMuerta +
+      ", player=" + player +
+      ", shipBattleSequence=" + shipBattleSequence +
+      ", scanner=" + scanner +
+      ", availablePirates=" + availablePirates +
+      ", currentIsland=" + currentIsland +
+      ", input='" + input + '\'' +
+      ", toRumRunner='" + toRumRunner() + '\'' +
+      ", toPortRoyal='" + toPortRoyal() + '\'' +
+      '}';
+  }
 }

@@ -9,7 +9,6 @@ public class Graveyard extends Scene {
   }
 
 
-
   @Override
   public void talkToNPC(Player player) {
     System.out.println("After some persuasion my acquaintance took me to the graveyard.");

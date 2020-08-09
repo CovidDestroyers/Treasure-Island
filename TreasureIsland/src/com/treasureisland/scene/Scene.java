@@ -361,4 +361,22 @@ public abstract class Scene implements Serializable {
   public void setTheMap(MainMap theMap) {
     this.theMap = theMap;
   }
+
+
+  @Override
+  public String toString() {
+    return "Scene{" +
+      "scanner=" + scanner +
+      ", storyFileName='" + storyFileName + '\'' +
+      ", name='" + name + '\'' +
+      ", storyStart='" + storyStart + '\'' +
+      ", storyEnd='" + storyEnd + '\'' +
+      ", northScene=" + northScene +
+      ", southScene=" + southScene +
+      ", eastScene=" + eastScene +
+      ", westScene=" + westScene +
+      ", theMap=" + theMap +
+      ", interActionOptions='" + interActionOptions + '\'' +
+      '}';
+  }
 }
