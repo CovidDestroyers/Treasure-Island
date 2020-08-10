@@ -729,3 +729,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+!/TreasureIsland.jar

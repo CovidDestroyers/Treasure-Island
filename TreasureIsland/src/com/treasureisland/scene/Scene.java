@@ -5,8 +5,10 @@ import com.treasureisland.OnlyOneScanner;
 import com.treasureisland.OurLogger;
 import com.treasureisland.map.MainMap;
 import com.treasureisland.player.Player;
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -142,11 +144,7 @@ public abstract class Scene implements Serializable {
     otherScene.setWestScene(this);
   }
 
-
-  /**
-   * @param otherScene - the Scene class to the South of the invoking Scene
-   * class
-   */
+  /** @param otherScene - the Scene class to the South of the invoking Scene class */
   public void connectSouth(Scene otherScene) {
     setSouthScene(otherScene);
     otherScene.setNorthScene(this);
@@ -188,9 +186,7 @@ public abstract class Scene implements Serializable {
 
           if ("e".equals(userInput)) {
             System.out.printf("You have left %s\n", getName());
-            
             break;
-
           }
           else if ("m".equals(userInput) || "map".equals(userInput)) {
             displayMap(islandName);
@@ -326,13 +322,11 @@ public abstract class Scene implements Serializable {
    */
   public void storylineProgression(String fileName, String start, String stop) {
     try {
-      File myObj =
-        new File(
-          System.getProperty("user.dir")
-            + "/TreasureIsland/src/com/treasureisland/text/"
-            + fileName);
+      InputStream myObj = getClass().getResourceAsStream(fileName);
+      InputStreamReader isr = new InputStreamReader(myObj);
+      BufferedReader myBReader = new BufferedReader(isr);
+      Scanner myReader = new Scanner(myBReader);
 
-      Scanner myReader = new Scanner(myObj);
       boolean tokenFound = false;
 
       while (myReader.hasNextLine()) {
@@ -348,13 +342,16 @@ public abstract class Scene implements Serializable {
 
         if ((tokenFound) && (!data.equals(start))) {
           System.out.println(data);
-          Thread.sleep(0);
+          Thread.sleep(1000);
         }
       }
-
       myReader.close();
+      myBReader.close();
+      isr.close();
+      myObj.close();
+
     }
-    catch (IOException | InterruptedException e) {
+    catch (InterruptedException | IOException e) {
       e.printStackTrace();
     }
   }
