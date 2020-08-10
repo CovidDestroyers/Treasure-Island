@@ -29,11 +29,8 @@ public class Vendor implements Serializable {
    * ============= Constructors ==================
    * =============================================
    */
-  public Vendor() {}
 
-  // public static Vendor getInstance() {
-  //  return vendor;
-  // }
+  public Vendor() {}
 
   /*
    * =============================================
@@ -57,7 +54,7 @@ public class Vendor implements Serializable {
   public void itemManager(Scanner in, Player player, Item item) {
       Integer playerCoins = player.getPlayerCoins();
       Integer coins = item.getCost();
-      if (playerCoins - coins <= 0) {
+      if (playerCoins - coins < 0) {
         System.out.println("You can not afford this item");
         System.out.println("\nWould you like to purchase again?\n -Type \"Y\": Yes\n -Type \"N\": No");
 
@@ -70,12 +67,12 @@ public class Vendor implements Serializable {
           purchaseItems(in, player, input);
         } else if ("n".equals(input) || "no".equals(input)) {
           System.out.println("Thank you for visiting my shop!!");
-          player.playerInfoConsoleOutput();
         } else {
           System.out.println("Invalid input, please try again.");
         }
       } else {
         player.setPlayerCoins(playerCoins - coins);
+        player.setPlayerHealth(player.getPlayerHealth() + item.getHealthValue());
         System.out.println("You bought " + item.getItemName());
         System.out.println(
           "You spent " + coins + " gold. You now have " + player.getPlayerCoins() + " gold.");
@@ -83,7 +80,6 @@ public class Vendor implements Serializable {
         // add to Player Inventory
         player.playerInventory.add(item);
         System.out.println("Your Purchase added to Inventory to use whenever you need!!");
-        player.playerInfoConsoleOutput();
       }
   }
 
