@@ -92,19 +92,23 @@ public abstract class Scene implements Serializable {
 
     switch (trimmedDirection) {
       case "n":
-        nextScene = northScene;
+        nextScene = getNorthScene();
 
         break;
       case "e":
-        nextScene = eastScene;
+        nextScene = getEastScene();
 
         break;
       case "s":
-        nextScene = southScene;
+        nextScene = getSouthScene();
 
         break;
       case "w":
-        nextScene = westScene;
+        nextScene = getWestScene();
+        break;
+
+      default:
+        System.out.println("Error: unknown direction " + direction);
         break;
     }
 
@@ -135,7 +139,7 @@ public abstract class Scene implements Serializable {
    */
   public void connectSouth(Scene otherScene) {
     setSouthScene(otherScene);
-    otherScene.setNorthScene(otherScene);
+    otherScene.setNorthScene(this);
   }
 
   /**

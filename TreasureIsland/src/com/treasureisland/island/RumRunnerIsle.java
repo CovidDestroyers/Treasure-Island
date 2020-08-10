@@ -42,4 +42,16 @@ public class RumRunnerIsle extends Island {
 
   @Override
   public void vendor(Player player) {}
+
+
+  @Override
+  public String toString() {
+    return "RumRunnerIsle{" +
+      "scanner=" + scanner +
+      ", rumDistillery=" + rumDistillery +
+      ", abandonedDistillery=" + abandonedDistillery +
+      ", crimsonBeachBar=" + crimsonBeachBar +
+      ", sugarCaneField=" + sugarCaneField +
+      "} " + super.toString();
+  }
 }
