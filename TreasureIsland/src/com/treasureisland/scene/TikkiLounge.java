@@ -46,6 +46,7 @@ public class TikkiLounge extends Scene {
     player.playerCoinGenerator();
     System.out.println(" ");
     player.setHasIslandItem(true);
+    System.out.println("\n");
     player.iterateThroughClues();
   }
 

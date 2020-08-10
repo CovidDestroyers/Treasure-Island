@@ -28,6 +28,7 @@ public class RoyalLodge extends Scene {
   @Override
   public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt",  "SRStart", "SRStop");
+    System.out.println("\n");
     player.iterateThroughClues();
   }
 
