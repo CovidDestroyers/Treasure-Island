@@ -1,8 +1,6 @@
 package com.treasureisland.items;
 
-import com.treasureisland.TreasureIslandGameplay;
 import com.treasureisland.player.Player;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,48 +37,49 @@ public class Vendor implements Serializable {
    */
 
   // player purchase items from Vendor and that adds to inventory
-  public void purchaseItems(Scanner in, Player player, String item)
-  {
-      Item findItem = Item.findByName(vendorItems, item.trim().toLowerCase());
-      if(findItem != null){
-        // buy item from vendor using coins and add to inventory
-        itemManager(in, player,findItem);
-      } else {
-        System.out.println("You can't buy that item!!");
-      }
+  public void purchaseItems(Scanner in, Player player, String item) {
+    Item findItem = Item.findByName(vendorItems, item.trim().toLowerCase());
+    if (findItem != null) {
+      // buy item from vendor using coins and add to inventory
+      itemManager(in, player, findItem);
+    } else {
+      System.out.println("You can't buy that item!!");
+    }
   }
 
   // Item manager to check Player can afford item or not
   public void itemManager(Scanner in, Player player, Item item) {
-      Integer playerCoins = player.getPlayerCoins();
-      Integer coins = item.getCost();
-      if (playerCoins - coins < 0) {
-        System.out.println("You can not afford this item");
-        System.out.println("\nWould you like to purchase again?\n -Type \"Y\": Yes\n -Type \"N\": No");
+    Integer playerCoins = player.getPlayerCoins();
+    Integer coins = item.getCost();
+    if (playerCoins - coins < 0) {
+      System.out.println("You can not afford this item");
+      System.out.println(
+          "\nWould you like to purchase again?\n -Type \"Y\": Yes\n -Type \"N\": No");
 
-        input = in.nextLine().trim().toLowerCase();
+      input = in.nextLine().trim().toLowerCase();
 
-        if ("y".equals(input) || "yes".equals(input)) {
-          System.out.println("\nSimply type the name of the item you want and press \"enter\".\n");
-          printVendorItems();
-          input = in.nextLine().trim();
-          purchaseItems(in, player, input);
-        } else if ("n".equals(input) || "no".equals(input)) {
-          System.out.println("Thank you for visiting my shop!!");
-        } else {
-          System.out.println("Invalid input, please try again.");
-        }
+      if ("y".equals(input) || "yes".equals(input)) {
+        System.out.println("\nSimply type the name of the item you want and press \"enter\".\n");
+        printVendorItems();
+        input = in.nextLine().trim();
+        purchaseItems(in, player, input);
+      } else if ("n".equals(input) || "no".equals(input)) {
+        System.out.println("Thank you for visiting my shop!!");
       } else {
-        player.setPlayerCoins(playerCoins - coins);
-        player.setPlayerHealth(player.getPlayerHealth() + item.getHealthValue());
-        System.out.println("You bought " + item.getItemName());
-        System.out.println(
+        System.out.println("Invalid input, please try again.");
+      }
+    } else {
+      player.setPlayerCoins(playerCoins - coins);
+      player.setPlayerHealth(player.getPlayerHealth() + item.getHealthValue());
+
+      System.out.println("You bought " + item.getItemName());
+      System.out.println(
           "You spent " + coins + " gold. You now have " + player.getPlayerCoins() + " gold.");
 
-        // add to Player Inventory
-        player.playerInventory.add(item);
-        System.out.println("Your Purchase added to Inventory to use whenever you need!!");
-      }
+      // add to Player Inventory
+      player.playerInventory.add(item);
+      System.out.println("Your Purchase added to Inventory to use whenever you need!!");
+    }
   }
 
   public void vendorIntroduction() {

@@ -155,7 +155,9 @@ public abstract class Scene implements Serializable {
 
     while (true) {
       try {
+        player.playerHealthCheck();
         player.playerInfoConsoleOutput();
+
         displayInteractionOptions();
 
         userInput = scanner.nextLine().trim().toLowerCase();
@@ -169,8 +171,8 @@ public abstract class Scene implements Serializable {
           if ("e".equals(userInput)) {
             System.out.printf("You have left %s\n", getName());
             break;
-          } else if ("m".equals(userInput)) {
-            displayIslandMap(islandName);
+          } else if ("m".equals(userInput) || "map".equals(userInput)) {
+            displayMap(islandName);
           } else {
             String aMethodName = getNameOfMethod(userInput);
 
@@ -252,7 +254,7 @@ public abstract class Scene implements Serializable {
     mapOfMethods.put("g", "grabItemFromInventory");
     mapOfMethods.put("i", "printInventoryItems");
     mapOfMethods.put("r", "iterateThroughPlayerTreasureRewards");
-    mapOfMethods.put("m", "displayIslandMap");
+    mapOfMethods.put("m", "displayMap");
 
     return mapOfMethods;
   }
@@ -262,7 +264,7 @@ public abstract class Scene implements Serializable {
    *
    * @param islandName - the name of an Island
    */
-  public void displayIslandMap(String islandName) {
+  public void displayMap(String islandName) {
     if ("Rum Runner Isle".equalsIgnoreCase(islandName)) {
       theMap.rumRunner();
     } else if ("Port Royal".equalsIgnoreCase(islandName)) {

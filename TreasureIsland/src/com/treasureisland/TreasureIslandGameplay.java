@@ -127,6 +127,9 @@ public class TreasureIslandGameplay implements Serializable {
         if (treasureIslandGameplay.player.getCurrentScene() == null) {
           treasureIslandGameplay.player.setCurrentScene(currentIsland.getCurrentScene());
         }
+        if (treasureIslandGameplay.player.getPlayerName() == null) {
+          treasureIslandGameplay.player.setPlayerName("Captain Jack");
+        }
         System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
         treasureIslandGameplay.player.playerInfoConsoleOutput();
 

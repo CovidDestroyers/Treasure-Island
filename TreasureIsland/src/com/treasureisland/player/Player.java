@@ -216,36 +216,6 @@ public class Player implements Serializable {
     }
   }
 
-  // Display player info to Console
-  public void playerInfoConsoleOutput() {
-    System.out.println(
-        "\n"
-            + "___________________________________________________________"
-            + "\n"
-            + "     "
-            + Color.ANSI_PURPLE.getValue()
-            + "Health"
-            + Color.ANSI_RESET.getValue()
-            + ": "
-            + this.getPlayerHealth()
-            + "\n"
-            + "     "
-            + Color.ANSI_YELLOW.getValue()
-            + "Coins"
-            + Color.ANSI_RESET.getValue()
-            + ": "
-            + this.getPlayerCoins()
-            + "\n"
-            + "     "
-            + Color.ANSI_GREEN.getValue()
-            + "Current Location"
-            + Color.ANSI_RESET.getValue()
-            + ": "
-            + getCurrentScene().getName()
-            + "\n"
-            + "___________________________________________________________\n");
-  }
-
   // Method for player interaction options
   public void playerInteractionOptions(String direction, String islandDestination)
       throws IOException, InterruptedException {
@@ -458,6 +428,36 @@ public class Player implements Serializable {
       System.out.println("Invalid Input, Try Again!!");
       playerDeathOptions();
     }
+  }
+
+  // Display player info to Console
+  public void playerInfoConsoleOutput() {
+    System.out.println(
+        "\n"
+            + "___________________________________________________________"
+            + "\n"
+            + "     "
+            + Color.ANSI_PURPLE.getValue()
+            + "Health"
+            + Color.ANSI_RESET.getValue()
+            + ": "
+            + this.getPlayerHealth()
+            + "\n"
+            + "     "
+            + Color.ANSI_YELLOW.getValue()
+            + "Coins"
+            + Color.ANSI_RESET.getValue()
+            + ": "
+            + this.getPlayerCoins()
+            + "\n"
+            + "     "
+            + Color.ANSI_GREEN.getValue()
+            + "Current Location"
+            + Color.ANSI_RESET.getValue()
+            + ": "
+            + getCurrentScene().getName()
+            + "\n"
+            + "___________________________________________________________\n");
   }
 
   // Method to iterate through Clues

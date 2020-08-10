@@ -5,6 +5,7 @@ import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,10 +17,12 @@ public abstract class Island extends Scene implements Serializable {
   protected Island islandToTheWest;
 
   protected String islandName;
+  protected String whereToGo;
   protected String directionOptions;
   protected String directOptionsWithDocks;
 
   protected Scene currentScene;
+
   protected List<Scene> scenesOnIsland = new ArrayList<>();
 
   /*
@@ -44,9 +47,12 @@ public abstract class Island extends Scene implements Serializable {
             + "-Type \"S\": South\n "
             + "-Type \"W\": West\n "
             + "-Type \"E\": East\n "
+            + "-Type \"D\": Docks\n "
             + "-Type \"Save\": Save Game\n "
             + "-Type \"Chart\": Game Chart\n "
             + "-Type \"Map\": Island Map\n");
+
+    setWhereToGo(getDirectionOptions());
   }
 
   public Island(String islandName) {
@@ -68,19 +74,22 @@ public abstract class Island extends Scene implements Serializable {
    */
   public void enter(Player player) {
     String userInput;
-    String whereToGo;
 
     try {
       displayWelcomeMessage();
 
       while (true) {
-        whereToGo =
-            (player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions();
-        System.out.println(whereToGo);
+        player.playerHealthCheck();
+
+        setWhereToGo((player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions());
+
+        System.out.println(getWhereToGo());
 
         userInput = scanner.nextLine().trim().toLowerCase();
 
-        if (("d".equals(userInput) || "docks".equals(userInput)) && player.getHasIslandItem()) {
+        Boolean isDocks = ("d".equals(userInput) || "docks".equals(userInput));
+
+        if (isDocks && player.getHasIslandItem()) {
           break;
         }
 
@@ -88,10 +97,10 @@ public abstract class Island extends Scene implements Serializable {
           saveGame();
 
         } else if ("chart".equals(userInput) || "c".equals(userInput)) {
-          theMap.mainMap();
+          displayMap("main");
 
         } else if ("map".equals(userInput) || "m".equals(userInput)) {
-          theMap.rumRunner();
+          displayMap(getIslandName());
 
         } else if (DirectionEnum.isValid(userInput)) {
           currentScene = currentScene.changeScene(userInput);
@@ -196,7 +205,8 @@ public abstract class Island extends Scene implements Serializable {
   }
 
   protected void displayWelcomeMessage() {
-    System.out.printf("You have arrived at %s. Enjoy your stay...", getIslandName());
+    System.out.printf("You have arrived at %s. Enjoy your stay...\n",
+      getIslandName());
   }
 
   /*
@@ -204,6 +214,14 @@ public abstract class Island extends Scene implements Serializable {
    * =========== Accessor Methods ================
    * =============================================
    */
+
+  public String getWhereToGo() {
+    return whereToGo;
+  }
+
+  public void setWhereToGo(String whereToGo) {
+    this.whereToGo = whereToGo;
+  }
 
   public Island getIslandToTheNorth() {
     return islandToTheNorth;
