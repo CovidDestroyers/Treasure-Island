@@ -23,6 +23,7 @@ public class RumDistillery extends Scene {
     storylineProgression("TI.txt", "OCStart", "OCEnd");
     System.out.println(" ");
     player.playerCoinGenerator();
+    System.out.println("\n");
     player.iterateThroughClues();
   }
 

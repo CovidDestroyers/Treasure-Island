@@ -24,7 +24,6 @@ public class CrimsonBeachBar extends Scene {
       System.out.println("\n");
       PirateFightSequence.getInstance().PlayerAndPirateFightSequence(player);
     }
-
   }
 
   @Override
@@ -33,6 +32,7 @@ public class CrimsonBeachBar extends Scene {
     storylineProgression("TI.txt",  "PTStart", "PTEnd");
 
     player.setPlayerHealth(player.getPlayerHealth() - 20);
+    System.out.println("\n");
     player.iterateThroughClues();
   }
 

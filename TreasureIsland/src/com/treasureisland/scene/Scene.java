@@ -176,12 +176,16 @@ public abstract class Scene implements Serializable {
           } else {
             String aMethodName = getNameOfMethod(userInput);
 
-            if (isPlayerMethod(aMethodName)) {
-              aMethod = Player.class.getMethod(aMethodName);
-              aMethod.invoke(player);
+            if(aMethodName != null) {
+              if (isPlayerMethod(aMethodName)) {
+                aMethod = Player.class.getMethod(aMethodName);
+                aMethod.invoke(player);
+              } else {
+                aMethod = Scene.class.getMethod(aMethodName, Player.class);
+                aMethod.invoke(this, player);
+              }
             } else {
-              aMethod = Scene.class.getMethod(aMethodName, Player.class);
-              aMethod.invoke(this, player);
+              System.out.println("Error: Invalid Input. Please try again.");
             }
           }
         } else {
