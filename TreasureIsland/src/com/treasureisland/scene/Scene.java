@@ -174,6 +174,7 @@ public abstract class Scene implements Serializable {
         if (Interactions.isValid(userInput)) {
           if ("e".equals(userInput)) {
             System.out.printf("You have left %s\n", getName());
+            
             break;
           } else if ("m".equals(userInput) || "map".equals(userInput)) {
             displayMap(islandName);

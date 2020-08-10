@@ -92,10 +92,6 @@ public class TreasureIslandGameplay implements Serializable {
         }
         player.setCurrentIsland(currentIsland);
         currentIsland.enter(player);
-
-        if (player.playerTreasures.size() == 2) {
-          treasureIsland();
-        }
       }
 
     } catch (InterruptedException e) {
@@ -115,9 +111,12 @@ public class TreasureIslandGameplay implements Serializable {
     File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
     if (gameState.exists()) {
       System.out.println(
-          "Would you like to Load existing game<L>, play the full game<F>, or play on a sample island<S>?");
+        "Would you like to\n "
+          + "-Type \"L\": Load Existing Game?\n "
+          + "-Type \"N\": Play New Game?\n ");
+          //"Would you like to Load existing game<L>, play the Full game<F>?");
     } else {
-      System.out.println("Would you like to play the full game<F>, or play on a sample island<S>?");
+      System.out.println("Would you like to Play New Game<N>?");
     }
 
     input = scanner.nextLine().trim().toLowerCase();
@@ -134,7 +133,7 @@ public class TreasureIslandGameplay implements Serializable {
         treasureIslandGameplay.player.playerInfoConsoleOutput();
 
         break;
-      case "f":
+      case "n":
         if (gameState.exists()) {
           gameState.delete();
         }
@@ -221,7 +220,7 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("You made it to Port Royal");
     player.processMovement("portRoyal");
     if (player.playerTreasures.size() == 2) {
-      treasureIsland();
+      //treasureIsland();
     }
     //    System.out.println("Leaving Port Royal Isle \n \n");
     //    leavingIslandShipPrint();
@@ -252,41 +251,26 @@ public class TreasureIslandGameplay implements Serializable {
     // treasureIsland();
   }
 
-  public void treasureIsland() {
-    if (Item.findByName(player.playerInventory, "Key") != null) {
-      if (player.playerTreasures.contains("Sacred Jewel")) {
-        displayTreasureIslandStory();
-        playAgain();
-      } else {
-        System.out.println("To get the sacred jewel, you have to look around in \"Port Royal\"");
-      }
-    } else {
-      System.out.println(
-          "To get the key, you have to look in the \"Sugar Cane "
-              + "Field\" in \"Rum Runner Isle\"");
-    }
-  }
-
-  // Method to ask for play again the game
-  public void playAgain() {
-    System.out.println("\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
-
-    input = scanner.nextLine().trim().toLowerCase();
-
-    if ("y".equals(input) || "yes".equals(input)) {
-      try {
-        new TreasureIslandGameplay().chosePlayerName();
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-    } else if ("n".equals(input) || "no".equals(input)) {
-      System.out.println("Thank you for playing!!");
-      System.exit(0);
-    } else {
-      System.out.println("Invalid Input, Try Again!!");
-      playAgain();
-    }
-  }
+//  // Method to ask for play again the game
+//  public void playAgain() {
+//    System.out.println("\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
+//
+//    input = scanner.nextLine().trim().toLowerCase();
+//
+//    if ("y".equals(input) || "yes".equals(input)) {
+//      try {
+//        new TreasureIslandGameplay().chosePlayerName();
+//      } catch (InterruptedException e) {
+//        e.printStackTrace();
+//      }
+//    } else if ("n".equals(input) || "no".equals(input)) {
+//      System.out.println("Thank you for playing!!");
+//      System.exit(0);
+//    } else {
+//      System.out.println("Invalid Input, Try Again!!");
+//      playAgain();
+//    }
+//  }
 
   public void testIslandSelector() throws InterruptedException {
     System.out.println(
@@ -355,34 +339,7 @@ public class TreasureIslandGameplay implements Serializable {
     availablePirates.replace(key, false);
   }
 
-  public void displayTreasureIslandStory() {
-    System.out.println(
-        "What! I have been to this island before, there are people inhabiting this island!!\n"
-            + "          How can treasure be on this island? It is supposed to be the biggest treasure in the world.\n"
-            + "          This is confusing, I have to figure out a way to make some sense of this situation.\n"
-            + "          Or else all this situation will be for nothing.\n"
-            + "\n"
-            + "\n"
-            + "\n"
-            + "          After revisiting the clues, I think I figured it out.\n"
-            + "          I need to get to this hidden monastery and I will find more info there.\n"
-            + "\n"
-            + "          Talking with the monks there, I found out that they had a very sacred jewel stolen from them years back.\n"
-            + "          Now that sounds interesting, the description they provided matched with the jewel I posses.\n"
-            + "\n"
-            + "          Should I give this jewel back to the monastery?\n"
-            + "\n"
-            + "          I gave the jewel to monastery and in return they provided me with a medium size box which had . . .\n"
-            + "              Three keyholes in it!\n"
-            + "              I took the box with me to open it privately.\n"
-            + "              Upon opening it I found . . .\n"
-            + "              Jewels, coins and the most treasured "
-            + Color.ANSI_BOLD.getValue()
-            + Color.ANSI_BLUE.getValue()
-            + "50 carat Diamond"
-            + Color.ANSI_RESET.getValue()
-            + "!");
-  }
+
 
   @Override
   public String toString() {
