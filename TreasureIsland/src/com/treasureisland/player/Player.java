@@ -26,10 +26,10 @@ public class Player implements Serializable {
   public ArrayList<String> playerClues = new ArrayList<>();
   public ArrayList<String> playerTreasures = new ArrayList<>();
   public String[] clues = {
-    "Go " + Color.ANSI_YELLOW.getValue() + "South" + Color.ANSI_RESET.getValue(),
-    "Go North",
+    "Go " + Color.ANSI_YELLOW.getValue() + "East" + Color.ANSI_RESET.getValue(),
+    "Go " + Color.ANSI_PURPLE.getValue() + "South" + Color.ANSI_RESET.getValue(),
     "Go " + Color.ANSI_GREEN.getValue() + "West" + Color.ANSI_RESET.getValue(),
-    "Go " + Color.ANSI_BLUE.getValue() + "East" + Color.ANSI_RESET.getValue()
+    "Go " + Color.ANSI_BLUE.getValue() + "North" + Color.ANSI_RESET.getValue()
   };
 
   private String playerName;
@@ -464,6 +464,7 @@ public class Player implements Serializable {
   public void iterateThroughClues() {
     switch (currentScene.getName()) {
       case "Rum Distillery":
+      case "Royal Lodge":
         System.out.println(
             "\napply what you got"
                 + Color.ANSI_YELLOW.getValue()
