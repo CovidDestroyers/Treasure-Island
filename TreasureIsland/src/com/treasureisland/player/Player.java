@@ -39,7 +39,7 @@ public class Player implements Serializable {
 
   private Boolean hasIslandItem = false;
   private Integer playerCoins = 10;
-  private Integer playerHealth = 750;
+  private Integer playerHealth = 100;
   private Integer playerAttackStrength = new Random().nextInt(75);
   private SaveLoadGame saveLoadGame;
 

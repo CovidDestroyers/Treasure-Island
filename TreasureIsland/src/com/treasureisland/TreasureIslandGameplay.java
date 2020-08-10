@@ -208,7 +208,7 @@ public class TreasureIslandGameplay implements Serializable {
       player.processMovement("rumRunnerisle");
       System.out.println("Leaving Rum Runners Isle \n \n");
       // leavingIslandShipPrint();
-      Thread.sleep(5000);
+      Thread.sleep(0);
       player.setHasIslandItem(false);
       shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
       portRoyal();
@@ -335,12 +335,12 @@ public class TreasureIslandGameplay implements Serializable {
   }
 
   public String toRumRunner() {
-    return "You see Rum Runner Isle to the South. Would you like to visit "
+    return "You see Rum Runner Isle to the West. Would you like to visit "
         + "it?\n-Type: Y\n-Type: N";
   }
 
   public String toPortRoyal() {
-    return "You see Port Royal to the North. Would you like to visit " + "it?\n-Type: Y\n-Type: N";
+    return "You see Port Royal to the East. Would you like to visit " + "it?\n-Type: Y\n-Type: N";
   }
 
   private void displayStayMessage() {

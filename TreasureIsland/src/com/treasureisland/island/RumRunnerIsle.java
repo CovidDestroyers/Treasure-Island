@@ -26,10 +26,11 @@ public class RumRunnerIsle extends Island {
     setIslandName("Rum Runner Isle");
     setCurrentScene(rumDistillery);
 
-    rumDistillery.connectSouth(sugarCaneField);
+    rumDistillery.connectSouth(crimsonBeachBar);
     rumDistillery.connectEast(abandonedDistillery);
-    sugarCaneField.connectEast(crimsonBeachBar);
-    abandonedDistillery.connectSouth(crimsonBeachBar);
+    sugarCaneField.connectEast(abandonedDistillery);
+    sugarCaneField.connectSouth(crimsonBeachBar);
+
   }
 
 

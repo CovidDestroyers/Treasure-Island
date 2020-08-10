@@ -21,7 +21,6 @@ public class RumDistillery extends Scene {
   @Override
   public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt", "OCStart", "OCEnd");
-    storylineProgression("TI.txt", "MBStart", "MBEnd");
     System.out.println(" ");
     player.playerCoinGenerator();
     player.iterateThroughClues();

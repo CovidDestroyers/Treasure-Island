@@ -307,7 +307,7 @@ public abstract class Scene implements Serializable {
 
         if ((tokenFound) && (!data.equals(start))) {
           System.out.println(data);
-          Thread.sleep(650);
+          Thread.sleep(0);
         }
       }
 
