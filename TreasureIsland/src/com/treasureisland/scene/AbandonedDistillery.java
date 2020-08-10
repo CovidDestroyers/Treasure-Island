@@ -31,7 +31,6 @@ public class AbandonedDistillery extends Scene {
 
     storylineProgression("TI.txt", "DSStart", "DSEnd");
 
-    storylineProgression("TI.txt", "DRStart", "DREnd");
     player.setPlayerHealth(player.getPlayerHealth() - 5);
     player.iterateThroughClues();
     if (Item.findByName(player.playerInventory, "9") == null) {

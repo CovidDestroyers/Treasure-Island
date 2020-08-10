@@ -21,13 +21,21 @@ Rum Island
   UCEnd
 
   OCStart
-    At the bottom of the open cask by the main door.
-    I don't even remember as to how I got this clue!
-    But I can't ignore any clues. This treasure hunting is not easy.
-    As soon as I got the chance, I inconspicuously got to the main the door.
-    I checked the open cask and I could not see anything.
-    I put my hand into the cask to check the bottom of the cask with murky smelly liquid!
-    I felt something at the bottom of cask, I pulled it out . . .
+    You looked around the distillery, I see the Master Brewer and a cask.
+    you went to the Master Brewer and asked for a sample of Sunshine Rum.
+    He had a surprised look on his face, grumbled something under his breath and
+    wondered off.  When he came back he had a glass with something in it and instructed
+    me to drink.
+    You did so without incident and after a few minutes he handed me
+    He passed me a envelop and said "I don't know how you know Great Joe but
+    told me to give this to the person asking for Sunshine Rum."
+
+        Received an envelop with a map inside. This is what we were looking for. Clues to the next island.
+
+    As soon as I got the chance, I inconspicuously got to the cask and find it open.
+    You checked the open cask and I could not see anything but liquid.
+    As you put you hand into the cask to check the bottom of the cask with murky smelly liquid!
+    there is something at the bottom of cask . . .
     It was a small sack of coins!
   OCEnd
 
@@ -95,6 +103,12 @@ Rum Island
     I started with exploring around the stills and within walking few meters or so I found . . .
     a weak spot on floor and I crashed to basement right through it!
       Health -5
+
+    When I landed I looked around and noticed about 30 bottles.
+    All the bottles look empty, but there seems to be little bit rum of left in one of the bottle.
+    I took a sip from the bottle.
+    When I was about to put the bottle back I found . . .
+      9 Antique coins.
   DSEnd
 
   ORStart
@@ -157,18 +171,23 @@ Port Royal
   1)Royal Lodge
 
   R1Start
-        I have heard various rumours about this room.
+        I am exauhsted and got a room at the lodge.  Talking to to the lodge keeper
+        This lodge had a special room, room 999!
         I heard that there is a hidden map in this room
-        Searching this room for the next few hours revealed . . .
-          Nothing!
+
   R1Stop
 
   BRStart
-        While eating breakfast I noticed a key hung on the wall.
-        I was able to find out that it is an old key that has been on that wall for years.
-        I casually took of the key and examined it and then left it by my table.
-        After finishing up my food I pretended to accidentally pick up the key in my pocket and tried to leave but . . .
-        I got called out, I pretended it to be an accident and put the key back on the wall.
+        While eating breakfast I noticed a key hanging on the wall.
+
+        I casually took the key off the wall and examined it.  I realized it had been on the wall for a
+        number of years, when I was completed looking at it I left it by my table.
+        After finishing up my food I pretended to accidentally pick up the key
+
+        It seems like this room may hold some clues.
+        I spent the whole night looking for clues from this room.
+        by early morning I found . . .
+        another small map hidden within the bible.
   BRStop
         It looked like a normal water fountain with a fish statue. People were sitting around it.
         I spent about 2 hours near that water fountain to find anything special but . . .
@@ -178,7 +197,7 @@ Port Royal
         This lodge had a special room, room 999!
         It seems like this room may hold some clues.
         I spent the whole night looking for clues from this room.
-        by early morning a found . . .
+        by early morning I found . . .
         another small map hidden within the bible.
   SRStop
 
@@ -194,8 +213,12 @@ Port Royal
   SGStop
 
   SBStart
-        This boat looked to be in fixable shape.
-        Got a small boat for the main ship.
+        Found two boats.
+        One looked to be in fixable shape.
+        One is not
+        The boat in fixable condition will be great for the ship.
+        Looking at the other one i found
+          coins.
   SBStop
 
   BBDStart
@@ -211,20 +234,21 @@ Port Royal
   3) Sunset Restaurant
 
   RNDStart
-    a) You walk up to the bar at the Sunset Restaurant and place an unusual order...
-        I placed an order of "Rum and Drums", which was not listed on the menu.
-        Server did give a surprise look and didn't ask me anything else.
-        This was a special order of their special rum drink and jerk flavoured drumsticks.
-        That was all I was able to get out of the server as she ignored all my efforts to strike a conversation.
-          But with my bill came a sealed letter.
+    You walk up to the bar at the Sunset Restaurant and place an unusual order...
+    I placed an order of "Rum and Drums", which was not listed on the menu.
+    Server did give a surprise look and didn't ask me anything else.
+    This was a special order of their special rum drink and jerk flavoured drumsticks.
+    That was all I was able to get out of the server as she ignored all my efforts to strike a conversation.
+      But with my bill came a sealed letter.
   RNDStop
 
   SLStart
-    b) Book the special lounge to investigate
-        I found out that they had a special lounge for meetings and such.
-        I booked it under the pretence to have a meeting with few friends.
-        Searching it revealed a paper underneath the sofa.
-        It had a list of 5 things. Three keys with a drawing of them, a jewel drawing with a description and fourth one mentioned a map for II!
+    Book the special lounge to investigate
+    I found out that they had a special lounge for meetings and such.
+    I booked it under the pretence to have a meeting with few friends.
+    Searching it revealed a paper underneath the sofa.
+    It had a list of 5 things. Three keys with a drawing of them,
+    a jewel drawing with a description and fourth one mentioned a map for II!
   SLStop
 
   TFTStart
@@ -237,8 +261,8 @@ Port Royal
   TFTStop
 
   PStart
-    d) You decide to sneak into the kitchen
-        I snuck in and stole a book with useful info.
+    You decide to sneak into the kitchen
+      I snuck in and stole a book with useful info.
   PStop
 
 
@@ -261,7 +285,6 @@ Port Royal
   KAStop
 
   CAStart
-    c) Ask Callie  (Owner)
         I tried to strike conversation with Callie but she was not falling to worldly charms!
         I could tell that she was mad at me for flirting with other girls!
         I got . . .
@@ -269,7 +292,6 @@ Port Royal
   CAStop
 
   SAMStart
-    d) Talk with drunk Sam (The sailor).
         It felt like Sam was almost half way to the la la land.
         But he was still able to hold conversation even though most of his words were slurred.
         Good thing is that I am good at understanding slur.

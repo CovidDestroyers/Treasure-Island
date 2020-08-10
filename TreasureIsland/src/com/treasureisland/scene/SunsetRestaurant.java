@@ -34,7 +34,6 @@ public class SunsetRestaurant extends Scene {
   @Override
   public void lookAroundLocation(Player player) {
     storylineProgression("TI.txt", "PStart", "PStop");
-    storylineProgression("TI.txt", "SLStart", "SLStop");
     player.iterateThroughClues();
   }
 

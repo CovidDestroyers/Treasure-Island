@@ -26,7 +26,6 @@ public class ShipGraveyard extends Scene {
   public void lookAroundLocation(Player player) {
     System.out.println("Looking around ship graveyard");
     storylineProgression("TI.txt",  "SBStart", "SBStop");
-    storylineProgression("TI.txt",  "BBDtart", "BBDStop");
     player.playerCoinGenerator();
     System.out.println(" ");
     player.iterateThroughClues();
