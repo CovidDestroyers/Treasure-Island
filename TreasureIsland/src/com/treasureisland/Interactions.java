@@ -1,8 +1,5 @@
 package com.treasureisland;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public enum Interactions {
@@ -19,10 +16,8 @@ public enum Interactions {
   D("D", "DOCKS");
 
 
-
-
-  private String acceptedText;
-  private String otherAcceptedText;
+  private final String acceptedText;
+  private final String otherAcceptedText;
 
   Interactions(String acceptedText, String otherAcceptedText) {
     this.acceptedText = acceptedText;
@@ -45,7 +40,8 @@ public enum Interactions {
     Interactions foundInteraction = null;
 
     for (Interactions interaction : Interactions.values()) {
-      if (interaction.acceptedText.equalsIgnoreCase(acceptedText) || interaction.otherAcceptedText.equalsIgnoreCase(acceptedText)) {
+      if (interaction.acceptedText.equalsIgnoreCase(acceptedText)
+        || interaction.otherAcceptedText.equalsIgnoreCase(acceptedText)) {
         foundInteraction = interaction;
         break;
       }

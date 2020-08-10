@@ -5,12 +5,12 @@ import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public abstract class Island extends Scene implements Serializable {
+
   protected Island islandToTheNorth;
   protected Island islandToTheSouth;
   protected Island islandToTheEast;
@@ -33,24 +33,24 @@ public abstract class Island extends Scene implements Serializable {
 
   public Island() {
     setDirectionOptions(
-        "Where would you like to go?\n "
-            + "-Type \"N\": North\n "
-            + "-Type \"S\": South\n "
-            + "-Type \"W\": West\n "
-            + "-Type \"E\": East\n "
-            + "-Type \"Save\": Save Game\n "
-            + "-Type \"Chart\": Game Chart\n "
-            + "-Type \"Map\": Island Map\n");
+      "Where would you like to go?\n "
+        + "-Type \"N\": North\n "
+        + "-Type \"S\": South\n "
+        + "-Type \"W\": West\n "
+        + "-Type \"E\": East\n "
+        + "-Type \"Save\": Save Game\n "
+        + "-Type \"Chart\": Game Chart\n "
+        + "-Type \"Map\": Island Map\n");
     setDirectOptionsWithDocks(
-        "Where would you like to go?\n "
-            + "-Type \"N\": North\n "
-            + "-Type \"S\": South\n "
-            + "-Type \"W\": West\n "
-            + "-Type \"E\": East\n "
-            + "-Type \"D\": Docks\n "
-            + "-Type \"Save\": Save Game\n "
-            + "-Type \"Chart\": Game Chart\n "
-            + "-Type \"Map\": Island Map\n");
+      "Where would you like to go?\n "
+        + "-Type \"N\": North\n "
+        + "-Type \"S\": South\n "
+        + "-Type \"W\": West\n "
+        + "-Type \"E\": East\n "
+        + "-Type \"D\": Docks\n "
+        + "-Type \"Save\": Save Game\n "
+        + "-Type \"Chart\": Game Chart\n "
+        + "-Type \"Map\": Island Map\n");
 
     setWhereToGo(getDirectionOptions());
   }
@@ -67,8 +67,8 @@ public abstract class Island extends Scene implements Serializable {
    */
 
   /**
-   * The entry point into all scene classes. The TreasureIslandGamePlay class will call
-   * `Island.enter( player);`to start each Island's story
+   * The entry point into all scene classes. The TreasureIslandGamePlay class
+   * will call `Island.enter( player);`to start each Island's story
    *
    * @param player - Player object
    */
@@ -81,7 +81,8 @@ public abstract class Island extends Scene implements Serializable {
       while (true) {
         player.playerHealthCheck();
 
-        setWhereToGo((player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions());
+        setWhereToGo((player.getHasIslandItem()) ? getDirectOptionsWithDocks()
+          : getDirectionOptions());
 
         System.out.println(getWhereToGo());
 
@@ -96,29 +97,35 @@ public abstract class Island extends Scene implements Serializable {
         if ("save".equals(userInput)) {
           saveGame();
 
-        } else if ("chart".equals(userInput) || "c".equals(userInput)) {
+        }
+        else if ("chart".equals(userInput) || "c".equals(userInput)) {
           displayMap("main");
 
-        } else if ("map".equals(userInput) || "m".equals(userInput)) {
+        }
+        else if ("map".equals(userInput) || "m".equals(userInput)) {
           displayMap(getIslandName());
 
-        } else if (DirectionEnum.isValid(userInput)) {
+        }
+        else if (DirectionEnum.isValid(userInput)) {
           currentScene = currentScene.changeScene(userInput);
 
           if (currentScene == null) {
             System.out.println("Please try again...\n");
 
-          } else {
+          }
+          else {
             player.setCurrentScene(currentScene);
             currentScene.enter(player, getIslandName());
           }
 
-        } else {
+        }
+        else {
           System.out.println("Error: unknown direction " + userInput);
           System.out.println("Please try again...\n");
         }
       }
-    } catch (InterruptedException e) {
+    }
+    catch (InterruptedException e) {
       System.out.println("Oops! Please try again...\n");
       System.out.println(directionOptions);
     }
@@ -127,7 +134,8 @@ public abstract class Island extends Scene implements Serializable {
   /**
    * Gets the correct Island class based on direction
    *
-   * @param direction - user command given through the console - Validated by DirectionEnum.isValid
+   * @param direction - user command given through the console - Validated by
+   * DirectionEnum.isValid
    * @return an Island class in the specified direction
    */
   public Island changeIsland(String direction) {
@@ -163,32 +171,39 @@ public abstract class Island extends Scene implements Serializable {
     return nextIsland;
   }
 
-  /** @param otherIsland - the Island to the East of invoking Island class */
+  /**
+   * @param otherIsland - the Island to the East of invoking Island class
+   */
   public void connectEast(Island otherIsland) {
     setIslandToTheEast(otherIsland);
     otherIsland.setIslandToTheWest(this);
   }
 
-  /** @param otherIsland - the Island to the South of invoking Island class */
+  /**
+   * @param otherIsland - the Island to the South of invoking Island class
+   */
   public void connectSouth(Island otherIsland) {
     setIslandToTheSouth(otherIsland);
     otherIsland.setIslandToTheNorth(this);
   }
 
-  /** Saves current state of game and exits */
+  /**
+   * Saves current state of game and exits
+   */
   public void saveGame() {
     SaveLoadGame.saveGame();
     System.out.println("We saved your game state!!");
     System.out.println(
-        "But You cannot run forever my friend."
-            + Color.ANSI_RED.getValue()
-            + " Black Beard "
-            + Color.ANSI_RESET.getValue()
-            + "will find you!!!");
+      "But You cannot run forever my friend."
+        + Color.ANSI_RED.getValue()
+        + " Black Beard "
+        + Color.ANSI_RESET.getValue()
+        + "will find you!!!");
     System.out.println("Sleep well for it may be your last night.");
     System.out.println("Goodbye for now.");
     System.exit(0);
   }
+
 
   /**
    * Adds an arbitrary number of Scene classes to an Island class
@@ -198,11 +213,13 @@ public abstract class Island extends Scene implements Serializable {
   public void addScenesToIsland(Scene... scenes) {
     try {
       scenesOnIsland.addAll(Arrays.asList(scenes));
-    } catch (Exception e) {
+    }
+    catch (Exception e) {
       System.out.println("Something broke :`(");
       e.printStackTrace();
     }
   }
+
 
   protected void displayWelcomeMessage() {
     System.out.printf("You have arrived at %s. Enjoy your stay...\n",
@@ -295,65 +312,75 @@ public abstract class Island extends Scene implements Serializable {
     this.directOptionsWithDocks = directOptionsWithDocks;
   }
 
+
   public void leavingIslandShipPrint() throws InterruptedException {
     System.out.println(
-        " "
-            + "               __|__ |___| |\\\n"
-            + "                |o__| |___| | \\\n"
-            + "                |___| |___| |o \\\n"
-            + "               _|___| |___| |__o\\\n"
-            + "              /...\\_____|___|____\\_/\n"
-            + "              \\   o * o * * o o  /\n"
-            + "            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      " "
+        + "               __|__ |___| |\\\n"
+        + "                |o__| |___| | \\\n"
+        + "                |___| |___| |o \\\n"
+        + "               _|___| |___| |__o\\\n"
+        + "              /...\\_____|___|____\\_/\n"
+        + "              \\   o * o * * o o  /\n"
+        + "            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
     Thread.sleep(2000);
     System.out.println(System.lineSeparator().repeat(50));
     System.out.println(
-        " "
-            + "                                               __|__ |___| |\\\n"
-            + "                                                |o__| |___| | \\\n"
-            + "                                                |___| |___| |o \\\n"
-            + "                                               _|___| |___| |__o\\\n"
-            + "                                            /...\\_____|___|____\\_/\n"
-            + "                                            \\   o * o * * o o  /\n"
-            + "                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      " "
+        + "                                               __|__ |___| |\\\n"
+        + "                                                |o__| |___| | \\\n"
+        + "                                                |___| |___| |o \\\n"
+        + "                                               _|___| |___| |__o\\\n"
+        + "                                            /.."
+        + ".\\_____|___|____\\_/\n"
+        + "                                            \\   o * o * * o o  /\n"
+        + "                                           "
+        + "~~~~~~~~~~~~~~~~~~~~~~~~~~");
     Thread.sleep(2000);
     System.out.println(System.lineSeparator().repeat(50));
     System.out.println(
-        " "
-            + "                                                                               __|__ |___| |\\\n"
-            + "                                                                                |o__| |___| | \\\n"
-            + "                                                                                |___| |___| |o \\\n"
-            + "                                                                               _|___| |___| |__o\\\n"
-            + "                                                                            /...\\_____|___|____\\_/\n"
-            + "                                                                            \\   o * o * * o o  /\n"
-            + "                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      " "
+        + "                                                                  "
+        + "             __|__ |___| |\\\n"
+        + "                                                                  "
+        + "              |o__| |___| | \\\n"
+        + "                                                                  "
+        + "              |___| |___| |o \\\n"
+        + "                                                                  "
+        + "             _|___| |___| |__o\\\n"
+        + "                                                                  "
+        + "          /...\\_____|___|____\\_/\n"
+        + "                                                                  "
+        + "          \\   o * o * * o o  /\n"
+        + "                                                                  "
+        + "          ~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 
   @Override
   public String toString() {
     return "Island{"
-        + "islandToTheNorth="
-        + islandToTheNorth
-        + ", islandToTheSouth="
-        + islandToTheSouth
-        + ", islandToTheEast="
-        + islandToTheEast
-        + ", islandToTheWest="
-        + islandToTheWest
-        + ", islandName='"
-        + islandName
-        + '\''
-        + ", currentScene="
-        + currentScene
-        + ", scenesOnIsland="
-        + scenesOnIsland
-        + ", directionOptions='"
-        + directionOptions
-        + '\''
-        + ", directOptionsWithDocks='"
-        + directOptionsWithDocks
-        + '\''
-        + "} "
-        + super.toString();
+      + "islandToTheNorth="
+      + islandToTheNorth
+      + ", islandToTheSouth="
+      + islandToTheSouth
+      + ", islandToTheEast="
+      + islandToTheEast
+      + ", islandToTheWest="
+      + islandToTheWest
+      + ", islandName='"
+      + islandName
+      + '\''
+      + ", currentScene="
+      + currentScene
+      + ", scenesOnIsland="
+      + scenesOnIsland
+      + ", directionOptions='"
+      + directionOptions
+      + '\''
+      + ", directOptionsWithDocks='"
+      + directOptionsWithDocks
+      + '\''
+      + "} "
+      + super.toString();
   }
 }

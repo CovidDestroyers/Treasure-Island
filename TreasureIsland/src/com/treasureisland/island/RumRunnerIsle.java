@@ -10,12 +10,14 @@ import com.treasureisland.scene.SugarCaneField;
 import java.util.Scanner;
 
 public class RumRunnerIsle extends Island {
+
   private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
 
   private final Scene rumDistillery = new RumDistillery("Rum Distillery");
   private final Scene abandonedDistillery = new AbandonedDistillery(
     "Abandoned Distillery");
-  private final Scene crimsonBeachBar = new CrimsonBeachBar("Crimson Beach Bar");
+  private final Scene crimsonBeachBar = new CrimsonBeachBar(
+    "Crimson Beach Bar");
   private final Scene sugarCaneField = new SugarCaneField("Sugar Cane Field");
 
   public RumRunnerIsle(String islandName) {
@@ -35,13 +37,16 @@ public class RumRunnerIsle extends Island {
 
 
   @Override
-  public void talkToNPC(Player player) throws InterruptedException {}
+  public void talkToNPC(Player player) throws InterruptedException {
+  }
 
   @Override
-  public void lookAroundLocation(Player player) throws InterruptedException {}
+  public void lookAroundLocation(Player player) throws InterruptedException {
+  }
 
   @Override
-  public void vendor(Player player) {}
+  public void vendor(Player player) {
+  }
 
 
   @Override

@@ -10,7 +10,7 @@ public enum DirectionEnum {
   EAST("EAST"),
   WEST("WEST");
 
-  private String acceptedText;
+  private final String acceptedText;
 
   DirectionEnum(String acceptedText) {
     this.acceptedText = acceptedText;

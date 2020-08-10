@@ -16,13 +16,15 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class TreasureIslandGameplay implements Serializable {
+
   public static TreasureIslandGameplay treasureIslandGameplay;
   private final Island rumRunnerIsle;
   private final Island portRoyal;
   private final Island islaCruces;
   private final Island islaDeMuerta;
   private final Player player;
-  private final ShipBattleSequence shipBattleSequence = new ShipBattleSequence();
+  private final ShipBattleSequence shipBattleSequence =
+    new ShipBattleSequence();
   private final transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   private final Map<String, Boolean> availablePirates = new HashMap<>();
   private Island currentIsland;
@@ -40,6 +42,9 @@ public class TreasureIslandGameplay implements Serializable {
     portRoyal = new PortRoyal();
     islaCruces = new IslaCruces();
     islaDeMuerta = new IslaDeMuerta();
+
+    islaCruces.connectSouth(rumRunnerIsle);
+    // islaCruces.connectEast();
 
     portRoyal.connectSouth(rumRunnerIsle);
     portRoyal.connectEast(islaDeMuerta);
@@ -74,7 +79,8 @@ public class TreasureIslandGameplay implements Serializable {
       while (true) {
         String islandName = currentIsland.getIslandName();
 
-        String whatIslandToGo = ("Port Royal".equals(islandName)) ? toRumRunner() : toPortRoyal();
+        String whatIslandToGo =
+          ("Port Royal".equals(islandName)) ? toRumRunner() : toPortRoyal();
 
         System.out.println(whatIslandToGo);
 
@@ -87,37 +93,47 @@ public class TreasureIslandGameplay implements Serializable {
           currentIsland.leavingIslandShipPrint();
 
           shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
-        } else {
+        }
+        else {
           displayStayMessage();
         }
-        player.setCurrentIsland(currentIsland);
-        currentIsland.enter(player);
 
         if (player.playerTreasures.size() == 2) {
           treasureIsland();
         }
+
+        player.setCurrentIsland(currentIsland);
+        currentIsland.enter(player);
+
       }
 
-    } catch (InterruptedException e) {
+    }
+    catch (InterruptedException e) {
       System.out.println("Oops! Please try again...\n");
       System.out.println(currentIsland.getDirectionOptions());
       e.printStackTrace();
     }
   }
 
-  /** Sets currentIsland to Rum Runner and */
+  /**
+   * Sets currentIsland to Rum Runner and
+   */
   public void islandSetUp(Island anIsland) {
     currentIsland = anIsland;
     player.setHasIslandItem(false);
   }
 
   public void customGameplayOptions() throws InterruptedException {
-    File gameState = new File(System.getProperty("user.dir") + "/TreasureIsland.ser");
+    File gameState = new File(
+      System.getProperty("user.dir") + "/TreasureIsland.ser");
     if (gameState.exists()) {
       System.out.println(
-          "Would you like to Load existing game<L>, play the full game<F>, or play on a sample island<S>?");
-    } else {
-      System.out.println("Would you like to play the full game<F>, or play on a sample island<S>?");
+        "Would you like to Load existing game<L>, play the full game<F>, "
+          + "or play on a sample island<S>?");
+    }
+    else {
+      System.out.println("Would you like to play the full game<F>, or play "
+        + "on a sample island<S>?");
     }
 
     input = scanner.nextLine().trim().toLowerCase();
@@ -125,12 +141,15 @@ public class TreasureIslandGameplay implements Serializable {
       case "l":
         treasureIslandGameplay = SaveLoadGame.loadGame();
         if (treasureIslandGameplay.player.getCurrentScene() == null) {
-          treasureIslandGameplay.player.setCurrentScene(currentIsland.getCurrentScene());
+          treasureIslandGameplay.player
+            .setCurrentScene(currentIsland.getCurrentScene());
         }
         if (treasureIslandGameplay.player.getPlayerName() == null) {
           treasureIslandGameplay.player.setPlayerName("Captain Jack");
         }
-        System.out.println("\nWelcome, " + treasureIslandGameplay.player.getPlayerName() + "\n \n");
+        System.out.println(
+          "\nWelcome, " + treasureIslandGameplay.player.getPlayerName()
+            + "\n \n");
         treasureIslandGameplay.player.playerInfoConsoleOutput();
 
         break;
@@ -153,7 +172,10 @@ public class TreasureIslandGameplay implements Serializable {
     }
   }
 
-  /** Player chooses name and is stored into playerName variable calls first storyline txt file */
+  /**
+   * Player chooses name and is stored into playerName variable calls first
+   * storyline txt file
+   */
   public void chosePlayerName() throws InterruptedException {
     // welcomeToTreasureIsland();
     System.out.println("\nPlease enter your name: ");
@@ -161,58 +183,60 @@ public class TreasureIslandGameplay implements Serializable {
     player.setPlayerName(input);
 
     String text =
-        Color.ANSI_BLUE.getValue()
-            + "\nAhoy "
-            + Color.ANSI_GREEN.getValue()
-            + player.getPlayerName()
-            + Color.ANSI_BLUE.getValue()
-            + "! "
-            + " "
-            + "Welcome to Treasure Island....well you are not there yet.  You need to find it first.\n"
-            + "\n"
-            + "I know you said you put this life behind you, but rumor has it "
-            + Color.ANSI_RED.getValue()
-            + "Black Beard "
-            + Color.ANSI_BLUE.getValue()
-            + "has a bounty on your head!!\n"
-            + "Don't worry friend, I have a way to satisfy his bounty.....if you can survive his gang!!\n"
-            + "\n"
-            + "All you need to do is find the diamond.\n"
-            + "\n"
-            + "Playing this game is easy, talk to people around the Islands, Sail between the Islands and walk between\n"
-            + "the places.\n"
-            + "\n"
-            + "The clues will lead you on your path.  If you ever get disorientated, type Map and it will clear your way.\n"
-            + "\n"
-            + "Your journey starts on Rum Runner Isle.  Good luck!"
-            + Color.ANSI_RESET.getValue()
-            + "\n"
-            + "\n";
+      Color.ANSI_BLUE.getValue()
+        + "\nAhoy "
+        + Color.ANSI_GREEN.getValue()
+        + player.getPlayerName()
+        + Color.ANSI_BLUE.getValue()
+        + "! "
+        + " "
+        + "Welcome to Treasure Island....well you are not there yet.  You "
+        + "need to find it first.\n"
+        + "\n"
+        + "I know you said you put this life behind you, but rumor has it "
+        + Color.ANSI_RED.getValue()
+        + "Black Beard "
+        + Color.ANSI_BLUE.getValue()
+        + "has a bounty on your head!!\n"
+        + "Don't worry friend, I have a way to satisfy his bounty.....if you "
+        + "can survive his gang!!\n"
+        + "\n"
+        + "All you need to do is find the diamond.\n"
+        + "\n"
+        + "Playing this game is easy, talk to people around the Islands, Sail"
+        + " between the Islands and walk between\n"
+        + "the places.\n"
+        + "\n"
+        + "The clues will lead you on your path.  If you ever get "
+        + "disorientated, type Map and it will clear your way.\n"
+        + "\n"
+        + "Your journey starts on Rum Runner Isle.  Good luck!"
+        + Color.ANSI_RESET.getValue()
+        + "\n"
+        + "\n";
     int i;
     for (i = 0; i < text.length(); i++) {
       System.out.printf("%c", text.charAt(i));
       try {
         Thread.sleep(000); // 0.5s pause between characters
-      } catch (InterruptedException ex) {
+      }
+      catch (InterruptedException ex) {
         Thread.currentThread().interrupt();
       }
     }
   }
 
-  // loop continues until they find the islands special item
-  // allows user to chose N/S/E/W from IsleFactory
-  // playerInteractionOptions allows for player to talk, look around, investigate or leave
 
   public void rumRunnerIsle() {
     try {
       player.processMovement("rumRunnerisle");
       System.out.println("Leaving Rum Runners Isle \n \n");
-      // leavingIslandShipPrint();
       Thread.sleep(0);
       player.setHasIslandItem(false);
       shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
       portRoyal();
-    } catch (InterruptedException e) {
+    }
+    catch (InterruptedException e) {
       e.printStackTrace();
     }
   }
@@ -223,19 +247,12 @@ public class TreasureIslandGameplay implements Serializable {
     if (player.playerTreasures.size() == 2) {
       treasureIsland();
     }
-    //    System.out.println("Leaving Port Royal Isle \n \n");
-    //    leavingIslandShipPrint();
-    //    Thread.sleep(5000);
-    //    player.setHasIslandItem(false);
-    //    shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
-    //    islaCruces();
   }
 
   public void islaCruces() throws InterruptedException {
     System.out.println("At Isla Cruces");
     player.processMovement("islaCruces");
     System.out.println("Leaving Isla Cruces \n \n");
-    // leavingIslandShipPrint();
     Thread.sleep(5000);
     player.setHasIslandItem(false);
     shipBattleSequence.shipBattleAfterLeavingIsland(player, scanner);
@@ -247,9 +264,7 @@ public class TreasureIslandGameplay implements Serializable {
     System.out.println("At Isla de Muerta");
     player.processMovement("islademuerta");
     System.out.println("Leaving Isla De Muerta \n \n");
-    // leavingIslandShipPrint();
     Thread.sleep(5000);
-    // treasureIsland();
   }
 
   public void treasureIsland() {
@@ -257,32 +272,39 @@ public class TreasureIslandGameplay implements Serializable {
       if (player.playerTreasures.contains("Sacred Jewel")) {
         displayTreasureIslandStory();
         playAgain();
-      } else {
-        System.out.println("To get the sacred jewel, you have to look around in \"Port Royal\"");
       }
-    } else {
+      else {
+        System.out.println(
+          "To get the sacred jewel, you have to look around in \"Port Royal\"");
+      }
+    }
+    else {
       System.out.println(
-          "To get the key, you have to look in the \"Sugar Cane "
-              + "Field\" in \"Rum Runner Isle\"");
+        "To get the key, you have to look in the \"Sugar Cane "
+          + "Field\" in \"Rum Runner Isle\"");
     }
   }
 
   // Method to ask for play again the game
   public void playAgain() {
-    System.out.println("\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
+    System.out.println(
+      "\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
 
     input = scanner.nextLine().trim().toLowerCase();
 
     if ("y".equals(input) || "yes".equals(input)) {
       try {
         new TreasureIslandGameplay().chosePlayerName();
-      } catch (InterruptedException e) {
+      }
+      catch (InterruptedException e) {
         e.printStackTrace();
       }
-    } else if ("n".equals(input) || "no".equals(input)) {
+    }
+    else if ("n".equals(input) || "no".equals(input)) {
       System.out.println("Thank you for playing!!");
       System.exit(0);
-    } else {
+    }
+    else {
       System.out.println("Invalid Input, Try Again!!");
       playAgain();
     }
@@ -290,12 +312,12 @@ public class TreasureIslandGameplay implements Serializable {
 
   public void testIslandSelector() throws InterruptedException {
     System.out.println(
-        "Which island would you like to play?\n"
-            + "1) Rum Runner Isle \n"
-            + "2) Port Royal \n"
-            + "3) Isla Cruces \n"
-            + "4) Isla de Muerta \n"
-            + "5) Back to main");
+      "Which island would you like to play?\n"
+        + "1) Rum Runner Isle \n"
+        + "2) Port Royal \n"
+        + "3) Isla Cruces \n"
+        + "4) Isla de Muerta \n"
+        + "5) Back to main");
     input = scanner.nextLine();
     if ("1".equals(input)) {
       rumRunnerIsle();
@@ -311,7 +333,8 @@ public class TreasureIslandGameplay implements Serializable {
     }
     if ("5".equals(input)) {
       customGameplayOptions();
-    } else {
+    }
+    else {
       testIslandSelector();
     }
   }
@@ -319,32 +342,54 @@ public class TreasureIslandGameplay implements Serializable {
   public void welcomeToTreasureIsland() {
 
     System.out.println(
-        "\n"
-            + Color.ANSI_GREEN.getValue()
-            + "    $$$$$$$$                                                                               $$$$$$            $$                            $$\n"
-            + "       $$                                                                                    $$              $$                            $$\n"
-            + "       $$      $$$$$$    $$$$$$    $$$$$$    $$$$$$$   $$    $$   $$$$$$    $$$$$$           $$     $$$$$$$  $$   $$$$$$   $$$$$$$    $$$$$$$\n"
-            + "       $$     $$    $$  $$    $$        $$  $$         $$    $$  $$    $$  $$    $$          $$    $$        $$        $$  $$    $$  $$    $$\n"
-            + "       $$     $$        $$$$$$$$   $$$$$$$   $$$$$$    $$    $$  $$        $$$$$$$$          $$     $$$$$$   $$   $$$$$$$  $$    $$  $$    $$\n"
-            + "       $$     $$        $$        $$    $$         $$  $$    $$  $$        $$                $$          $$  $$  $$    $$  $$    $$  $$    $$\n"
-            + "       $$     $$         $$$$$$$   $$$$$$$  $$$$$$$     $$$$$$   $$         $$$$$$$        $$$$$$  $$$$$$$   $$   $$$$$$$  $$    $$   $$$$$$$\n"
-            + "                                                                                                                                             \n"
-            + "                                                                                                                                             \n"
-            + "                                                                                                                                             \n"
-            + Color.ANSI_RESET.getValue());
+      "\n"
+        + Color.ANSI_GREEN.getValue()
+        + "    $$$$$$$$                                                      "
+        + "                         $$$$$$            $$                     "
+        + "       $$\n"
+        + "       $$                                                         "
+        + "                           $$              $$                     "
+        + "       $$\n"
+        + "       $$      $$$$$$    $$$$$$    $$$$$$    $$$$$$$   $$    $$   "
+        + "$$$$$$    $$$$$$           $$     $$$$$$$  $$   $$$$$$   $$$$$$$  "
+        + "  $$$$$$$\n"
+        + "       $$     $$    $$  $$    $$        $$  $$         $$    $$  "
+        + "$$    $$  $$    $$          $$    $$        $$        $$  $$    $$"
+        + "  $$    $$\n"
+        + "       $$     $$        $$$$$$$$   $$$$$$$   $$$$$$    $$    $$  "
+        + "$$        $$$$$$$$          $$     $$$$$$   $$   $$$$$$$  $$    $$"
+        + "  $$    $$\n"
+        + "       $$     $$        $$        $$    $$         $$  $$    $$  "
+        + "$$        $$                $$          $$  $$  $$    $$  $$    $$"
+        + "  $$    $$\n"
+        + "       $$     $$         $$$$$$$   $$$$$$$  $$$$$$$     $$$$$$   "
+        + "$$         $$$$$$$        $$$$$$  $$$$$$$   $$   $$$$$$$  $$    $$"
+        + "   $$$$$$$\n"
+        + "                                                                  "
+        + "                                                                  "
+        + "         \n"
+        + "                                                                  "
+        + "                                                                  "
+        + "         \n"
+        + "                                                                  "
+        + "                                                                  "
+        + "         \n"
+        + Color.ANSI_RESET.getValue());
   }
 
   public String toRumRunner() {
     return "You see Rum Runner Isle to the West. Would you like to visit "
-        + "it?\n-Type: Y\n-Type: N";
+      + "it?\n-Type: Y\n-Type: N";
   }
 
   public String toPortRoyal() {
-    return "You see Port Royal to the East. Would you like to visit " + "it?\n-Type: Y\n-Type: N";
+    return "You see Port Royal to the East. Would you like to visit "
+      + "it?\n-Type: Y\n-Type: N";
   }
 
   private void displayStayMessage() {
-    System.out.printf("Very well then. You are staying on %s.\n", currentIsland.getIslandName());
+    System.out.printf("Very well then. You are staying on %s.\n",
+      currentIsland.getIslandName());
   }
 
   public Map<String, Boolean> getAvailablePirates() {
@@ -357,65 +402,72 @@ public class TreasureIslandGameplay implements Serializable {
 
   public void displayTreasureIslandStory() {
     System.out.println(
-        "What! I have been to this island before, there are people inhabiting this island!!\n"
-            + "          How can treasure be on this island? It is supposed to be the biggest treasure in the world.\n"
-            + "          This is confusing, I have to figure out a way to make some sense of this situation.\n"
-            + "          Or else all this situation will be for nothing.\n"
-            + "\n"
-            + "\n"
-            + "\n"
-            + "          After revisiting the clues, I think I figured it out.\n"
-            + "          I need to get to this hidden monastery and I will find more info there.\n"
-            + "\n"
-            + "          Talking with the monks there, I found out that they had a very sacred jewel stolen from them years back.\n"
-            + "          Now that sounds interesting, the description they provided matched with the jewel I posses.\n"
-            + "\n"
-            + "          Should I give this jewel back to the monastery?\n"
-            + "\n"
-            + "          I gave the jewel to monastery and in return they provided me with a medium size box which had . . .\n"
-            + "              Three keyholes in it!\n"
-            + "              I took the box with me to open it privately.\n"
-            + "              Upon opening it I found . . .\n"
-            + "              Jewels, coins and the most treasured "
-            + Color.ANSI_BOLD.getValue()
-            + Color.ANSI_BLUE.getValue()
-            + "50 carat Diamond"
-            + Color.ANSI_RESET.getValue()
-            + "!");
+      "What! I have been to this island before, there are people inhabiting "
+        + "this island!!\n"
+        + "          How can treasure be on this island? It is supposed to be"
+        + " the biggest treasure in the world.\n"
+        + "          This is confusing, I have to figure out a way to make "
+        + "some sense of this situation.\n"
+        + "          Or else all this situation will be for nothing.\n"
+        + "\n"
+        + "\n"
+        + "\n"
+        + "          After revisiting the clues, I think I figured it out.\n"
+        + "          I need to get to this hidden monastery and I will find "
+        + "more info there.\n"
+        + "\n"
+        + "          Talking with the monks there, I found out that they had "
+        + "a very sacred jewel stolen from them years back.\n"
+        + "          Now that sounds interesting, the description they "
+        + "provided matched with the jewel I posses.\n"
+        + "\n"
+        + "          Should I give this jewel back to the monastery?\n"
+        + "\n"
+        + "          I gave the jewel to monastery and in return they "
+        + "provided me with a medium size box which had . . .\n"
+        + "              Three keyholes in it!\n"
+        + "              I took the box with me to open it privately.\n"
+        + "              Upon opening it I found . . .\n"
+        + "              Jewels, coins and the most treasured "
+        + Color.ANSI_BOLD.getValue()
+        + Color.ANSI_BLUE.getValue()
+        + "50 carat Diamond"
+        + Color.ANSI_RESET.getValue()
+        + "!");
   }
 
   @Override
   public String toString() {
     return "TreasureIslandGameplay{"
-        + "treasureIslandGameplay="
-        + treasureIslandGameplay
-        + ", rumRunnerIsle="
-        + rumRunnerIsle
-        + ", portRoyal="
-        + portRoyal
-        + ", islaCruces="
-        + islaCruces
-        + ", islaDeMuerta="
-        + islaDeMuerta
-        + ", player="
-        + player
-        + ", shipBattleSequence="
-        + shipBattleSequence
-        + ", scanner="
-        + scanner
-        + ", availablePirates="
-        + availablePirates
-        + ", currentIsland="
-        + currentIsland
-        + ", input='"
-        + input
-        + '\''
-        + ", toRumRunner='"
-        + toRumRunner()
-        + '\''
-        + ", toPortRoyal='"
-        + toPortRoyal()
-        + '\''
-        + '}';
+      + "treasureIslandGameplay="
+      + treasureIslandGameplay
+      + ", rumRunnerIsle="
+      + rumRunnerIsle
+      + ", portRoyal="
+      + portRoyal
+      + ", islaCruces="
+      + islaCruces
+      + ", islaDeMuerta="
+      + islaDeMuerta
+      + ", player="
+      + player
+      + ", shipBattleSequence="
+      + shipBattleSequence
+      + ", scanner="
+      + scanner
+      + ", availablePirates="
+      + availablePirates
+      + ", currentIsland="
+      + currentIsland
+      + ", input='"
+      + input
+      + '\''
+      + ", toRumRunner='"
+      + toRumRunner()
+      + '\''
+      + ", toPortRoyal='"
+      + toPortRoyal()
+      + '\''
+      + '}';
   }
 }

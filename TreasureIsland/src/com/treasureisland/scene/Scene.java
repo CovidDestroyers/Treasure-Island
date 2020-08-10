@@ -16,6 +16,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public abstract class Scene implements Serializable {
+
   protected transient Scanner scanner = OnlyOneScanner.getTheOneScanner();
   protected transient Logger logger = OurLogger.getLogger();
 
@@ -32,21 +33,22 @@ public abstract class Scene implements Serializable {
   protected Scene westScene;
   protected MainMap theMap = new MainMap();
   protected String interActionOptions =
-      "\nWhat would you like to do?\n "
-          + " -Type \"T\": Talk\n "
-          + " -Type \"L\": Look Around\n "
-          + " -Type \"R\": See Treasure Rewards\n "
-          + " -Type \"M\": Look at the Map\n "
-          + " -Type \"INV\": Inventory\n "
-          + " -Type \"G\": Grab Item\n "
-          + " -Type \"E\": Exit This Location\n ";
+    "\nWhat would you like to do?\n "
+      + " -Type \"T\": Talk\n "
+      + " -Type \"L\": Look Around\n "
+      + " -Type \"R\": See Treasure Rewards\n "
+      + " -Type \"M\": Look at the Map\n "
+      + " -Type \"INV\": Inventory\n "
+      + " -Type \"G\": Grab Item\n "
+      + " -Type \"E\": Exit This Location\n ";
 
   /*
    * =============================================
    * ============= Constructors ==================
    * =============================================
    */
-  public Scene() {}
+  public Scene() {
+  }
 
   public Scene(String name) {
     setName(name);
@@ -63,15 +65,18 @@ public abstract class Scene implements Serializable {
    * These methods are used for custom gameplay in each Scene class
    *
    * @param player - Player object
-   * @throws InterruptedException - from the global Scanner object OnlyOneScanner
+   * @throws InterruptedException - from the global Scanner object
+   * OnlyOneScanner
    */
   public abstract void talkToNPC(Player player) throws InterruptedException;
 
-  public abstract void lookAroundLocation(Player player) throws InterruptedException;
+  public abstract void lookAroundLocation(Player player)
+    throws InterruptedException;
 
   public abstract void vendor(Player player);
 
-  public void investigateArea(Player player) throws InterruptedException {}
+  public void investigateArea(Player player) throws InterruptedException {
+  }
 
   /*
    * =============================================
@@ -81,8 +86,9 @@ public abstract class Scene implements Serializable {
 
   /**
    * Gets the correct Scene class based on direction
-   * @param direction - user command given through the console
-   *                  - Validated by DirectionEnum.isValid
+   *
+   * @param direction - user command given through the console - Validated by
+   * DirectionEnum.isValid
    * @return a Scene class in the specified direction
    */
   public Scene changeScene(String direction) {
@@ -115,25 +121,29 @@ public abstract class Scene implements Serializable {
     if (nextScene == null) {
       nextScene = this;
       System.out.printf(
-          "To the %s all you see is water. You're a lousy swimmer for a pirate so...\n", direction);
-      System.out.printf("I'm taking you back to the %s\n\n", nextScene.getName());
+        "To the %s all you see is water. You're a lousy swimmer for a pirate "
+          + "so...\n",
+        direction);
+
+      System.out
+        .printf("I'm taking you back to the %s\n\n", nextScene.getName());
     }
 
     return nextScene;
   }
 
+
   /**
-   *
-   *  @param otherScene - the Scene class to the East of the invoking Scene
+   * @param otherScene - the Scene class to the East of the invoking Scene
    * class
-   * */
+   */
   public void connectEast(Scene otherScene) {
     setEastScene(otherScene);
     otherScene.setWestScene(this);
   }
 
+
   /**
-   *
    * @param otherScene - the Scene class to the South of the invoking Scene
    * class
    */
@@ -142,6 +152,7 @@ public abstract class Scene implements Serializable {
     otherScene.setNorthScene(this);
   }
 
+
   /**
    * The entry point into all scene classes.
    *
@@ -149,7 +160,8 @@ public abstract class Scene implements Serializable {
    * @param islandName - String: name of an Island
    * @throws InterruptedException
    */
-  public void enter(Player player, String islandName) throws InterruptedException {
+  public void enter(Player player, String islandName)
+    throws InterruptedException {
     String userInput = "";
     Method aMethod;
 
@@ -168,43 +180,55 @@ public abstract class Scene implements Serializable {
 
         if (!userInput.equals("")) {
           userInput =
-              (userInput.startsWith("i")) ? userInput.substring(0, 3) : userInput.substring(0, 1);
+            (userInput.startsWith("i")) ? userInput.substring(0, 3)
+              : userInput.substring(0, 1);
         }
 
         if (Interactions.isValid(userInput)) {
+
           if ("e".equals(userInput)) {
             System.out.printf("You have left %s\n", getName());
             break;
-          } else if ("m".equals(userInput) || "map".equals(userInput)) {
+
+          }
+          else if ("m".equals(userInput) || "map".equals(userInput)) {
             displayMap(islandName);
-          } else {
+
+          }
+          else {
             String aMethodName = getNameOfMethod(userInput);
 
-            if(aMethodName != null) {
+            if (aMethodName != null) {
+
               if (isPlayerMethod(aMethodName)) {
                 aMethod = Player.class.getMethod(aMethodName);
                 aMethod.invoke(player);
-              } else {
+
+              }
+              else {
                 aMethod = Scene.class.getMethod(aMethodName, Player.class);
                 aMethod.invoke(this, player);
               }
-            } else {
+
+            }
+            else {
               System.out.println("Error: Invalid Input. Please try again.");
             }
           }
-        } else {
+        }
+        else {
           System.out.println("Error: Invalid Input. Please try again.");
         }
 
-      } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+      }
+      catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
         System.out.println("Error: Invalid Input. Please try again.");
       }
     }
   }
 
   /**
-   *
-   * @param userInput - user typed commands from  console
+   * @param userInput - user typed commands from console
    * @return a Method from Player or Scene based on the
    */
   public Method getRightMethod(String userInput) {
@@ -213,11 +237,12 @@ public abstract class Scene implements Serializable {
 
     try {
       rightMethod =
-          (isPlayerMethod(nameOfMethod))
-              ? Player.class.getMethod(nameOfMethod)
-              : Scene.class.getMethod(nameOfMethod, Player.class);
+        (isPlayerMethod(nameOfMethod))
+          ? Player.class.getMethod(nameOfMethod)
+          : Scene.class.getMethod(nameOfMethod, Player.class);
 
-    } catch (NoSuchMethodException e) {
+    }
+    catch (NoSuchMethodException e) {
       System.out.println("Error: Invalid Input. Please try again.");
     }
     return rightMethod;
@@ -225,6 +250,7 @@ public abstract class Scene implements Serializable {
 
   /**
    * Gets the name of a method from the `methods` Map
+   *
    * @param userInput - user command from console
    * @return - String with name of method if found
    */
@@ -240,18 +266,20 @@ public abstract class Scene implements Serializable {
 
   /**
    * Checks if a method is a Player method
+   *
    * @param aMethodName - name of a method
    * @return - Boolean
    */
   public Boolean isPlayerMethod(String aMethodName) {
     boolean playerMethod = false;
     if ("grabItemFromInventory".equals(aMethodName)
-        || "printInventoryItems".equals(aMethodName)
-        || "iterateThroughPlayerTreasureRewards".equals(aMethodName)) {
+      || "printInventoryItems".equals(aMethodName)
+      || "iterateThroughPlayerTreasureRewards".equals(aMethodName)) {
       playerMethod = true;
     }
     return playerMethod;
   }
+
 
   public Map<String, String> buildMethodMap() {
     Map<String, String> mapOfMethods = new HashMap<>();
@@ -275,13 +303,17 @@ public abstract class Scene implements Serializable {
   public void displayMap(String islandName) {
     if ("Rum Runner Isle".equalsIgnoreCase(islandName)) {
       theMap.rumRunner();
-    } else if ("Port Royal".equalsIgnoreCase(islandName)) {
+    }
+    else if ("Port Royal".equalsIgnoreCase(islandName)) {
       theMap.portRoyal();
-    } else if ("Isla Cruces".equalsIgnoreCase(islandName)) {
+    }
+    else if ("Isla Cruces".equalsIgnoreCase(islandName)) {
       theMap.islaCruces();
-    } else if ("Isla De Muerta".equalsIgnoreCase(islandName)) {
+    }
+    else if ("Isla De Muerta".equalsIgnoreCase(islandName)) {
       theMap.islaDeMuerta();
-    } else {
+    }
+    else {
       theMap.mainMap();
     }
   }
@@ -294,10 +326,10 @@ public abstract class Scene implements Serializable {
   public void storylineProgression(String fileName, String start, String stop) {
     try {
       File myObj =
-          new File(
-              System.getProperty("user.dir")
-                  + "/TreasureIsland/src/com/treasureisland/text/"
-                  + fileName);
+        new File(
+          System.getProperty("user.dir")
+            + "/TreasureIsland/src/com/treasureisland/text/"
+            + fileName);
 
       Scanner myReader = new Scanner(myObj);
       boolean tokenFound = false;
@@ -320,7 +352,8 @@ public abstract class Scene implements Serializable {
       }
 
       myReader.close();
-    } catch (IOException | InterruptedException e) {
+    }
+    catch (IOException | InterruptedException e) {
       e.printStackTrace();
     }
   }
@@ -423,21 +456,36 @@ public abstract class Scene implements Serializable {
     this.theMap = theMap;
   }
 
-
   @Override
   public String toString() {
-    return "Scene{" +
-      "scanner=" + scanner +
-      ", storyFileName='" + storyFileName + '\'' +
-      ", name='" + name + '\'' +
-      ", storyStart='" + storyStart + '\'' +
-      ", storyEnd='" + storyEnd + '\'' +
-      ", northScene=" + northScene +
-      ", southScene=" + southScene +
-      ", eastScene=" + eastScene +
-      ", westScene=" + westScene +
-      ", theMap=" + theMap +
-      ", interActionOptions='" + interActionOptions + '\'' +
-      '}';
+    return "Scene{"
+      + "scanner="
+      + scanner
+      + ", storyFileName='"
+      + storyFileName
+      + '\''
+      + ", name='"
+      + name
+      + '\''
+      + ", storyStart='"
+      + storyStart
+      + '\''
+      + ", storyEnd='"
+      + storyEnd
+      + '\''
+      + ", northScene="
+      + northScene
+      + ", southScene="
+      + southScene
+      + ", eastScene="
+      + eastScene
+      + ", westScene="
+      + westScene
+      + ", theMap="
+      + theMap
+      + ", interActionOptions='"
+      + interActionOptions
+      + '\''
+      + '}';
   }
 }
