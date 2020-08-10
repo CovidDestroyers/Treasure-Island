@@ -3,668 +3,106 @@
   <ID>JAVA</ID>
   <OriginalElement>com.treasureisland.Client</OriginalElement>
   <nodes>
-    <node x="2222.147727272727" y="1214.0">com.treasureisland.IsleFactory</node>
-    <node x="694.6468531468531" y="699.0">com.treasureisland.world.RumDistillery</node>
-    <node x="1934.2658354966807" y="1510.0">com.treasureisland.player.Player</node>
-    <node x="872.6468531468531" y="721.5">com.treasureisland.world.RoyalLodge</node>
-    <node x="526.6468531468531" y="721.5">com.treasureisland.world.TikkiLounge</node>
-    <node x="1640.6468531468531" y="721.5">com.treasureisland.world.CrimsonBeachBar</node>
-    <node x="42.27272727272725" y="1202.0">com.treasureisland.SaveLoadGame</node>
-    <node x="1412.6468531468531" y="721.5">com.treasureisland.world.AbandonedDistillery</node>
-    <node x="2216.244019138756" y="721.5">com.treasureisland.world.Graveyard</node>
-    <node x="1835.6468531468531" y="721.5">com.treasureisland.world.DoubleCrossTavernCruces</node>
-    <node x="2014.845894118835" y="315.0">com.treasureisland.world.Location</node>
-    <node x="2746.197727272727" y="721.5">com.treasureisland.world.DuskTillDawnSaloon</node>
-    <node x="1209.6468531468531" y="721.5">com.treasureisland.world.SunsetRestaurant</node>
-    <node x="0.0" y="3022.0">com.treasureisland.island.IslaDeMuerta</node>
-    <node x="287.4389285353991" y="172.0">com.treasureisland.player.Color</node>
-    <node x="2016.5158354966807" y="2201.0">com.treasureisland.ship.ShipBattleSequence</node>
-    <node x="2036.345894118835" y="0.0">com.treasureisland.island.DirectionEnum</node>
-    <node x="2568.197727272727" y="721.5">com.treasureisland.world.ShipGraveyard</node>
-    <node x="3177.197727272727" y="721.5">com.treasureisland.world.SouthendBeachCruces</node>
-    <node x="1901.1408354966807" y="2028.0">com.treasureisland.ship.EnemyShip</node>
-    <node x="1040.6468531468531" y="721.5">com.treasureisland.world.ChurchCruces</node>
-    <node x="3777.197727272727" y="721.5">com.treasureisland.island.RumRunnerIsle</node>
-    <node x="3350.4271415565468" y="2701.0">com.treasureisland.ConsoleController</node>
-    <node x="1120.6734866603679" y="1900.5">com.treasureisland.map.MainMap</node>
-    <node x="2966.197727272727" y="721.5">com.treasureisland.world.SaintsLodgeCruces</node>
-    <node x="372.0" y="3022.0">com.treasureisland.island.PortRoyal</node>
-    <node x="1869.5158354966807" y="2573.0">com.treasureisland.TreasureIslandGameplay</node>
-    <node x="1858.849168830014" y="2823.0">com.treasureisland.Client</node>
-    <node x="3405.197727272727" y="699.0">com.treasureisland.world.SugarCaneField</node>
-    <node x="2000.0158354966807" y="1855.0">com.treasureisland.ship.PlayerShip</node>
-    <node x="3591.197727272727" y="721.5">com.treasureisland.world.AbandonedHouse</node>
-    <node x="1973.3006993006993" y="1180.0">com.treasureisland.items.Vendor</node>
-    <node x="194.0" y="3022.0">com.treasureisland.island.IslaCruces</node>
-    <node x="2400.197727272727" y="721.5">com.treasureisland.world.PawPawBeach</node>
+    <node x="787.0" y="338.0">com.treasureisland.player.Player</node>
+    <node x="93.0" y="102.0">com.treasureisland.island.Island</node>
+    <node x="776.0" y="261.0">com.treasureisland.OnlyOneScanner</node>
+    <node x="1384.0" y="261.0">com.treasureisland.SaveLoadGame</node>
+    <node x="212.0" y="102.0">com.treasureisland.scene.ShipGraveyard</node>
+    <node x="1330.0" y="102.0">com.treasureisland.scene.SunsetRestaurant</node>
+    <node x="1075.0" y="338.0">com.treasureisland.player.Color</node>
+    <node x="278.0" y="261.0">com.treasureisland.player.PirateFightSequence</node>
+    <node x="531.0" y="261.0">com.treasureisland.ship.ShipBattleSequence</node>
+    <node x="987.0" y="261.0">com.treasureisland.island.DirectionEnum</node>
+    <node x="1533.0" y="102.0">com.treasureisland.scene.TikkiLounge</node>
+    <node x="178.0" y="338.0">com.treasureisland.ship.EnemyShip</node>
+    <node x="144.0" y="184.0">com.treasureisland.island.RumRunnerIsle</node>
+    <node x="931.0" y="338.0">com.treasureisland.player.Pirate</node>
+    <node x="924.0" y="102.0">com.treasureisland.scene.AbandonedDistillery</node>
+    <node x="347.0" y="338.0">com.treasureisland.map.MainMap</node>
+    <node x="729.0" y="102.0">com.treasureisland.scene.CrimsonBeachBar</node>
+    <node x="1152.0" y="102.0">com.treasureisland.scene.RumDistillery</node>
+    <node x="390.0" y="102.0">com.treasureisland.scene.RoyalLodge</node>
+    <node x="0.0" y="184.0">com.treasureisland.island.PortRoyal</node>
+    <node x="0.0" y="261.0">com.treasureisland.TreasureIslandGameplay</node>
+    <node x="643.0" y="338.0">com.treasureisland.Client</node>
+    <node x="0.0" y="338.0">com.treasureisland.ship.PlayerShip</node>
+    <node x="771.0" y="0.0">com.treasureisland.scene.Scene</node>
+    <node x="543.0" y="102.0">com.treasureisland.scene.SugarCaneField</node>
+    <node x="1190.0" y="261.0">com.treasureisland.Interactions</node>
+    <node x="499.0" y="338.0">com.treasureisland.items.Vendor</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.treasureisland.world.DuskTillDawnSaloon" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="2846.197727272727" y="1040.0" />
-      <point x="2637.142089108994" y="1040.0" />
-      <point x="2637.142089108994" y="1410.0" />
-      <point x="2121.9581431889883" y="1410.0" />
-      <point x="67.69230769230762" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.player.Player" target="com.treasureisland.SaveLoadGame">
-      <point x="-116.92307692307713" y="-127.5" />
-      <point x="1937.3427585736035" y="1490.0" />
-      <point x="294.27272727272725" y="1490.0" />
-      <point x="72.0" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.SaintsLodgeCruces">
-      <point x="41.470588235294144" y="-16.0" />
-      <point x="2334.1183155080216" y="1050.0" />
-      <point x="2985.297727272727" y="1050.0" />
-      <point x="-76.39999999999998" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.RoyalLodge" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="946.6468531468531" y="629.0" />
-      <point x="2041.2932625398876" y="629.0" />
-      <point x="-74.05263157894751" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.Graveyard" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="2290.244019138756" y="659.0" />
-      <point x="2125.9248414872563" y="659.0" />
-      <point x="10.578947368421268" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.ship.EnemyShip" target="com.treasureisland.player.Player">
-      <point x="-29.25" y="-61.5" />
-      <point x="1988.8908354966807" y="1835.0" />
-      <point x="2044.2658354966807" y="1835.0" />
-      <point x="-10.0" y="127.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.ShipGraveyard">
-      <point x="24.882352941176578" y="-16.0" />
-      <point x="2317.5300802139036" y="990.0" />
-      <point x="2583.9977272727274" y="990.0" />
-      <point x="-63.200000000000045" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.RumDistillery" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-50.5" />
-      <point x="773.6468531468531" y="619.0" />
-      <point x="2030.7143151714668" y="619.0" />
-      <point x="-84.63157894736833" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.SugarCaneField" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="66.40000000000009" y="50.5" />
-      <point x="3554.5977272727273" y="820.0" />
-      <point x="3696.0579683638143" y="820.0" />
-      <point x="3696.0579683638143" y="2533.0" />
-      <point x="2089.2771991330446" y="2533.0" />
-      <point x="103.26136363636374" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.player.Player" target="com.treasureisland.items.Vendor">
-      <point x="0.0" y="-127.5" />
-      <point x="2054.2658354966807" y="1300.0" />
-      <point x="2015.8006993006993" y="1300.0" />
-      <point x="-42.5" y="50.0" />
-    </edge>
-    <edge source="com.treasureisland.world.TikkiLounge" target="com.treasureisland.world.Location">
-      <point x="37.0" y="-28.0" />
-      <point x="637.6468531468531" y="609.0" />
-      <point x="2020.1353678030455" y="609.0" />
-      <point x="-95.2105263157896" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.Location" target="com.treasureisland.island.DirectionEnum">
-      <point x="0.0" y="-50.5" />
-      <point x="0.0" y="61.0" />
-    </edge>
-    <edge source="com.treasureisland.world.ChurchCruces" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="1115.1468531468531" y="1400.0" />
-      <point x="1992.7273739582192" y="1400.0" />
-      <point x="-61.53846153846166" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.ConsoleController" target="com.treasureisland.player.Player">
-      <point x="45.0" y="-138.0" />
-      <point x="3575.4271415565468" y="2671.0" />
-      <point x="3762.106468531469" y="2671.0" />
-      <point x="3762.106468531469" y="1805.0" />
-      <point x="2144.2658354966807" y="1805.0" />
-      <point x="90.0" y="127.5" />
-    </edge>
-    <edge source="com.treasureisland.world.AbandonedDistillery" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="1516.6468531468531" y="1360.0" />
-      <point x="2017.342758573604" y="1360.0" />
-      <point x="-36.923076923076906" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.map.MainMap" target="com.treasureisland.player.Color">
-      <point x="-35.666666666666515" y="-16.0" />
-      <point x="1138.5068199937014" y="1835.0" />
-      <point x="480.098484848485" y="1835.0" />
-      <point x="480.098484848485" y="679.0" />
-      <point x="365.8139285353991" y="679.0" />
-      <point x="-26.125" y="193.5" />
-    </edge>
-    <edge source="com.treasureisland.world.SugarCaneField" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-50.5" />
-      <point x="3488.197727272727" y="599.0" />
-      <point x="2189.3985256977826" y="599.0" />
-      <point x="74.05263157894751" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.CrimsonBeachBar" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="1728.1468531468531" y="669.0" />
-      <point x="2083.6090520135717" y="669.0" />
-      <point x="-31.73684210526335" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.AbandonedHouse">
-      <point x="66.3529411764705" y="-16.0" />
-      <point x="2359.0006684491977" y="1140.0" />
-      <point x="3607.797727272727" y="1140.0" />
-      <point x="-66.40000000000009" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.AbandonedHouse" target="com.treasureisland.player.Player">
-      <point x="-33.200000000000045" y="28.0" />
-      <point x="3640.9977272727274" y="1150.0" />
-      <point x="3462.3882429551477" y="1150.0" />
-      <point x="3462.3882429551477" y="1480.0" />
-      <point x="2165.0350662659116" y="1480.0" />
-      <point x="110.76923076923094" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.SaveLoadGame" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="0.0" y="28.0" />
-      <point x="222.27272727272725" y="1490.0" />
-      <point x="155.56818181818176" y="1490.0" />
-      <point x="155.56818181818176" y="2463.0" />
-      <point x="1919.8226536784987" y="2463.0" />
-      <point x="-66.19318181818198" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.SugarCaneField">
-      <point x="58.05882352941171" y="-16.0" />
-      <point x="2350.7065508021387" y="1110.0" />
-      <point x="3421.797727272727" y="1110.0" />
-      <point x="-66.40000000000009" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.TreasureIslandGameplay" target="com.treasureisland.player.Color">
-      <point x="-113.85227272727298" y="-39.0" />
-      <point x="1872.1635627694077" y="2553.0" />
-      <point x="0.0" y="2553.0" />
-      <point x="0.0" y="679.0" />
-      <point x="313.5639285353991" y="679.0" />
-      <point x="-78.375" y="193.5" />
-    </edge>
-    <edge source="com.treasureisland.world.PawPawBeach" target="com.treasureisland.player.Player">
-      <point x="-29.59999999999991" y="28.0" />
-      <point x="2444.5977272727273" y="970.0" />
-      <point x="2373.647727272727" y="970.0" />
-      <point x="2373.647727272727" y="1360.0" />
-      <point x="2091.188912419758" y="1360.0" />
-      <point x="36.92307692307713" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.DoubleCrossTavernCruces">
-      <point x="-8.294117647058783" y="-16.0" />
-      <point x="2284.3536096256685" y="950.0" />
-      <point x="2053.4468531468533" y="950.0" />
-      <point x="96.80000000000018" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.PawPawBeach" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="2474.197727272727" y="649.0" />
-      <point x="2136.503788855677" y="649.0" />
-      <point x="21.15789473684208" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.SaintsLodgeCruces" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="3061.697727272727" y="619.0" />
-      <point x="2168.2406309609405" y="619.0" />
-      <point x="52.89473684210543" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.ship.PlayerShip" target="com.treasureisland.player.Player">
-      <point x="-58.0" y="-61.5" />
-      <point x="2058.0158354966807" y="1835.0" />
-      <point x="2064.2658354966807" y="1835.0" />
-      <point x="10.0" y="127.5" />
-    </edge>
-    <edge source="com.treasureisland.world.ShipGraveyard" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="2647.197727272727" y="1010.0" />
-      <point x="2509.9205557764008" y="1010.0" />
-      <point x="2509.9205557764008" y="1390.0" />
-      <point x="2109.650450881296" y="1390.0" />
-      <point x="55.384615384615245" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.world.SunsetRestaurant" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="1301.1468531468531" y="1380.0" />
-      <point x="2005.0350662659116" y="1380.0" />
-      <point x="-49.23076923076928" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.world.SunsetRestaurant" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="-73.20000000000005" y="28.0" />
-      <point x="1227.946853146853" y="1090.0" />
-      <point x="423.3636363636365" y="1090.0" />
-      <point x="423.3636363636365" y="2433.0" />
-      <point x="1935.7090173148624" y="2433.0" />
-      <point x="-50.306818181818244" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.SaintsLodgeCruces" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="76.40000000000009" y="28.0" />
-      <point x="3138.0977272727273" y="860.0" />
-      <point x="3571.0805506474558" y="860.0" />
-      <point x="3571.0805506474558" y="2493.0" />
-      <point x="2068.095380951226" y="2493.0" />
-      <point x="82.0795454545455" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.AbandonedHouse" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="3674.197727272727" y="589.0" />
-      <point x="2199.9774730662034" y="589.0" />
-      <point x="84.63157894736833" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.ShipGraveyard" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="2647.197727272727" y="639.0" />
-      <point x="2147.0827362240984" y="639.0" />
-      <point x="31.73684210526335" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.RoyalLodge">
-      <point x="-49.76470588235293" y="-16.0" />
-      <point x="2242.8830213903743" y="1000.0" />
-      <point x="1005.8468531468532" y="1000.0" />
-      <point x="59.200000000000045" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.SunsetRestaurant" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="1301.1468531468531" y="649.0" />
-      <point x="2062.4511572767296" y="649.0" />
-      <point x="-52.89473684210543" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.TreasureIslandGameplay" target="com.treasureisland.SaveLoadGame">
-      <point x="-76.78409090909099" y="-39.0" />
-      <point x="1909.2317445875897" y="2483.0" />
-      <point x="57.670454545454504" y="2483.0" />
-      <point x="57.670454545454504" y="1480.0" />
-      <point x="78.27272727272725" y="1480.0" />
-      <point x="-144.0" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.SouthendBeachCruces" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="3281.197727272727" y="1100.0" />
-      <point x="3071.342089108994" y="1100.0" />
-      <point x="3071.342089108994" y="1450.0" />
-      <point x="2146.573527804373" y="1450.0" />
-      <point x="92.30769230769238" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.world.TikkiLounge" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="-29.59999999999991" y="28.0" />
-      <point x="571.0468531468532" y="1020.0" />
-      <point x="10.590909090909008" y="1020.0" />
-      <point x="10.590909090909008" y="2533.0" />
-      <point x="1882.7544718603167" y="2533.0" />
-      <point x="-103.26136363636397" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.ShipGraveyard" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="63.200000000000045" y="28.0" />
-      <point x="2710.397727272727" y="900.0" />
-      <point x="3549.8987324656373" y="900.0" />
-      <point x="3549.8987324656373" y="2453.0" />
-      <point x="2046.913562769408" y="2453.0" />
-      <point x="60.89772727272725" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.RumDistillery" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="-31.59999999999991" y="50.5" />
-      <point x="742.0468531468532" y="1040.0" />
-      <point x="21.181818181818244" y="1040.0" />
-      <point x="21.181818181818244" y="2513.0" />
-      <point x="1893.345380951226" y="2513.0" />
-      <point x="-92.67045454545473" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.island.RumRunnerIsle" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="3856.197727272727" y="579.0" />
-      <point x="2210.5564204346247" y="579.0" />
-      <point x="95.2105263157896" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.DuskTillDawnSaloon">
-      <point x="33.17647058823536" y="-16.0" />
-      <point x="2325.8241978609626" y="1020.0" />
-      <point x="2766.197727272727" y="1020.0" />
-      <point x="-80.0" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.SouthendBeachCruces">
-      <point x="49.76470588235293" y="-16.0" />
-      <point x="2342.41243315508" y="1080.0" />
-      <point x="3197.9977272727274" y="1080.0" />
-      <point x="-83.19999999999982" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.TreasureIslandGameplay" target="com.treasureisland.player.Player">
-      <point x="-2.647727272727252" y="-39.0" />
-      <point x="1983.3681082239534" y="2343.0" />
-      <point x="1890.6408354966807" y="2343.0" />
-      <point x="1890.6408354966807" y="1815.0" />
-      <point x="2004.2658354966807" y="1815.0" />
-      <point x="-50.0" y="127.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.CrimsonBeachBar">
-      <point x="-16.588235294117567" y="-16.0" />
-      <point x="2276.05949197861" y="960.0" />
-      <point x="1798.1468531468531" y="960.0" />
-      <point x="70.0" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.PawPawBeach" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="29.59999999999991" y="28.0" />
-      <point x="2503.797727272727" y="930.0" />
-      <point x="3534.012368829274" y="930.0" />
-      <point x="3534.012368829274" y="2423.0" />
-      <point x="2031.0271991330442" y="2423.0" />
-      <point x="45.01136363636351" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.RumDistillery" target="com.treasureisland.player.Player">
-      <point x="31.59999999999991" y="50.5" />
-      <point x="805.246853146853" y="1040.0" />
-      <point x="779.8006993006993" y="1040.0" />
-      <point x="779.8006993006993" y="1430.0" />
-      <point x="1974.2658354966807" y="1430.0" />
-      <point x="-80.0" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.world.DoubleCrossTavernCruces" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="1956.6468531468531" y="1320.0" />
-      <point x="2041.9581431889883" y="1320.0" />
-      <point x="-12.307692307692378" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.ChurchCruces">
-      <point x="-41.470588235294144" y="-16.0" />
-      <point x="2251.1771390374333" y="990.0" />
-      <point x="1174.746853146853" y="990.0" />
-      <point x="59.59999999999991" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.CrimsonBeachBar" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="-35.0" y="28.0" />
-      <point x="1693.1468531468531" y="1140.0" />
-      <point x="449.84090909090924" y="1140.0" />
-      <point x="449.84090909090924" y="2383.0" />
-      <point x="1962.1862900421352" y="2383.0" />
-      <point x="-23.829545454545496" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.SaintsLodgeCruces" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="3061.697727272727" y="1070.0" />
-      <point x="2853.5420891089943" y="1070.0" />
-      <point x="2853.5420891089943" y="1430.0" />
-      <point x="2134.2658354966807" y="1430.0" />
-      <point x="80.0" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.player.Player" target="com.treasureisland.IsleFactory">
-      <point x="30.769230769230944" y="-127.5" />
-      <point x="2085.0350662659116" y="1350.0" />
-      <point x="2245.647727272727" y="1350.0" />
-      <point x="-47.0" y="16.0" />
-    </edge>
-    <edge source="com.treasureisland.world.SouthendBeachCruces" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="3281.197727272727" y="609.0" />
-      <point x="2178.8195783293613" y="609.0" />
-      <point x="63.473684210526244" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.ChurchCruces" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="-59.59999999999991" y="28.0" />
-      <point x="1055.5468531468532" y="1070.0" />
-      <point x="412.77272727272725" y="1070.0" />
-      <point x="412.77272727272725" y="2453.0" />
-      <point x="1925.1181082239532" y="2453.0" />
-      <point x="-60.89772727272748" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.AbandonedHouse" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="33.200000000000045" y="28.0" />
-      <point x="3707.397727272727" y="1160.0" />
-      <point x="3745.8110139860146" y="1160.0" />
-      <point x="3745.8110139860146" y="2543.0" />
-      <point x="2094.5726536784987" y="2543.0" />
-      <point x="108.55681818181824" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.map.MainMap" target="com.treasureisland.player.Player">
+    <edge source="com.treasureisland.scene.TikkiLounge" target="com.treasureisland.scene.Scene">
       <point x="0.0" y="-16.0" />
-      <point x="1174.1734866603679" y="1785.0" />
-      <point x="1944.2658354966807" y="1785.0" />
-      <point x="-110.0" y="127.5" />
+      <point x="1603.5" y="52.0" />
+      <point x="856.9444444444445" y="52.0" />
+      <point x="40.44444444444446" y="16.0" />
     </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.Graveyard">
-      <point x="8.294117647058783" y="-16.0" />
-      <point x="2300.941844919786" y="930.0" />
-      <point x="2290.244019138756" y="930.0" />
-      <point x="0.0" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.ship.PlayerShip" target="com.treasureisland.ship.EnemyShip">
-      <point x="-29.0" y="61.5" />
-      <point x="2087.0158354966807" y="2003.0" />
-      <point x="2105.8908354966807" y="2003.0" />
-      <point x="87.75" y="-61.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.AbandonedDistillery">
-      <point x="-24.882352941176578" y="-16.0" />
-      <point x="2267.7653743315504" y="970.0" />
-      <point x="1599.846853146853" y="970.0" />
-      <point x="83.19999999999982" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.PawPawBeach">
-      <point x="16.588235294117567" y="-16.0" />
-      <point x="2309.235962566845" y="960.0" />
-      <point x="2414.9977272727274" y="960.0" />
-      <point x="-59.19999999999982" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.Graveyard" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="29.59999999999991" y="28.0" />
-      <point x="2319.844019138756" y="950.0" />
-      <point x="3523.421459738365" y="950.0" />
-      <point x="3523.421459738365" y="2403.0" />
-      <point x="2020.4362900421352" y="2403.0" />
-      <point x="34.420454545454504" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.ship.EnemyShip" target="com.treasureisland.ship.PlayerShip">
-      <point x="29.25" y="-61.5" />
-      <point x="2047.3908354966807" y="2003.0" />
-      <point x="2029.0158354966807" y="2003.0" />
-      <point x="-87.0" y="61.5" />
-    </edge>
-    <edge source="com.treasureisland.world.SugarCaneField" target="com.treasureisland.player.Player">
-      <point x="-33.19999999999982" y="50.5" />
-      <point x="3454.9977272727274" y="1120.0" />
-      <point x="3276.3882429551477" y="1120.0" />
-      <point x="3276.3882429551477" y="1460.0" />
-      <point x="2152.7273739582192" y="1460.0" />
-      <point x="98.46153846153857" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.Client" target="com.treasureisland.TreasureIslandGameplay">
+    <edge source="com.treasureisland.scene.ShipGraveyard" target="com.treasureisland.scene.Scene">
       <point x="0.0" y="-16.0" />
-      <point x="-77.66666666666674" y="39.0" />
+      <point x="291.0" y="62.0" />
+      <point x="786.1666666666666" y="62.0" />
+      <point x="-30.33333333333337" y="16.0" />
     </edge>
-    <edge source="com.treasureisland.world.ChurchCruces" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="1115.1468531468531" y="639.0" />
-      <point x="2051.872209908309" y="639.0" />
-      <point x="-63.473684210526244" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.TikkiLounge" target="com.treasureisland.player.Player">
-      <point x="29.59999999999991" y="28.0" />
-      <point x="630.246853146853" y="1020.0" />
-      <point x="606.8006993006993" y="1020.0" />
-      <point x="606.8006993006993" y="1450.0" />
-      <point x="1961.9581431889883" y="1450.0" />
-      <point x="-92.30769230769238" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.world.SouthendBeachCruces" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="41.59999999999991" y="28.0" />
-      <point x="3322.797727272727" y="850.0" />
-      <point x="3590.367059272905" y="850.0" />
-      <point x="3590.367059272905" y="2503.0" />
-      <point x="2073.3908354966807" y="2503.0" />
-      <point x="87.375" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.TikkiLounge" target="com.treasureisland.player.Color">
-      <point x="-37.0" y="-28.0" />
-      <point x="563.6468531468531" y="659.0" />
-      <point x="470.3139285353991" y="659.0" />
-      <point x="78.375" y="193.5" />
-    </edge>
-    <edge source="com.treasureisland.world.RoyalLodge" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="-59.200000000000045" y="28.0" />
-      <point x="887.4468531468531" y="1050.0" />
-      <point x="26.477272727272748" y="1050.0" />
-      <point x="26.477272727272748" y="2503.0" />
-      <point x="1898.6408354966804" y="2503.0" />
-      <point x="-87.37500000000023" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="47.0" y="16.0" />
-      <point x="2339.647727272727" y="1340.0" />
-      <point x="2372.0913188282" y="1340.0" />
-      <point x="2372.0913188282" y="2393.0" />
-      <point x="2015.1408354966807" y="2393.0" />
-      <point x="29.125" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.AbandonedDistillery" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="1516.6468531468531" y="659.0" />
-      <point x="2073.030104645151" y="659.0" />
-      <point x="-42.31578947368416" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.CrimsonBeachBar" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="1728.1468531468531" y="1340.0" />
-      <point x="2029.650450881296" y="1340.0" />
-      <point x="-24.615384615384755" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.player.Player" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="70.0" y="127.5" />
-      <point x="2124.2658354966807" y="1815.0" />
-      <point x="2247.8112900421356" y="1815.0" />
-      <point x="2247.8112900421356" y="2373.0" />
-      <point x="2004.5499264057717" y="2373.0" />
-      <point x="18.53409090909099" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.RumDistillery">
-      <point x="-58.05882352941171" y="-16.0" />
-      <point x="2234.5889037433153" y="1010.0" />
-      <point x="836.8468531468529" y="1010.0" />
-      <point x="63.19999999999982" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.RoyalLodge" target="com.treasureisland.player.Player">
-      <point x="0.0" y="28.0" />
-      <point x="946.6468531468531" y="1420.0" />
-      <point x="1980.4196816505269" y="1420.0" />
-      <point x="-73.84615384615404" y="-127.5" />
-    </edge>
-    <edge source="com.treasureisland.player.Player" target="com.treasureisland.player.Color">
-      <point x="-104.61538461538476" y="-127.5" />
-      <point x="1949.650450881296" y="1470.0" />
-      <point x="516.1468531468531" y="1470.0" />
-      <point x="516.1468531468531" y="669.0" />
-      <point x="418.0639285353991" y="669.0" />
-      <point x="26.125" y="193.5" />
-    </edge>
-    <edge source="com.treasureisland.world.DuskTillDawnSaloon" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="2846.197727272727" y="629.0" />
-      <point x="2157.6616835925192" y="629.0" />
-      <point x="42.31578947368416" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.world.DoubleCrossTavernCruces" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="-48.40000000000009" y="28.0" />
-      <point x="1908.246853146853" y="1160.0" />
-      <point x="460.43181818181824" y="1160.0" />
-      <point x="460.43181818181824" y="2363.0" />
-      <point x="1972.7771991330442" y="2363.0" />
-      <point x="-13.238636363636488" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.TreasureIslandGameplay" target="com.treasureisland.ship.ShipBattleSequence">
-      <point x="2.647727272727252" y="-39.0" />
-      <point x="1988.663562769408" y="2343.0" />
-      <point x="2066.5158354966807" y="2343.0" />
-      <point x="-50.0" y="61.0" />
-    </edge>
-    <edge source="com.treasureisland.ConsoleController" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="-45.0" y="-138.0" />
-      <point x="3485.4271415565468" y="2671.0" />
-      <point x="2063.6825021633476" y="2671.0" />
-      <point x="77.66666666666674" y="39.0" />
-    </edge>
-    <edge source="com.treasureisland.world.AbandonedDistillery" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="-41.59999999999991" y="28.0" />
-      <point x="1475.0468531468532" y="1120.0" />
-      <point x="439.2500000000002" y="1120.0" />
-      <point x="439.2500000000002" y="2403.0" />
-      <point x="1951.5953809512262" y="2403.0" />
-      <point x="-34.420454545454504" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.player.Player" target="com.treasureisland.world.Location">
-      <point x="12.307692307692378" y="-127.5" />
-      <point x="2066.573527804373" y="1320.0" />
-      <point x="2153.8006993006993" y="1320.0" />
-      <point x="2153.8006993006993" y="679.0" />
-      <point x="2104.766946750414" y="679.0" />
-      <point x="-10.578947368421268" y="50.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.SunsetRestaurant">
-      <point x="-33.17647058823536" y="-16.0" />
-      <point x="2259.471256684492" y="980.0" />
-      <point x="1374.3468531468532" y="980.0" />
-      <point x="73.20000000000005" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.ship.ShipBattleSequence" target="com.treasureisland.ship.EnemyShip">
-      <point x="-75.0" y="-61.0" />
-      <point x="2041.5158354966807" y="2176.0" />
-      <point x="1959.6408354966807" y="2176.0" />
-      <point x="-58.5" y="61.5" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.TikkiLounge">
-      <point x="-66.35294117647072" y="-16.0" />
-      <point x="2226.2947860962568" y="1020.0" />
-      <point x="659.8468531468529" y="1020.0" />
-      <point x="59.19999999999982" y="28.0" />
-    </edge>
-    <edge source="com.treasureisland.world.DuskTillDawnSaloon" target="com.treasureisland.TreasureIslandGameplay">
-      <point x="40.0" y="28.0" />
-      <point x="2886.197727272727" y="890.0" />
-      <point x="3555.194187011092" y="890.0" />
-      <point x="3555.194187011092" y="2463.0" />
-      <point x="2052.2090173148626" y="2463.0" />
-      <point x="66.19318181818176" y="-39.0" />
-    </edge>
-    <edge source="com.treasureisland.IsleFactory" target="com.treasureisland.world.Location">
+    <edge source="com.treasureisland.scene.RoyalLodge" target="com.treasureisland.scene.Scene">
       <point x="0.0" y="-16.0" />
-      <point x="2292.647727272727" y="940.0" />
-      <point x="2205.744019138756" y="940.0" />
-      <point x="2205.744019138756" y="669.0" />
-      <point x="2115.345894118835" y="669.0" />
-      <point x="0.0" y="50.5" />
+      <point x="456.5" y="72.0" />
+      <point x="796.2777777777778" y="72.0" />
+      <point x="-20.22222222222217" y="16.0" />
     </edge>
-    <edge source="com.treasureisland.ship.ShipBattleSequence" target="com.treasureisland.ship.PlayerShip">
-      <point x="75.0" y="-61.0" />
-      <point x="2191.5158354966807" y="2176.0" />
-      <point x="2179.5158354966807" y="2176.0" />
-      <point x="2179.5158354966807" y="2003.0" />
-      <point x="2203.0158354966807" y="2003.0" />
-      <point x="87.0" y="61.5" />
+    <edge source="com.treasureisland.scene.CrimsonBeachBar" target="com.treasureisland.scene.Scene">
+      <point x="0.0" y="-16.0" />
+      <point x="0.0" y="16.0" />
     </edge>
-    <edge source="com.treasureisland.world.Graveyard" target="com.treasureisland.player.Player">
-      <point x="-29.59999999999991" y="28.0" />
-      <point x="2260.644019138756" y="1160.0" />
-      <point x="2180.9709422156793" y="1160.0" />
-      <point x="2180.9709422156793" y="1340.0" />
-      <point x="2078.8812201120654" y="1340.0" />
-      <point x="24.615384615384755" y="-127.5" />
+    <edge source="com.treasureisland.island.PortRoyal" target="com.treasureisland.island.Island">
+      <point x="0.0" y="-16.0" />
+      <point x="62.0" y="159.0" />
+      <point x="117.75" y="159.0" />
+      <point x="-24.75" y="16.0" />
     </edge>
-    <edge source="com.treasureisland.world.DoubleCrossTavernCruces" target="com.treasureisland.world.Location">
-      <point x="0.0" y="-28.0" />
-      <point x="1956.6468531468531" y="679.0" />
-      <point x="2094.187999381993" y="679.0" />
-      <point x="-21.15789473684208" y="50.5" />
+    <edge source="com.treasureisland.scene.AbandonedDistillery" target="com.treasureisland.scene.Scene">
+      <point x="0.0" y="-16.0" />
+      <point x="1028.0" y="82.0" />
+      <point x="826.6111111111111" y="82.0" />
+      <point x="10.111111111111086" y="16.0" />
+    </edge>
+    <edge source="com.treasureisland.scene.RumDistillery" target="com.treasureisland.scene.Scene">
+      <point x="0.0" y="-16.0" />
+      <point x="1231.0" y="72.0" />
+      <point x="836.7222222222222" y="72.0" />
+      <point x="20.22222222222217" y="16.0" />
+    </edge>
+    <edge source="com.treasureisland.scene.SunsetRestaurant" target="com.treasureisland.scene.Scene">
+      <point x="0.0" y="-16.0" />
+      <point x="1421.5" y="62.0" />
+      <point x="846.8333333333334" y="62.0" />
+      <point x="30.33333333333337" y="16.0" />
+    </edge>
+    <edge source="com.treasureisland.island.Island" target="com.treasureisland.scene.Scene">
+      <point x="0.0" y="-16.0" />
+      <point x="142.5" y="52.0" />
+      <point x="776.0555555555555" y="52.0" />
+      <point x="-40.44444444444446" y="16.0" />
+    </edge>
+    <edge source="com.treasureisland.scene.SugarCaneField" target="com.treasureisland.scene.Scene">
+      <point x="0.0" y="-16.0" />
+      <point x="626.0" y="82.0" />
+      <point x="806.3888888888889" y="82.0" />
+      <point x="-10.111111111111086" y="16.0" />
+    </edge>
+    <edge source="com.treasureisland.island.RumRunnerIsle" target="com.treasureisland.island.Island">
+      <point x="0.0" y="-16.0" />
+      <point x="223.0" y="159.0" />
+      <point x="167.25" y="159.0" />
+      <point x="24.75" y="16.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.8676991150442478" x="1780.5266249629778" y="1308.1142554835867" />
-  <SelectedNodes />
-  <Categories>
-    <Category>Fields</Category>
-    <Category>Properties</Category>
-  </Categories>
+  <settings layout="Hierarchic Group" zoom="0.6617647058823528" x="1168.7853281853288" y="658.0978120978122" />
+  <SelectedNodes>
+    <node>com.treasureisland.OnlyOneScanner</node>
+  </SelectedNodes>
+  <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>packageLocal</VISIBILITY>
 </Diagram>
