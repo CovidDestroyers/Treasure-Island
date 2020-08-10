@@ -16,29 +16,11 @@ public abstract class Island extends Scene implements Serializable {
   protected Island islandToTheWest;
 
   protected String islandName;
+  protected String directionOptions;
+  protected String directOptionsWithDocks;
 
   protected Scene currentScene;
   protected List<Scene> scenesOnIsland = new ArrayList<>();
-  protected String directionOptions =
-      "Where would you like to go?\n "
-          + "-Type \"N\": North\n "
-          + "-Type \"S\": South\n "
-          + "-Type \"W\": West\n "
-          + "-Type \"E\": East\n "
-          + "-Type \"Save\": Save Game\n "
-          + "-Type \"Chart\": Game Chart\n "
-          + "-Type \"Map\": Island Map\n";
-
-  protected String directOptionsWithDocks =
-      "Where would you like to go?\n "
-          + "-Type \"N\": North\n "
-          + "-Type \"S\": South\n "
-          + "-Type \"W\": West\n "
-          + "-Type \"E\": East\n "
-          + "-Type \"D\": Docks\n "
-          + "-Type \"Save\": Save Game\n "
-          + "-Type \"Chart\": Game Chart\n "
-          + "-Type \"Map\": Island Map\n";
 
   /*
    * =============================================
@@ -46,10 +28,30 @@ public abstract class Island extends Scene implements Serializable {
    * =============================================
    */
 
-  public Island() {}
+  public Island() {
+    setDirectionOptions(
+        "Where would you like to go?\n "
+            + "-Type \"N\": North\n "
+            + "-Type \"S\": South\n "
+            + "-Type \"W\": West\n "
+            + "-Type \"E\": East\n "
+            + "-Type \"Save\": Save Game\n "
+            + "-Type \"Chart\": Game Chart\n "
+            + "-Type \"Map\": Island Map\n");
+    setDirectOptionsWithDocks(
+        "Where would you like to go?\n "
+            + "-Type \"N\": North\n "
+            + "-Type \"S\": South\n "
+            + "-Type \"W\": West\n "
+            + "-Type \"E\": East\n "
+            + "-Type \"Save\": Save Game\n "
+            + "-Type \"Chart\": Game Chart\n "
+            + "-Type \"Map\": Island Map\n");
+  }
 
   public Island(String islandName) {
-    super(islandName);
+    this();
+    setIslandName(islandName);
   }
 
   /*
@@ -59,14 +61,14 @@ public abstract class Island extends Scene implements Serializable {
    */
 
   /**
-   * The entry point into all scene classes. The Game class will call `Island.enter( player);`to
-   * start each Island's story
+   * The entry point into all scene classes. The TreasureIslandGamePlay class will call
+   * `Island.enter( player);`to start each Island's story
    *
    * @param player - Player object
    */
   public void enter(Player player) {
-    String userInput = "";
-    String whereToGo = getDirectionOptions();
+    String userInput;
+    String whereToGo;
 
     try {
       displayWelcomeMessage();
@@ -113,22 +115,11 @@ public abstract class Island extends Scene implements Serializable {
     }
   }
 
-  protected void displayWelcomeMessage() {
-    System.out.printf("You have arrived at %s. Enjoy your stay...", getIslandName());
-  }
-
-  public void addScenesToIsland(Scene... scenes) {
-    try {
-      scenesOnIsland.addAll(Arrays.asList(scenes));
-    } catch (Exception e) {
-      System.out.println("Something broke :`(");
-      e.printStackTrace();
-    }
-  }
-
   /**
-   * @param direction
-   * @return
+   * Gets the correct Island class based on direction
+   *
+   * @param direction - user command given through the console - Validated by DirectionEnum.isValid
+   * @return an Island class in the specified direction
    */
   public Island changeIsland(String direction) {
     String sanitizedDirection = direction.trim().toLowerCase().substring(0, 1);
@@ -163,16 +154,19 @@ public abstract class Island extends Scene implements Serializable {
     return nextIsland;
   }
 
+  /** @param otherIsland - the Island to the East of invoking Island class */
   public void connectEast(Island otherIsland) {
     setIslandToTheEast(otherIsland);
     otherIsland.setIslandToTheWest(this);
   }
 
+  /** @param otherIsland - the Island to the South of invoking Island class */
   public void connectSouth(Island otherIsland) {
     setIslandToTheSouth(otherIsland);
     otherIsland.setIslandToTheNorth(this);
   }
 
+  /** Saves current state of game and exits */
   public void saveGame() {
     SaveLoadGame.saveGame();
     System.out.println("We saved your game state!!");
@@ -185,6 +179,24 @@ public abstract class Island extends Scene implements Serializable {
     System.out.println("Sleep well for it may be your last night.");
     System.out.println("Goodbye for now.");
     System.exit(0);
+  }
+
+  /**
+   * Adds an arbitrary number of Scene classes to an Island class
+   *
+   * @param scenes - the Scene classes on the island
+   */
+  public void addScenesToIsland(Scene... scenes) {
+    try {
+      scenesOnIsland.addAll(Arrays.asList(scenes));
+    } catch (Exception e) {
+      System.out.println("Something broke :`(");
+      e.printStackTrace();
+    }
+  }
+
+  protected void displayWelcomeMessage() {
+    System.out.printf("You have arrived at %s. Enjoy your stay...", getIslandName());
   }
 
   /*
