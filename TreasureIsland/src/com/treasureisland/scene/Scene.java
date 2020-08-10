@@ -188,6 +188,7 @@ public abstract class Scene implements Serializable {
 
           if ("e".equals(userInput)) {
             System.out.printf("You have left %s\n", getName());
+            
             break;
 
           }

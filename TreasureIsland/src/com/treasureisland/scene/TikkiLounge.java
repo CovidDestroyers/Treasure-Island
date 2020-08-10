@@ -30,6 +30,7 @@ public class TikkiLounge extends Scene {
           player.playerInventory.remove(Item.findByName(player.playerInventory, "High Tide"));
           player.playerInventory.remove(Item.findByName(player.playerInventory, "101"));
           player.setHasIslandItem(true);
+
     } else {
       System.out.println(
           "To get the code, you should look around for the clues.");

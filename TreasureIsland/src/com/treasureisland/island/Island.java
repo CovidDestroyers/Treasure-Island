@@ -1,6 +1,8 @@
 package com.treasureisland.island;
 
 import com.treasureisland.SaveLoadGame;
+import com.treasureisland.TreasureIslandGameplay;
+import com.treasureisland.items.Item;
 import com.treasureisland.player.Color;
 import com.treasureisland.player.Player;
 import com.treasureisland.scene.Scene;
@@ -24,6 +26,7 @@ public abstract class Island extends Scene implements Serializable {
   protected Scene currentScene;
 
   protected List<Scene> scenesOnIsland = new ArrayList<>();
+  protected static TreasureIslandGameplay treasureIslandGameplay = TreasureIslandGameplay.getInstance();
 
   /*
    * =============================================
@@ -81,8 +84,11 @@ public abstract class Island extends Scene implements Serializable {
       while (true) {
         player.playerHealthCheck();
 
-        setWhereToGo((player.getHasIslandItem()) ? getDirectOptionsWithDocks()
-          : getDirectionOptions());
+        if (player.playerTreasures.size() == 2) {
+          treasureIsland(player);
+        }
+
+        setWhereToGo((player.getHasIslandItem()) ? getDirectOptionsWithDocks() : getDirectionOptions());
 
         System.out.println(getWhereToGo());
 
@@ -225,6 +231,54 @@ public abstract class Island extends Scene implements Serializable {
     System.out.printf("You have arrived at %s. Enjoy your stay...\n",
       getIslandName());
   }
+
+  //
+  private void treasureIsland(Player player) {
+    if (Item.findByName(player.playerInventory, "key") != null) {
+      if (player.playerTreasures.contains("Sacred Jewel")) {
+        displayTreasureIslandStory();
+        System.exit(0);
+      } else {
+        System.out.println("To get the sacred jewel, you have to look around in \"Port Royal\"");
+      }
+    } else {
+      System.out.println(
+        "To get the key, you have to look in the \"Sugar Cane "
+          + "Field\" in \"Rum Runner Isle\"");
+    }
+  }
+
+  //Method to display TreasureIsland Story when Player wins
+  public void displayTreasureIslandStory() {
+    System.out.println(
+      "\n\nWhat! I have been to this island before, there are people inhabiting this island!!\n"
+        + "          How can treasure be on this island? It is supposed to be the biggest treasure in the world.\n"
+        + "          This is confusing, I have to figure out a way to make some sense of this situation.\n"
+        + "          Or else all this situation will be for nothing.\n"
+        + "\n"
+        + "\n"
+        + "\n"
+        + "          After revisiting the clues, I think I figured it out.\n"
+        + "          I need to get to this hidden monastery and I will find more info there.\n"
+        + "\n"
+        + "          Talking with the monks there, I found out that they had a very sacred jewel stolen from them years back.\n"
+        + "          Now that sounds interesting, the description they provided matched with the jewel I posses.\n"
+        + "\n"
+        + "          Should I give this jewel back to the monastery?\n"
+        + "\n"
+        + "          I gave the jewel to monastery and in return they provided me with a medium size box which had . . .\n"
+        + "              Three keyholes in it!\n"
+        + "              I took the box with me to open it privately.\n"
+        + "              Upon opening it I found . . .\n"
+        + "              Jewels, coins and the most treasured "
+        + Color.ANSI_BOLD.getValue()
+        + Color.ANSI_BLUE.getValue()
+        + "50 carat Diamond"
+        + Color.ANSI_RESET.getValue()
+        + "!");
+  }
+
+
 
   /*
    * =============================================

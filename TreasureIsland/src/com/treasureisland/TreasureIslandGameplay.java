@@ -97,14 +97,8 @@ public class TreasureIslandGameplay implements Serializable {
         else {
           displayStayMessage();
         }
-
-        if (player.playerTreasures.size() == 2) {
-          treasureIsland();
-        }
-
         player.setCurrentIsland(currentIsland);
         currentIsland.enter(player);
-
       }
 
     }
@@ -128,12 +122,11 @@ public class TreasureIslandGameplay implements Serializable {
       System.getProperty("user.dir") + "/TreasureIsland.ser");
     if (gameState.exists()) {
       System.out.println(
-        "Would you like to Load existing game<L>, play the full game<F>, "
-          + "or play on a sample island<S>?");
-    }
-    else {
-      System.out.println("Would you like to play the full game<F>, or play "
-        + "on a sample island<S>?");
+        "Would you like to\n "
+          + "-Type \"L\": Load Existing Game?\n "
+          + "-Type \"N\": Play New Game?\n ");
+    } else {
+      System.out.println("Would you like to Play New Game<N>?");
     }
 
     input = scanner.nextLine().trim().toLowerCase();
@@ -153,7 +146,7 @@ public class TreasureIslandGameplay implements Serializable {
         treasureIslandGameplay.player.playerInfoConsoleOutput();
 
         break;
-      case "f":
+      case "n":
         if (gameState.exists()) {
           gameState.delete();
         }
@@ -244,9 +237,6 @@ public class TreasureIslandGameplay implements Serializable {
   public void portRoyal() throws InterruptedException {
     System.out.println("You made it to Port Royal");
     player.processMovement("portRoyal");
-    if (player.playerTreasures.size() == 2) {
-      treasureIsland();
-    }
   }
 
   public void islaCruces() throws InterruptedException {
@@ -267,48 +257,6 @@ public class TreasureIslandGameplay implements Serializable {
     Thread.sleep(5000);
   }
 
-  public void treasureIsland() {
-    if (Item.findByName(player.playerInventory, "Key") != null) {
-      if (player.playerTreasures.contains("Sacred Jewel")) {
-        displayTreasureIslandStory();
-        playAgain();
-      }
-      else {
-        System.out.println(
-          "To get the sacred jewel, you have to look around in \"Port Royal\"");
-      }
-    }
-    else {
-      System.out.println(
-        "To get the key, you have to look in the \"Sugar Cane "
-          + "Field\" in \"Rum Runner Isle\"");
-    }
-  }
-
-  // Method to ask for play again the game
-  public void playAgain() {
-    System.out.println(
-      "\nWould you like to play again?\n -Type \"Y\": Yes\n -Type \"N\": No");
-
-    input = scanner.nextLine().trim().toLowerCase();
-
-    if ("y".equals(input) || "yes".equals(input)) {
-      try {
-        new TreasureIslandGameplay().chosePlayerName();
-      }
-      catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-    }
-    else if ("n".equals(input) || "no".equals(input)) {
-      System.out.println("Thank you for playing!!");
-      System.exit(0);
-    }
-    else {
-      System.out.println("Invalid Input, Try Again!!");
-      playAgain();
-    }
-  }
 
   public void testIslandSelector() throws InterruptedException {
     System.out.println(

@@ -55,13 +55,13 @@ public class SugarCaneField extends Scene {
     player.playerCoinGenerator();
     System.out.println("\n");
     player.iterateThroughClues();
-    if (Item.findByName(player.playerInventory, "Key") == null) {
-      player.playerInventory.add(new Item("Key", 0, 0));
+    if (Item.findByName(player.playerInventory, "key") == null) {
+      player.playerInventory.add(new Item("key", 0, 0));
       System.out.println(
-          "\n"
-              + Color.ANSI_BLUE.getValue()
-              + "Clue added to your Inventory!!"
-              + Color.ANSI_RESET.getValue());
+        "\n"
+          + Color.ANSI_BLUE.getValue()
+          + "Clue added to your Inventory!!"
+          + Color.ANSI_RESET.getValue());
     }
   }
 
