@@ -16,8 +16,8 @@ public class ShipGraveyard extends Scene {
     System.out.println(
         "Talking to Ryan at ship graveyard, I was pointed to check out the biggest ship ");
     storylineProgression("TI.txt",  "SGStart", "SGStop");
-    if(Item.findByName(player.playerInventory, "High Tide") == null) {
-      player.playerInventory.add(new Item("High Tide", 0, 0));
+    if(Item.findByName(player.playerInventory, "high tide") == null) {
+      player.playerInventory.add(new Item("high tide", 0, 0));
       System.out.println("\n" + Color.ANSI_BLUE.getValue() + "Clue added to your Inventory!!" + Color.ANSI_RESET.getValue());
     }
   }
